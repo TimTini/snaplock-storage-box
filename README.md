@@ -132,8 +132,12 @@ Nguồn API chính thức:
 
 - [Sketch.xDirection](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_Sketch_xDirection.htm) và [Sketch.yDirection](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_Sketch_yDirection.htm): đổi biểu thức tọa độ model sang trục thực của sketch, kể cả mặt YZ có trục X hướng -Z.
 - [Fusion API: scripts và add-ins](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/UserManualIndex_UM.htm)
-- [M?u t?o Loft](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/loftFeatures_add_Sample.htm)
-- [M?u t?o Revolve](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/revolveFeatures_add_Sample.htm)
+- [Mẫu tạo Loft](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/loftFeatures_add_Sample.htm)
+- [Mẫu tạo Revolve](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/revolveFeatures_add_Sample.htm)
 - [FilletFeatures.add](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_FilletFeatures_add.htm)
 
 STL nguồn giữ nguyên, SHA256: `73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167`.
+
+## Bộ tài liệu agent tự học.
+
+[Cẩm nang agent](docs/agent-learning.md) trình bày quy trình SCAD trước rồi Fusion Python sau, quản lý tham số, timeline và bằng chứng. [Sổ lỗi](docs/error-cookbook.md) tổng hợp các ca lỗi cùng cách sửa và mức xác nhận. [Mẫu giao việc](docs/scad-to-fusion-task.md) áp dụng quy trình cho model mới.

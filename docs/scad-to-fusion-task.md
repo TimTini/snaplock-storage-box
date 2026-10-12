@@ -1,0 +1,41 @@
+﻿# Mẫu giao việc dựng SCAD rồi chuyển sang Fusion Python.
+
+Mẫu này dùng cho đầu vào `[file hoặc thư mục dự án]` và mục tiêu `[tái dựng theo mẫu hoặc thiết kế mới]`. Các giá trị trong ngoặc vuông được điền theo nhiệm vụ. Phạm vi bàn giao gồm `[part, nguồn, mức bám mẫu, biến thể và hình thức kiểm chứng]`.
+
+## Agent đọc nguồn và chốt ý đồ hình học.
+
+Agent đọc source, README, preview, manifest, dependency, test và checkpoint hiện có. Agent ghi bảng part, kích thước sử dụng, lòng chứa, đáy, bo/vát, lỗ, ren, khớp, khe hở và đường lắp. Agent lưu hash đầu vào, quy ước đơn vị, hệ tọa độ và snapshot của phần tham chiếu.
+
+Agent xác định các đặc trưng được giữ theo yêu cầu: hình dáng nhận diện, tỷ lệ, kích thước sử dụng, các part, quan hệ giữa part và chức năng. Mức bám mẫu được ghi thành tiêu chí đo hoặc tiêu chí chức năng của từng vùng.
+
+## Agent dựng và kiểm chứng bản SCAD.
+
+Agent tổ chức module theo chức năng, tham số đầu vào và công thức derived. Miền hợp lệ được diễn đạt bằng assert. Agent render cấu hình mặc định và các biến thể trong phạm vi `[bộ tham số]`.
+
+Agent kiểm tra solid, tính kín, winding, bounds, thể tích, số lỗ và kích thước cơ cấu. Agent đối chiếu mẫu bằng boolean thừa/thiếu, mặt cắt và khoảng cách bề mặt theo `[ngưỡng và mục tiêu đo]`. Vùng xấp xỉ được ghi cùng vị trí, kích thước và ảnh hưởng.
+
+Agent chốt source SCAD, hash, tham số, output và báo cáo làm baseline chuyển đổi.
+
+## Agent dựng script Python native trong Fusion.
+
+Agent chọn sketch, Extrude, Revolve, Loft, Fillet, Chamfer, Combine, Mirror và Pattern theo hình học. Cây feature có tên thể hiện chức năng. Component/body được tổ chức theo `[bố trí part hoặc assembly]`, với ownership và tool được theo dõi rõ.
+
+Agent tạo User Parameters và expression cho kích thước, vị trí và các quan hệ phụ thuộc. Đơn vị API và đơn vị báo cáo được chuyển đổi rõ. Các lựa chọn topology và nội dung tạo lúc Run được ghi trong hướng dẫn.
+
+Agent giữ các đặc trưng thiết kế đã chốt, đồng thời dùng cấu trúc native gọn theo chức năng. Mỗi thay đổi đơn giản hóa có mô tả và phép đối chiếu. Agent tích hợp chỉnh sửa CAD theo trục, pivot và công thức hình học liên kết.
+
+## Agent kiểm chứng theo từng lớp bằng chứng.
+
+Agent chạy syntax, test công thức và regression cho ca lỗi có thể tái hiện offline. Agent chạy Fusion để kiểm tra solver, profile, feature health, BRep, số body và recompute của `[bộ biến thể]`. Log ghi stage, hash source, tham số và kết quả; expression gốc được phục hồi và kiểm tra lại.
+
+Agent xuất từng body cùng manifest chứa đơn vị, hash và độ mịn. Agent so sánh đầu ra Fusion với mẫu và baseline SCAD theo tiêu chí đã chốt. Agent kiểm tra vị trí assembly, đường lắp và miền chuyển động theo phạm vi nhiệm vụ.
+
+Agent ghi kết quả source, offline, native, slicer và vật lý thành các checkpoint riêng. Mẫu coupon và phép thử `[khe hở, lực thao tác, tải hoặc độ bền]` cung cấp bằng chứng vật lý tương ứng.
+
+## Agent bàn giao bộ có thể sửa và tiếp tục.
+
+Bộ bàn giao gồm SCAD, Python, manifest, hướng dẫn chạy, bảng tham số, test, báo cáo và checkpoint. Nhật ký lỗi ghi hiện tượng, bằng chứng, nguyên nhân hoặc giả thuyết, thay đổi và mức xác nhận. Hướng dẫn chỉ rõ các tham số cập nhật qua Change Parameters và các lựa chọn được tạo lại bằng Run.
+
+Tài liệu công khai dùng dữ liệu demo, đường dẫn tương đối, nguồn và giấy phép phù hợp. Bản tham chiếu riêng, transcript và log nguyên bản được lưu trong vùng local. Agent bàn giao commit cùng kết quả kiểm chứng và trạng thái remote theo quyền của nhiệm vụ.
+
+Nguồn quy trình là [cẩm nang agent](agent-learning.md), [sổ lỗi](error-cookbook.md) và [tài liệu kỹ thuật](fusion-python-tu-hoc.md).

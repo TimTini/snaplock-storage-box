@@ -4,6 +4,8 @@ Tài liệu tổng hợp bài học thực hành và tài liệu của **năm d�
 
 Mỗi kết quả gắn với phiên bản, source hoặc báo cáo tương ứng. Source hiện tại, log native, kết quả mesh và thử nghiệm vật lý có phạm vi bằng chứng riêng.
 
+Bộ bổ sung cho agent gồm [quy trình làm việc](agent-learning.md), [sổ lỗi và cách sửa](error-cookbook.md) và [mẫu giao việc SCAD → Fusion](scad-to-fusion-task.md). Các tài liệu dùng câu khẳng định và chỉ dẫn tích cực, với phạm vi kiểm chứng riêng cho từng checkpoint.
+
 ## 1. Lộ trình từ mẫu tham chiếu đến mô hình tham số
 
 Chuỗi thực hành là **đo mẫu → dựng SCAD → đối chiếu hình học → dựng Fusion Python → kiểm tra recompute → đối chiếu đầu ra Fusion → thử in và lắp**.

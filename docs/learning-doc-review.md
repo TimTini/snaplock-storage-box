@@ -1,4 +1,4 @@
-﻿# Rà soát tài liệu OpenSCAD và Fusion Python
+# Rà soát tài liệu OpenSCAD và Fusion Python
 
 Mốc rà soát là **13/10/2026**. [Tài liệu tự học](fusion-python-tu-hoc.md) tập hợp các bài học về dựng hình, tham số, API và kiểm chứng của năm dự án.
 
@@ -35,3 +35,7 @@ Các căn cứ gồm source, README, test, báo cáo đo và log của các phi�
 Source Python bản sửa thứ tự profile có SHA256 `e09a82813f0831d98fec28d0dcf609ff71ad05832a74064c11d83f16cc5cf2f2`. Source SCAD có SHA256 `905322f5338d6685ad3f4358f270e81659eed66be9e8c7b49aab171c05a9fba1`.
 
 Bộ test offline Snaplock đạt 28/28 ngày 13/10/2026. Lần chạy native của bản sửa thứ tự profile, phép đo sai khác đối xứng Fusion và thử lắp/in là các mốc xác nhận tiếp theo.
+
+## Bộ tài liệu agent mở rộng tri thức thực hành.
+
+[Cẩm nang](agent-learning.md) tổ chức phương pháp từ hình học SCAD đến feature native Fusion. [Sổ lỗi](error-cookbook.md) ghi 14 nhóm ca lỗi, cách xử lý và ranh giới xác nhận. [Mẫu giao việc](scad-to-fusion-task.md) diễn đạt các bước bằng câu khẳng định và chỉ dẫn tích cực. Nguồn đối chiếu gồm README, source, regression, báo cáo đo và lịch sử làm việc liên quan đến năm dự án.
