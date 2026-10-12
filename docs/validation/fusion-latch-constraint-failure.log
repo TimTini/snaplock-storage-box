@@ -1,0 +1,22 @@
+SnaplockStorageBox — native Fusion run
+Script SHA256: 4cad327eab71f336bfe42e6dca9e688672e2635e3ba56e83fd2be63386d688f3
+Build native bodies
+FAILED at Build native bodies
+Traceback (most recent call last):
+  File "[local path redacted]", line 771, in run
+    build(design, progress)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "[local path redacted]", line 628, in build
+    latch = build_latch(n)
+  File "[local path redacted]", line 567, in build_latch
+    base = n.rectangle(xy, '0 mm', '1.5 mm', '0 mm', '25 mm', '32.9 mm', 'Latch plate')
+  File "[local path redacted]", line 181, in rectangle
+    return self.profile(base, offset, [(x, y), ('('+x+') + ('+w+')', y),
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ('('+x+') + ('+w+')', '('+y+') + ('+h+')'),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (x, '('+y+') + ('+h+')')], name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[local path redacted]", line 177, in profile
+    raise RuntimeError('Sketch is not fully constrained: ' + name)
+RuntimeError: Sketch is not fully constrained: Latch plate

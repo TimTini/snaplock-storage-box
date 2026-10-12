@@ -1,0 +1,27 @@
+SnaplockStorageBox — native Fusion run
+Script SHA256: 60e231444d5156905349db0bd93f38ed7e6af0920b79f026e6f385414b3ecb89
+Build native bodies
+SKETCH_CONSTRAINT_DIAGNOSTIC {"sketch": "Latch plate", "constraints": 2, "dimensions": 6, "free_entities": [{"entity": "curve[2]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[3]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[4]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[5]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}]}
+FAILED at SKETCH_CONSTRAINT_DIAGNOSTIC {"sketch": "Latch plate", "constraints": 2, "dimensions": 6, "free_entities": [{"entity": "curve[2]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[3]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[4]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}, {"entity": "curve[5]", "type": "adsk::fusion::SketchLine", "constraints": 0, "dimensions": 0}]}
+Traceback (most recent call last):
+  File "[local path redacted]", line 791, in run
+    build(design, progress)
+    ~~~~~^^^^^^^^^^^^^^^^^^
+  File "[local path redacted]", line 648, in build
+    latch = build_latch(n)
+  File "[local path redacted]", line 587, in build_latch
+    base = n.rectangle(xy, '0 mm', '1.5 mm', '0 mm', '25 mm', '32.9 mm', 'Latch plate')
+  File "[local path redacted]", line 202, in rectangle
+    return self.profile(base, offset, [(x, y), ('('+x+') + ('+w+')', y),
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ('('+x+') + ('+w+')', '('+y+') + ('+h+')'),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (x, '('+y+') + ('+h+')')], name)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "[local path redacted]", line 198, in profile
+    self.require_constrained(sk)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "[local path redacted]", line 152, in require_constrained
+    raise RuntimeError('Sketch is not fully constrained: ' + sketch.name +
+                       '; free entities=' + str(len(free)) + '; see diagnostic in last-run.log')
+RuntimeError: Sketch is not fully constrained: Latch plate; free entities=4; see diagnostic in last-run.log

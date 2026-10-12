@@ -1,0 +1,84 @@
+SnaplockStorageBox — native Fusion run
+Script SHA256: 4cad327eab71f336bfe42e6dca9e688672e2635e3ba56e83fd2be63386d688f3
+Build native bodies
+(Unsaved): Latch blank
+(Unsaved): Catch tooth thickness relief
+(Unsaved): Mirror catch tooth
+(Unsaved): Latch pivot sphere
+(Unsaved): Mirror pivot sphere
+(Unsaved): Flat sphere tops
+(Unsaved): Flat sphere bottoms
+(Unsaved): R5 pivot front relief
+(Unsaved): Notch cylinder tool
+(Unsaved): Notch tool end fillets
+(Unsaved): Rounded pivot notch
+(Unsaved): Spring relief tool
+(Unsaved): Mirror spring relief tool
+(Unsaved): Spring relief cuts
+(Unsaved): Opening ramp
+(Unsaved): Print layout latch
+(Unsaved): Outside 60 degree bevel
+(Unsaved): Straight walls
+(Unsaved): Lid latch web
+(Unsaved): Lid latch footprint
+(Unsaved): Clip lid latch footprint
+(Unsaved): Lid latch pad
+(Unsaved): Lid annular lip cylinder
+(Unsaved): Lid annular lip taper tool
+(Unsaved): Cut tapered lid lip opening
+(Unsaved): Lid lip clip
+(Unsaved): Clip lid lip
+(Unsaved): Join lid latch pad and lip
+(Unsaved): Trim lid latch to pad and lip
+(Unsaved): Lid spherical socket
+(Unsaved): Lid pivot web
+(Unsaved): Lid pivot footprint
+(Unsaved): Clip lid pivot footprint
+(Unsaved): Lid pivot sphere
+(Unsaved): Pivot envelope cylinder
+(Unsaved): Limit pivot sphere radially
+(Unsaved): Pivot cap clipping box
+(Unsaved): Clip pivot sphere cap
+(Unsaved): Join clipped pivot cap
+(Unsaved): Mirror first site ends
+(Unsaved): Second mounting site
+(Unsaved): Join all mounting webs
+(Unsaved): Inside floor bevel
+(Unsaved): Open cavity
+(Unsaved): Print layout lid
+(Unsaved): Outside 60 degree bevel
+(Unsaved): Straight walls
+(Unsaved): Rear hinge web
+(Unsaved): Rear hinge footprint
+(Unsaved): Clip rear hinge web
+(Unsaved): Rear spherical socket
+(Unsaved): Front catch web
+(Unsaved): Front catch footprint
+(Unsaved): Clip front catch footprint
+(Unsaved): Front catch pad
+(Unsaved): Front annular lip cone
+(Unsaved): Front lip bore
+(Unsaved): Join front pad and lip
+(Unsaved): Trim front catch to pad and lip
+(Unsaved): Front pocket lower chamfer
+(Unsaved): Front pocket barrel
+(Unsaved): Front pocket upper chamfer
+(Unsaved): Cut chamfered vertical pocket
+(Unsaved): Mirror first site ends
+(Unsaved): Second mounting site
+(Unsaved): Join all mounting webs
+(Unsaved): Inside floor bevel
+(Unsaved): Open cavity
+Before latch pattern: ['Latch', 'Lid', 'Body']
+(Unsaved): Second latch body
+Latch pattern output bodies: ['Latch (1)', 'Latch']
+Verify four root bodies and timeline
+Latch: bounds_mm=[28.000000000000004, 31.835144, 6.000000000000001], volume_mm3=3513.626
+Lid: bounds_mm=[237.85, 140.39998951921487, 19.500000000003052], volume_mm3=113480.103
+Body: bounds_mm=[237.85, 140.15000000996665, 56.25], volume_mm3=165378.139
+Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.000000000000001], volume_mm3=3513.626
+Verify parameter variant: {'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'}
+Verify parameter variant: {'fit_clearance': '0.2 mm'}
+Export native body STL files for comparison
+Native STL manifest: [local path redacted]
+NATIVE_BUILD_AND_RECOMPUTE_OK; physical snap fit not tested.
