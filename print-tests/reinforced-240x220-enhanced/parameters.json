@@ -1,0 +1,17 @@
+{
+  "fileFormatVersion": "1",
+  "parameterSets": {
+    "reinforced-240x220-enhanced": {
+      "part": "body",
+      "length": "240",
+      "width": "220",
+      "body_height": "100",
+      "wall_ribs": "true",
+      "wall_floor_ribs": "true",
+      "floor_ribs": "true",
+      "wall_rib_depth": "5",
+      "wall_rib_foot": "20",
+      "wall_rib_top_clearance": "5"
+    }
+  }
+}

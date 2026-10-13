@@ -1,0 +1,141 @@
+{
+  "scad_sha256": "b9358a419a16ec6fe20e6f336ab78fef6c8c0b9cdb568c45a96f8e72def929de",
+  "preset_sha256": "439d945c98f7a3ccb9dace2e356bc0bd21222dadd7ec9575c8c5174e689fb56e",
+  "usable_print_volume_mm": [
+    250,
+    250,
+    250
+  ],
+  "parts": {
+    "body": {
+      "part": "body",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true",
+        "wall_rib_top_clearance=5",
+        "wall_rib_depth=5",
+        "wall_rib_foot=20"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          240.0,
+          228.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 404062.30931965075,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "f4f4648bd3b52ad5eabd80512345887db4ad379d01a2355e1142c655cf43f465",
+      "added_volume_mm3": 35030.74255808778,
+      "removed_volume_mm3": 0.0032644491645138865,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          237.0,
+          217.0,
+          94.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.002290155738700925
+    },
+    "lid": {
+      "part": "lid",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          240.0,
+          229.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 189230.25622709622,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "a3f7ad0b1c51658ca30a3873df75b72ab2307b6899e004ebd7434b77673932ed"
+    },
+    "latch": {
+      "part": "latch",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.9884392478793,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+    }
+  },
+  "scope": "SCAD geometry; physical load validation follows printed samples",
+  "status": "passed",
+  "preset_native_export_verified": true,
+  "preset_export_sha256": "d7d3547dd390eeff3c5a510a4f0223f06965b79490697012f1b3b3070dcd1058",
+  "preset_zero_area_fragments": 3,
+  "rib_lid_clearance": {
+    "placement": "rotate X 180 degrees; translate (0,width,body_height+lid_height)",
+    "global_z_gap_mm": 0.5052833557128906,
+    "poses": [
+      {
+        "angle_degrees": 0,
+        "overlap_mm3": 0.0
+      },
+      {
+        "angle_degrees": 15,
+        "overlap_mm3": 0.0
+      },
+      {
+        "angle_degrees": 45,
+        "overlap_mm3": 0.0
+      },
+      {
+        "angle_degrees": 90,
+        "overlap_mm3": 0.0
+      },
+      {
+        "angle_degrees": 110,
+        "overlap_mm3": 0.0
+      }
+    ]
+  }
+}

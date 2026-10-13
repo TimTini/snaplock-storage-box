@@ -4,7 +4,7 @@ Các bản sao trong thư mục này giữ số đo, hash source và kết quả
 
 | Bằng chứng | Phạm vi |
 |---|---|
-| [Gân trong SCAD](scad-reinforcement.json) | Ba công tắc thành, nối thành–đáy, đáy; đủ tám tổ hợp bật/tắt và 24 cấu hình; preset 240 × 220 × 100 mm cho khổ sử dụng 250 mm |
+| [Gân trong SCAD](scad-reinforcement.json) | Ba công tắc, đủ tám tổ hợp bật/tắt và 27 cấu hình; baseline và bản gân cao/chân lớn; khoảng hở nắp đóng và năm góc mở lấy mẫu; preset 240 × 220 × 100 mm cho khổ sử dụng 250 mm |
 | [Sweep Parallel native](slot-sweep-native.json) | Cung khe dịch chuyển, 2 plane/2 sketch/0 Loft, 10 timeline item healthy, fully constrained và chiều dày 6 → 5 → 6,5 → 6 mm; residual lấy mẫu lớn nhất 0,0008 mm |
 | [SCAD mặc định](scad-audit-default.json) và [biến thể](scad-audit-variant.json) | Mesh kín, bounds và sai khác thể tích của SCAD |
 | [Răng SCAD tròn/elip](scad-catch-csg.json) và [ảnh mặt cắt](scad-catch-csg-sections.png) | So sánh snapshot, STL và ba chiều dày; khoảng cách lấy mẫu hai chiều và timing tham khảo |

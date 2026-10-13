@@ -8,7 +8,10 @@
       "body_height": "100",
       "wall_ribs": "true",
       "wall_floor_ribs": "true",
-      "floor_ribs": "true"
+      "floor_ribs": "true",
+      "wall_rib_depth": "3",
+      "wall_rib_foot": "12",
+      "wall_rib_top_clearance": "20"
     }
   }
 }

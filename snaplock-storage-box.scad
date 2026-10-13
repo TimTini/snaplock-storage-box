@@ -36,8 +36,10 @@ rib_spacing = 45;
 rib_thickness = 2.4;
 floor_rib_height = 4;
 // Upright wall projection and width of the 45-degree foot (mm).
-wall_rib_depth = 3;
-wall_rib_foot = 12;
+wall_rib_depth = 5;
+wall_rib_foot = 20;
+// Clearance below the body rim; 5 mm clears the current lid's closed envelope.
+wall_rib_top_clearance = 5;
 /* [Print layout] */
 part = "layout"; // [layout,body,lid,latch]
 layout_gap = 20;
@@ -64,6 +66,7 @@ assert(is_bool(wall_ribs) && is_bool(wall_floor_ribs) && is_bool(floor_ribs));
 assert(rib_thickness>0 && rib_spacing>rib_thickness);
 assert(floor_rib_height>0 && floor_rib_height<body_height-body_floor-20);
 assert(wall_rib_depth>0 && wall_rib_foot>0);
+assert(wall_rib_top_clearance>=5 && wall_rib_top_clearance<body_height-body_floor);
 
 // Circular arcs through measured start, middle and end. Used only for local profiles.
 function cross2(a,b) = a[0]*b[1]-a[1]*b[0];
@@ -206,8 +209,7 @@ module internal_reinforcement() {
                         cube([length-2*wall+2*eps,rib_thickness,floor_rib_height+eps]);
             }
             if(wall_ribs || wall_floor_ribs) {
-                // Keep the upper 20 mm available for the existing mechanism.
-                top=body_height-20;
+                top=body_height-wall_rib_top_clearance;
                 foot=min(wall_rib_foot,top-body_floor,(min(length,width)-2*wall)/4);
                 depth=min(wall_rib_depth,(top-body_floor)/2,(min(length,width)-2*wall)/4);
                 profiles=concat(

@@ -1,6 +1,6 @@
 {
-  "scad_sha256": "57e1a467d137bc34a337cfec3cfc97b4fb91a179679f9396d1e252efadc8e5c0",
-  "preset_sha256": "f7cbf6fb038373020970cfb98d290d322d8cb4738dd8c83506c1bb0523cb56d6",
+  "scad_sha256": "b9358a419a16ec6fe20e6f336ab78fef6c8c0b9cdb568c45a96f8e72def929de",
+  "preset_sha256": "e0575d9d58ee04644ba136addd218cbd5898705519dfa08e36e8e1d18f56a4d3",
   "usable_print_volume_mm": [
     250,
     250,
@@ -15,7 +15,10 @@
         "body_height=100",
         "floor_ribs=true",
         "wall_ribs=true",
-        "wall_floor_ribs=true"
+        "wall_floor_ribs=true",
+        "wall_rib_top_clearance=20",
+        "wall_rib_depth=3",
+        "wall_rib_foot=12"
       ],
       "bounds_mm": [
         [

@@ -55,7 +55,7 @@ def main():
         extra = volume(trimesh.boolean.difference([b,a],engine='manifold'))
         assert abs(missing)+abs(extra) < .1, 'Expected equal geometry'
 
-    def added(name,base,height,length,width):
+    def added(name,base,height,length,width,clearance=5):
         current = cache[name]
         assert np.allclose(current.bounds,base.bounds,atol=.005), name+': outer envelope changed'
         missing = volume(trimesh.boolean.difference([base,current],engine='manifold'))
@@ -74,10 +74,11 @@ def main():
         addition = trimesh.util.concatenate(solids)
         assert addition.bounds[0,0] >= 3-.02 and addition.bounds[1,0] <= length-3+.02
         assert addition.bounds[0,1] >= 3-.02 and addition.bounds[1,1] <= width-3+.02
-        assert addition.bounds[1,2] <= height-20+.02, name+': upper mechanism zone invaded'
+        assert addition.bounds[1,2] <= height-clearance+.02, name+': top clearance ignored'
         report['cases'][name].update(added_volume_mm3=float(addition.volume),
             removed_volume_mm3=float(missing),added_bounds_mm=addition.bounds.tolist(),
             boolean_remnant_volume_mm3=float(remnant_volume))
+        return addition
 
     original = render('original_off',off)
     same(original,render('original_default',[]))
@@ -107,12 +108,40 @@ def main():
 
     printer = ['length=240','width=220','body_height=100']
     printer_off = render('printer_off',printer+off)
-    render('printer_all',printer+on)
-    added('printer_all',printer_off,100,240,220)
+    render('printer_all',printer+on+['wall_rib_top_clearance=20',
+        'wall_rib_depth=3','wall_rib_foot=12'])
+    added('printer_all',printer_off,100,240,220,20)
     for name,part in [('printer_all','body'),('printer_lid','lid'),('printer_latch','latch')]:
         mesh = cache[name] if name in cache else render(name,printer+on,part)
         assert np.all(mesh.extents <= [250,250,250]), name+': exceeds 250 mm usable print volume'
     report['usable_print_volume_mm'] = [250,250,250]
+
+    enhanced = printer+on+['wall_rib_top_clearance=5','wall_rib_depth=5','wall_rib_foot=20']
+    render('printer_enhanced_wall',printer+['wall_ribs=true','wall_floor_ribs=false',
+        'floor_ribs=false','wall_rib_top_clearance=5','wall_rib_depth=5'])
+    upright = added('printer_enhanced_wall',printer_off,100,240,220)
+    assert abs(upright.bounds[1,2]-95) < .02, 'Expected uprights to follow top clearance'
+    render('printer_enhanced',enhanced)
+    ribs = added('printer_enhanced',printer_off,100,240,220)
+    render('minimum_enhanced',small+on+['wall_rib_top_clearance=5',
+        'wall_rib_depth=5','wall_rib_foot=20'])
+    added('minimum_enhanced',small_off,30.2,107.9,30.1)
+    assert abs(volume(trimesh.boolean.difference([cache['printer_all'],cache['printer_enhanced']],
+        engine='manifold'))) < .1, 'Enhanced construction removed baseline material'
+    lid = cache['printer_lid'].copy()
+    closed_transform = np.diag([1.,-1.,-1.,1.])
+    closed_transform[:3,3] = [0,220,115]
+    lid.apply_transform(closed_transform)
+    report['rib_lid_clearance'] = {'placement':'rotate X 180 degrees; translate (0,width,body_height+lid_height)',
+        'global_z_gap_mm':float(lid.bounds[0,2]-ribs.bounds[1,2]),'poses':[]}
+    assert report['rib_lid_clearance']['global_z_gap_mm'] > .49
+    for angle in (0,15,45,90,110):
+        moving = lid.copy()
+        moving.apply_transform(trimesh.transformations.rotation_matrix(np.deg2rad(angle),
+            [1,0,0],point=[0,-4.75,100]))
+        overlap = volume(trimesh.boolean.intersection([ribs,moving],engine='manifold'))
+        assert abs(overlap) < .01, 'Added ribs collide with lid at '+str(angle)+' degrees'
+        report['rib_lid_clearance']['poses'].append({'angle_degrees':angle,'overlap_mm3':overlap})
 
     if args.baseline_scad:
         baseline = args.baseline_scad.resolve()
