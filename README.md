@@ -37,6 +37,8 @@ Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc
 
 ## Chạy trong Fusion
 
+**Bản thử 0.3.0:** [răng khóa bằng cung R5 và elip](docs/latch-analytic-construction.md) thay 25 tiết diện răng bằng bốn tiết diện XZ, một Extrude và hai Loft ngắn. Checkpoint source, review và 30 test offline đã hoàn tất; lần Run tiếp theo cung cấp bằng chứng native cho ellipse constraints, Loft và biến thể độ dày. Log ghi `BUILD_METRICS`; mesh audit offline lưu tại `docs/validation/latch-analytic-offline.json`.
+
 [Add-in thử chuỗi Plane → Sketch → Loft](fusion/LoftSketchTest/README.md) dựng năm tiết diện ở năm cao độ, rồi dùng một Loft nối thành khối. Log ghi công thức, vị trí và kết quả kiểm tra biến thể.
 
 [Add-in thử Plane và Sketch](fusion/PlaneSketchTest/README.md) so sánh ba cách tạo cùng hình học: plane riêng, plane dùng chung và Extrude Start Offset. Bài thử tạo ba document mới và kiểm tra thay đổi tham số trực tiếp trong Fusion.

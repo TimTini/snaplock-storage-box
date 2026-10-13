@@ -13,7 +13,8 @@ spec.loader.exec_module(model)
 class SketchCoordinatesTests(unittest.TestCase):
     def setUp(self):
         self.native = model.Native.__new__(model.Native)
-        self.native.comp = SimpleNamespace(xYConstructionPlane=object(), yZConstructionPlane=object())
+        self.native.comp = SimpleNamespace(xYConstructionPlane=object(), yZConstructionPlane=object(),
+                                          xZConstructionPlane=object())
 
     def sketch(self, x, y):
         return SimpleNamespace(
@@ -34,6 +35,13 @@ class SketchCoordinatesTests(unittest.TestCase):
         sketch = self.sketch((0, 1, 0), (0, 0, 1))
         self.assertEqual(self.native.coordinates(sketch, self.native.comp.yZConstructionPlane,
                          ('-4.75 mm', 'body_height')), ('-4.75 mm', 'body_height'))
+
+    def test_xz_maps_thickness_expression_in_both_axis_orientations(self):
+        for x, y, expected in [((1, 0, 0), (0, 0, 1), ('8.25 mm', 'latch_thickness / 2')),
+                               ((0, 0, -1), (1, 0, 0), ('-(latch_thickness / 2)', '8.25 mm'))]:
+            with self.subTest(x=x, y=y):
+                self.assertEqual(self.native.coordinates(self.sketch(x, y),
+                    self.native.comp.xZConstructionPlane, ('8.25 mm', 'latch_thickness / 2')), expected)
 
     def test_rear_web_overlaps_socket_after_coordinate_mapping(self):
         # Interior point at x=21.5, Y=-4.75, Z=52 lies in the R4.25

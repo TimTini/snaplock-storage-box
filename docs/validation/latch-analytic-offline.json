@@ -1,0 +1,34 @@
+{
+  "scope": "offline intended analytic boundary; native Fusion Loft remains separate",
+  "sampled_reference_sections": 25,
+  "analytic_mesh_sections": 481,
+  "cases": [
+    {
+      "thickness_mm": 5,
+      "analytic_equation_error_mm": 1.2918555114538322e-12,
+      "sampled_boundary_max_difference_mm": 0.002167054784058653,
+      "reference_tooth_volume_mm3": 78.08555578086136,
+      "analytic_tooth_volume_mm3": 78.11200575075179,
+      "symmetric_difference_mm3": 0.03457916270338046,
+      "symmetric_difference_percent_of_tooth": 0.04428368647387634
+    },
+    {
+      "thickness_mm": 6,
+      "analytic_equation_error_mm": 2.0117241206207837e-12,
+      "sampled_boundary_max_difference_mm": 0.003854799351542759,
+      "reference_tooth_volume_mm3": 89.8062067371305,
+      "analytic_tooth_volume_mm3": 89.855676997591,
+      "symmetric_difference_mm3": 0.06340755388416142,
+      "symmetric_difference_percent_of_tooth": 0.07060486817994673
+    },
+    {
+      "thickness_mm": 6.5,
+      "analytic_equation_error_mm": 2.4842350399012503e-12,
+      "sampled_boundary_max_difference_mm": 0.005177516151931627,
+      "reference_tooth_volume_mm3": 94.80337006448805,
+      "analytic_tooth_volume_mm3": 94.86957438669496,
+      "symmetric_difference_mm3": 0.08378420470180004,
+      "symmetric_difference_percent_of_tooth": 0.08837682104001951
+    }
+  ]
+}

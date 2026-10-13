@@ -46,6 +46,8 @@ Mốc chốt SCAD gồm source/hash, bộ tham số, mesh/hash, số liệu audi
 
 Agent chọn Extrude cho tiết diện đều, Revolve cho hình tròn xoay, Loft cho tiết diện thay đổi, Fillet/Chamfer cho bo/vát và Pattern/Mirror cho phần lặp. Các phép Join/Cut/Intersect có body đích và tool xác định rõ.
 
+Agent nhận diện cung tròn, elip và mặt có quy luật để ưu tiên dựng bằng primitive, Extrude/Cut hoặc Revolve trước khi lấy nhiều tiết diện Loft. Các đoạn chuyển tiếp dùng số tiết diện theo độ chính xác cần đạt. Agent giữ baseline, kiểm tra biến thể công thức, đo sai khác cục bộ và thời gian native trước khi chốt thay thế. [Bản thử răng khóa R5/elip](latch-analytic-construction.md) ghi riêng bằng chứng offline và checkpoint Fusion cần xác nhận.
+
 Cây feature Fusion biểu diễn ý đồ thiết kế bằng công cụ native. Hình dáng nhận diện, kích thước sử dụng, lòng chứa, đáy, các part, quan hệ lắp và chức năng được giữ theo phạm vi đã chốt. Mọi đơn giản hóa có mô tả trước/sau và phép kiểm chứng phù hợp.
 
 Snaplock dùng khoét lòng riêng để giữ thành 3 mm, đáy thân 2 mm, đáy nắp 3 mm và tiết diện vát. Hộp bàn chải dùng surface helix + Sweep trong source hiện tại. Thời khóa biểu dùng cung tròn native cùng offset liên kết cho biên trang trí. Các lựa chọn này phản ánh hình học và phạm vi của từng mẫu.

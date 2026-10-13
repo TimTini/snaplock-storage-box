@@ -2,6 +2,7 @@ import math
 import hashlib
 import json
 import traceback
+from time import perf_counter
 from datetime import datetime
 from pathlib import Path
 
@@ -118,6 +119,8 @@ class Native:
             axes = ('x', 'y')
         elif base == self.comp.yZConstructionPlane:
             axes = ('y', 'z')
+        elif base == self.comp.xZConstructionPlane:
+            axes = ('x', 'z')
         else:
             raise ValueError('Unsupported profile plane')
         mapped = []
@@ -322,6 +325,37 @@ class Native:
         inp = self.comp.features.filletFeatures.createInput()
         inp.edgeSetInputs.addConstantRadiusEdgeSet(self.objects(edges), self.value(radius), False)
         return self.feature(self.comp.features.filletFeatures.add(inp), name)
+
+    def ellipse(self, base, offset, x, z, major, minor, name):
+        """Axis-aligned, dimensioned ellipse in the model XZ plane."""
+        sk = self.comp.sketches.add(self.plane(base, offset, name + ' plane'))
+        sk.name = name
+        cx, cy = self.coordinates(sk, base, (x, z))
+        mx, my = self.coordinates(sk, base, ('('+x+') + ('+major+')', z))
+        px, py = self.coordinates(sk, base, (x, '('+z+') + ('+minor+')'))
+        centre = self.point(self.cm(cx), self.cm(cy), 0)
+        curve = sk.sketchCurves.sketchEllipses.add(
+            centre, self.point(self.cm(mx), self.cm(my), 0),
+            self.point(self.cm(px), self.cm(py), 0))
+        horizontal = abs(self.cm(mx) - centre.x) > 1e-8
+        align = sk.geometricConstraints.addHorizontal if horizontal else sk.geometricConstraints.addVertical
+        align(curve.majorAxisLine)
+        for axis, expression in enumerate((cx, cy)):
+            direction = (self.fusion.DimensionOrientations.HorizontalDimensionOrientation,
+                         self.fusion.DimensionOrientations.VerticalDimensionOrientation)[axis]
+            dim = sk.sketchDimensions.addDistanceDimension(
+                sk.originPoint, curve.centerSketchPoint, direction,
+                self.point(centre.x + .5, centre.y + .5, 0))
+            dim.parameter.expression = 'abs(' + expression + ')'
+        for method, expression in [
+                (sk.sketchDimensions.addEllipseMajorRadiusDimension, major),
+                (sk.sketchDimensions.addEllipseMinorRadiusDimension, minor)]:
+            dim = method(curve, self.point(centre.x + .7, centre.y + .7, 0))
+            dim.parameter.expression = expression
+        if sk.profiles.count != 1:
+            raise RuntimeError(name + ': expected one ellipse profile')
+        self.require_constrained(sk)
+        return sk
 
     def combine(self, target, tools, operation, name):
         inp = self.comp.features.combineFeatures.createInput(target, self.objects(tools))
@@ -584,6 +618,41 @@ def latch_sections(fraction):
     return tooth, slot, arcs
 
 
+def build_latch_teeth(n, latch, symmetry):
+    """R5 core and two short ellipse-to-circle transitions, clipped to thickness."""
+    op = n.fusion.FeatureOperations
+    base = n.comp.xZConstructionPlane
+    if abs(base.geometry.normal.y + 1) > 1e-8:
+        raise RuntimeError('Catch analytic construction expects XZ normal toward -Y')
+    # XZ's positive normal is -Y, hence negative plane offsets and extrusion.
+    shoulder_front = n.ellipse(base, '-17.0724 mm', '8.25 mm',
+                               'latch_thickness / 2', '6.75 mm', '5 mm',
+                               'Catch front shoulder ellipse')
+    tip_front = n.circle(base, '-18.0724 mm', '5.5 mm', 'latch_thickness / 2',
+                         '5 mm', 'Catch R5 front section')
+    front = n.loft(shoulder_front, tip_front, op.NewBodyFeatureOperation,
+                   'Catch front transition').bodies.item(0)
+    core = n.extrude(tip_front, '4 mm', op.NewBodyFeatureOperation,
+                     'Catch R5 core', negative=True).bodies.item(0)
+    tip_rear = n.circle(base, '-22.0724 mm', '5.5 mm', 'latch_thickness / 2',
+                        '5 mm', 'Catch R5 rear section')
+    shoulder_rear = n.ellipse(base, '-23.0724 mm', '8.25 mm',
+                              'latch_thickness / 2', '6.75 mm', '5 mm',
+                              'Catch rear shoulder ellipse')
+    rear = n.loft(tip_rear, shoulder_rear, op.NewBodyFeatureOperation,
+                  'Catch rear transition').bodies.item(0)
+    n.combine(front, [core, rear], op.JoinFeatureOperation, 'Join catch analytic envelope')
+    clipping = n.rectangle(n.comp.xYConstructionPlane, '0 mm', '-2 mm',
+                           '17.0724 mm', '5.5 mm', '6 mm', 'Catch thickness envelope')
+    clip = n.extrude(clipping, 'latch_thickness', op.NewBodyFeatureOperation,
+                     'Catch thickness clipping tool').bodies.item(0)
+    n.combine(front, [clip], op.IntersectFeatureOperation, 'Clip catch analytic envelope')
+    mirrored = n.mirror([front], symmetry, 'Mirror catch analytic body').bodies
+    if mirrored.count != 1:
+        raise RuntimeError('Expected one mirrored catch body')
+    n.combine(latch, [front, mirrored.item(0)], op.JoinFeatureOperation, 'Join both catch teeth')
+
+
 def build_latch(n):
     op = n.fusion.FeatureOperations
     xy, yz = n.comp.xYConstructionPlane, n.comp.yZConstructionPlane
@@ -591,15 +660,13 @@ def build_latch(n):
     base = n.rectangle(xy, '0 mm', '1.5 mm', '0 mm', '25 mm', '32.9 mm', 'Latch plate')
     body = n.extrude(base, 'latch_thickness', op.NewBodyFeatureOperation, 'Latch blank').bodies.item(0)
     body.name = 'Latch'
-    teeth, slots = [], []
+    build_latch_teeth(n, body, mid)
+    slots = []
     for i in range(25):
         fraction = i / 24
-        tooth_coords, slot_coords, arcs = latch_sections(fraction)
+        _, slot_coords, arcs = latch_sections(fraction)
         z = 'latch_thickness * {:.12g}'.format(fraction)
-        teeth.append(n.profile(xy, z, tooth_coords, 'Catch section {:02d}'.format(i)))
         slots.append(n.profile(xy, z, slot_coords, 'Relief section {:02d}'.format(i), arcs))
-    tooth = n.section_loft(teeth, op.JoinFeatureOperation, 'Catch tooth thickness relief')
-    n.mirror([tooth], mid, 'Mirror catch tooth')
     ball = n.sphere('3.75 mm', '3 mm', 'latch_thickness / 2', 'latch_ball_radius',
                     op.JoinFeatureOperation, 'Latch pivot sphere')
     n.mirror([ball], mid, 'Mirror pivot sphere')
@@ -692,6 +759,24 @@ def check_model(design):
         if isinstance(entity, fusion.Feature) and entity.healthState != fusion.FeatureHealthStates.HealthyFeatureHealthState:
             raise RuntimeError(entity.name + ': ' + entity.errorOrWarningMessage)
     report = []
+    for name, y, x, major in [
+            ('Catch front shoulder ellipse', 17.0724, 8.25, 6.75),
+            ('Catch R5 front section', 18.0724, 5.5, 5),
+            ('Catch R5 rear section', 22.0724, 5.5, 5),
+            ('Catch rear shoulder ellipse', 23.0724, 8.25, 6.75)]:
+        sketch = root.sketches.itemByName(name)
+        if not sketch:
+            raise RuntimeError('Missing analytic catch section: ' + name)
+        curve = (sketch.sketchCurves.sketchEllipses.item(0) if major > 5
+                 else sketch.sketchCurves.sketchCircles.item(0))
+        centre = curve.worldGeometry.center
+        actual = [centre.x * 10, centre.y * 10, centre.z * 10,
+                  (curve.majorAxisRadius if major > 5 else curve.radius) * 10,
+                  (curve.minorAxisRadius if major > 5 else curve.radius) * 10]
+        expected = [x, y, p['latch_thickness'] / 2, major, 5]
+        if any(abs(a - b) > .0001 for a, b in zip(actual, expected)):
+            raise RuntimeError(name + ': analytic section mismatch: ' + str(actual))
+        report.append(name + ': centre_xyz_and_radii_mm=' + str(actual))
     for sk in root.sketches:
         if not sk.isFullyConstrained:
             raise RuntimeError('Unconstrained sketch: ' + sk.name)
@@ -719,11 +804,13 @@ def verify_variants(design, progress):
     saved = {name: params.itemByName(name).expression for name in DEFAULTS}
     try:
         for variant in [{'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'},
-                        {'fit_clearance': '0.2 mm'}]:
+                        {'fit_clearance': '0.2 mm'},
+                        {'latch_thickness': '5 mm'}, {'latch_thickness': '6.5 mm'}]:
             for name, expr in variant.items():
                 params.itemByName(name).expression = expr
             progress('Verify parameter variant: ' + str(variant))
-            check_model(design)
+            for line in check_model(design):
+                progress('VARIANT ' + line)
             for name, expr in saved.items():
                 params.itemByName(name).expression = expr
             check_model(design)
@@ -792,7 +879,13 @@ def run(context):
         dialog.isCancelButtonShown = False
         dialog.show('Snaplock Storage Box', 'Build native features', 0, 300, 0)
         progress('Build native bodies')
+        started = perf_counter()
         build(design, progress)
+        progress('BUILD_METRICS ' + json.dumps({
+            'build_seconds_including_logging': perf_counter() - started,
+            'planes': design.rootComponent.constructionPlanes.count,
+            'sketches': design.rootComponent.sketches.count,
+            'timeline': design.timeline.count}))
         progress('Verify four root bodies and timeline')
         lines.extend(check_model(design))
         if VERIFY_VARIANTS:

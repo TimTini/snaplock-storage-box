@@ -64,10 +64,25 @@ class SingleComponentTests(unittest.TestCase):
             self.body('Lid', [237.85, 140.40, 19.5]),
             self.body('Latch', [28, 31.835144, 6]),
             self.body('Latch 2', [28, 31.835144, 6])])
+        for name, x, y, major in [
+                ('Catch front shoulder ellipse', 8.25, 17.0724, 6.75),
+                ('Catch R5 front section', 5.5, 18.0724, 5),
+                ('Catch R5 rear section', 5.5, 22.0724, 5),
+                ('Catch rear shoulder ellipse', 8.25, 23.0724, 6.75)]:
+            curve = NS(worldGeometry=NS(center=NS(x=x/10, y=y/10, z=.3)),
+                       majorAxisRadius=major/10, minorAxisRadius=.5, radius=.5)
+            self.root.sketches.append(NS(name=name, isFullyConstrained=True,
+                sketchCurves=NS(sketchEllipses=Collection([curve]), sketchCircles=Collection([curve]))))
 
     def test_four_root_bodies_pass_without_occurrences(self):
         self.populate()
-        self.assertEqual(len(model.check_model(self.design)), 4)
+        self.assertEqual(len(model.check_model(self.design)), 8)
+
+    def test_stale_analytic_section_height_is_rejected(self):
+        self.populate()
+        self.root.sketches[0].sketchCurves.sketchEllipses[0].worldGeometry.center.z = .25
+        with self.assertRaisesRegex(RuntimeError, 'analytic section mismatch'):
+            model.check_model(self.design)
 
     def test_extra_tool_body_is_rejected(self):
         self.populate()
