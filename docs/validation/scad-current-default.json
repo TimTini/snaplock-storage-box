@@ -1,0 +1,87 @@
+{
+  "source_sha256": "73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "parts": {
+    "body": {
+      "bounds": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          237.85000610351562,
+          131.14999389648438,
+          56.2491455078125
+        ]
+      ],
+      "volume_mm3": 165365.2283003611,
+      "watertight": true,
+      "components": 1,
+      "removed_zero_width_faces": 4,
+      "export_sha256": "f0c663746b63e21315b9603bca5695514ef46c1e6df47940dd9569ce5bb1770b",
+      "reference_volume_mm3": 165249.73591545553,
+      "bounds_error_mm": 0.00408935546875,
+      "extra_mm3": 134.5827993385319,
+      "missing_mm3": 19.090414432954276,
+      "symmetric_difference_percent": 0.09299452911084101,
+      "reference_target_percent": 0.2,
+      "reference_target_met": true
+    },
+    "lid": {
+      "bounds": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          237.85000610351562,
+          132.39035034179688,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 113474.32648982441,
+      "watertight": true,
+      "components": 1,
+      "removed_zero_width_faces": 0,
+      "export_sha256": "32071845f2def97029af704407467376497ee5ed8f24535af55246b09d551d94",
+      "reference_volume_mm3": 113471.09038838506,
+      "bounds_error_mm": 0.009661865234363631,
+      "extra_mm3": 142.3780596058641,
+      "missing_mm3": 139.14195816651045,
+      "symmetric_difference_percent": 0.24809845116388915,
+      "reference_target_percent": 0.2,
+      "reference_target_met": false
+    },
+    "latch": {
+      "bounds": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.98843924788,
+      "watertight": true,
+      "components": 1,
+      "removed_zero_width_faces": 8,
+      "export_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "reference_volume_mm3": 3513.685080378771,
+      "bounds_error_mm": 0.0020084381103515625,
+      "extra_mm3": 0.5168078693282041,
+      "missing_mm3": 1.213449000219498,
+      "symmetric_difference_percent": 0.04924336785928415,
+      "reference_target_percent": 0.1,
+      "reference_target_met": true
+    }
+  },
+  "layout_components": 4,
+  "geometry_checks_passed": true,
+  "reference_targets_met": false
+}

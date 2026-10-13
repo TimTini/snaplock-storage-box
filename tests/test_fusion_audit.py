@@ -8,7 +8,7 @@ import unittest
 import trimesh
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('fusion_audit', ROOT / 'audit-fusion.py')
+spec = importlib.util.spec_from_file_location('fusion_audit', ROOT / 'tools/audit-fusion.py')
 audit = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(audit)
 

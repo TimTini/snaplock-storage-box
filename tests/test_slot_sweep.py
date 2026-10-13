@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 from types import SimpleNamespace
 
-PATH = Path(__file__).resolve().parents[1] / 'fusion/SlotSweepTest/SlotSweepTest.py'
+PATH = Path(__file__).resolve().parents[1] / 'fusion/tests/SlotSweepTest/SlotSweepTest.py'
 spec = importlib.util.spec_from_file_location('slot_sweep', PATH)
 probe = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(probe)

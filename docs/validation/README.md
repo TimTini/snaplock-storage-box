@@ -1,5 +1,15 @@
 # Hồ sơ kiểm chứng Snaplock
 
+## Source hiện tại — 14/10/2026
+
+- [Assembly JSON](scad-parametric-assembly.json), [CSV](scad-parametric-assembly.csv), [biểu đồ](scad-parametric-summary.png) và [ảnh bộ lắp](scad-parametric-assemblies.png): 112 đầu vào, 107 bộ lắp đóng đạt và 5 đầu vào bị từ chối theo giới hạn source; 48 tư thế mở lấy mẫu.
+- [Đối chiếu STL gốc](scad-current-default.json): hash source hiện tại, kiểm tra solid và trạng thái mục tiêu sai khác lịch sử được ghi riêng.
+- [Diễn giải công thức và phạm vi](../geometry/latch-parametric-fix.md).
+
+## Checkpoint lịch sử
+
+Các báo cáo bên dưới giữ hash và trạng thái tại thời điểm tạo. Các đường dẫn trong dữ liệu lịch sử thuộc cấu trúc thư mục tại checkpoint tương ứng.
+
 Các bản sao trong thư mục này giữ số đo, hash source và kết quả của các checkpoint ngày 12–13/10/2026. Đường dẫn máy local đã được lược bỏ trong bản công khai. File log gốc và lịch sử thao tác được bảo quản trong bản sao local riêng.
 
 | Bằng chứng | Phạm vi |

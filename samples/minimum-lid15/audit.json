@@ -1,0 +1,57 @@
+{
+  "scope": "current SCAD sample geometry; physical print and fit pending",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "preset": "minimum-lid15-control",
+  "parameters": {
+    "length": "107.9",
+    "width": "30.1",
+    "body_height": "30.2",
+    "lid_height": "15"
+  },
+  "parts": {
+    "lid": {
+      "sha256": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595",
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          107.9000015258789,
+          39.340354919433594,
+          19.495716094970703
+        ]
+      ],
+      "extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "components": 1,
+      "volume_mm3": 23564.17581453361
+    },
+    "latch": {
+      "sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "extents_mm": [
+        27.99598376499489,
+        31.83514404296875,
+        6.0
+      ],
+      "components": 1,
+      "volume_mm3": 3512.98843924788
+    }
+  }
+}

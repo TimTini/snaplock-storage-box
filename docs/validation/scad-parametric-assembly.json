@@ -1,0 +1,7020 @@
+{
+  "scope": "closed rigid STL assembly; latch clearance separate from shell/hinge contact and physical fit",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "audit_script_sha256": "404938351035c2c29897480fba67bb9bc0fbc18b5589e2bda36ce923a2ef77aa",
+  "assembly_helper_sha256": "417c5b58bc47fa2095bc2981e1a76171a2a3912451709af3785bb855d59b137f",
+  "thresholds": {
+    "each_latch_body_overlap_mm3": 0.01,
+    "each_latch_lid_overlap_mm3": 0.01,
+    "latch_latch_overlap_mm3": 0.01,
+    "body_lid_overlap_mm3": 0.01
+  },
+  "build_volume_mm": [
+    250,
+    250,
+    250
+  ],
+  "envelope_numeric_tolerance_mm": 0.001,
+  "cases": [
+    {
+      "name": "grid-107.9-30.1-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.01508005564351e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.01508005564351e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-30.1-50",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "c6ac4e6366925fc8cb7b5387e88eb488d46c7a6eda6df61a9a1b654857ae9e08",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.1315088418159562e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        8.298483428204051e-15,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.1815974965860418e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.1815974965860418e-13,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          54.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-30.1-100",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d98d4e93da5bd5784bf106977bbcd346311c59199e935517ff6944020a717f7c",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.0161142760534148e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 4.170900938211702e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 4.170900938211702e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          104.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-60-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 60,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        76.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "926159bb6f0b7489ad6d44e214c29fc27a9da85f803192d6a9b36688e08efe7f",
+        "lid": "c91301aa45a3cd480d8ef9410963c12fdabdc3085b4dfa436b8d5e889ad43e25"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        7.328686268959217e-14,
+        2.1137605554777394e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.8765719838361296e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.8765719838361296e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          76.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-60-50",
+      "parameters": {
+        "length": 107.9,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        76.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "30448a020c7acae0e47626f7fa2b949ce85623f55dd0d8c6bbeee95f922aff9b",
+        "lid": "c91301aa45a3cd480d8ef9410963c12fdabdc3085b4dfa436b8d5e889ad43e25"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.4653139427535775e-13,
+        3.8079696289946726e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        6.915301664633944e-14,
+        7.284103875626613e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          76.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-60-100",
+      "parameters": {
+        "length": 107.9,
+        "width": 60,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        76.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "b1b98fbb8bf4a3a2c12a438f928cc93bccdd518521e823f88e987dbc874d6e44",
+        "lid": "c91301aa45a3cd480d8ef9410963c12fdabdc3085b4dfa436b8d5e889ad43e25"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        5.3927348697691e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          76.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-120-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 120,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        136.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "b8e36b118773ecf74f6b50533084a4b9808dd71612ee413469da9dd5e5949ba4",
+        "lid": "ca3dc62b3774fe195d4ef242e41b82c48e4d487874127b48ecdc9ca1daa3bcc2"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.4657372537918434e-13,
+        4.227521110955479e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          136.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-120-50",
+      "parameters": {
+        "length": 107.9,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "8f872686fd292f236d4ae606dab3fa14baa926bda14d335f24a8416046b45ad7",
+        "lid": "ca3dc62b3774fe195d4ef242e41b82c48e4d487874127b48ecdc9ca1daa3bcc2"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        7.615939257989345e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.3830603329267888e-13,
+        1.4568207751253226e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-120-100",
+      "parameters": {
+        "length": 107.9,
+        "width": 120,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        136.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "4f67ab559b95a9a99dabd2d87c922b1771ab0a2bfa501212a789ebb44e46a57e",
+        "lid": "ca3dc62b3774fe195d4ef242e41b82c48e4d487874127b48ecdc9ca1daa3bcc2"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.6758593967046111e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        1.07854697395382e-13,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          136.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-220-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 220,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        236.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "ec7b1a3a7ca9671959afe28d90a4b00424ac9d134ca3c8c3909fdcecd868a718",
+        "lid": "0a7fe234b45e79f26ad8a1562b4e9ee1e13e8c804b618b6c597b5ac5e95c7f1b"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        7.49296458213422e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.349231008418652e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.349231008418652e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          236.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-220-50",
+      "parameters": {
+        "length": 107.9,
+        "width": 220,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        236.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "b2403b47cd5207bd060d8061fe601f50d0e98e4b12a7493f3bb727ab9bb9040a",
+        "lid": "0a7fe234b45e79f26ad8a1562b4e9ee1e13e8c804b618b6c597b5ac5e95c7f1b"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        3.8966280126634625e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        6.5520505687644e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 4.412170257789003e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 4.412170257789003e-13,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          236.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-107.9-220-100",
+      "parameters": {
+        "length": 107.9,
+        "width": 220,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d1586ea39f4dc425bdf40190b736633413a33511323061e7d2e018e3e0dfed7f",
+        "lid": "0a7fe234b45e79f26ad8a1562b4e9ee1e13e8c804b618b6c597b5ac5e95c7f1b"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        6.050751877095555e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        1.6039253258881558e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          236.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          107.9000015258789,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-30.1-30.2",
+      "parameters": {
+        "length": 150,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        150.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d92e39990ad3ec50541b1018ebd19100f64d0ff919fb5a83b7d4904e545647e6",
+        "lid": "846b99adf4d8f55100a70d432868676e7d487c3bf10588ab821f76c4d9f771fe"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        1.4755991567527715e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          150.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-30.1-50",
+      "parameters": {
+        "length": 150,
+        "width": 30.1,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        47.096580505371094,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "5e565ed3bb8b867f616611c5a0deeb06579776a2e6f398b09cc6a8cb15134f88",
+        "lid": "846b99adf4d8f55100a70d432868676e7d487c3bf10588ab821f76c4d9f771fe"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        1.1125215332308258e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          47.096580505371094,
+          54.2491455078125
+        ],
+        "lid": [
+          150.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-30.1-100",
+      "parameters": {
+        "length": 150,
+        "width": 30.1,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        47.096580505371094,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "1f3fc7511f5f17859d7a9196dcc33538bded8cf4c665b1329ed8d8f36b563724",
+        "lid": "846b99adf4d8f55100a70d432868676e7d487c3bf10588ab821f76c4d9f771fe"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.829573677364737e-14,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.106753577673203e-15,
+        2.0617188511984352e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          47.096580505371094,
+          104.2491455078125
+        ],
+        "lid": [
+          150.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-60-30.2",
+      "parameters": {
+        "length": 150,
+        "width": 60,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        76.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        150.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "8190491069f223ac8ddadda88f81677cf803a4c4653765e7e14caee5ce77f6ba",
+        "lid": "39c153e7343b339166d5f18aa36cd34ab7ad70473373265b003a0766086eccaa"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        4.0389566691168e-14,
+        4.517219931443606e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          76.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          150.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-60-50",
+      "parameters": {
+        "length": 150,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        76.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "0bf68aa287c4ddc4d13acb787d7b70907350b8c05499900a2d023a343ed0275f",
+        "lid": "39c153e7343b339166d5f18aa36cd34ab7ad70473373265b003a0766086eccaa"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.4653139427535775e-13,
+        1.1941941820551137e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        2.835578993831689e-14,
+        3.82506526452886e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          76.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          150.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-60-100",
+      "parameters": {
+        "length": 150,
+        "width": 60,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        76.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "e7483737cf9ecc1eb147aa2d88eabec4d26aa31813d8624302ca63279c83219b",
+        "lid": "39c153e7343b339166d5f18aa36cd34ab7ad70473373265b003a0766086eccaa"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        2.1158422236489116e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.4500843548399031e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.4500843548399031e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          76.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          150.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-120-30.2",
+      "parameters": {
+        "length": 150,
+        "width": 120,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        136.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        150.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "804147205a3ae4bc2f168d817087b513d94807484e4806f72ba98bbff81613a2",
+        "lid": "c46dd534d76286453bffda77b9fb6ca32b51d74236f6245d8655a45b4ef989e4"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        8.0779133382336e-14,
+        9.034439862887211e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          136.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          150.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-120-50",
+      "parameters": {
+        "length": 150,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9c36073761d89cab88edb9dad0c593a3bf5b086a62d5cfd7f6f89244fa645d78",
+        "lid": "c46dd534d76286453bffda77b9fb6ca32b51d74236f6245d8655a45b4ef989e4"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.3883883641102274e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        5.671157987663378e-14,
+        7.65013052905772e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          150.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-120-100",
+      "parameters": {
+        "length": 150,
+        "width": 120,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        136.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9c52a385e7a72189769fc74f38c5d3d84e8d5833245cda0fc0187f31a880f928",
+        "lid": "c46dd534d76286453bffda77b9fb6ca32b51d74236f6245d8655a45b4ef989e4"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        4.231684447297823e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          136.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          150.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-220-30.2",
+      "parameters": {
+        "length": 150,
+        "width": 220,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        236.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        150.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "ab1d959287e0fb7df42d742d2e40630eae9d68d323eb0ee676332e0fde599200",
+        "lid": "97d3547b142014199add27f705b021d654233753a57c1c1254341a8cbf1cbaf7"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.917387743614014e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.917387743614014e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          236.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          150.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-220-50",
+      "parameters": {
+        "length": 150,
+        "width": 220,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        236.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "579a6110237331807120266f260f441fbffeb60275fdff1df5cf881435cb18cf",
+        "lid": "97d3547b142014199add27f705b021d654233753a57c1c1254341a8cbf1cbaf7"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        3.463620328319465e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        4.007211229506424e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 6.169665006658565e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 6.169665006658565e-13,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          236.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          150.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-150-220-100",
+      "parameters": {
+        "length": 150,
+        "width": 220,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "7534e46ad5fa2ba11bfa66e8657d487b83706c2348f1bbdb69161b23d56a97eb",
+        "lid": "97d3547b142014199add27f705b021d654233753a57c1c1254341a8cbf1cbaf7"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        4.905451045367215e-14,
+        3.8670455726474984e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 7.138646379573422e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 7.138646379573422e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          236.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          150.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-30.1-30.2",
+      "parameters": {
+        "length": 200,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        200.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "dff98d18736f46c9cf5c96dbb53e5a8d7d16ab8fcd72039207def771ce410cf3",
+        "lid": "1e8657ec3c2a94b52db4148633aa9f10e613c70765b7f7b4a8987020ad59ea57"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.8738234785375315e-15,
+        2.0490694552129564e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        4.357191690784745e-15,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          200.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-30.1-50",
+      "parameters": {
+        "length": 200,
+        "width": 30.1,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        47.096580505371094,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "2e7f6837b6199cdf4cacab9dffa25308917280cc5888fdd0957b25c02373df53",
+        "lid": "1e8657ec3c2a94b52db4148633aa9f10e613c70765b7f7b4a8987020ad59ea57"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.8930933569875015e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        4.895823330075544e-15,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          47.096580505371094,
+          54.2491455078125
+        ],
+        "lid": [
+          200.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-30.1-100",
+      "parameters": {
+        "length": 200,
+        "width": 30.1,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        47.096580505371094,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9b25cb3c7a646929bee2664869fbe5e5011dadfb30c4658191c2301f4901a437",
+        "lid": "1e8657ec3c2a94b52db4148633aa9f10e613c70765b7f7b4a8987020ad59ea57"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.8295737669248096e-14,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          47.096580505371094,
+          104.2491455078125
+        ],
+        "lid": [
+          200.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-60-30.2",
+      "parameters": {
+        "length": 200,
+        "width": 60,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        76.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        200.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "8c7707c30246f108e5172d15f1c2dda4833b5f118691919dd57f8f615e72d339",
+        "lid": "35a9a32248263f6be834cb932626e3d754f6325ee79be7d414300eb1c119a7de"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.754854718775276e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.4797693872648516e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.4797693872648516e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          76.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          200.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-60-50",
+      "parameters": {
+        "length": 200,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        76.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "f53e01b56a256b9f1a8f0131a331bf2d3348b57c3364cad06b4a1732ef887525",
+        "lid": "35a9a32248263f6be834cb932626e3d754f6325ee79be7d414300eb1c119a7de"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.4653139427535775e-13,
+        1.4471746262791367e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 8.366266403609308e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 8.366266403609308e-13,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          76.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          200.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-60-100",
+      "parameters": {
+        "length": 200,
+        "width": 60,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        76.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "286b286756905070467244ded1e1f7f0f2daee66f7b58d32da1158652d953cc5",
+        "lid": "35a9a32248263f6be834cb932626e3d754f6325ee79be7d414300eb1c119a7de"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.429676570816696e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.429676570816696e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          76.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          200.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-120-30.2",
+      "parameters": {
+        "length": 200,
+        "width": 120,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        136.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        200.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "6794ec19a139d5d20e31e619d5a9426d0479d40474d0f4fa204e669260b2a1ed",
+        "lid": "74459e3b634d7ea16e5da725bfcdac8c978c0ce02927cfebf3166a1f60114bbc"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        3.509709437550552e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.4488242178600523e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.4488242178600523e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          136.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          200.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-120-50",
+      "parameters": {
+        "length": 200,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "aa3c6d9abdb1cc9d54d18c4ecebf3352e62c0f4fea421270eb1a03d5118f6369",
+        "lid": "74459e3b634d7ea16e5da725bfcdac8c978c0ce02927cfebf3166a1f60114bbc"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.8943492525582734e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.6094617484353932e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.6094617484353932e-13,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          200.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-120-100",
+      "parameters": {
+        "length": 200,
+        "width": 120,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        136.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9271e3034cff0f5f1585fa9b08e803144700c98e031405a4ce7c03b7f5b084ca",
+        "lid": "74459e3b634d7ea16e5da725bfcdac8c978c0ce02927cfebf3166a1f60114bbc"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.3328800920845224e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.3328800920845224e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          136.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          200.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-220-30.2",
+      "parameters": {
+        "length": 200,
+        "width": 220,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        236.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        200.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "dec369ec1ba98652f7b56e8d0a6151e1629431b63af8f90d0c60fe11f5a1592e",
+        "lid": "94c558c26e698ec9351ccdcd139a5004f143bfbbb11b2959600554785f65fedc"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.8446823610553597e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 5.175168772430075e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 5.175168772430075e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          236.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          200.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-220-50",
+      "parameters": {
+        "length": 200,
+        "width": 220,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        236.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "58d01ad9edf6483347282b6437662c9683c4913d8daf799d6058de7b075ec1f2",
+        "lid": "94c558c26e698ec9351ccdcd139a5004f143bfbbb11b2959600554785f65fedc"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        8.383703630162217e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.8471995754088132e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.8471995754088132e-12,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          236.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          200.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-200-220-100",
+      "parameters": {
+        "length": 200,
+        "width": 220,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        200.0,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        200.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3a6a2a50e744a794525e018a34a8d1a104d824985f90e4bb92dc4c2f26d1bc3f",
+        "lid": "94c558c26e698ec9351ccdcd139a5004f143bfbbb11b2959600554785f65fedc"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.5269098644885897e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.5269098644885897e-12,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          200.0,
+          236.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          200.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-30.1-30.2",
+      "parameters": {
+        "length": 240,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        240.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9b93db85c69a4ba2a96f3fe254aa282957c3cf0c81775f843624067406e3e009",
+        "lid": "8d2704f8e96cbd16c275a9742b049b2e0dda392b076a9e1c8082d46ce943de4d"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.8738234785375315e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.4458445833816225e-14,
+        4.327527919345542e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          240.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-30.1-50",
+      "parameters": {
+        "length": 240,
+        "width": 30.1,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        47.096580505371094,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "f41850c41d88b77741828516e01c29cd3d802541525895fc41506a4ed12ca69a",
+        "lid": "8d2704f8e96cbd16c275a9742b049b2e0dda392b076a9e1c8082d46ce943de4d"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        8.521086866923649e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.8771835756832556e-14,
+        3.564249589915747e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          47.096580505371094,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-30.1-100",
+      "parameters": {
+        "length": 240,
+        "width": 30.1,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        47.096580505371094,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "4d72958da7bae838b91b27ffa50cff043e7ff9b4b06f1b10f73ecc3158f38a07",
+        "lid": "8d2704f8e96cbd16c275a9742b049b2e0dda392b076a9e1c8082d46ce943de4d"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.3520043939883946e-14,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        6.720925899150743e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          47.096580505371094,
+          104.2491455078125
+        ],
+        "lid": [
+          240.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-60-30.2",
+      "parameters": {
+        "length": 240,
+        "width": 60,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        76.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        240.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "55ea79b9f5224466b5840bb010863bfbf269479ddeb5caabaf4e7238477058da",
+        "lid": "da4373748e5dc4d7ddc49aa8daa72b21a6448c2c131e1982a4108b20731158c4"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        8.194833700514437e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 4.2245043421263524e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 4.2245043421263524e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          76.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          240.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-60-50",
+      "parameters": {
+        "length": 240,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        76.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "744ecf2276265142bc17d305448ae113283640b073319b7aac8dbb10c681e2e6",
+        "lid": "da4373748e5dc4d7ddc49aa8daa72b21a6448c2c131e1982a4108b20731158c4"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.4728919095166005e-13,
+        4.8758881026124705e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          76.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-60-100",
+      "parameters": {
+        "length": 240,
+        "width": 60,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        76.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "e603f92bf7c7d0141646b7df0608d9b918f51e17829d46a8fd783e550bd32acc",
+        "lid": "da4373748e5dc4d7ddc49aa8daa72b21a6448c2c131e1982a4108b20731158c4"
+      },
+      "removed_zero_width_faces": {
+        "body": 14,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        6.20579976295943e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 4.642125757319724e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 4.642125757319724e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          76.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          240.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-120-30.2",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "2462bdfc525c809b9d60a93811a978dd4819eda4e0175d90566c8c145a25d887",
+        "lid": "20990d62a1c7e4fcbd8c04aa3d92d8decb8f873f20cdf69f63878a061d5dfa23"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        1.6389667401028873e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-120-50",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "20990d62a1c7e4fcbd8c04aa3d92d8decb8f873f20cdf69f63878a061d5dfa23"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        9.751776205224941e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-120-100",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "8a3140b1ec567dbb92b2f09b20b5f8d8d4184441b89edce49378efb6b255e3ec",
+        "lid": "20990d62a1c7e4fcbd8c04aa3d92d8decb8f873f20cdf69f63878a061d5dfa23"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        1.241159952591886e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-220-30.2",
+      "parameters": {
+        "length": 240,
+        "width": 220,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        236.99658203125,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        240.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "9feda4290d6c9d0678e39af0348d847f1e0d3cdecd02eeff5eca20bb8f80be7a",
+        "lid": "36ac0d2cacd013ec728b152015eabbc9d4c12ad968929c7ebdf8d2c2fdc62ee9"
+      },
+      "removed_zero_width_faces": {
+        "body": 90,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        4.235968895351593e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        2.0230345176841524e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.8388382512299786e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.8388382512299786e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          236.99658203125,
+          34.44914627075195
+        ],
+        "lid": [
+          240.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-220-50",
+      "parameters": {
+        "length": 240,
+        "width": 220,
+        "body_height": 50,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        236.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "e241a0c3ad2b8870ba488d3e8f797c55c33eb19512a7f98c4fddc48d5a6bc3bd",
+        "lid": "36ac0d2cacd013ec728b152015eabbc9d4c12ad968929c7ebdf8d2c2fdc62ee9"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.1277473247158967e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        9.805350975611304e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          236.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "grid-240-220-100",
+      "parameters": {
+        "length": 240,
+        "width": 220,
+        "body_height": 100,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "34045da5fbe7b577327323322a30afbf6c517c28a111158c575d9d0e951badd0",
+        "lid": "36ac0d2cacd013ec728b152015eabbc9d4c12ad968929c7ebdf8d2c2fdc62ee9"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        2.7332996976880963e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.7341420255435445e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.7341420255435445e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          236.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          240.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "image-240-120-75",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "86db219748acd657b34e64a3e45b9ae3a738ac3fbf4ee09319f812416a7831cc",
+        "lid": "20990d62a1c7e4fcbd8c04aa3d92d8decb8f873f20cdf69f63878a061d5dfa23"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.814265968361206e-14,
+        1.241159952591886e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1160316549589738e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1160316549589738e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "original-dimensions",
+      "parameters": {
+        "length": 237.85,
+        "width": 123.15,
+        "body_height": 52,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        237.85000610351562,
+        140.14657592773438,
+        56.2491455078125
+      ],
+      "lid_extents_mm": [
+        237.85000610351562,
+        140.39035034179688,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "f0c663746b63e21315b9603bca5695514ef46c1e6df47940dd9569ce5bb1770b",
+        "lid": "32071845f2def97029af704407467376497ee5ed8f24535af55246b09d551d94"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        5.430278909117783e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        3.238416479423023e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1637007627196474e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1637007627196474e-12,
+      "latch_socket_world_z_mm": 61,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          237.85000610351562,
+          140.14657592773438,
+          56.2491455078125
+        ],
+        "lid": [
+          237.85000610351562,
+          140.39035034179688,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 1.1637007627196474e-12
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 2.436148311966657e-12
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "lid-probe-minimum-11.7",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 11.7
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-11.7.stl",
+      "latch_sha256": "5ab2237a764291d2ce21ae9aa963d242010177c6ef3143acdb9509500dbcc785",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        16.195716857910156
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "f53953b7c8570b6082a7647f8cf670cbd0c4c062f5ad1f01b76802a8657f0f00"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 72
+      },
+      "latch_body_overlap_mm3": [
+        1.3972323460991615e-14,
+        1.7368939132008515e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        4.104247323943877e-16,
+        3.288385189148535e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.178127085975289e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.178127085975289e-13,
+      "latch_socket_world_z_mm": 35.9,
+      "reference_socket_z_delta_mm": -3.3000000000000007,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          16.195716857910156
+        ],
+        "latch": [
+          27.99598376499489,
+          28.535144805908203,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 1.178127085975289e-13
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 2.2597739185372497e-13
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "lid-probe-minimum-12.5",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 12.5
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-12.5.stl",
+      "latch_sha256": "3d49abebfda3fa7afde53366da53d004ad4fdb6014f72a57fe368d172671a45f",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        16.995716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "0619593546e83566e653774a5f2cb53963af68f13afe795c1a79fb89f658aac8"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.0390470578256145e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.098817217770609e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.2030723346281591e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.2030723346281591e-13,
+      "latch_socket_world_z_mm": 36.7,
+      "reference_socket_z_delta_mm": -2.5,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          16.995716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          29.33514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-14",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 14
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-14.stl",
+      "latch_sha256": "47d9bb8e4bed687691a9455dbf4bc326bd698e95a1d40d29f38d3e88c6ca5771",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        18.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "07279b71fa70b85dc543abe3edeefa95dd40e37bbedcf54e1d8bb3a800a89f23"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.8615471780703517e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        7.0937179741381584e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.0745640195277973e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.0745640195277973e-13,
+      "latch_socket_world_z_mm": 38.2,
+      "reference_socket_z_delta_mm": -1,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          18.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          30.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-16",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 16
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-16.stl",
+      "latch_sha256": "a9fdeb3919daadec3ef4fbf7dace5cd77046efe8691c7e8801061ca743a1b013",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        20.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "72c7fcde9074a39eb6eaa32aeaf279632fc20cab60296564c8c06002820f798d"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        8.665414218789204e-15
+      ],
+      "latch_lid_overlap_mm3": [
+        1.8500283770206405e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.677883497237771e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.677883497237771e-13,
+      "latch_socket_world_z_mm": 40.2,
+      "reference_socket_z_delta_mm": 1,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          20.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          32.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-20",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 20
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-20.stl",
+      "latch_sha256": "cfa19b001cbdbcf31d261804d137ba311df6511f8730df9fb0010fb1a75c0ccb",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        24.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "7747420dd0e20be4a880a9600eb238e82cd3daa8ea885200b2d886336f64a06e"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        4.940152291150329e-14,
+        2.0494077355298623e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.677883497237771e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.677883497237771e-13,
+      "latch_socket_world_z_mm": 44.2,
+      "reference_socket_z_delta_mm": 5,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          24.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          36.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-11.7",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 11.7
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-11.7.stl",
+      "latch_sha256": "5ab2237a764291d2ce21ae9aa963d242010177c6ef3143acdb9509500dbcc785",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        16.195716857910156
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "29f3691c21428adb63a9f0bfccab0597a7bbea81a4bf5070866a0d2e5479e30f"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 72
+      },
+      "latch_body_overlap_mm3": [
+        6.817784387719815e-13,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        2.4303475898435067e-14,
+        2.4841240175987878e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 55.7,
+      "reference_socket_z_delta_mm": -3.3000000000000007,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          16.195716857910156
+        ],
+        "latch": [
+          27.99598376499489,
+          28.535144805908203,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-12.5",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 12.5
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-12.5.stl",
+      "latch_sha256": "3d49abebfda3fa7afde53366da53d004ad4fdb6014f72a57fe368d172671a45f",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        16.995716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "1601a8d8376fb23c4f775ca140409a419a89f405d245f796c116734bf006a8a3"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        7.503134398512135e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 56.5,
+      "reference_socket_z_delta_mm": -2.5,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          16.995716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          29.33514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-14",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 14
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-14.stl",
+      "latch_sha256": "47d9bb8e4bed687691a9455dbf4bc326bd698e95a1d40d29f38d3e88c6ca5771",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        18.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "eb6150c6a03f773587883f2ae795dbf972c62b3ebeb12d1869a350337d309c30"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.0402588688997357e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.9748092050519972e-14,
+        9.928093503558388e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 58,
+      "reference_socket_z_delta_mm": -1,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          18.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          30.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-16",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 16
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-16.stl",
+      "latch_sha256": "a9fdeb3919daadec3ef4fbf7dace5cd77046efe8691c7e8801061ca743a1b013",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        20.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "fba5a39b83ad410ac3faf6d4642c5e3b41e8b63c91f8959f242b4ca5fd9e811a"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.5669455741824218e-13,
+        1.0613284718966504e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        2.0003530082357557e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 60,
+      "reference_socket_z_delta_mm": 1,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          20.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          32.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-20",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 20
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-20.stl",
+      "latch_sha256": "cfa19b001cbdbcf31d261804d137ba311df6511f8730df9fb0010fb1a75c0ccb",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        24.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "0c195fbbba9a131a9d991eaacea122ff72a3888b1f16f8e9a994331429848feb"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        9.330904160518185e-14,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        4.600757708833614e-14,
+        7.110406556078142e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 64,
+      "reference_socket_z_delta_mm": 5,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          24.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          36.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 3.2627715940138675e-12
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "image-240-120-25-defaults",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 25,
+        "lid_height": 15
+      },
+      "expected_rejection": "body_height",
+      "status": "rejected_source_bounds",
+      "diagnostic": "ERROR: Assertion '(body_height > ((body_floor + (body_inner_bevel * sqrt(3))) + 20))' failed in file snaplock-storage-box.scad, line 59"
+    },
+    {
+      "name": "image-240-120-25-reduced-bevel",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 25,
+        "lid_height": 15,
+        "bottom_bevel": 3,
+        "body_inner_bevel": 1.5,
+        "floor_rib_height": 2
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        29.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "5f1ca6e4e0fe284612d32f11f59c4060f614b01c62ddb1e12a4e36b27e37e3cb",
+        "lid": "e9e5a6d40b947a90acb19f7a6e5b1a68e1532cd91bb36f8c9548b0d0db7f0434"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.0943727593204273e-13,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 34,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          29.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "reinforced-150-60-50",
+      "parameters": {
+        "length": 150,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        150.0,
+        76.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        150.0,
+        77.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "1ee9a9a50d614aedd99306abd538a248a9068c35bb2ebd9dd7f11ad31b58ada0",
+        "lid": "39c153e7343b339166d5f18aa36cd34ab7ad70473373265b003a0766086eccaa"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.4653139427535775e-13,
+        1.1941941820551137e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        2.835578993831689e-14,
+        3.82506526452886e-15
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 59,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          150.0,
+          76.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          150.0,
+          77.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "reinforced-240-120-75",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "6a16dbd1f2ae69cd27af8034544c7d00b76bc32d662b742febb7a5e593bc1a79",
+        "lid": "20990d62a1c7e4fcbd8c04aa3d92d8decb8f873f20cdf69f63878a061d5dfa23"
+      },
+      "removed_zero_width_faces": {
+        "body": 8,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.814265968361206e-14,
+        1.241159952591886e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "reinforced-240-220-100",
+      "parameters": {
+        "length": 240,
+        "width": 220,
+        "body_height": 100,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        240.0,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "f636a2d7cdc06c1e71065e9b3269dd27e29766d74b22dab4f2f99f23b3fd4aae",
+        "lid": "36ac0d2cacd013ec728b152015eabbc9d4c12ad968929c7ebdf8d2c2fdc62ee9"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        2.7332996976880963e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.7341420255435445e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.7341420255435445e-13,
+      "latch_socket_world_z_mm": 109,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          236.99658203125,
+          104.2491455078125
+        ],
+        "lid": [
+          240.0,
+          237.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-107.9-30.1-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.01508005564351e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.01508005564351e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-107.9-30.1-245.7",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 245.7,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "12abbc6affd3a58bb68b765e0036e28a957cda3dc244462f49e6d2b269352b79",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 88,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.350533623622388e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.350533623622388e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          249.9491424560547
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-107.9-232.7-30.2",
+      "parameters": {
+        "length": 107.9,
+        "width": 232.7,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        249.6965789794922,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "bdaf9aa310e65b6ff84bf3995daaa811c660286e95ac3cf66bc0d8031c05b07b",
+        "lid": "7dac43c8864cd3575953708de1e49bca6a9737c51d5e4480431ebce986cbd1bd"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.174511876644857e-13,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.347550302447674e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.347550302447674e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          249.6965789794922,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-107.9-232.7-245.7",
+      "parameters": {
+        "length": 107.9,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "7dd22bf20370a92a10c0b569712cb5ce64361b88d8ead1cede7b8ab9fb3b752a",
+        "lid": "7dac43c8864cd3575953708de1e49bca6a9737c51d5e4480431ebce986cbd1bd"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.6215818748170017e-13,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          107.9000015258789,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-250-30.1-30.2",
+      "parameters": {
+        "length": 250,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        250.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "2c44c073a106bcd066bc20dd58948c2eff59ad7e29a8305484b279d17e191e0e",
+        "lid": "e9941bd208003bb70a395271bfd3ce9618a39d287a60155c65d8fc44f467bea1"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.8738234785375315e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.791579037901947e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.23445402509525e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.23445402509525e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          250.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-250-30.1-245.7",
+      "parameters": {
+        "length": 250,
+        "width": 30.1,
+        "body_height": 245.7,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        47.096580505371094,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d9682c3304ab7892a5ccad8e26a04fda4833f7cd3dbdbe1c914bfda684db48ff",
+        "lid": "e9941bd208003bb70a395271bfd3ce9618a39d287a60155c65d8fc44f467bea1"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.1800378841871356e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        8.087280845003875e-15,
+        3.964771490717195e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          47.096580505371094,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-250-232.7-30.2",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 30.2,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "f4646edfe9b959189fcdfe124c43510323d8f67a6c521564a89604522eba1fb1",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        3.4139358007223564e-15,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.1966985870463033e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.1966985870463033e-13,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          34.44914627075195
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "boundary-250-232.7-245.7",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "6135f2d871bc0dd7a8e0760ec5bd3af77e5236ed2ae9079927ac667dc510cb09",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1153554519009491e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1153554519009491e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 1.1153554519009491e-12
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 3.4259036478877453e-12
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "nominal-250-cube",
+      "parameters": {
+        "length": 250,
+        "width": 250,
+        "body_height": 250,
+        "lid_height": 15
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        266.99658203125,
+        254.2491455078125
+      ],
+      "lid_extents_mm": [
+        250.0,
+        267.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "4b711163c3017f8add3d04c2caa7f3a8582f17a33ce8c47b4db244c57b7bcb55",
+        "lid": "8bcc59357483763718f8b4ffe0e1dcbc56668bcaf24e5fea5c7a2d9db8f657da"
+      },
+      "removed_zero_width_faces": {
+        "body": 12,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        4.578570879205763e-13,
+        3.9016902673264085e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        9.403935963270271e-14,
+        3.4804147411304776e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 2.74878457646695e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 2.74878457646695e-12,
+      "latch_socket_world_z_mm": 259,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          266.99658203125,
+          254.2491455078125
+        ],
+        "lid": [
+          250.0,
+          267.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": false
+    },
+    {
+      "name": "lid-probe-minimum-25",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 25
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-25.stl",
+      "latch_sha256": "87a1178aa0c8c94632d7fdd0b598c3aa7d482448e3e39068f6928c8ec28712e7",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        29.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "c58265c3f96ea80f3c2bbcec3ac077be9a72ffc8b7ce9a8991231d30e17e7357"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        8.223535920151917e-14,
+        1.951129213165377e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.677883497237771e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.677883497237771e-13,
+      "latch_socket_world_z_mm": 49.2,
+      "reference_socket_z_delta_mm": 10,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          29.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          41.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-50",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 50
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-50.stl",
+      "latch_sha256": "47246a2396dfec91384ae0bf6f656500ab84b94a6ca33db2f78f28fce4c23763",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        54.4957160949707
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "75155e73e44ff838548d78f70c824767fa17b6f4c346adac626e4186f382f0a7"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 2
+      },
+      "latch_body_overlap_mm3": [
+        3.6937668048346175e-15,
+        4.923705760455553e-15
+      ],
+      "latch_lid_overlap_mm3": [
+        6.136566000356294e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.522029561865573e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.522029561865573e-13,
+      "latch_socket_world_z_mm": 74.2,
+      "reference_socket_z_delta_mm": 35,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          54.4957160949707
+        ],
+        "latch": [
+          27.99598376499489,
+          66.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-100",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 100
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-100.stl",
+      "latch_sha256": "edeff8295813f1f3f0ac59a9524403f3bad6c7b682f26a120197d4d674e71119",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        104.49571990966797
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "f1d8d45f424cbe8cd261a5663cfd7b2b50e2c215e0f154d5c980a6723d0ff424"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 2
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        1.1850656064709493e-14,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.4221088591391587e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.4221088591391587e-13,
+      "latch_socket_world_z_mm": 124.19999999999999,
+      "reference_socket_z_delta_mm": 85,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          104.49571990966797
+        ],
+        "latch": [
+          27.99598376499489,
+          116.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-233.1",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 233.1
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-233.1.stl",
+      "latch_sha256": "f4124548c2219534cc2a44ef5ec5955b130f95e7f329d95b7bb66a390d1837d4",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        237.59571838378906
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "a1a3090ff92e4faaeaca0639fafe2b461d64cf1b3ebf7b664b1ebed0f1a0f821"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 28
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2521289821426214e-15
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.752225887996411e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.752225887996411e-13,
+      "latch_socket_world_z_mm": 257.3,
+      "reference_socket_z_delta_mm": 218.1,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          237.59571838378906
+        ],
+        "latch": [
+          27.99598376499489,
+          249.93515014648438,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-minimum-245.5",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 245.5
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-245.5.stl",
+      "latch_sha256": "393f5652bb2d68d271b538243d3201c0e826dc0a48e2fb6cd22d0ca67311626c",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        249.99571228027344
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "d0cbc942480c198603f3d8ec4de546690a801b5c5c3a5cf6f0c722acd20bb97e"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 6
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        4.8589570217571334e-17
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.5764723991448534e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.5764723991448534e-13,
+      "latch_socket_world_z_mm": 269.7,
+      "reference_socket_z_delta_mm": 230.5,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          249.99571228027344
+        ],
+        "latch": [
+          27.99598376499489,
+          262.33514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": false
+    },
+    {
+      "name": "lid-probe-image-25",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 25
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-25.stl",
+      "latch_sha256": "87a1178aa0c8c94632d7fdd0b598c3aa7d482448e3e39068f6928c8ec28712e7",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        29.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "3a825d8363e803fe4a0be3678d6331032d5e6f2b611032542cd195d5f861d33b"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        1.3441912427331663e-13,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 69,
+      "reference_socket_z_delta_mm": 10,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          29.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          41.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-50",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 50
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-50.stl",
+      "latch_sha256": "47246a2396dfec91384ae0bf6f656500ab84b94a6ca33db2f78f28fce4c23763",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        54.4957160949707
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "24215ada302179b1b494f7369f2f900c4ccbc560f7583113f754fb3b494e9333"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 2
+      },
+      "latch_body_overlap_mm3": [
+        6.964204822661329e-14,
+        1.4155127299253955e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        1.0305681817906337e-13,
+        4.7076735955678406e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 94,
+      "reference_socket_z_delta_mm": 35,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          54.4957160949707
+        ],
+        "latch": [
+          27.99598376499489,
+          66.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-100",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 100
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-100.stl",
+      "latch_sha256": "edeff8295813f1f3f0ac59a9524403f3bad6c7b682f26a120197d4d674e71119",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        104.49571990966797
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "0c68bb877c9803a72395d126faa552c451ed80770d8fb0d3dda8fe49de0cb349"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 6
+      },
+      "latch_body_overlap_mm3": [
+        3.984881667541568e-14,
+        4.5380043729637725e-15
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        3.33891229263903e-14
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 144,
+      "reference_socket_z_delta_mm": 85,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          104.49571990966797
+        ],
+        "latch": [
+          27.99598376499489,
+          116.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-233.1",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 233.1
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-233.1.stl",
+      "latch_sha256": "f4124548c2219534cc2a44ef5ec5955b130f95e7f329d95b7bb66a390d1837d4",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        237.59571838378906
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "ea08545ef0ad75fef58b240d5389ff8cc4194e870fb0c80ad3e7c7a72dacac95"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 34
+      },
+      "latch_body_overlap_mm3": [
+        2.510240335116156e-13,
+        1.4519827442179635e-13
+      ],
+      "latch_lid_overlap_mm3": [
+        4.3561648835647657e-13,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 277.1,
+      "reference_socket_z_delta_mm": 218.1,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          237.59571838378906
+        ],
+        "latch": [
+          27.99598376499489,
+          249.93515014648438,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "lid-probe-image-245.5",
+      "parameters": {
+        "length": 240,
+        "width": 120,
+        "body_height": 50,
+        "lid_height": 245.5
+      },
+      "status": "closed_clear",
+      "latch_file": "latch-lid-245.5.stl",
+      "latch_sha256": "393f5652bb2d68d271b538243d3201c0e826dc0a48e2fb6cd22d0ca67311626c",
+      "body_extents_mm": [
+        240.0,
+        136.99658203125,
+        54.2491455078125
+      ],
+      "lid_extents_mm": [
+        240.0,
+        137.2403564453125,
+        249.99571228027344
+      ],
+      "stl_sha256": {
+        "body": "fb07492268d7b1f0101cf8917e6aabecabd6d1e3f73fe360eba93e4655dbf214",
+        "lid": "5b2c140d2cf9bbc124aa94903d80572b5a8fed8fa131bd5644f9e8529fa4bf6a"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 12
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 0.0,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 0.0,
+      "latch_socket_world_z_mm": 289.5,
+      "reference_socket_z_delta_mm": 230.5,
+      "print_envelope_mm": {
+        "body": [
+          240.0,
+          136.99658203125,
+          54.2491455078125
+        ],
+        "lid": [
+          240.0,
+          137.2403564453125,
+          249.99571228027344
+        ],
+        "latch": [
+          27.99598376499489,
+          262.33514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": false
+    },
+    {
+      "name": "ribs-minimum-0",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3b906250afd9ee789fbab5729499408087a45c11abd9ba1c889fc13e6e72da1e",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.01508005564351e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.01508005564351e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-1",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "a6f9da2023752999e8a3595fb72270a8c37127c5bcaf9cf77e11f42bae8bd7bb",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-2",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "00b93dbc3224c73e2bc95f6ec5485cca79a77629af368e0d2ea8b1df52185404",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-3",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "a26352c9eba9f0bcf7932db70644df21ec707358737612b32f5c49cc70dbe6d6",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-4",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "3d995a5257882ffb473ff2d665dca8d7fb7f17eb704c50bdbd03f01030ba83e5",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-5",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "ad8c9bcdb173ef8e19bd16994fb758e45258e221815f91963936696bd59cb316",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-6",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "b3e3e6341d10065cc375821d53baf1250f67d36e1e07ec52c0ea3cf02953561c",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 84,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-minimum-7",
+      "parameters": {
+        "length": 107.9,
+        "width": 30.1,
+        "body_height": 30.2,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        107.9000015258789,
+        47.096580505371094,
+        34.44914627075195
+      ],
+      "lid_extents_mm": [
+        107.9000015258789,
+        47.340354919433594,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "36ec77495262efe67d4f35e263c257d0e4b8045d815181042772928a688fc54d",
+        "lid": "21df3b77c4e4f6df77c861c464cac6f76e2e727481c78bf938c18aac57fce595"
+      },
+      "removed_zero_width_faces": {
+        "body": 82,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        2.873825072052514e-15,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 9.015516785831114e-14,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 9.015516785831114e-14,
+      "latch_socket_world_z_mm": 39.2,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          107.9000015258789,
+          47.096580505371094,
+          34.44914627075195
+        ],
+        "lid": [
+          107.9000015258789,
+          47.340354919433594,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 9.015516785831114e-14
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 2.2545899517260122e-13
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "ribs-middle-0",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "44856c594cfb4a77fbe6d6d724cae6a848abda55d2c38f3b83af5da7826a96f7",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.983931819561589e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.983931819561589e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-1",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "a360f19b0ac1795a69d94d6c037e731a2bc2c95a15b0e552e466b13a49c36e7f",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.7101950651292684e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.7101950651292684e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-2",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "e5b4cd0cb92109a2f349d9b3ffab9e52e094d4e09787d01756813bfa82f2054e",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.983931819561589e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.983931819561589e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-3",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "354ed8582871eac4824032925c17734793ffe879795dec5fc974cfe9e0bad9ba",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.7101950651292684e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.7101950651292684e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-4",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d32140043fe89ea0fd4e565fdf81194f75c63c1581591dadf79d5ac76fa5382e",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.983931819561589e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.983931819561589e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-5",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "b9518628f9bc284e7f91da22c53e8568fd14c1ed4364e5ad5f9f1e904f098dca",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 6,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.7101950651292684e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.7101950651292684e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-6",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d1c017d3a0bf2eeb3b7ede7d24a2ed2269817001149652200f47ecc4440325e3",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 10,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 3.983931819561589e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 3.983931819561589e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-middle-7",
+      "parameters": {
+        "length": 180,
+        "width": 120,
+        "body_height": 75,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        180.0,
+        136.99658203125,
+        79.2491455078125
+      ],
+      "lid_extents_mm": [
+        180.0,
+        137.2403564453125,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "0633defa6ad0eb75090f5420d57cc72c9294f2784fe69c5c24854813c465d92c",
+        "lid": "86a1cacfdac95ef54fad10b605b8a7e3f604827012619a4aac9d2c7073532bc8"
+      },
+      "removed_zero_width_faces": {
+        "body": 4,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        2.9914461904311185e-14
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.7101950651292684e-13,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.7101950651292684e-13,
+      "latch_socket_world_z_mm": 84,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          180.0,
+          136.99658203125,
+          79.2491455078125
+        ],
+        "lid": [
+          180.0,
+          137.2403564453125,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-0",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "6135f2d871bc0dd7a8e0760ec5bd3af77e5236ed2ae9079927ac667dc510cb09",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1153554519009491e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1153554519009491e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-1",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "ccc20c5587400bb7020aea3e25d2a510aa9a6a84b35496b8dbd1e1e40e6add7a",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.058512033040141e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.058512033040141e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-2",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "d9e3ddd6f0dc5ef5c0e704ac6e4fe9980d4b0182c2a321af61dace2efc407a60",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1153554519009491e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1153554519009491e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-3",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": false
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "6d05ee35b707ad9f4b86445a798a6d0ee93ed31cfc6898f6c451f54c3a7078ef",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.058512033040141e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.058512033040141e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-4",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "159b3b57be0c3ffe64c26dde0e3984eacd087cfe478fd8d99766c8b0d712dbe1",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1153554519009491e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1153554519009491e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-5",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": false,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "546a5c2aa285ce6380aebd8cd7de49f0eabed70e2a2a52c997652d35481d8e4f",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 88,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.058512033040141e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.058512033040141e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-6",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": false,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "33c926daaa22a1c4172c6c178b0ca2924b7062d386f88f6ce25e6755f7912458",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 90,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.1153554519009491e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.1153554519009491e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true
+    },
+    {
+      "name": "ribs-maximum-7",
+      "parameters": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15,
+        "wall_ribs": true,
+        "wall_floor_ribs": true,
+        "floor_ribs": true
+      },
+      "status": "closed_clear",
+      "latch_file": "latch.stl",
+      "latch_sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "body_extents_mm": [
+        250.0,
+        249.6965789794922,
+        249.9491424560547
+      ],
+      "lid_extents_mm": [
+        250.0,
+        249.9403533935547,
+        19.495716094970703
+      ],
+      "stl_sha256": {
+        "body": "e845619fc3bd35f85156de5e863660ccb2e037fbabba61f5dfa9d595e37620a4",
+        "lid": "fb699fff0e519b1a8722cb79d3817324bc40eb0f7c20c4583d2fb97cce7e1dc0"
+      },
+      "removed_zero_width_faces": {
+        "body": 86,
+        "lid": 0
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        1.2401588871601907e-12
+      ],
+      "latch_lid_overlap_mm3": [
+        1.941606597721801e-13,
+        3.8654333640170124e-13
+      ],
+      "latch_latch_overlap_mm3": 0.0,
+      "body_lid_overlap_mm3": 1.058512033040141e-12,
+      "rear_contact_y_negative_mm3": 0.0,
+      "other_shell_contact_mm3": 1.058512033040141e-12,
+      "latch_socket_world_z_mm": 254.7,
+      "reference_socket_z_delta_mm": 0,
+      "print_envelope_mm": {
+        "body": [
+          250.0,
+          249.6965789794922,
+          249.9491424560547
+        ],
+        "lid": [
+          250.0,
+          249.9403533935547,
+          19.495716094970703
+        ],
+        "latch": [
+          27.99598376499489,
+          31.83514404296875,
+          6.0
+        ]
+      },
+      "within_print_envelope": true,
+      "opening_samples_latches_removed": [
+        {
+          "angle_deg": 0,
+          "body_lid_overlap_mm3": 1.058512033040141e-12
+        },
+        {
+          "angle_deg": 0.25,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 1,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 5,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 15,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 45,
+          "body_lid_overlap_mm3": 0.0
+        },
+        {
+          "angle_deg": 90,
+          "body_lid_overlap_mm3": 3.4259036478877453e-12
+        },
+        {
+          "angle_deg": 110,
+          "body_lid_overlap_mm3": 0.0
+        }
+      ],
+      "sampled_opening_clear": true
+    },
+    {
+      "name": "below-length",
+      "parameters": {
+        "lid_height": 15,
+        "length": 107.8,
+        "width": 60,
+        "body_height": 50
+      },
+      "expected_rejection": "length",
+      "status": "rejected_source_bounds",
+      "diagnostic": "ERROR: Assertion '((length > (2 * (mount_end + 21))) && (width > ((2 * corner_radius) + (2 * wall))))' failed in file snaplock-storage-box.scad, line 58"
+    },
+    {
+      "name": "below-width",
+      "parameters": {
+        "lid_height": 15,
+        "length": 150,
+        "width": 30,
+        "body_height": 50
+      },
+      "expected_rejection": "width",
+      "status": "rejected_source_bounds",
+      "diagnostic": "ERROR: Assertion '((length > (2 * (mount_end + 21))) && (width > ((2 * corner_radius) + (2 * wall))))' failed in file snaplock-storage-box.scad, line 58"
+    },
+    {
+      "name": "below-body-height",
+      "parameters": {
+        "lid_height": 15,
+        "length": 150,
+        "width": 60,
+        "body_height": 30.1
+      },
+      "expected_rejection": "body_height",
+      "status": "rejected_source_bounds",
+      "diagnostic": "ERROR: Assertion '(body_height > ((body_floor + (body_inner_bevel * sqrt(3))) + 20))' failed in file snaplock-storage-box.scad, line 59"
+    },
+    {
+      "name": "below-lid-height",
+      "parameters": {
+        "length": 150,
+        "width": 60,
+        "body_height": 50,
+        "lid_height": 11.6
+      },
+      "expected_rejection": "lid_height",
+      "status": "rejected_source_bounds",
+      "diagnostic": "ERROR: Assertion '((lid_height > (bevel_height + 3)) && (fit_clearance <= 0.5))' failed in file snaplock-storage-box.scad, line 66"
+    }
+  ],
+  "counts": {
+    "closed_clear": 107,
+    "rejected_source_bounds": 5
+  },
+  "baseline_lid15_counts": {
+    "closed_clear": 87,
+    "rejected_source_bounds": 4
+  },
+  "print_envelope_counts": {
+    "within_250": 104,
+    "exceeds_250": 3
+  }
+}

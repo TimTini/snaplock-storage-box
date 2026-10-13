@@ -49,6 +49,11 @@ $fn = 96;
 eps = 0.001;
 bevel_height = bottom_bevel*sqrt(3);
 lid_inner_bevel = bottom_bevel-wall+lid_floor/sqrt(3);
+// Preserve the mating head/catch shapes while the connecting span follows the lid.
+latch_span_delta = lid_height-15;
+// Circumscribe the sampled pocket around the analytic ball for arbitrary rotation.
+// Two angular half-steps bound the latitude/longitude facet sagitta.
+pin_pocket_radius = (pin_radius+fit_clearance)/pow(cos(180/$fn),2);
 
 assert(length>2*(mount_end+21) && width>2*corner_radius+2*wall);
 assert(body_height>body_floor+body_inner_bevel*sqrt(3)+20);
@@ -124,7 +129,7 @@ module body_mount() {
             linear_extrude(h+5) polygon([[-21.2757,1],[-20.2757,0],[-18.7035,-1.5723],
                 [-19.2757+10*tan(20),-10],[-11,-10],[-11,1]]);
         }
-        translate([-7,-4.75,h]) sphere(pin_radius+fit_clearance);
+        translate([-7,-4.75,h]) sphere(pin_pocket_radius);
     }
     difference() {
         intersection() {
@@ -236,7 +241,7 @@ module box(lid=false) {
         difference() {
             union() {
                 shell_blank(lid);
-                for(x=[mount_end+(lid?0.1:0),length-mount_end+(lid?0.1:0)])
+                for(x=[mount_end,length-mount_end])
                     translate([x,0,0]) for(s=[-1,1]) scale([s,1,1])
                         if(lid) lid_mount(); else body_mount();
             }
@@ -249,14 +254,16 @@ module box(lid=false) {
 // R5 relief across thickness. Local blend coefficients approximate measured
 // Z=0.1/3/5.9 source sections; whole-part differences are recorded by the audit.
 function relief(z) = 5-sqrt(25-pow(z-latch_thickness/2,2));
-function slot_front_profile(z) = let(d=relief(z),c=2.847-0.2976*d)
+function slot_front_reference(z) = let(d=relief(z),c=2.847-0.2976*d)
     concat([[-2,7.9971-d],[1.5,7.9971-d],[5.234,12.4458-0.488*d]],
         arc([c-0.383,15.751],[c-0.4699,16.2434],[c,16.5724]),[[c,16.5724]],
         arc([4.5,16.5724],[4.8535534,16.7188466],[5,17.0724]),
         [[5,17.0724],[3.5,17.0724],[1.5+1.35*d,17.0724],[0.5+d,18.0724],[-2,18.0724]]);
-function slot_fixed_profile() = concat([[3.5,17.0724-eps],[5,17.0724-eps],[5,17.0724]],
+function slot_front_profile(z) = [for(p=slot_front_reference(z)) p+[0,latch_span_delta]];
+function slot_fixed_reference() = concat([[3.5,17.0724-eps],[5,17.0724-eps],[5,17.0724]],
     arc([5,26.0724],[4.5,26.5724],[4,26.0724]),[[4,26.0724],[4,17.5724]],
     arc([4,17.5724],[3.8535534,17.2188466],[3.5,17.0724]),[[3.5,17.0724]]);
+function slot_fixed_profile() = [for(p=slot_fixed_reference()) p+[0,latch_span_delta]];
 
 // Local changing profiles keep the spring relief editable without a mesh import.
 function signed_area(p,i=0) = i==len(p) ? 0 : cross2(p[i],p[(i+1)%len(p)])+signed_area(p,i+1);
@@ -284,7 +291,7 @@ module latch_tooth() {
         translate([x,y,latch_thickness/2]) rotate([-90,0,0])
             scale([x_scale,1,1]) cylinder(h=eps,r=5);
     }
-    intersection() {
+    translate([0,latch_span_delta,0]) intersection() {
         translate([-2,17.0724,0]) cube([5.5,6,latch_thickness]);
         union() {
             hull() {
@@ -308,27 +315,40 @@ module latch() {
     difference() {
         intersection() {
             union() {
-                translate([1.5,0,0]) cube([25,32.9,latch_thickness]);
+                translate([1.5,0,0]) cube([25,32.9+latch_span_delta,latch_thickness]);
                 for(s=[0,1]) translate([28*s,0,0]) mirror([s,0,0]) {
                     translate([3.75,3,latch_thickness/2]) sphere(latch_ball_radius);
                     latch_tooth();
                 }
             }
-            translate([-2,0,0]) cube([32,35,latch_thickness]);
+            translate([-2,0,0]) cube([32,35+latch_span_delta,latch_thickness]);
             union() {
                 translate([-2,5,latch_thickness/2]) rotate([0,90,0]) cylinder(h=32,r=5);
-                translate([-2,3,0]) cube([32,32,latch_thickness]);
+                translate([-2,3,0]) cube([32,32+latch_span_delta,latch_thickness]);
             }
         }
         notch_tool();
         for(s=[0,1]) translate([28*s,0,0]) mirror([s,0,0])
-            union() {
+            intersection() {
+                // Keep the ball supports through Y=7 when shortening the span.
+                translate([-3,latch_span_delta<0?7:-eps,-eps])
+                    cube([34,40+abs(latch_span_delta),latch_thickness+2*eps]);
+                union() {
+                    // The lid-side lip remains at the head; its clearance ends
+                    // before the moving catch. The body-side clearance follows it.
+                    intersection() {
+                        profile_loft([for(z=concat([-eps],zs,[latch_thickness+eps]))
+                            slot_front_reference(min(latch_thickness,max(0,z)))],concat([-eps],zs,[latch_thickness+eps]));
+                        translate([-3,-eps,-eps])
+                            cube([34,17.0724+min(0,latch_span_delta)+eps,latch_thickness+2*eps]);
+                    }
                 profile_loft([for(z=concat([-eps],zs,[latch_thickness+eps]))
                     slot_front_profile(min(latch_thickness,max(0,z)))],concat([-eps],zs,[latch_thickness+eps]));
                 translate([0,0,-eps]) linear_extrude(latch_thickness+2*eps) polygon(slot_fixed_profile());
+                }
             }
-        web(-2,32,[[26.9,latch_thickness],[31.835144,latch_thickness-4.935139],
-            [31.743874,0],[35,0],[35,latch_thickness]]);
+        web(-2,32,[[26.9+latch_span_delta,latch_thickness],[31.835144+latch_span_delta,latch_thickness-4.935139],
+            [31.743874+latch_span_delta,0],[35+latch_span_delta,0],[35+latch_span_delta,latch_thickness]]);
     }
 }
 
@@ -338,5 +358,5 @@ else if(part=="latch") latch();
 else if(part=="layout") {
     color("steelblue") box();
     translate([0,width+layout_gap+17,0]) color("lightblue") box(true);
-    for(i=[0:1]) translate([length+layout_gap,45*i,0]) color("orange") latch();
+    for(i=[0:1]) translate([length+layout_gap,(45+max(0,latch_span_delta))*i,0]) color("orange") latch();
 } else assert(false,"Unknown part; select layout, body, lid or latch");

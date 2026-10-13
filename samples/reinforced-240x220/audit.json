@@ -1,0 +1,107 @@
+{
+  "scope": "current SCAD sample geometry; physical print and fit pending",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "preset": "reinforced-240x220",
+  "parameters": {
+    "part": "body",
+    "length": "240",
+    "width": "220",
+    "body_height": "100",
+    "wall_ribs": "true",
+    "wall_floor_ribs": "true",
+    "floor_ribs": "true",
+    "wall_rib_depth": "3",
+    "wall_rib_foot": "12",
+    "wall_rib_top_clearance": "20"
+  },
+  "parts": {
+    "body": {
+      "sha256": "6f866f7021cd93199328067d2cb013f68dc196236a6e656d588a746d4b71c91a",
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          240.0,
+          228.0,
+          104.2491455078125
+        ]
+      ],
+      "extents_mm": [
+        240.0,
+        236.99658203125,
+        104.2491455078125
+      ],
+      "components": 1,
+      "volume_mm3": 393962.7009864493
+    },
+    "lid": {
+      "sha256": "36ac0d2cacd013ec728b152015eabbc9d4c12ad968929c7ebdf8d2c2fdc62ee9",
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          240.0,
+          229.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "extents_mm": [
+        240.0,
+        237.2403564453125,
+        19.495716094970703
+      ],
+      "components": 1,
+      "volume_mm3": 189230.25160833076
+    },
+    "latch": {
+      "sha256": "33587636284064ccee38a0861d80280ef80f15c6e7f194ff73f6e7eaf7f8b5dd",
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "extents_mm": [
+        27.99598376499489,
+        31.83514404296875,
+        6.0
+      ],
+      "components": 1,
+      "volume_mm3": 3512.98843924788
+    },
+    "layout": {
+      "sha256": "db1fbdd7daf25154a63aff6907dbabfa1fc73352c2ffcc19fb30362122c68fa1",
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          287.99798583984375,
+          486.2403564453125,
+          104.2491455078125
+        ]
+      ],
+      "extents_mm": [
+        287.99798583984375,
+        495.2369384765625,
+        104.2491455078125
+      ],
+      "components": 4,
+      "volume_mm3": 590218.9317314483
+    }
+  }
+}
