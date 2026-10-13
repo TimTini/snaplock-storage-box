@@ -659,10 +659,31 @@ def build_latch_teeth(n, latch, symmetry):
     clip = n.extrude(clipping, 'latch_thickness', op.NewBodyFeatureOperation,
                      'Catch thickness clipping tool').bodies.item(0)
     n.combine(front, [clip], op.IntersectFeatureOperation, 'Clip catch analytic envelope')
-    mirrored = n.mirror([front], symmetry, 'Mirror catch analytic body').bodies
-    if mirrored.count != 1:
-        raise RuntimeError('Expected one mirrored catch body')
-    n.combine(latch, [front, mirrored.item(0)], op.JoinFeatureOperation, 'Join both catch teeth')
+    source_box = front.preciseBoundingBox
+    centre_x = symmetry.geometry.origin.x
+    expected_bounds = [2 * centre_x - source_box.maxPoint.x,
+                       source_box.minPoint.y, source_box.minPoint.z,
+                       2 * centre_x - source_box.minPoint.x,
+                       source_box.maxPoint.y, source_box.maxPoint.z]
+    source_volume = front.volume
+    mirror = n.mirror([front], symmetry, 'Mirror catch analytic body')
+    candidates, rows = [], []
+    for candidate in n.comp.bRepBodies:
+        box = candidate.preciseBoundingBox
+        bounds = [box.minPoint.x, box.minPoint.y, box.minPoint.z,
+                  box.maxPoint.x, box.maxPoint.y, box.maxPoint.z]
+        matches = (max(abs(a - b) for a, b in zip(bounds, expected_bounds)) < 1e-5 and
+                   math.isclose(candidate.volume, source_volume, rel_tol=1e-6, abs_tol=1e-8))
+        rows.append({'name': candidate.name, 'bounds_mm': [v * 10 for v in bounds],
+                     'volume_mm3': candidate.volume * 1000, 'matches_mirrored_tooth': matches})
+        if matches:
+            candidates.append(candidate)
+    n.progress('CATCH_MIRROR_BODIES ' + json.dumps({
+        'feature_body_count': mirror.bodies.count,
+        'expected_bounds_mm': [v * 10 for v in expected_bounds], 'component_bodies': rows}))
+    if len(candidates) != 1:
+        raise RuntimeError('Expected one geometric mirrored catch body; found ' + str(len(candidates)))
+    n.combine(latch, [front, candidates[0]], op.JoinFeatureOperation, 'Join both catch teeth')
 
 
 def build_latch(n):

@@ -10,6 +10,8 @@ Tiết diện vai nằm tại Y=17.0724 và 23.0724 mm. Tiết diện R5 nằm t
 
 Các tâm cung/elip dùng biểu thức `latch_thickness / 2`; chiều cao envelope dùng `latch_thickness`. Sketch giữ dimension của tâm, bán kính và bán trục. Hệ trục sketch được ánh xạ bằng `xDirection` và `yDirection` thực tế. Dấu offset được tính từ normal của Origin XZ; hướng Extrude được tính riêng từ tích có hướng `xDirection × yDirection` của sketch. Cả hai normal được kiểm tra thẳng hàng với trục Y. Log `CATCH_XZ_PLANE` và `CATCH_CORE_DIRECTION` ghi giá trị thực tế cùng dấu được chọn.
 
+Sau Mirror, script chọn body có bounds phản chiếu của răng gốc qua vị trí X thực tế của symmetry plane và có cùng thể tích. Danh sách body của feature mang ý nghĩa các body được tạo hoặc tác động theo API Autodesk; việc chọn răng dựa trên hình học trong component. Log `CATCH_MIRROR_BODIES` ghi số body feature trả về, bounds kỳ vọng, bounds/thể tích của từng body và kết quả chọn. Điều kiện chọn yêu cầu đúng một body phù hợp trước khi Join vào khóa.
+
 ## Số lượng theo source
 
 | Phần răng, gồm mirror/join | Bản 25 tiết diện | Bản phân tích |
