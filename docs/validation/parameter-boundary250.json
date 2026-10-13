@@ -1,0 +1,187 @@
+{
+  "scope": "closed rigid geometry and individual print envelopes; build limits 250 mm on each axis; allowance 0 mm",
+  "scad_sha256": "b9358a419a16ec6fe20e6f336ab78fef6c8c0b9cdb568c45a96f8e72def929de",
+  "assembly_helper_sha256": "5d0a5bbb87950a4647591a11a9b8477f668f9b362d8ee6caa76c632192235960",
+  "build_volume_mm": [
+    250,
+    250,
+    250
+  ],
+  "bounds_numeric_tolerance_mm": 0.001,
+  "cases": [
+    {
+      "name": "nominal-250-cube",
+      "parameters_mm": {
+        "length": 250,
+        "width": 250,
+        "body_height": 250,
+        "lid_height": 15
+      },
+      "parts": {
+        "body": {
+          "bounds_mm": [
+            [
+              0.0,
+              -8.99658203125,
+              0.0
+            ],
+            [
+              250.0,
+              258.0,
+              254.2491455078125
+            ]
+          ],
+          "extents_mm": [
+            250.0,
+            266.99658203125,
+            254.2491455078125
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": false,
+          "stl_sha256": "02300d80d2e616ef9e2ab992e0ebe47fad0540af8985fc8cd2da8b25976cf4c6"
+        },
+        "lid": {
+          "bounds_mm": [
+            [
+              0.0,
+              -8.0,
+              0.0
+            ],
+            [
+              250.0,
+              259.2403564453125,
+              19.495716094970703
+            ]
+          ],
+          "extents_mm": [
+            250.0,
+            267.2403564453125,
+            19.495716094970703
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": false,
+          "stl_sha256": "dfede63bf6a42c3e865e1631a4a6b6fb553415d73563632e103a9002b62a8621"
+        },
+        "latch": {
+          "bounds_mm": [
+            [
+              0.0020077968947589397,
+              0.0,
+              0.0
+            ],
+            [
+              27.99799156188965,
+              31.83514404296875,
+              6.0
+            ]
+          ],
+          "extents_mm": [
+            27.99598376499489,
+            31.83514404296875,
+            6.0
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": true,
+          "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+        }
+      },
+      "latch_body_overlap_mm3": [
+        1.1693735448173672e-12,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        2.7929047963226594e-15,
+        0.0
+      ],
+      "body_lid_overlap_mm3": 6.27404064794379,
+      "all_parts_within_250_numeric": false
+    },
+    {
+      "name": "envelope-250-control",
+      "parameters_mm": {
+        "length": 250,
+        "width": 232.7,
+        "body_height": 245.7,
+        "lid_height": 15
+      },
+      "parts": {
+        "body": {
+          "bounds_mm": [
+            [
+              0.0,
+              -8.99658203125,
+              0.0
+            ],
+            [
+              250.0,
+              240.6999969482422,
+              249.9491424560547
+            ]
+          ],
+          "extents_mm": [
+            250.0,
+            249.6965789794922,
+            249.9491424560547
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": true,
+          "stl_sha256": "238f3d28e0565394668b392e52075d6313d1c65fdc1bbe4ee7b730a0639fcdbf"
+        },
+        "lid": {
+          "bounds_mm": [
+            [
+              0.0,
+              -8.0,
+              0.0
+            ],
+            [
+              250.0,
+              241.9403533935547,
+              19.495716094970703
+            ]
+          ],
+          "extents_mm": [
+            250.0,
+            249.9403533935547,
+            19.495716094970703
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": true,
+          "stl_sha256": "6a74b0c67e96a9d0be65b552ecb8cb405afdabef811955ecb6cfcb9c10801e4a"
+        },
+        "latch": {
+          "bounds_mm": [
+            [
+              0.0020077968947589397,
+              0.0,
+              0.0
+            ],
+            [
+              27.99799156188965,
+              31.83514404296875,
+              6.0
+            ]
+          ],
+          "extents_mm": [
+            27.99598376499489,
+            31.83514404296875,
+            6.0
+          ],
+          "one_closed_solid": true,
+          "within_250_numeric": true,
+          "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+        }
+      },
+      "latch_body_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "latch_lid_overlap_mm3": [
+        0.0,
+        0.0
+      ],
+      "body_lid_overlap_mm3": 6.2740135551287,
+      "all_parts_within_250_numeric": true
+    }
+  ]
+}

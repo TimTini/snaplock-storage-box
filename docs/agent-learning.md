@@ -32,6 +32,8 @@ Tên file đóng vai trò nhãn nhận diện. Số đo mesh và bảng tham s�
 
 ### Giai đoạn SCAD tạo mô hình và báo cáo hình học.
 
+[Quy trình kiểm tra toàn bộ khi thay đổi tham số](parameter-change-validation.md) xác định miền source, miền cơ cấu và miền khổ in riêng; ma trận đi từ cực tiểu đến biên 250 mm. Agent kiểm tra từng part, toàn bộ cặp lắp, đường lắp, chuyển động, công thức native và mẫu in trước khi chốt preset. Bài học latch Snaplock cho thấy solid kín cùng bounds đúng vẫn cần kiểm tra khoảng cách pivot–catch và chiều cao nắp.
+
 Agent dựng primitive, profile, module theo chức năng và quan hệ đối xứng. Tham số gốc biểu diễn lựa chọn thiết kế; tham số derived biểu diễn quan hệ phụ thuộc. `assert` diễn đạt miền hợp lệ của kích thước, bán kính, độ dày và khe hở.
 
 Thứ tự boolean được giữ như một phần ý đồ hình học. Snaplock ghép tai vào vỏ rồi khoét lòng để giữ vùng giao của tai và khoang. Vòng lặp và mirror biểu diễn các phần lặp theo công thức chung.

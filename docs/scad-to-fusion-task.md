@@ -18,6 +18,8 @@ Agent kiểm tra solid, tính kín, winding, bounds, thể tích, số lỗ và 
 
 Agent chốt source SCAD, hash, tham số, output và báo cáo làm baseline chuyển đổi.
 
+Agent áp dụng [quy trình test toàn bộ khi đổi tham số](parameter-change-validation.md): thử từ kích thước nhỏ nhất của miền cơ cấu đến giới hạn `[khổ hữu dụng, mặc định kiểm tra 250 mm mỗi trục]`, thử từng trục và tổ hợp biên, mọi topology liên quan, toàn bộ cặp lắp và miền chuyển động. Agent đo envelope thật gồm tai/chốt/gân cùng phần chừa in. Miền source, tiêu chí latch, tiếp xúc thân–nắp, Fusion native và lắp vật lý có trạng thái riêng trong báo cáo.
+
 ## Agent dựng script Python native trong Fusion.
 
 Agent ưu tiên hình học giải tích và feature diễn đạt trực tiếp quy luật: sketch đường thẳng/cung tròn/elip, Extrude/Cut, Revolve, Sweep, Fillet, Chamfer, Combine, Mirror và Pattern. Profile dịch chuyển giữ nguyên hướng được đánh giá bằng Sweep Parallel; profile thay đổi được đánh giá bằng guide rail, guide surface và ghép mặt theo quy luật của từng vùng. Loft ít tiết diện phục vụ đoạn chuyển tiếp phù hợp. Loft nhiều tiết diện có mức ưu tiên cuối cùng, được chọn sau khi các phương pháp trực tiếp đã được đánh giá bằng công thức, khả năng cập nhật và sai lệch hình học. Cây feature có tên thể hiện chức năng. Component/body được tổ chức theo `[bố trí part hoặc assembly]`, với ownership và tool được theo dõi rõ.

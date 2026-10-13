@@ -89,6 +89,8 @@ Nguồn và ví dụ: [audit SCAD](../audit-scad.py), [ảnh chồng mặt cắt
 
 ## 7. Biến thể xác nhận ý đồ tham số và chức năng.
 
+[Quy trình test tham số từ cực tiểu đến biên 250 mm](parameter-change-validation.md) bổ sung ma trận từng trục, tổ hợp biên, topology, kiểm tra toàn cụm và envelope thực tế. Agent kiểm tra miền hoạt động của cơ cấu cùng miền render, ghi riêng trạng thái tiếp xúc, chuyển động và thử in cho từng cấu hình.
+
 Bộ biến thể gồm mặc định, kích thước đại diện lớn hơn/nhỏ hơn và các ca sát miền hợp lệ. Agent kiểm tra số part, solid, độ dày, vị trí lỗ, tâm khớp và khoảng cách giữa các cụm. Các đặc trưng cơ khí giữ kích thước chung hoặc thay đổi theo công thức đã chốt.
 
 Đối chiếu với STL gốc xác nhận hình học ở cấu hình tham chiếu. Audit biến thể xác nhận hình học và quan hệ tham số của cấu hình đã thay đổi. Thử coupon cùng mẫu lắp cung cấp bằng chứng về khe hở, lực thao tác, hướng in và độ bền.
