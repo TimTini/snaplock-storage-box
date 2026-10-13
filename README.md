@@ -141,3 +141,5 @@ STL nguồn giữ nguyên, SHA256: `73faaa2d438b02038b9f84002202435973a09f92ec2a
 ## Bộ tài liệu agent tự học.
 
 [Cẩm nang agent](docs/agent-learning.md) trình bày quy trình SCAD trước rồi Fusion Python sau, quản lý tham số, timeline và bằng chứng. [Sổ lỗi](docs/error-cookbook.md) tổng hợp các ca lỗi cùng cách sửa và mức xác nhận. [Mẫu giao việc](docs/scad-to-fusion-task.md) áp dụng quy trình cho model mới.
+
+[Lộ trình đọc nguồn internet](docs/internet-learning.md) bổ sung tài liệu chính thức, bài thử về Fusion API, boolean, độ mịn và phép đo sai lệch bề mặt, cùng tiêu chí kiểm chứng cho từng bài.

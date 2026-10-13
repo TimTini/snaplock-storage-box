@@ -2,7 +2,7 @@
 
 Bộ tài liệu dùng chung cho năm dự án, gồm [cẩm nang này](agent-learning.md), [sổ lỗi và cách sửa](error-cookbook.md), [mẫu giao việc](scad-to-fusion-task.md) và [tài liệu kỹ thuật chi tiết](fusion-python-tu-hoc.md). Nội dung dùng câu khẳng định và các chỉ dẫn tích cực. Mỗi kết luận kỹ thuật gắn với source, test hoặc báo cáo của phiên bản tương ứng.
 
-Lộ trình [đọc nguồn internet và thực hành](internet-learning.md) bổ sung tài liệu OpenSCAD, BOSL2, Trimesh và CloudCompare, kèm bài thử cùng bằng chứng cần lưu.
+Lộ trình [đọc nguồn internet và thực hành](internet-learning.md) bổ sung tài liệu OpenSCAD, Autodesk Fusion API, BOSL2, Trimesh, CloudCompare và CGAL, kèm bài thử cùng bằng chứng cần lưu.
 
 ## Agent tổ chức tri thức theo bằng chứng.
 
