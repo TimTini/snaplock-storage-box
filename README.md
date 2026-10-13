@@ -12,6 +12,8 @@ Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. File
 
 Kích thước vỏ chính đo từ mẫu là **237,85 × 123,15 mm**, cao thân **52 mm**, cao nắp **15 mm**; đáy thân **2 mm**, đáy nắp **3 mm**, thành **3 mm**. Tên STL ghi 240×120; bản SCAD dùng số đo hình học thực tế. `length`, `width`, `body_height`, `lid_height`, độ dày và khe hở được chỉnh trong Customizer; giới hạn tham số được kiểm tra bằng `assert`.
 
+Customizer đặt nhóm `Main dimensions` lên đầu với `length`, `width` và `body_height`. Thân và nắp dùng chung `length` và `width`; `lid_height` nằm trong nhóm `Lid and shell details`. Các nhóm cơ cấu, bố trí in và độ mịn nằm phía dưới.
+
 Mẫu giữ gân loe, mặt vát, đầu cầu/ổ cầu, mép ngàm côn 50°, hốc trụ với chamfer và tiết diện đàn hồi thay đổi theo chiều dày khóa. [Chi tiết hình học và kiểm chứng](docs/scad-reference.md) ghi phép dựng cùng vùng xấp xỉ.
 
 **Kiểm chứng hiện tại:** cấu hình mặc định và biến thể vỏ 280 × 155 mm, thân cao 70 mm, đều tạo bốn solid kín trong layout. So sánh boolean với bốn phần chính của STL xác nhận sai khác thể tích đối xứng: thân **0,0927%**, nắp **0,0659%**, mỗi khóa **0,0492%**. Sai lệch tọa độ bao lớn nhất **0,0097 mm**. Đây là các chỉ số hình học; thử in, lực khóa và độ bền là mốc kiểm chứng vật lý tiếp theo.

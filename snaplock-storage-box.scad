@@ -2,12 +2,16 @@
 // Source SHA256 73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167
 // Local X follows shell length; Y=0 is the rear wall; Z=0 is the print bed.
 
-/* [Display] */
-part = "layout"; // [layout,body,lid,latch]
-/* [Shell] */
+/* [Main dimensions] */
+// Shared shell length for body and lid (mm).
 length = 237.85;
+// Shared shell width for body and lid (mm).
 width = 123.15;
+// Body height (mm).
 body_height = 52;
+
+/* [Lid and shell details] */
+// Lid height (mm).
 lid_height = 15;
 wall = 3;
 body_floor = 2;
@@ -23,6 +27,7 @@ latch_ball_radius = 3.75;
 fit_clearance = 0;
 latch_thickness = 6;
 /* [Print layout] */
+part = "layout"; // [layout,body,lid,latch]
 layout_gap = 20;
 /* [Resolution] */
 $fn = 96;
