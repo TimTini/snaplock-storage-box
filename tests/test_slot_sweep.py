@@ -3,6 +3,7 @@ import importlib.util
 import math
 from pathlib import Path
 import unittest
+from types import SimpleNamespace
 
 PATH = Path(__file__).resolve().parents[1] / 'fusion/SlotSweepTest/SlotSweepTest.py'
 spec = importlib.util.spec_from_file_location('slot_sweep', PATH)
@@ -11,6 +12,29 @@ spec.loader.exec_module(probe)
 
 
 class SlotSweep(unittest.TestCase):
+    def test_fix_constant_sketch_also_locks_independent_points(self):
+        class AlreadyFixed:
+            @property
+            def isFixed(self):
+                return True
+            @isFixed.setter
+            def isFixed(self,value):
+                raise AssertionError('Already fixed origin must be left alone')
+        class ConstrainedOrigin(AlreadyFixed):
+            isFullyConstrained = True
+            @property
+            def isFixed(self):
+                return False
+            @isFixed.setter
+            def isFixed(self,value):
+                raise AssertionError('Implicitly constrained origin must be left alone')
+        curve = SimpleNamespace(isFixed=False,isFullyConstrained=False)
+        points = [SimpleNamespace(isFixed=False,isFullyConstrained=False) for _ in range(3)]
+        sketch = SimpleNamespace(sketchCurves=[curve],sketchPoints=[AlreadyFixed(),ConstrainedOrigin(),*points])
+        probe.fix_constant_sketch(sketch)
+        self.assertTrue(curve.isFixed)
+        self.assertTrue(all(point.isFixed for point in points))
+
     def test_ellipse_parameter_angles_trace_short_right_branch_from_bottom(self):
         start,sweep = probe.path_angles()
         for i in range(41):

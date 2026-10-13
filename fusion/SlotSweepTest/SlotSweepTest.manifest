@@ -3,7 +3,7 @@
   "type": "addin",
   "author": "",
   "description": {"": "Parallel Surface Sweep of the moving slot arc, with parametric clipping and native measurements."},
-  "version": "0.1.0",
+  "version": "0.1.1",
   "supportedOS": "windows|mac",
   "runOnStartup": false,
   "editEnabled": true

@@ -12,6 +12,28 @@ MEASURED = ((-.383, 15.751), (-.4699, 16.2434), (0, 16.5724))
 TOLERANCE_MM = .001
 
 
+def fix_constant_sketch(sketch):
+    """Fix measured curves and their separate sketch points, including arc ends."""
+    for collection in (sketch.sketchCurves,sketch.sketchPoints):
+        for entity in collection:
+            if not entity.isFixed and not entity.isFullyConstrained:
+                entity.isFixed = True
+
+
+def constraint_state(sketch):
+    entities = []
+    for kind,collection in [('curve',sketch.sketchCurves),('point',sketch.sketchPoints)]:
+        for index,entity in enumerate(collection):
+            row = {'kind':kind,'index':index,'type':entity.objectType,
+                   'fixed':entity.isFixed,'fully_constrained':entity.isFullyConstrained}
+            if kind == 'point':
+                row['sketch_coordinates_mm'] = [v*10 for v in entity.geometry.asArray()]
+            entities.append(row)
+    return {'name':sketch.name,'fully_constrained':sketch.isFullyConstrained,
+            'constraints':sketch.geometricConstraints.count,
+            'dimensions':sketch.sketchDimensions.count,'entities':entities}
+
+
 def path_angles():
     half_span = math.asin(.8)
     return math.pi/2+half_span,-2*half_span
@@ -103,6 +125,9 @@ def run(context):
         points = [point((c+x)/10,y/10,0) for x,y in MEASURED]
         arc = profile_sketch.sketchCurves.sketchArcs.addByThreePoints(*points)
         arc.isFixed = True
+        record('constraints_before_fix',sketch=constraint_state(profile_sketch))
+        fix_constant_sketch(profile_sketch)
+        record('constraints_after_fix',sketch=constraint_state(profile_sketch))
         profile = comp.createOpenProfile(arc,False)
         if profile is None:
             raise RuntimeError('Open arc profile failed')
@@ -127,6 +152,9 @@ def run(context):
         if ellipse is None:
             raise RuntimeError('Elliptical arc creation failed')
         ellipse.isFixed = True
+        record('constraints_before_fix',sketch=constraint_state(path_sketch))
+        fix_constant_sketch(path_sketch)
+        record('constraints_after_fix',sketch=constraint_state(path_sketch))
         bounds = ellipse.boundingBox
         record('path_created',sketch_x=list(path_sketch.xDirection.asArray()),
                sketch_y=list(path_sketch.yDirection.asArray()),normal_y=normal_y,
@@ -189,6 +217,8 @@ def run(context):
                       'bodies':comp.bRepBodies.count,'timeline':design.timeline.count}
             record('counts',label=label,counts=counts,
                    constrained=[s.isFullyConstrained for s in (profile_sketch,path_sketch)])
+            for sketch in (profile_sketch,path_sketch):
+                record('sketch_constraints',label=label,sketch=constraint_state(sketch))
             if counts != dict(planes=2,sketches=2,sweeps=1,lofts=0,bodies=1,timeline=10):
                 raise RuntimeError('Unexpected topology/counts: '+str(counts))
             if not all(s.isFullyConstrained for s in (profile_sketch,path_sketch)):

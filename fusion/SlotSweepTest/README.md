@@ -20,9 +20,13 @@ Patch ban đầu phủ khoảng Z=0–8 mm. Move đặt tâm tại `t/2`, hai Sp
 
 Log kiểm tra 231 điểm tham chiếu mỗi biến thể và lưới UV 21×21 trên từng face theo chiều ngược lại. Mẫu UV được lọc theo biên face. Residual chiều ngược đo đến cung tham chiếu tại cùng Z và cung biên khi Z vượt miền. Ngưỡng 0,001 mm phục vụ xác nhận công thức của patch. Ngưỡng sản xuất 0,03 mm của model được giữ theo baseline riêng.
 
+Phiên bản 0.1.1 Fix các curve và các SketchPoint riêng của hai sketch hằng, gồm tâm và đầu cung. Log `constraints_before_fix`, `constraints_after_fix` và `sketch_constraints` ghi trạng thái từng đối tượng. Các feature Move và Split tiếp tục điều khiển chiều dày qua expression.
+
 ## Mốc xác nhận
 
 Source có kiểm tra công thức offline cho đường elip, ba điểm đo, dịch chuyển cứng và khả năng phát hiện điểm lệch. Chạy native cung cấp bằng chứng cho solver, Sweep và cập nhật timeline. Tích hợp vào khe hoàn chỉnh tiếp nối mốc native đạt, ghép mặt kín và so sánh toàn bộ latch với SCAD/STL.
+
+Lần chạy native của 0.1.0 đã tạo một surface body với 10 timeline item healthy tại chiều dày 6 mm và dừng ở contract fully constrained của hai sketch. Mốc chạy 0.1.1 xác nhận ràng buộc bổ sung rồi tiếp tục phép đo và bộ biến thể.
 
 ## Nguồn Autodesk
 
