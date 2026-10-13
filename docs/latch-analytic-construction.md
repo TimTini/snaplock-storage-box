@@ -58,7 +58,9 @@ Audit native đối chiếu bốn body với STL gốc và SCAD bằng hash, bou
 
 ## Hướng ưu tiên cho trường hợp tương tự
 
-Agent nhận diện đường thẳng, cung tròn, elip và mặt tròn xoay trước khi chọn nhiều tiết diện Loft. Extrude/Cut, Revolve và các primitive native biểu diễn trực tiếp vùng có quy luật tương ứng. Loft ít tiết diện phục vụ các đoạn chuyển tiếp; số tiết diện được chọn theo phép đo hình học. Agent giữ baseline và công thức, đo sai khác cục bộ, chạy biến thể, ghi số feature cùng thời gian trước/sau rồi chốt phương pháp theo bằng chứng.
+Agent nhận diện đường thẳng, cung tròn, elip và mặt tròn xoay trước khi chọn nhiều tiết diện Loft. Extrude/Cut, Revolve, Sweep và các primitive native biểu diễn trực tiếp vùng có quy luật tương ứng. Sweep Parallel phục vụ profile dịch chuyển giữ nguyên hướng; guide rail, guide surface và ghép mặt phục vụ các vùng có quy luật riêng. Loft ít tiết diện phục vụ các đoạn chuyển tiếp; số tiết diện được chọn theo phép đo hình học. Loft nhiều tiết diện được đặt ở mức ưu tiên cuối cùng, sau bước đánh giá các phép dựng trực tiếp và đường dẫn giải tích. Agent giữ baseline và công thức, đo sai khác cục bộ, chạy biến thể, ghi số feature cùng thời gian trước/sau rồi chốt phương pháp theo bằng chứng.
+
+[Bài thử cung khe bằng Sweep Parallel](../fusion/SlotSweepTest/README.md) giữ một cung đo và một đường elip trong hai sketch. Chiều dày liên kết qua Move và mặt phẳng cắt; log native đo patch qua các biến thể để xác nhận ứng viên trước khi tích hợp.
 
 Checkpoint hiện tại của răng Snaplock là source, review API, unit và mesh offline; checkpoint Fusion runtime tiếp nối các bước trên.
 

@@ -1,5 +1,7 @@
 # Snaplock Storage Box — SCAD và Fusion Python
 
+[Bài thử Sweep Parallel cho cung khe đàn hồi](fusion/SlotSweepTest/README.md) cung cấp add-in riêng, cập nhật chiều dày bằng tham số và log đo native. [Quy trình SCAD → Fusion](docs/scad-to-fusion-task.md) ưu tiên các phép dựng trực tiếp và đặt Loft nhiều tiết diện ở bước lựa chọn cuối cùng.
+
 ## Bản SCAD theo STL — 12/10/2026
 
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. File độc lập, dựng hình bằng primitive, phép boolean, mặt cắt có tham số và module. Chọn `part` trong Customizer: `layout` hiện thân, nắp và hai khóa; `body`, `lid`, `latch` hiện từng chi tiết. F6 render solid; các tham số nằm đầu file.
