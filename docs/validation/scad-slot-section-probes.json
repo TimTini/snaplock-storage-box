@@ -1,0 +1,373 @@
+{
+  "sampling": "equal R5 angle, two-region slot",
+  "selected_sections": 8,
+  "sampled_distance_target_mm": 0.03,
+  "baseline_symmetric_difference_target_percent": 0.03,
+  "cases": [
+    {
+      "t": 5,
+      "sections": 5,
+      "symdiff_percent": 0.03731202476428941,
+      "old_to_new": {
+        "points": 18403,
+        "max_distance_mm": 0.039610499638603226,
+        "worst_point_mm": [
+          26.447057723999023,
+          17.072399139404297,
+          1.875
+        ]
+      },
+      "new_to_old": {
+        "points": 4093,
+        "max_distance_mm": 0.028157242794598407,
+        "worst_point_mm": [
+          0.7164543089574621,
+          17.946848673937343,
+          1.8095167624257973
+        ]
+      },
+      "candidate_scad_sha256": "cd11010034121751dda69756d77d6cf360fbfd2c445d3fc0295dc922f19801ba"
+    },
+    {
+      "t": 6,
+      "sections": 5,
+      "symdiff_percent": 0.0573432103916126,
+      "old_to_new": {
+        "points": 18585,
+        "max_distance_mm": 0.058812048342956204,
+        "worst_point_mm": [
+          1.5763695240020752,
+          17.072399139404297,
+          3.75
+        ]
+      },
+      "new_to_old": {
+        "points": 4303,
+        "max_distance_mm": 0.04384476312956029,
+        "worst_point_mm": [
+          1.367831548055013,
+          17.405497868855793,
+          1.94627849260966
+        ]
+      },
+      "candidate_scad_sha256": "cd11010034121751dda69756d77d6cf360fbfd2c445d3fc0295dc922f19801ba"
+    },
+    {
+      "t": 6.5,
+      "sections": 5,
+      "symdiff_percent": 0.07032029369827186,
+      "old_to_new": {
+        "points": 18558,
+        "max_distance_mm": 0.07033782806688212,
+        "worst_point_mm": [
+          1.5897173881530762,
+          17.072399139404297,
+          2.4375
+        ]
+      },
+      "new_to_old": {
+        "points": 4299,
+        "max_distance_mm": 0.05780578904776281,
+        "worst_point_mm": [
+          1.4161809702547932,
+          17.33276938274947,
+          2.4014957588574224
+        ]
+      },
+      "candidate_scad_sha256": "cd11010034121751dda69756d77d6cf360fbfd2c445d3fc0295dc922f19801ba"
+    },
+    {
+      "t": 5,
+      "sections": 7,
+      "symdiff_percent": 0.016136269665213206,
+      "old_to_new": {
+        "points": 18403,
+        "max_distance_mm": 0.017896665280381918,
+        "worst_point_mm": [
+          26.47652244567871,
+          17.072399139404297,
+          2.0833332538604736
+        ]
+      },
+      "new_to_old": {
+        "points": 4989,
+        "max_distance_mm": 0.017590962228437142,
+        "worst_point_mm": [
+          24.814218744685842,
+          9.689460065315245,
+          4.573361435032523
+        ]
+      },
+      "candidate_scad_sha256": "1b25677ef3531ea1fdb7692979b6c2c6add9fa745e2b4922e30852095ced069a"
+    },
+    {
+      "t": 6,
+      "sections": 7,
+      "symdiff_percent": 0.024561421954470884,
+      "old_to_new": {
+        "points": 18585,
+        "max_distance_mm": 0.026781957359485385,
+        "worst_point_mm": [
+          1.5338348150253296,
+          17.072399139404297,
+          3.5
+        ]
+      },
+      "new_to_old": {
+        "points": 5020,
+        "max_distance_mm": 0.02253315671069173,
+        "worst_point_mm": [
+          3.1434515786361694,
+          9.490877003669047,
+          0.5297304266681224
+        ]
+      },
+      "candidate_scad_sha256": "1b25677ef3531ea1fdb7692979b6c2c6add9fa745e2b4922e30852095ced069a"
+    },
+    {
+      "t": 6.5,
+      "sections": 7,
+      "symdiff_percent": 0.02994238514638367,
+      "old_to_new": {
+        "points": 18558,
+        "max_distance_mm": 0.03218313104374041,
+        "worst_point_mm": [
+          1.5397262573242188,
+          17.072399139404297,
+          2.7083332538604736
+        ]
+      },
+      "new_to_old": {
+        "points": 5040,
+        "max_distance_mm": 0.02746158137086695,
+        "worst_point_mm": [
+          1.562294880549113,
+          17.131571451822918,
+          2.472663720448812
+        ]
+      },
+      "candidate_scad_sha256": "1b25677ef3531ea1fdb7692979b6c2c6add9fa745e2b4922e30852095ced069a"
+    },
+    {
+      "t": 5,
+      "sections": 9,
+      "symdiff_percent": 0.00947520446185438,
+      "old_to_new": {
+        "points": 18403,
+        "max_distance_mm": 0.01151641147837635,
+        "worst_point_mm": [
+          4.233212565359216,
+          10.891629857899094,
+          0.15527127248180758
+        ]
+      },
+      "new_to_old": {
+        "points": 5380,
+        "max_distance_mm": 0.014917051094142354,
+        "worst_point_mm": [
+          24.133179538466315,
+          10.47113376178459,
+          4.782081748366095
+        ]
+      },
+      "candidate_scad_sha256": "69f8d3f536b89b1746111eebc4d665f676c56cf45f8e7cf81a5238207cd8d00b"
+    },
+    {
+      "t": 6,
+      "sections": 9,
+      "symdiff_percent": 0.014302012541106628,
+      "old_to_new": {
+        "points": 18585,
+        "max_distance_mm": 0.022213050580796742,
+        "worst_point_mm": [
+          24.114609965168935,
+          10.28519413425792,
+          5.748807279450737
+        ]
+      },
+      "new_to_old": {
+        "points": 5769,
+        "max_distance_mm": 0.01925898557127698,
+        "worst_point_mm": [
+          24.271545579702746,
+          10.108069663606187,
+          0.23829684525114408
+        ]
+      },
+      "candidate_scad_sha256": "69f8d3f536b89b1746111eebc4d665f676c56cf45f8e7cf81a5238207cd8d00b"
+    },
+    {
+      "t": 6.5,
+      "sections": 9,
+      "symdiff_percent": 0.017306761721869016,
+      "old_to_new": {
+        "points": 18558,
+        "max_distance_mm": 0.017606007512615627,
+        "worst_point_mm": [
+          1.7522727251052856,
+          17.072399139404297,
+          1.8958333730697632
+        ]
+      },
+      "new_to_old": {
+        "points": 5718,
+        "max_distance_mm": 0.024248118586930236,
+        "worst_point_mm": [
+          3.736677255943043,
+          10.033126383739575,
+          0.2854906392334649
+        ]
+      },
+      "candidate_scad_sha256": "69f8d3f536b89b1746111eebc4d665f676c56cf45f8e7cf81a5238207cd8d00b"
+    },
+    {
+      "t": 5,
+      "sections": 6,
+      "symdiff_percent": 0.02395932571211398,
+      "old_to_new": {
+        "points": 18403,
+        "max_distance_mm": 0.026022262719981665,
+        "worst_point_mm": [
+          26.5,
+          17.072399139404297,
+          2.5
+        ]
+      },
+      "new_to_old": {
+        "points": 4623,
+        "max_distance_mm": 0.022637304944827335,
+        "worst_point_mm": [
+          26.833833810000485,
+          17.43968976074059,
+          2.4454531524312415
+        ]
+      },
+      "candidate_scad_sha256": "6c5894ca7621eddb20bb9952219800f40bd235ff2c960172acc0f1ea126239c6"
+    },
+    {
+      "t": 6,
+      "sections": 6,
+      "symdiff_percent": 0.03669228719245802,
+      "old_to_new": {
+        "points": 18585,
+        "max_distance_mm": 0.039190839644580235,
+        "worst_point_mm": [
+          26.5,
+          17.072399139404297,
+          3.0
+        ]
+      },
+      "new_to_old": {
+        "points": 4711,
+        "max_distance_mm": 0.03666740741141525,
+        "worst_point_mm": [
+          26.695384901961184,
+          17.320025992341606,
+          2.98488071440416
+        ]
+      },
+      "candidate_scad_sha256": "6c5894ca7621eddb20bb9952219800f40bd235ff2c960172acc0f1ea126239c6"
+    },
+    {
+      "t": 6.5,
+      "sections": 6,
+      "symdiff_percent": 0.04489347108421527,
+      "old_to_new": {
+        "points": 18558,
+        "max_distance_mm": 0.04729907118382777,
+        "worst_point_mm": [
+          1.5,
+          17.072399139404297,
+          3.25
+        ]
+      },
+      "new_to_old": {
+        "points": 4734,
+        "max_distance_mm": 0.04005148706937504,
+        "worst_point_mm": [
+          26.751685021986,
+          17.386075359171347,
+          3.098916793464142
+        ]
+      },
+      "candidate_scad_sha256": "6c5894ca7621eddb20bb9952219800f40bd235ff2c960172acc0f1ea126239c6"
+    },
+    {
+      "t": 5,
+      "sections": 8,
+      "symdiff_percent": 0.012273051195445748,
+      "old_to_new": {
+        "points": 18403,
+        "max_distance_mm": 0.013314239993894484,
+        "worst_point_mm": [
+          26.5,
+          17.072399139404297,
+          2.5
+        ]
+      },
+      "new_to_old": {
+        "points": 5441,
+        "max_distance_mm": 0.014482457910282936,
+        "worst_point_mm": [
+          3.1960139690974976,
+          9.684481842371223,
+          4.616063731535098
+        ]
+      },
+      "candidate_scad_sha256": "325cbe943757c2346b75b9d174a048fb1bfc01cedcd16b3d2f49254222d0a9be"
+    },
+    {
+      "t": 6,
+      "sections": 8,
+      "symdiff_percent": 0.01850467820757172,
+      "old_to_new": {
+        "points": 18585,
+        "max_distance_mm": 0.020079745420187336,
+        "worst_point_mm": [
+          1.5,
+          17.072399139404297,
+          3.0
+        ]
+      },
+      "new_to_old": {
+        "points": 5430,
+        "max_distance_mm": 0.020106832320605436,
+        "worst_point_mm": [
+          3.959609458621253,
+          10.410576218540236,
+          0.23702076453865256
+        ]
+      },
+      "candidate_scad_sha256": "325cbe943757c2346b75b9d174a048fb1bfc01cedcd16b3d2f49254222d0a9be"
+    },
+    {
+      "t": 6.5,
+      "sections": 8,
+      "symdiff_percent": 0.022434231714950854,
+      "old_to_new": {
+        "points": 18558,
+        "max_distance_mm": 0.02425563435716445,
+        "worst_point_mm": [
+          26.5,
+          17.072399139404297,
+          3.25
+        ]
+      },
+      "new_to_old": {
+        "points": 5435,
+        "max_distance_mm": 0.021293218425070874,
+        "worst_point_mm": [
+          3.736677255943043,
+          10.057957325689621,
+          0.3290552565164638
+        ]
+      },
+      "candidate_scad_sha256": "325cbe943757c2346b75b9d174a048fb1bfc01cedcd16b3d2f49254222d0a9be"
+    }
+  ],
+  "baseline_sha256": "712f7ea02066aa516eee03bed798b1f65b94f5189e3efd907970f7c121a52e9e",
+  "baseline_lf_sha256": "81345a63bb493ea3a0930e622d63e3754911917dd42868ffa4f15bb0fdbd1bbc",
+  "reference_stl_sha256": "73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167",
+  "resolution_fn": 96,
+  "surface_seed": 20261013
+}

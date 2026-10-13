@@ -4,3 +4,4 @@ manifold3d
 matplotlib
 scipy
 networkx
+rtree

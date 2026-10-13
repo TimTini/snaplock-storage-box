@@ -2,6 +2,8 @@
 
 Checkpoint ngày 13/10/2026 chuyển răng khóa từ 25 tiết diện theo Z sang `latch_tooth()`, dùng trụ R5, bốn tiết diện tròn/elip mỏng, hai `hull()` ngắn và một phép giao giới hạn. Khe đàn hồi tiếp tục dùng `slot_profile(z)` cùng 25 tiết diện. Snapshot trước thay đổi có commit `1b88b6b`; báo cáo lưu SHA256 của snapshot và source mới.
 
+Hồ sơ này giữ checkpoint răng tại commit `7711ae6`. [Checkpoint khe hybrid tiếp theo](scad-slot-hybrid.md) dùng tám tiết diện phần trước cùng đuôi Extrude và có source hash, số đo, ngưỡng cùng lệnh tái tạo riêng.
+
 ## Công thức xác định hình học.
 
 Với `t = latch_thickness`, `u = z-t/2` và `d = 5-sqrt(25-u²)`, biên đầu răng `x = 0.5+d` thỏa `(x-5.5)²+u²=25`. Tiết diện XZ có tâm `(5.5,t/2)` và bán kính 5 mm. Biên vai `x = 1.5+1.35*d` thỏa `(x-8.25)²/6.75²+u²/5²=1`, với tâm `(8.25,t/2)` và bán trục 6,75/5 mm.
@@ -60,7 +62,7 @@ Phạm vi rà là toàn bộ source SCAD của Snaplock. Mỗi vùng có phép d
 
 ## Lệnh chạy tái tạo bộ so sánh.
 
-Chạy tại repo với dependency trong `requirements.txt`, OpenSCAD Manifold trong PATH hoặc biến môi trường `OPENSCAD`. Snapshot SCAD trước thay đổi được trích từ commit đã ghi:
+Chạy tại checkout `7711ae6` với dependency trong `requirements.txt`, OpenSCAD Manifold trong PATH hoặc biến môi trường `OPENSCAD`. Snapshot SCAD trước thay đổi được trích từ commit đã ghi:
 
 ```powershell
 git archive --format=zip --output=exports/catch-baseline.zip 1b88b6b snaplock-storage-box.scad

@@ -4,13 +4,13 @@
 
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. File độc lập, dựng hình bằng primitive, phép boolean, mặt cắt có tham số và module. Chọn `part` trong Customizer: `layout` hiện thân, nắp và hai khóa; `body`, `lid`, `latch` hiện từng chi tiết. F6 render solid; các tham số nằm đầu file.
 
-**Checkpoint SCAD 13/10/2026:** [răng khóa dùng trụ R5, elip và hai vùng bao lồi ngắn](docs/scad-catch-csg.md) thay 25 tiết diện của phần răng. Ba chiều dày 5/6/6,5 mm đạt kiểm chứng solid, bounds, boolean và khoảng cách lấy mẫu hai chiều; cực đại khoảng cách quan sát với bản cũ là 0,00679 mm. Khe đàn hồi giữ 25 tiết diện. Báo cáo ghi timing tham khảo và phương pháp chuyển tiếp sang Fusion.
+**Checkpoint SCAD 13/10/2026:** [răng khóa dùng trụ R5, elip và hai vùng bao lồi ngắn](docs/scad-catch-csg.md) thay 25 tiết diện của phần răng. [Khe đàn hồi hybrid](docs/scad-slot-hybrid.md) dùng đuôi Extrude và tám tiết diện phần trước; cực đại khoảng cách quan sát với snapshot là 0,02426 mm qua ba chiều dày 5/6/6,5 mm, theo ngưỡng 0,03 mm. Fusion Python 0.4.0 dùng cùng cấu trúc và công thức, với bước Run native riêng.
 
 Kích thước vỏ chính đo từ mẫu là **237,85 × 123,15 mm**, cao thân **52 mm**, cao nắp **15 mm**; đáy thân **2 mm**, đáy nắp **3 mm**, thành **3 mm**. Tên STL ghi 240×120; bản SCAD dùng số đo hình học thực tế. `length`, `width`, `body_height`, `lid_height`, độ dày và khe hở được chỉnh trong Customizer; giới hạn tham số được kiểm tra bằng `assert`.
 
 Mẫu giữ gân loe, mặt vát, đầu cầu/ổ cầu, mép ngàm côn 50°, hốc trụ với chamfer và tiết diện đàn hồi thay đổi theo chiều dày khóa. [Chi tiết hình học và kiểm chứng](docs/scad-reference.md) ghi phép dựng cùng vùng xấp xỉ.
 
-**Kiểm chứng hiện tại:** cấu hình mặc định và biến thể vỏ 280 × 155 mm, thân cao 70 mm, đều tạo bốn solid kín trong layout. So sánh boolean với bốn phần chính của STL xác nhận sai khác thể tích đối xứng: thân **0,0927%**, nắp **0,0659%**, mỗi khóa **0,0423%**. Sai lệch tọa độ bao lớn nhất **0,0097 mm**. Đây là các chỉ số hình học; thử in, lực khóa và độ bền là mốc kiểm chứng vật lý tiếp theo.
+**Kiểm chứng hiện tại:** cấu hình mặc định và biến thể vỏ 280 × 155 mm, thân cao 70 mm, đều tạo bốn solid kín trong layout. So sánh boolean với bốn phần chính của STL xác nhận sai khác thể tích đối xứng: thân **0,0927%**, nắp **0,0659%**, mỗi khóa **0,0492%**. Sai lệch tọa độ bao lớn nhất **0,0097 mm**. Đây là các chỉ số hình học; thử in, lực khóa và độ bền là mốc kiểm chứng vật lý tiếp theo.
 
 Chạy lại build/audit và ảnh đối chiếu:
 
@@ -39,7 +39,7 @@ Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc
 
 ## Chạy trong Fusion
 
-**Bản thử 0.3.0:** [răng khóa bằng cung R5 và elip](docs/latch-analytic-construction.md) thay 25 tiết diện răng bằng bốn tiết diện XZ, một Extrude và hai Loft ngắn. Checkpoint source, review và 30 test offline đã hoàn tất; lần Run tiếp theo cung cấp bằng chứng native cho ellipse constraints, Loft và biến thể độ dày. Log ghi `BUILD_METRICS`; mesh audit offline lưu tại `docs/validation/latch-analytic-offline.json`.
+**Bản thử 0.4.0:** [răng khóa bằng cung R5 và elip](docs/latch-analytic-construction.md) dùng bốn tiết diện XZ, một Extrude và hai Loft ngắn. [Khe hybrid](docs/scad-slot-hybrid.md) dùng một Extrude đuôi cùng Loft tám tiết diện. 36 test offline xác nhận công thức, vị trí tiết diện và ownership tool mô phỏng. Lần Run tiếp theo cung cấp bằng chứng native cho solver, Loft, Join, Mirror và biến thể độ dày. Log ghi `BUILD_METRICS` cùng `SLOT_BUILD`; mỗi audit lưu source hash xác định checkpoint.
 
 [Add-in thử chuỗi Plane → Sketch → Loft](fusion/LoftSketchTest/README.md) dựng năm tiết diện ở năm cao độ, rồi dùng một Loft nối thành khối. Log ghi công thức, vị trí và kết quả kiểm tra biến thể.
 

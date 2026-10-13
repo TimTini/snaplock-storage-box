@@ -593,29 +593,58 @@ def build_mounts(n, body, lid=False):
               op.JoinFeatureOperation, 'Join all mounting webs')
 
 
-def latch_sections(fraction):
-    """Expression-driven sections of the SCAD's measured R5 thickness relief."""
-    d = '(5 mm - sqrt((5 mm)^2 - (latch_thickness * ({:.12g} - 0.5))^2))'.format(fraction)
+# Eight angular sections satisfy the validated 0.03 mm local mesh target.
+SLOT_SECTION_COUNT = 8
+
+
+def slot_front_section(fraction):
+    """Changing front boundary; the constant rear channel is extruded separately."""
+    angle = '(asin(latch_thickness / (10 mm)) * {:.12g})'.format(2*fraction-1)
+    z = ('0 mm' if fraction == 0 else 'latch_thickness' if fraction == 1 else
+         'latch_thickness / 2 + 5 mm * sin('+angle+')')
+    d = '(5 mm - 5 mm * cos('+angle+'))'
     c = '(2.847 mm - 0.2976 * '+d+')'
     shoulder = '(1.5 mm + 1.35 * '+d+')'
     tip = '(0.5 mm + '+d+')'
-    tooth = [(shoulder, '17.0724 mm'), (tip, '18.0724 mm'),
-             (tip, '22.0724 mm'), (shoulder, '23.0724 mm'),
-             ('3.5 mm', '23.0724 mm'), ('3.5 mm', '17.0724 mm')]
     slot = [('-2 mm', '7.9971 mm - '+d), ('1.5 mm', '7.9971 mm - '+d),
             ('5.234 mm', '12.4458 mm - 0.488 * '+d),
             (c+' - 0.383 mm', '15.751 mm'), (c, '16.5724 mm'),
             ('4.5 mm', '16.5724 mm'), ('5 mm', '17.0724 mm'),
-            ('5 mm', '26.0724 mm'), ('4 mm', '26.0724 mm'),
-            ('4 mm', '17.5724 mm'), ('3.5 mm', '17.0724 mm'),
-            (shoulder, '17.0724 mm'), (tip, '18.0724 mm'), ('-2 mm', '18.0724 mm')]
-    # First source arc is specified by three rounded survey points; its exact
-    # circumradius avoids constraining those fixed points to a rounded R0.5.
+            ('3.5 mm', '17.0724 mm'), (shoulder, '17.0724 mm'),
+            (tip, '18.0724 mm'), ('-2 mm', '18.0724 mm')]
+    # Circumradius of the three rounded survey points keeps the first arc consistent.
     arcs = {3: ((c+' - 0.4699 mm', '16.2434 mm'), '0.499953592932 mm'),
-            5: (('4.5 mm + 0.5 mm / sqrt(2)', '17.0724 mm - 0.5 mm / sqrt(2)'), '.5 mm'),
-            7: (('4.5 mm', '26.5724 mm'), '.5 mm'),
-            9: (('3.5 mm + 0.5 mm / sqrt(2)', '17.5724 mm - 0.5 mm / sqrt(2)'), '.5 mm')}
-    return tooth, slot, arcs
+            5: (('4.5 mm + 0.5 mm / sqrt(2)', '17.0724 mm - 0.5 mm / sqrt(2)'), '.5 mm')}
+    return z, slot, arcs
+
+
+def build_latch_relief(n, body, symmetry):
+    op = n.fusion.FeatureOperations
+    xy = n.comp.xYConstructionPlane
+    tail = n.profile(xy, '0 mm', [
+        ('3.5 mm', '17.0714 mm'), ('5 mm', '17.0714 mm'),
+        ('5 mm', '26.0724 mm'), ('4 mm', '26.0724 mm'),
+        ('4 mm', '17.5724 mm'), ('3.5 mm', '17.0724 mm')], 'Relief fixed tail', {
+            2: (('4.5 mm', '26.5724 mm'), '.5 mm'),
+            4: (('3.5 mm + 0.5 mm / sqrt(2)', '17.5724 mm - 0.5 mm / sqrt(2)'), '.5 mm')})
+    tail_tool = n.extrude(tail, 'latch_thickness', op.NewBodyFeatureOperation,
+                          'Relief fixed tail extrusion').bodies.item(0)
+    sections = []
+    for index in range(SLOT_SECTION_COUNT):
+        fraction = index / (SLOT_SECTION_COUNT-1)
+        z, coords, arcs = slot_front_section(fraction)
+        sections.append(n.profile(xy, z, coords, 'Relief front section {:02d}'.format(index), arcs))
+    tool = n.section_loft(sections, op.NewBodyFeatureOperation, 'Spring relief tool').bodies.item(0)
+    n.combine(tool, [tail_tool], op.JoinFeatureOperation, 'Join front and fixed tail relief')
+    # Mirror tool bodies, then cut; a mirrored Cut with an outside overhang grew bounds.
+    n.mirror([tool], symmetry, 'Mirror spring relief tool')
+    tools = [b for b in n.comp.bRepBodies if b.name != 'Latch']
+    if len(tools) != 2:
+        raise RuntimeError('Spring relief tools: expected 2, found ' + str(len(tools)))
+    n.combine(body, tools, op.CutFeatureOperation, 'Spring relief cuts')
+    n.progress('SLOT_BUILD ' + json.dumps({'front_sections': len(sections),
+                                          'fixed_tail_extrusions': 1, 'sampling': 'equal R5 angle',
+                                          'scad_sampled_distance_target_mm': 0.03}))
 
 
 def build_latch_teeth(n, latch, symmetry):
@@ -694,12 +723,6 @@ def build_latch(n):
     body = n.extrude(base, 'latch_thickness', op.NewBodyFeatureOperation, 'Latch blank').bodies.item(0)
     body.name = 'Latch'
     build_latch_teeth(n, body, mid)
-    slots = []
-    for i in range(25):
-        fraction = i / 24
-        _, slot_coords, arcs = latch_sections(fraction)
-        z = 'latch_thickness * {:.12g}'.format(fraction)
-        slots.append(n.profile(xy, z, slot_coords, 'Relief section {:02d}'.format(i), arcs))
     ball = n.sphere('3.75 mm', '3 mm', 'latch_thickness / 2', 'latch_ball_radius',
                     op.JoinFeatureOperation, 'Latch pivot sphere')
     n.mirror([ball], mid, 'Mirror pivot sphere')
@@ -720,14 +743,7 @@ def build_latch(n):
         raise RuntimeError('Notch tool must have exactly two circular end edges')
     n.fillet(edges, '2 mm', 'Notch tool end fillets')
     n.combine(body, [tool], op.CutFeatureOperation, 'Rounded pivot notch')
-    # Slot profiles reach X=-2. Mirror of a loft Cut can join that overhang on the
-    # far side and grow Latch X from 28 to 30. Cut with mirrored tool bodies instead.
-    tool = n.section_loft(slots, op.NewBodyFeatureOperation, 'Spring relief tool').bodies.item(0)
-    n.mirror([tool], mid, 'Mirror spring relief tool')
-    tools = [b for b in n.comp.bRepBodies if b.name != 'Latch']
-    if len(tools) != 2:
-        raise RuntimeError('Spring relief tools: expected 2, found ' + str(len(tools)))
-    n.combine(body, tools, op.CutFeatureOperation, 'Spring relief cuts')
+    build_latch_relief(n, body, mid)
     # Y+Z=32.9 is a measured plane, not a guessed radius/chamfer.
     sk = n.profile(yz, '-2 mm', [('26.9 mm','latch_thickness'),
         ('31.835144 mm','latch_thickness - 4.935139 mm'),

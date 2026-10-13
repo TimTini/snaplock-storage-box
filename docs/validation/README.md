@@ -6,6 +6,7 @@ Các bản sao trong thư mục này giữ số đo, hash source và kết quả
 |---|---|
 | [SCAD mặc định](scad-audit-default.json) và [biến thể](scad-audit-variant.json) | Mesh kín, bounds và sai khác thể tích của SCAD |
 | [Răng SCAD tròn/elip](scad-catch-csg.json) và [ảnh mặt cắt](scad-catch-csg-sections.png) | So sánh snapshot, STL và ba chiều dày; khoảng cách lấy mẫu hai chiều và timing tham khảo |
+| [Khe hybrid](scad-slot-hybrid.json), [bộ thử tiết diện](scad-slot-section-probes.json) và [ảnh đối chiếu](scad-slot-hybrid.png) | Đuôi Extrude, tám tiết diện trước; ngưỡng 0,03 mm và ba chiều dày |
 | [Số đo tham chiếu](reference-measurements.json) | Kích thước và hệ tọa độ đo từ mẫu |
 | [Log native thành công](fusion-native-success.log) | Source `4cad327e…`, bốn body, sketch/feature và hai biến thể recompute |
 | [Thể tích mesh streaming](fusion-native-export-metrics.json) | Số tam giác, hash, bounds và thể tích có dấu của STL Fusion |

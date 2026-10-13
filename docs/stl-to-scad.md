@@ -42,6 +42,8 @@ Agent tìm các quy luật đơn giản trước: mặt phẳng, đoạn thẳng
 
 [Bài thực hành răng Snaplock](scad-catch-csg.md) suy cung R5 và elip từ công thức 25 tiết diện, chuyển sang primitive rồi so với snapshot và STL. Agent kiểm tra riêng đường cong tiết diện và mặt nối trung gian; `hull()` tạo bao lồi, còn Loft native có quy luật nội suy của CAD. Cách dựng được chốt theo sai lệch, biến thể tham số và mục tiêu chuyển sang Fusion.
 
+[Bài thực hành khe hybrid](scad-slot-hybrid.md) tách vùng cố định sang Extrude và chọn tám tiết diện cho vùng biến đổi bằng bộ thử 5–9 tiết diện. Ngưỡng 0,03 mm phản ánh mục tiêu đối chiếu của chi tiết; hồ sơ giữ cả số đo với snapshot, STL gốc và các mức vượt ngưỡng. Agent chọn dung sai theo mục đích sử dụng, tách kiểm chứng hình học khỏi thử in và lực cơ cấu.
+
 | Dấu hiệu trên mẫu | Cách biểu diễn được khảo sát. |
 |---|---|
 | Các mặt cắt có cùng biên qua chiều cao. | Agent khảo sát profile 2D cùng `linear_extrude`. |

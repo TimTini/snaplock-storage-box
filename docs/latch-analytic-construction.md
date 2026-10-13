@@ -1,6 +1,6 @@
 # Răng khóa bằng cung R5 và elip — checkpoint thử nghiệm
 
-Phiên bản Fusion Python 0.3.0 thay 25 tiết diện XY của răng khóa bằng bốn tiết diện XZ, một Extrude trụ R5, hai Loft chuyển tiếp ngắn và một envelope giới hạn khối. Phần khe đàn hồi giữ 25 tiết diện đã mô tả theo công thức cũ. Snapshot SCAD tại commit `1b88b6b` giữ vai trò baseline 25 tiết diện; [bản SCAD dùng tròn/elip và bao lồi](scad-catch-csg.md) có bộ đối chiếu riêng với snapshot và STL gốc.
+Phiên bản Fusion Python 0.3.0 thay 25 tiết diện XY của răng khóa bằng bốn tiết diện XZ, một Extrude trụ R5, hai Loft chuyển tiếp ngắn và một envelope giới hạn khối. Mốc 0.3.0 giữ khe đàn hồi 25 tiết diện; [mốc hybrid 0.4.0](scad-slot-hybrid.md) chuyển khe sang đuôi Extrude và tám tiết diện phần trước. Snapshot SCAD tại commit `1b88b6b` giữ vai trò baseline răng 25 tiết diện; [bản SCAD dùng tròn/elip và bao lồi](scad-catch-csg.md) có bộ đối chiếu riêng với snapshot và STL gốc.
 
 ## Quy luật hình học
 

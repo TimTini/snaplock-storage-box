@@ -181,13 +181,14 @@ module box(lid=false) {
 // R5 relief across thickness. Local blend coefficients approximate measured
 // Z=0.1/3/5.9 source sections; whole-part differences are recorded by the audit.
 function relief(z) = 5-sqrt(25-pow(z-latch_thickness/2,2));
-function slot_profile(z) = let(d=relief(z),c=2.847-0.2976*d)
+function slot_front_profile(z) = let(d=relief(z),c=2.847-0.2976*d)
     concat([[-2,7.9971-d],[1.5,7.9971-d],[5.234,12.4458-0.488*d]],
         arc([c-0.383,15.751],[c-0.4699,16.2434],[c,16.5724]),[[c,16.5724]],
-        arc([4.5,16.5724],[4.8535534,16.7188466],[5,17.0724]),[[5,17.0724]],
-        arc([5,26.0724],[4.5,26.5724],[4,26.0724]),[[4,26.0724],[4,17.5724]],
-        arc([4,17.5724],[3.8535534,17.2188466],[3.5,17.0724]),
-        [[3.5,17.0724],[1.5+1.35*d,17.0724],[0.5+d,18.0724],[-2,18.0724]]);
+        arc([4.5,16.5724],[4.8535534,16.7188466],[5,17.0724]),
+        [[5,17.0724],[3.5,17.0724],[1.5+1.35*d,17.0724],[0.5+d,18.0724],[-2,18.0724]]);
+function slot_fixed_profile() = concat([[3.5,17.0724-eps],[5,17.0724-eps],[5,17.0724]],
+    arc([5,26.0724],[4.5,26.5724],[4,26.0724]),[[4,26.0724],[4,17.5724]],
+    arc([4,17.5724],[3.8535534,17.2188466],[3.5,17.0724]),[[3.5,17.0724]]);
 
 // Local changing profiles keep the spring relief editable without a mesh import.
 function signed_area(p,i=0) = i==len(p) ? 0 : cross2(p[i],p[(i+1)%len(p)])+signed_area(p,i+1);
@@ -233,7 +234,9 @@ module latch_tooth() {
 }
 
 module latch() {
-    zs=[for(i=[0:24]) latch_thickness*i/24];
+    // Eight sections follow the R5 angle; the fixed rear channel is extruded.
+    angle = asin(latch_thickness/10);
+    zs=[for(i=[0:7]) latch_thickness/2+5*sin(angle*(2*i/7-1))];
     difference() {
         intersection() {
             union() {
@@ -251,8 +254,11 @@ module latch() {
         }
         notch_tool();
         for(s=[0,1]) translate([28*s,0,0]) mirror([s,0,0])
-            profile_loft([for(z=concat([-eps],zs,[latch_thickness+eps]))
-                slot_profile(min(latch_thickness,max(0,z)))],concat([-eps],zs,[latch_thickness+eps]));
+            union() {
+                profile_loft([for(z=concat([-eps],zs,[latch_thickness+eps]))
+                    slot_front_profile(min(latch_thickness,max(0,z)))],concat([-eps],zs,[latch_thickness+eps]));
+                translate([0,0,-eps]) linear_extrude(latch_thickness+2*eps) polygon(slot_fixed_profile());
+            }
         web(-2,32,[[26.9,latch_thickness],[31.835144,latch_thickness-4.935139],
             [31.743874,0],[35,0],[35,latch_thickness]]);
     }
