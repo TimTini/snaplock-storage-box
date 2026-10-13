@@ -226,6 +226,7 @@ Lần thực hành tiếp theo của Snaplock tập trung vào chạy native b�
 
 ## Tài liệu tham chiếu
 
+- [Nguồn internet và bài thực hành cho agent](internet-learning.md): OpenSCAD, BOSL2, mặt cắt STL và đo sai khác bề mặt.
 - [Mục lục năm dự án](https://github.com/TimTini) và [trạng thái Fusion](../README.md).
 - [README Snaplock](../README.md), [hình học tham chiếu](scad-reference.md) và [checkpoint kỹ thuật](validation/README.md).
 - [Fusion hộp bàn chải](https://github.com/TimTini/electric-toothbrush-case/blob/main/fusion/README.md), [Fusion khay](https://github.com/TimTini/bath-sponge-tray/blob/main/fusion/README.md), [Fusion thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/fusion/README.md), [Fusion thùng rác](https://github.com/TimTini/thung-rac-4-goc/blob/main/fusion/README.md).
