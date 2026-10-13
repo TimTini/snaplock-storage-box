@@ -4,6 +4,8 @@
 
 ## Bản SCAD theo STL — 12/10/2026
 
+Bản [in test kích thước nhỏ](print-tests/minimum/README.md) có STL sẵn và preset giảm riêng chiều dài, chiều rộng, chiều cao thân và chiều cao nắp theo bước 0,1 mm.
+
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. File độc lập, dựng hình bằng primitive, phép boolean, mặt cắt có tham số và module. Chọn `part` trong Customizer: `layout` hiện thân, nắp và hai khóa; `body`, `lid`, `latch` hiện từng chi tiết. F6 render solid; các tham số nằm đầu file.
 
 **Checkpoint SCAD 13/10/2026:** [răng khóa dùng trụ R5, elip và hai vùng bao lồi ngắn](docs/scad-catch-csg.md) thay 25 tiết diện của phần răng. [Khe đàn hồi hybrid](docs/scad-slot-hybrid.md) dùng đuôi Extrude và tám tiết diện phần trước; cực đại khoảng cách quan sát với snapshot là 0,02426 mm qua ba chiều dày 5/6/6,5 mm, theo ngưỡng 0,03 mm. Fusion Python 0.4.0 dùng cùng cấu trúc và công thức, với bước Run native riêng.
