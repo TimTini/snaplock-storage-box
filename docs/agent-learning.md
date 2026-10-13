@@ -4,6 +4,8 @@ Bộ tài liệu dùng chung cho năm dự án, gồm [cẩm nang này](agent-le
 
 Lộ trình [đọc nguồn internet và thực hành](internet-learning.md) bổ sung tài liệu OpenSCAD, Autodesk Fusion API, BOSL2, Trimesh, CloudCompare và CGAL, kèm bài thử cùng bằng chứng cần lưu.
 
+[Quy trình STL → SCAD](stl-to-scad.md) hệ thống hóa việc đo mesh, suy ra quy luật hình học, dựng tham số và đối chiếu, kèm mẫu giao việc dùng lại. [Quy trình SCAD → Fusion](scad-to-fusion-task.md) tiếp nối từ baseline đã chốt.
+
 ## Agent tổ chức tri thức theo bằng chứng.
 
 Agent đọc README, source, manifest, dependency, test, Git status và checkpoint của dự án trước khi sửa. Agent lập bảng bộ phận, tham số gốc, công thức phụ thuộc, đặc trưng nhận diện và quan hệ lắp ghép. Agent lưu snapshot và SHA256 của đầu vào tham chiếu, cùng quy ước đơn vị và hệ trục.

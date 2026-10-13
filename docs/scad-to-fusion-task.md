@@ -2,6 +2,8 @@
 
 Mẫu này dùng cho đầu vào `[file hoặc thư mục dự án]` và mục tiêu `[tái dựng theo mẫu hoặc thiết kế mới]`. Các giá trị trong ngoặc vuông được điền theo nhiệm vụ. Phạm vi bàn giao gồm `[part, nguồn, mức bám mẫu, biến thể và hình thức kiểm chứng]`.
 
+[Quy trình STL → SCAD](stl-to-scad.md) cung cấp bước chuẩn bị hình học từ mesh và mẫu giao việc để tạo baseline cho quy trình này.
+
 ## Agent đọc nguồn và chốt ý đồ hình học.
 
 Agent đọc source, README, preview, manifest, dependency, test và checkpoint hiện có. Agent ghi bảng part, kích thước sử dụng, lòng chứa, đáy, bo/vát, lỗ, ren, khớp, khe hở và đường lắp. Agent lưu hash đầu vào, quy ước đơn vị, hệ tọa độ và snapshot của phần tham chiếu.
