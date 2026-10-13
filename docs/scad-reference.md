@@ -21,6 +21,7 @@ Nguồn: `reference/Snaplock_Storage_Boxes_240x120(2).stl`, SHA256 `73faaa2d438b
 | Tai khóa trên nắp | Gân từ Z=0, cung R8, mép vòng côn 50°, ổ cầu R3,75 | Nón tâm YZ=(-3;6), r(X)=tan(50°)X−19,09617 |
 | Chốt cầu nắp | Gân loe, cung R4,5, cầu R5 giới hạn bởi trụ R4,5 | Tâm chốt đầu X=26; YZ=(127,9;15) |
 | Khóa | Cầu R3,75, rãnh trụ R5 bo đầu R2, mặt dốc Y+Z=32,9 | Biên 28×31,835144×6 |
+| Răng khóa | Trụ R5, tiết diện elip Rx=6,75/Rz=5, hai `hull()` ngắn và envelope | [Đối chiếu ba chiều dày](scad-catch-csg.md) với snapshot 25 tiết diện và STL |
 | Đàn hồi khóa | Cung R0,5 và loft các tiết diện địa phương | R5 qua chiều dày; hệ số blend khớp lát cắt Z=0,1/3/5,9 |
 
 Các phương trình trên dùng tọa độ mặc định cho cụm đầu; source SCAD thể hiện dịch tâm, đối xứng hai đầu và hai cụm theo `mount_end`, `length`, `width`, chiều cao. Các mặt nón được fit độc lập từ đỉnh STL với RMS khoảng 3×10⁻⁶ mm. Hốc trụ có chamfer tuyến tính: mặt dưới thỏa Z=ρ+36,5 với ρ=4…5; mặt trên thỏa Z=51−ρ.
@@ -37,7 +38,7 @@ Ngưỡng kiểm tra mặc định: thân/nắp dưới 0,2%; khóa dưới 0,1%
 |---|---:|---:|---:|---:|
 | Thân | 134,654 | 18,489 | 0,0927% | 0,00409 |
 | Nắp | 39,017 | 35,776 | 0,0659% | 0,00966 |
-| Khóa | 0,446 | 1,062 | 0,0429% | 0,00201 |
+| Khóa | 0,424 | 1,064 | 0,0423% | 0,00201 |
 
 Các số đo là so sánh thể tích và chiều bao. Chúng hỗ trợ đánh giá độ bám mẫu cùng hình chồng mặt cắt; sai số cục bộ toàn bề mặt và lắp ráp chuyển động cần phép kiểm tra riêng.
 
@@ -45,6 +46,6 @@ Các số đo là so sánh thể tích và chiều bao. Chúng hỗ trợ đánh
 
 SCAD dùng đường tròn với `$fn=96`, trong khi STL có mức chia facet riêng cho mỗi vùng. Gân dưới giữ các điểm đổi hướng đã đo. Blend nhỏ của rãnh đàn hồi được nội suy qua 25 tiết diện, với hệ số địa phương ghi trong `slot_profile`; các hệ số này là xấp xỉ có đối chiếu. Vì vậy bản dựng giữ hình tham số mượt và sai khác nhỏ so với mesh nguồn.
 
-Xuất binary STL có thể làm các mặt rất mảnh tại giao trùng tọa độ co lại do float32. Pipeline chỉ bỏ **mảnh rời** có diện tích <10⁻⁵ mm² và |thể tích| <10⁻⁸ mm³, đồng thời yêu cầu mọi phần giữ lại là solid kín. Cấu hình mặc định bỏ 4 mặt ở thân; biến thể bỏ 10; nắp và khóa giữ toàn bộ mặt. Báo cáo ghi số mặt xử lý và SHA của file xuất; hình học SCAD vẫn là nguồn dựng.
+Xuất binary STL có thể làm các mặt rất mảnh tại giao trùng tọa độ co lại do float32. Pipeline chỉ bỏ **mảnh rời** có diện tích <10⁻⁵ mm² và |thể tích| <10⁻⁸ mm³, đồng thời yêu cầu mọi phần giữ lại là solid kín. Cấu hình mặc định bỏ 4 mặt ở thân; biến thể bỏ 10; nắp giữ toàn bộ mặt; khóa tròn/elip dày 6 mm bỏ 4 mặt. Báo cáo ghi số mặt xử lý và SHA của file xuất; hình học SCAD vẫn là nguồn dựng.
 
 Kiểm chứng vật lý gồm thử in, khe hở, lực đàn hồi, góc mở, tải và độ bền. Bản SCAD là mốc hình học tham chiếu của script Fusion 0.2.0. [Tài liệu tự học](fusion-python-tu-hoc.md) ghi kết quả đối chiếu, mốc native theo source và bước xác nhận tiếp theo.

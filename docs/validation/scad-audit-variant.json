@@ -1,6 +1,6 @@
 {
   "source_sha256": "73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167",
-  "scad_sha256": "905322f5338d6685ad3f4358f270e81659eed66be9e8c7b49aab171c05a9fba1",
+  "scad_sha256": "712f7ea02066aa516eee03bed798b1f65b94f5189e3efd907970f7c121a52e9e",
   "parts": {
     "body": {
       "bounds": [
@@ -53,11 +53,11 @@
           6.0
         ]
       ],
-      "volume_mm3": 3513.068226200034,
+      "volume_mm3": 3513.0450402868337,
       "watertight": true,
       "components": 1,
-      "removed_zero_width_faces": 0,
-      "export_sha256": "cd88efc799502fdcdb9a4e052e61d1adce283d0bdd27320281275775e5c9e3e4"
+      "removed_zero_width_faces": 4,
+      "export_sha256": "6c37920e5c69c97c2538baa2a09032596108e04680469e6dfecefe481e9e8e18"
     }
   },
   "layout_components": 4

@@ -90,7 +90,7 @@ Chuỗi plane → sketch → feature lần lượt đặt tiết diện, định
 
 Agent lập bảng producer → consumer cho sketch, tool body và feature. Body dụng cụ được theo dõi đến phép Combine hoặc feature tiêu thụ. Body cuối được đối chiếu với contract thiết kế. Số object và thời gian dựng được đo tại checkpoint có hash rõ ràng.
 
-Snaplock dùng 25 tiết diện cách 0,25 mm cho răng/khe khóa dày 6 mm. Rà source đã nhận diện 28 cặp plane cùng base/offset là ứng viên dùng chung. Giảm plane và giảm số tiết diện là hai thay đổi có phép kiểm chứng riêng: một thay đổi tác động tham chiếu, một thay đổi tác động xấp xỉ hình học.
+Baseline Snaplock tại commit `1b88b6b` dùng 25 tiết diện cách 0,25 mm cho răng/khe khóa dày 6 mm. [Checkpoint SCAD tròn/elip](scad-catch-csg.md) chuyển phần răng sang trụ R5 và hai vùng bao lồi ngắn, giữ khe đàn hồi 25 tiết diện và xác nhận sai lệch qua ba chiều dày. Fusion 0.3.0 dùng bốn tiết diện XZ cho phần răng và có bước xác nhận native riêng. Rà source Fusion trước tối ưu đã nhận diện 28 cặp plane cùng base/offset là ứng viên dùng chung. Giảm plane và giảm số tiết diện là hai thay đổi có phép kiểm chứng riêng: một thay đổi tác động tham chiếu, một thay đổi tác động xấp xỉ hình học.
 
 Số lời gọi builder, số marker log, số sketch/plane suy ra từ source và số timeline item native được ghi thành các chỉ số riêng. Mốc native thành công được giữ làm baseline cho từng thay đổi tối ưu.
 

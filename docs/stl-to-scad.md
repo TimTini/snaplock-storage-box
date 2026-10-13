@@ -40,6 +40,8 @@ Agent cắt mesh ở nhiều vị trí có ý nghĩa: đầu, giữa, cuối; s�
 
 Agent tìm các quy luật đơn giản trước: mặt phẳng, đoạn thẳng, cung tròn, trụ, cầu, nón, hình tròn xoay, đối xứng và tiết diện lặp. Tham số fit đi cùng phạm vi dữ liệu, cách lấy mẫu, RMS và sai lệch lớn nhất trên tập đo. Sai số fit phản ánh mức khớp tập đo; kiểm tra các mặt cắt khác bổ sung bằng chứng cho vùng hình học đó.
 
+[Bài thực hành răng Snaplock](scad-catch-csg.md) suy cung R5 và elip từ công thức 25 tiết diện, chuyển sang primitive rồi so với snapshot và STL. Agent kiểm tra riêng đường cong tiết diện và mặt nối trung gian; `hull()` tạo bao lồi, còn Loft native có quy luật nội suy của CAD. Cách dựng được chốt theo sai lệch, biến thể tham số và mục tiêu chuyển sang Fusion.
+
 | Dấu hiệu trên mẫu | Cách biểu diễn được khảo sát. |
 |---|---|
 | Các mặt cắt có cùng biên qua chiều cao. | Agent khảo sát profile 2D cùng `linear_extrude`. |

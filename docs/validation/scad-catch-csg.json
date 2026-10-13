@@ -1,0 +1,114 @@
+{
+  "baseline_sha256": "905322f5338d6685ad3f4358f270e81659eed66be9e8c7b49aab171c05a9fba1",
+  "scad_sha256": "712f7ea02066aa516eee03bed798b1f65b94f5189e3efd907970f7c121a52e9e",
+  "reference_stl_sha256": "73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167",
+  "resolution_fn": 96,
+  "openscad_version": "OpenSCAD version 2026.09.29",
+  "trimesh_version": "5.1.1",
+  "numpy_version": "2.5.3",
+  "timing_scope": "process, render, mesh load and cleanup; three sequential runs per source",
+  "surface_method": "bidirectional tooth vertices, face centres and seeded surface samples; not Hausdorff",
+  "variants": [
+    {
+      "thickness_mm": 5,
+      "timings": {
+        "baseline": {
+          "seconds": [
+            0.32041600000047765,
+            0.31435849999979837,
+            0.31483570000000327
+          ],
+          "median_seconds": 0.31483570000000327
+        },
+        "current": {
+          "seconds": [
+            0.33140630000070814,
+            0.3181979999999385,
+            0.3278436000000511
+          ],
+          "median_seconds": 0.3278436000000511
+        }
+      },
+      "volume_mm3": 2888.491702523435,
+      "faces": 17382,
+      "bounds_error_vs_baseline_mm": 0.0,
+      "symmetric_difference_vs_baseline_percent": 0.0021539554611996817,
+      "old_to_new": {
+        "points": 1107,
+        "max_distance_mm": 0.006786106207784203
+      },
+      "new_to_old": {
+        "points": 2065,
+        "max_distance_mm": 0.0036514981829384647
+      }
+    },
+    {
+      "thickness_mm": 6,
+      "timings": {
+        "baseline": {
+          "seconds": [
+            0.32488499999999476,
+            0.31716059999962454,
+            0.3274377999996432
+          ],
+          "median_seconds": 0.32488499999999476
+        },
+        "current": {
+          "seconds": [
+            0.35790390000056505,
+            0.35987479999948846,
+            0.3473653999999442
+          ],
+          "median_seconds": 0.35790390000056505
+        }
+      },
+      "volume_mm3": 3513.0450402868337,
+      "faces": 18878,
+      "bounds_error_vs_baseline_mm": 0.0,
+      "symmetric_difference_vs_baseline_percent": 0.0016924468702665513,
+      "old_to_new": {
+        "points": 1054,
+        "max_distance_mm": 0.006761482765279244
+      },
+      "new_to_old": {
+        "points": 2206,
+        "max_distance_mm": 0.004586999420334618
+      },
+      "symmetric_difference_vs_stl_percent": 0.04233667353863494,
+      "bounds_error_vs_stl_mm": 0.0020084381103515625
+    },
+    {
+      "thickness_mm": 6.5,
+      "timings": {
+        "baseline": {
+          "seconds": [
+            0.3277070000003732,
+            0.32814479999979085,
+            0.3595543000001271
+          ],
+          "median_seconds": 0.32814479999979085
+        },
+        "current": {
+          "seconds": [
+            0.32876540000052046,
+            0.33039869999993243,
+            0.3269982000001619
+          ],
+          "median_seconds": 0.32876540000052046
+        }
+      },
+      "volume_mm3": 3824.309860005936,
+      "faces": 19420,
+      "bounds_error_vs_baseline_mm": 0.0,
+      "symmetric_difference_vs_baseline_percent": 0.001543803637924482,
+      "old_to_new": {
+        "points": 1092,
+        "max_distance_mm": 0.005809696394829085
+      },
+      "new_to_old": {
+        "points": 2199,
+        "max_distance_mm": 0.004424284702377293
+      }
+    }
+  ]
+}

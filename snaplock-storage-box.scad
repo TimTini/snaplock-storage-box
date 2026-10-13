@@ -208,6 +208,30 @@ module notch_tool() {
             [[5,2],[5,13]],arc([5,13],[4.41421356,14.41421356],[3,15]),[[3,15],[0,15]]));
 }
 
+// R5 tip, elliptical shoulder (Rx=6.75, Rz=5), and two short convex blends.
+// Hull blends approximate the original ruled surface; measured by audit-catch-csg.py.
+module latch_tooth() {
+    module section(y,x,x_scale=1) {
+        translate([x,y,latch_thickness/2]) rotate([-90,0,0])
+            scale([x_scale,1,1]) cylinder(h=eps,r=5);
+    }
+    intersection() {
+        translate([-2,17.0724,0]) cube([5.5,6,latch_thickness]);
+        union() {
+            hull() {
+                section(17.0724,8.25,1.35);
+                section(18.0724-eps,5.5);
+            }
+            translate([5.5,18.0724-eps,latch_thickness/2]) rotate([-90,0,0])
+                cylinder(h=4+2*eps,r=5);
+            hull() {
+                section(22.0724,5.5);
+                section(23.0724-eps,8.25,1.35);
+            }
+        }
+    }
+}
+
 module latch() {
     zs=[for(i=[0:24]) latch_thickness*i/24];
     difference() {
@@ -216,9 +240,7 @@ module latch() {
                 translate([1.5,0,0]) cube([25,32.9,latch_thickness]);
                 for(s=[0,1]) translate([28*s,0,0]) mirror([s,0,0]) {
                     translate([3.75,3,latch_thickness/2]) sphere(latch_ball_radius);
-                    profile_loft([for(z=zs) let(d=relief(z))
-                        [[1.5+1.35*d,17.0724],[0.5+d,18.0724],
-                        [0.5+d,22.0724],[1.5+1.35*d,23.0724],[3.5,23.0724],[3.5,17.0724]]],zs);
+                    latch_tooth();
                 }
             }
             translate([-2,0,0]) cube([32,35,latch_thickness]);
