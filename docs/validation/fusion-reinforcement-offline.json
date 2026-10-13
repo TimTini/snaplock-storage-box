@@ -1,0 +1,476 @@
+{
+  "script_sha256": "0f6ffef84d35aa0ddb5a23f951ee469f1cb42eb39c1c7bb09ad9f8844bb861a1",
+  "scad_sha256": "b9358a419a16ec6fe20e6f336ab78fef6c8c0b9cdb568c45a96f8e72def929de",
+  "mode": "offline expression CSG; Fusion runtime pending",
+  "alignment": "minimum-corner translation only",
+  "cases": {
+    "original-0": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 165365.90067245372,
+      "reference_volume_mm3": 165365.9006724536,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0,
+      "missing_mm3": 0.0,
+      "symmetric_difference_percent": 0.0,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0,
+      "within_target": true
+    },
+    "original-1": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 170934.93949725936,
+      "reference_volume_mm3": 170934.93551530098,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.008413530138451862,
+      "missing_mm3": 0.004431571480198332,
+      "symmetric_difference_percent": 7.514614598781291e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.012845101618650195,
+      "within_target": true
+    },
+    "original-2": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 170574.434397608,
+      "reference_volume_mm3": 170574.43232553452,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.006432437264209822,
+      "missing_mm3": 0.00436036385174476,
+      "symmetric_difference_percent": 6.3273264162808106e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.01079280111595458,
+      "within_target": true
+    },
+    "original-3": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 174174.50751078397,
+      "reference_volume_mm3": 174174.5026685217,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.01161024754489804,
+      "missing_mm3": 0.006767985231630583,
+      "symmetric_difference_percent": 1.0551620641917353e-05,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.018378232776528624,
+      "within_target": true
+    },
+    "original-4": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 173723.25838480616,
+      "reference_volume_mm3": 173723.25866874307,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.00805119573990477,
+      "missing_mm3": 0.00833513288011536,
+      "symmetric_difference_percent": 9.432432217533818e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.01638632862002013,
+      "within_target": true
+    },
+    "original-5": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 179124.69949202458,
+      "reference_volume_mm3": 179124.69561665738,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.015607002086832713,
+      "missing_mm3": 0.011731641298408094,
+      "symmetric_difference_percent": 1.52623530167766e-05,
+      "removed_zero_width_faces": 40,
+      "symmetric_difference_mm3": 0.027338643385240807,
+      "within_target": true
+    },
+    "original-6": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 177266.70959371445,
+      "reference_volume_mm3": 177266.70822865158,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.012081075188372214,
+      "missing_mm3": 0.010716021403154651,
+      "symmetric_difference_percent": 1.2860337295890608e-05,
+      "removed_zero_width_faces": 40,
+      "symmetric_difference_mm3": 0.022797096591526865,
+      "within_target": true
+    },
+    "original-7": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 180866.78270665338,
+      "reference_volume_mm3": 180866.77737454898,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.017054392278997146,
+      "missing_mm3": 0.011722300181483243,
+      "symmetric_difference_percent": 1.5910435779417917e-05,
+      "removed_zero_width_faces": 40,
+      "symmetric_difference_mm3": 0.02877669246048039,
+      "within_target": true
+    },
+    "printer-0": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 369031.5616260639,
+      "reference_volume_mm3": 369031.56162606366,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0,
+      "missing_mm3": 0.0,
+      "symmetric_difference_percent": 0.0,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0,
+      "within_target": true
+    },
+    "printer-1": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 385672.94488403125,
+      "reference_volume_mm3": 385672.9586439046,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.01575432779798916,
+      "missing_mm3": 0.02951420138353008,
+      "symmetric_difference_percent": 1.173754295367026e-05,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.04526852918151924,
+      "within_target": true
+    },
+    "printer-2": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 375976.27288267313,
+      "reference_volume_mm3": 375976.27940247516,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.009308819222238878,
+      "missing_mm3": 0.015828621068481985,
+      "symmetric_difference_percent": 6.685911231067779e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.02513744029072086,
+      "within_target": true
+    },
+    "printer-3": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 389992.3689020635,
+      "reference_volume_mm3": 389992.3846274577,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.020132626414995164,
+      "missing_mm3": 0.03585802086627421,
+      "symmetric_difference_percent": 1.4356856566508277e-05,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.05599064728126937,
+      "within_target": true
+    },
+    "printer-4": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 385321.58559432765,
+      "reference_volume_mm3": 385321.6058330592,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.014173967742784633,
+      "missing_mm3": 0.03441270883038873,
+      "symmetric_difference_percent": 1.2609382873335052e-05,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.048586676573173365,
+      "within_target": true
+    },
+    "printer-5": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 401739.5048739752,
+      "reference_volume_mm3": 401739.5316825956,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.028999913696288522,
+      "missing_mm3": 0.055808556042041046,
+      "symmetric_difference_percent": 2.1110312291929146e-05,
+      "removed_zero_width_faces": 32,
+      "symmetric_difference_mm3": 0.08480846973832956,
+      "within_target": true
+    },
+    "printer-6": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 390046.18647353695,
+      "reference_volume_mm3": 390046.20679987344,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.019800320604624538,
+      "missing_mm3": 0.04012665882655243,
+      "symmetric_difference_percent": 1.5364071842371374e-05,
+      "removed_zero_width_faces": 32,
+      "symmetric_difference_mm3": 0.059926979431176974,
+      "within_target": true
+    },
+    "printer-7": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 404062.2824937701,
+      "reference_volume_mm3": 404062.30931965075,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.02985228429530782,
+      "missing_mm3": 0.056678167922506024,
+      "symmetric_difference_percent": 2.1415125890734897e-05,
+      "removed_zero_width_faces": 32,
+      "symmetric_difference_mm3": 0.08653045221781384,
+      "within_target": true
+    },
+    "minimum-0": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 31738.30207055144,
+      "reference_volume_mm3": 31738.302070551446,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0,
+      "missing_mm3": 0.0,
+      "symmetric_difference_percent": 0.0,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0,
+      "within_target": true
+    },
+    "minimum-1": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 32548.24787960204,
+      "reference_volume_mm3": 32548.247968434443,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.00022246514111918384,
+      "missing_mm3": 0.00031129756987959174,
+      "symmetric_difference_percent": 1.6399122666031764e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0005337627109987756,
+      "within_target": true
+    },
+    "minimum-2": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 31758.2138075815,
+      "reference_volume_mm3": 31758.2139916068,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 4.778442338227383e-05,
+      "missing_mm3": 0.00023180971428395788,
+      "symmetric_difference_percent": 8.803836945620558e-07,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0002795941376662317,
+      "within_target": true
+    },
+    "minimum-3": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 32553.281044367468,
+      "reference_volume_mm3": 32553.28118268291,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0002203432446429611,
+      "missing_mm3": 0.0003586586895621246,
+      "symmetric_difference_percent": 1.7786284920276866e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.0005790019342050857,
+      "within_target": true
+    },
+    "minimum-4": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 32788.72799989275,
+      "reference_volume_mm3": 32788.728048284036,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0001555806830238201,
+      "missing_mm3": 0.00020397194978727384,
+      "symmetric_difference_percent": 1.096573896619667e-06,
+      "removed_zero_width_faces": 0,
+      "symmetric_difference_mm3": 0.00035955263281109396,
+      "within_target": true
+    },
+    "minimum-5": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 33542.807878949716,
+      "reference_volume_mm3": 33542.80797291533,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.00036886710969561185,
+      "missing_mm3": 0.0004628321291286689,
+      "symmetric_difference_percent": 2.4795158458285587e-06,
+      "removed_zero_width_faces": 8,
+      "symmetric_difference_mm3": 0.0008316992388242808,
+      "within_target": true
+    },
+    "minimum-6": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 32788.72799994525,
+      "reference_volume_mm3": 32788.72806322356,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.00021501627659590376,
+      "missing_mm3": 0.0002782945889869314,
+      "symmetric_difference_percent": 1.5045135774453589e-06,
+      "removed_zero_width_faces": 16,
+      "symmetric_difference_mm3": 0.0004933108655828352,
+      "within_target": true
+    },
+    "minimum-7": {
+      "translation_mm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "volume_mm3": 33542.807879086926,
+      "reference_volume_mm3": 33542.80796701657,
+      "bounds_error_mm": 0.0,
+      "extra_mm3": 0.0003401786071524425,
+      "missing_mm3": 0.00042810824668977534,
+      "symmetric_difference_percent": 2.290466721205012e-06,
+      "removed_zero_width_faces": 16,
+      "symmetric_difference_mm3": 0.0007682868538422178,
+      "within_target": true
+    }
+  },
+  "configurations_mm": {
+    "original": {
+      "length": 237.85,
+      "width": 123.15,
+      "body_height": 52.0,
+      "lid_height": 15.0,
+      "wall": 3.0,
+      "body_floor": 2.0,
+      "lid_floor": 3.0,
+      "corner_radius": 12.0,
+      "body_inner_radius": 8.0,
+      "bottom_bevel": 5.0,
+      "body_inner_bevel": 4.7,
+      "mount_end": 32.9,
+      "pin_radius": 5.0,
+      "latch_ball_radius": 3.75,
+      "fit_clearance": 0.0,
+      "latch_thickness": 6.0,
+      "layout_gap": 20.0,
+      "rib_spacing": 45.0,
+      "rib_thickness": 2.4,
+      "floor_rib_height": 4.0,
+      "wall_rib_depth": 5.0,
+      "wall_rib_foot": 20.0,
+      "wall_rib_top_clearance": 5.0
+    },
+    "printer": {
+      "length": 240,
+      "width": 220,
+      "body_height": 100,
+      "lid_height": 15.0,
+      "wall": 3.0,
+      "body_floor": 2.0,
+      "lid_floor": 3.0,
+      "corner_radius": 12.0,
+      "body_inner_radius": 8.0,
+      "bottom_bevel": 5.0,
+      "body_inner_bevel": 4.7,
+      "mount_end": 32.9,
+      "pin_radius": 5.0,
+      "latch_ball_radius": 3.75,
+      "fit_clearance": 0.0,
+      "latch_thickness": 6.0,
+      "layout_gap": 20.0,
+      "rib_spacing": 45.0,
+      "rib_thickness": 2.4,
+      "floor_rib_height": 4.0,
+      "wall_rib_depth": 5.0,
+      "wall_rib_foot": 20.0,
+      "wall_rib_top_clearance": 5.0
+    },
+    "minimum": {
+      "length": 107.9,
+      "width": 30.1,
+      "body_height": 30.2,
+      "lid_height": 12.5,
+      "wall": 3.0,
+      "body_floor": 2.0,
+      "lid_floor": 3.0,
+      "corner_radius": 12.0,
+      "body_inner_radius": 8.0,
+      "bottom_bevel": 5.0,
+      "body_inner_bevel": 4.7,
+      "mount_end": 32.9,
+      "pin_radius": 5.0,
+      "latch_ball_radius": 3.75,
+      "fit_clearance": 0.0,
+      "latch_thickness": 6.0,
+      "layout_gap": 20.0,
+      "rib_spacing": 45.0,
+      "rib_thickness": 2.4,
+      "floor_rib_height": 4.0,
+      "wall_rib_depth": 5.0,
+      "wall_rib_foot": 20.0,
+      "wall_rib_top_clearance": 5.0
+    }
+  },
+  "mask_bit_order": [
+    "wall_ribs",
+    "wall_floor_ribs",
+    "floor_ribs"
+  ],
+  "within_target": true,
+  "status": "passed"
+}

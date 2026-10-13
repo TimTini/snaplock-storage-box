@@ -4,6 +4,7 @@ Các bản sao trong thư mục này giữ số đo, hash source và kết quả
 
 | Bằng chứng | Phạm vi |
 |---|---|
+| [Gân Fusion offline](fusion-reinforcement-offline.json) | 24 phép CSG từ biểu thức native so SCAD, ba kích thước × tám tổ hợp công tắc; lần Run Fusion xác nhận solver/kernel và cập nhật Pattern |
 | [Gân trong SCAD](scad-reinforcement.json) | Ba công tắc, đủ tám tổ hợp bật/tắt và 27 cấu hình; baseline và bản gân cao/chân lớn; khoảng hở nắp đóng và năm góc mở lấy mẫu; preset 240 × 220 × 100 mm cho khổ sử dụng 250 mm |
 | [Sweep Parallel native](slot-sweep-native.json) | Cung khe dịch chuyển, 2 plane/2 sketch/0 Loft, 10 timeline item healthy, fully constrained và chiều dày 6 → 5 → 6,5 → 6 mm; residual lấy mẫu lớn nhất 0,0008 mm |
 | [SCAD mặc định](scad-audit-default.json) và [biến thể](scad-audit-variant.json) | Mesh kín, bounds và sai khác thể tích của SCAD |

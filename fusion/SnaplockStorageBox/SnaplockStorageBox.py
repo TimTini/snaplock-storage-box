@@ -8,6 +8,8 @@ from pathlib import Path
 
 # All public dimensions are millimetres; Fusion stores centimetres internally.
 VERIFY_VARIANTS = True
+# These three topology switches are applied when Run creates the document.
+BUILD_RIBS = {'wall_ribs': False, 'wall_floor_ribs': False, 'floor_ribs': False}
 DEFAULTS = {
     'length': 237.85, 'width': 123.15, 'body_height': 52.0,
     'lid_height': 15.0, 'wall': 3.0, 'body_floor': 2.0, 'lid_floor': 3.0,
@@ -15,6 +17,18 @@ DEFAULTS = {
     'bottom_bevel': 5.0, 'body_inner_bevel': 4.7, 'mount_end': 32.9,
     'pin_radius': 5.0, 'latch_ball_radius': 3.75, 'fit_clearance': 0.0,
     'latch_thickness': 6.0, 'layout_gap': 20.0,
+    'rib_spacing': 45.0, 'rib_thickness': 2.4, 'floor_rib_height': 4.0,
+    'wall_rib_depth': 5.0, 'wall_rib_foot': 20.0, 'wall_rib_top_clearance': 5.0,
+}
+RIB_DERIVED = {
+    'rib_margin': ('mm', 'max(corner_radius; wall + rib_thickness / 2)'),
+    'rib_count_x': ('', 'max(1; ceil((length - 2 * rib_margin) / rib_spacing) - 1)'),
+    'rib_count_y': ('', 'max(1; ceil((width - 2 * rib_margin) / rib_spacing) - 1)'),
+    'rib_step_x': ('mm', '(length - 2 * rib_margin) / (rib_count_x + 1)'),
+    'rib_step_y': ('mm', '(width - 2 * rib_margin) / (rib_count_y + 1)'),
+    'rib_top': ('mm', 'body_height - wall_rib_top_clearance'),
+    'rib_foot': ('mm', 'min(wall_rib_foot; min(rib_top - body_floor; (min(length; width) - 2 * wall) / 4))'),
+    'rib_depth': ('mm', 'min(wall_rib_depth; min((rib_top - body_floor) / 2; (min(length; width) - 2 * wall) / 4))'),
 }
 DERIVED = {
     'inner_length': 'length - 2 * wall',
@@ -80,7 +94,76 @@ def dimensions(p):
         raise ValueError('lid_height is too small for the cavity bevel')
     if p['wall'] >= p['corner_radius'] or p['wall'] >= p['width'] / 2:
         raise ValueError('wall consumes the cavity')
+    if p['rib_spacing'] <= p['rib_thickness']:
+        raise ValueError('rib_spacing must exceed rib_thickness')
+    if not 5 <= p['wall_rib_top_clearance'] < p['body_height']-p['body_floor']:
+        raise ValueError('wall_rib_top_clearance must be >=5 mm and below the inside height')
+    if p['floor_rib_height'] >= p['body_height']-p['body_floor']-20:
+        raise ValueError('floor_rib_height exceeds the SCAD limit')
     return d
+
+
+def reinforcement_dimensions(p):
+    margin = max(p['corner_radius'],p['wall']+p['rib_thickness']/2)
+    result = {'margin':margin,'top':p['body_height']-p['wall_rib_top_clearance']}
+    result['foot'] = min(p['wall_rib_foot'],result['top']-p['body_floor'],(min(p['length'],p['width'])-2*p['wall'])/4)
+    result['depth'] = min(p['wall_rib_depth'],(result['top']-p['body_floor'])/2,(min(p['length'],p['width'])-2*p['wall'])/4)
+    for axis,span in [('x',p['length']),('y',p['width'])]:
+        count = max(1,math.ceil((span-2*margin)/p['rib_spacing'])-1)
+        step = (span-2*margin)/(count+1)
+        stations = [margin+step*i for i in range(1,count+1)]
+        if stations[0]-p['rib_thickness']/2 < p['corner_radius']:
+            raise ValueError('Native rib seeds reach rounded corners; reduce rib_thickness or rib_spacing')
+        result.update({'count_'+axis:count,'step_'+axis:step,'stations_'+axis:stations})
+    return result
+
+
+def reinforcement_specs(flags):
+    """Seed polygons in model-plane coordinates; Pattern/Mirror fill the walls."""
+    if set(flags) != {'wall_ribs','wall_floor_ribs','floor_ribs'} or any(type(v) is not bool for v in flags.values()):
+        raise ValueError('BUILD_RIBS requires exactly three boolean switches')
+    profiles = {
+        'wall_ribs': [('wall - 0.001 mm','body_floor - 0.001 mm'),
+                      ('wall + rib_depth','body_floor - 0.001 mm'),
+                      ('wall + rib_depth','rib_top - rib_depth'),('wall - 0.001 mm','rib_top')],
+        'wall_floor_ribs': [('wall - 0.001 mm','body_floor - 0.001 mm'),
+                            ('wall + rib_foot','body_floor - 0.001 mm'),
+                            ('wall - 0.001 mm','body_floor + rib_foot')],
+    }
+    specs = []
+    for family in ('wall_ribs','wall_floor_ribs','floor_ribs'):
+        if not flags[family]:
+            continue
+        for axis in ('x','y'):
+            centre = 'rib_margin + rib_step_'+axis
+            if family=='floor_ribs':
+                bounds = (centre+' - rib_thickness / 2',centre+' + rib_thickness / 2')
+                if axis=='x':
+                    coords = [(bounds[0],'wall - 0.001 mm'),(bounds[1],'wall - 0.001 mm'),
+                              (bounds[1],'width - wall + 0.001 mm'),(bounds[0],'width - wall + 0.001 mm')]
+                else:
+                    coords = [('wall - 0.001 mm',bounds[0]),('length - wall + 0.001 mm',bounds[0]),
+                              ('length - wall + 0.001 mm',bounds[1]),('wall - 0.001 mm',bounds[1])]
+                base,offset,distance = 'xy','body_floor - 0.001 mm','floor_rib_height + 0.001 mm'
+            else:
+                base,offset,distance = ('yz' if axis=='x' else 'xz'),centre+' - rib_thickness / 2','rib_thickness'
+                coords = profiles[family]
+            specs.append(dict(family=family,axis=axis,base=base,offset=offset,coords=coords,
+                              distance=distance,mirror=family!='floor_ribs'))
+    return specs
+
+
+def reinforcement_trim_specs():
+    specs = []
+    for axis,span in [('x','width'),('y','length')]:
+        for side in (0,1):
+            points = [('0 mm','0 mm'),('bottom_bevel','0 mm'),('0 mm','outer_bevel_height')]
+            if side:
+                points = [(span+' - ('+x+')',z) for x,z in points]
+            specs.append(dict(axis=axis,side=side,base='yz' if axis=='x' else 'xz',coords=points,
+                              distance='length' if axis=='x' else 'width'))
+    return specs
+
 
 class Native:
     """Small helpers for dimensioned sketches and native Fusion features."""
@@ -291,6 +374,20 @@ class Native:
         inp.patternComputeOption = self.fusion.PatternComputeOptions.IdenticalPatternCompute
         return self.feature(self.comp.features.mirrorFeatures.add(inp), name)
 
+    def rib_pattern(self, features, axis, spacing, quantity, name):
+        inp = self.comp.features.rectangularPatternFeatures.createInput(
+            self.objects(features), axis, self.value('2'), self.value(spacing),
+            self.fusion.PatternDistanceType.SpacingPatternDistanceType)
+        inp.quantityTwo = self.value('1')
+        inp.patternComputeOption = self.fusion.PatternComputeOptions.IdenticalPatternCompute
+        result = self.comp.features.rectangularPatternFeatures.add(inp)
+        if result is None:
+            raise RuntimeError('Cannot create rib pattern: ' + name)
+        # A seed-only pattern is supported through its ModelParameter. Create
+        # two instances first, then bind the count, including a value of one.
+        result.quantityOne.expression = quantity
+        return self.feature(result, name)
+
     def translate(self, body, x, y, z, name):
         inp = self.comp.features.moveFeatures.createInput2(self.objects([body]))
         inp.defineAsTranslateXYZ(self.value(x), self.value(y), self.value(z), False)
@@ -389,6 +486,62 @@ def cut_cavity(n, body, lid=False):
     upper = n.rounded(bevel_top, 'wall', inner_radius, prefix + ' inside wall')
     n.loft(lower, upper, op.CutFeatureOperation, 'Inside floor bevel', body)
     n.extrude(upper, height+' - '+bevel_top+' + 6 mm', op.CutFeatureOperation, 'Open cavity', body)
+
+
+def rib_extrude(n, body, base, offset, coords, distance, axis, operation, name):
+    normal = getattr(base.geometry.normal,axis)
+    if abs(abs(normal)-1)>1e-8:
+        raise RuntimeError(name+': plane normal is not aligned with '+axis)
+    signed_offset = offset if normal>0 else '-('+offset+')'
+    # Literal zero still reuses the Origin plane for either normal direction.
+    if offset=='0 mm':
+        signed_offset = offset
+    sk = n.profile(base,signed_offset,coords,name+' profile')
+    u,v = sk.xDirection,sk.yDirection
+    cross = (u.y*v.z-u.z*v.y,u.z*v.x-u.x*v.z,u.x*v.y-u.y*v.x)
+    direction = cross['xyz'.index(axis)]
+    if abs(abs(direction)-1)>1e-8:
+        raise RuntimeError(name+': sketch extrusion direction is not aligned with '+axis)
+    return n.extrude(sk,distance,operation,name,body,negative=direction<0)
+
+
+def build_reinforcement(n, body, flags):
+    specs = reinforcement_specs(flags)
+    if not specs:
+        return
+    p = {name:n.design.userParameters.itemByName(name).value*10 for name in DEFAULTS}
+    expected = reinforcement_dimensions(p)
+    n.progress('RIB_BUILD '+json.dumps({'flags':flags,'dimensions_mm':expected}))
+    op = n.fusion.FeatureOperations
+    planes = {'xy':n.comp.xYConstructionPlane,'yz':n.comp.yZConstructionPlane,'xz':n.comp.xZConstructionPlane}
+    axes = {'x':n.comp.xConstructionAxis,'y':n.comp.yConstructionAxis}
+    midplanes = {}
+    for spec in specs:
+        axis = spec['axis']
+        name = 'Rib '+spec['family']+' '+axis.upper()
+        normal_axis = 'z' if spec['base']=='xy' else axis
+        seed = rib_extrude(n,body,planes[spec['base']],spec['offset'],spec['coords'],
+                           spec['distance'],normal_axis,op.JoinFeatureOperation,name+' seed')
+        features = [seed]
+        if spec['mirror']:
+            if axis not in midplanes:
+                other = 'y' if axis=='x' else 'x'
+                base = planes['xz' if axis=='x' else 'yz']
+                offset = ('width' if axis=='x' else 'length')+' / 2'
+                normal = getattr(base.geometry.normal,other)
+                if abs(abs(normal)-1)>1e-8:
+                    raise RuntimeError('Rib mirror normal is not aligned')
+                midplanes[axis] = n.plane(base,offset if normal>0 else '-('+offset+')','Rib mid '+other.upper())
+            features.append(n.mirror([seed],midplanes[axis],name+' opposite wall'))
+        n.rib_pattern(features,axes[axis],'rib_step_'+axis,'rib_count_'+axis,name+' stations')
+    # Join seeds may project below the planar outer bevel. These four cuts
+    # trim only material outside its supporting planes. Existing mounts start
+    # above the bevel; the station-domain check excludes rounded corner regions.
+    for spec in reinforcement_trim_specs():
+        rib_extrude(n,body,planes[spec['base']],'0 mm',spec['coords'],spec['distance'],spec['axis'],
+                    op.CutFeatureOperation,'Rib lower bevel trim '+spec['axis']+str(spec['side']))
+    n.progress('RIB_BUILD_COMPLETE '+json.dumps({'seed_profiles':len(specs),'counts':[
+        expected['count_x'],expected['count_y']]}))
 
 
 def mount_offset(anchor, delta):
@@ -761,6 +914,8 @@ def build(design, progress):
                    'Snaplock: measured source dimension; see README for fit limits.')
     for name, expr in DERIVED.items():
         params.add(name, core.ValueInput.createByString(expr), 'mm', 'Derived: keep the expression.')
+    for name, (unit,expr) in RIB_DERIVED.items():
+        params.add(name,core.ValueInput.createByString(expr),unit,'Rib formula: keep the expression.')
     root = design.rootComponent
     n = Native(design, root, progress)
     # Move each completed part away before constructing the next at the origin.
@@ -772,6 +927,8 @@ def build(design, progress):
         body.name = name
         build_mounts(n, body, lid)
         cut_cavity(n, body, lid)
+        if not lid and any(BUILD_RIBS.values()):
+            build_reinforcement(n,body,BUILD_RIBS)
         if lid:
             n.translate(body, '0 mm', 'lid_layout_y', '0 mm', 'Print layout lid')
     # Resolve the current seed after all other features have recomputed.
@@ -794,6 +951,8 @@ def check_model(design):
     import adsk.fusion as fusion
     p = {name: design.userParameters.itemByName(name).value * 10 for name in DEFAULTS}
     dimensions(p)
+    if any(BUILD_RIBS.values()):
+        reinforcement_dimensions(p)
     if not design.computeAll():
         raise RuntimeError('Fusion computeAll failed')
     root = design.rootComponent
@@ -845,6 +1004,13 @@ def check_model(design):
         if any(abs(actual - wanted) > .02 for actual, wanted in zip(extents, expected)):
             raise RuntimeError(b.name + ': unexpected bounds ' + str(extents) + '; expected ' + str(expected))
         report.append('{}: bounds_mm={}, volume_mm3={:.3f}'.format(b.name, extents, b.volume * 1000))
+    if any(BUILD_RIBS.values()):
+        expected = reinforcement_dimensions(p)
+        for axis in ('x','y'):
+            actual = design.userParameters.itemByName('rib_count_'+axis).value
+            if abs(actual-expected['count_'+axis])>1e-8:
+                raise RuntimeError('Rib station count did not recompute: '+axis)
+        report.append('RIB_CHECK '+json.dumps({'flags':BUILD_RIBS,'dimensions_mm':expected}))
     return report
 
 
@@ -852,9 +1018,14 @@ def verify_variants(design, progress):
     params = design.userParameters
     saved = {name: params.itemByName(name).expression for name in DEFAULTS}
     try:
-        for variant in [{'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'},
+        variants = [{'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'},
                         {'fit_clearance': '0.2 mm'},
-                        {'latch_thickness': '5 mm'}, {'latch_thickness': '6.5 mm'}]:
+                        {'latch_thickness': '5 mm'}, {'latch_thickness': '6.5 mm'}]
+        if any(BUILD_RIBS.values()):
+            variants += [{'length':'240 mm','width':'220 mm','body_height':'100 mm'},
+                         {'length':'107.9 mm','width':'30.1 mm','body_height':'30.2 mm','lid_height':'12.5 mm'},
+                         {'rib_spacing':'32 mm','rib_thickness':'3 mm','wall_rib_top_clearance':'8 mm'}]
+        for variant in variants:
             for name, expr in variant.items():
                 params.itemByName(name).expression = expr
             progress('Verify parameter variant: ' + str(variant))
@@ -873,7 +1044,7 @@ def export_meshes(design, fusion, output):
     """Export the actual native solids in mm; record hashes for offline audit."""
     output.mkdir(parents=True, exist_ok=True)
     manifest = {'script_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-                'units': 'mm', 'parts': {}}
+                'units': 'mm', 'parts': {}, 'reinforcement':dict(BUILD_RIBS)}
     for body in design.rootComponent.bRepBodies:
         path = output / (body.name.lower().replace(' ', '-') + '.stl')
         options = design.exportManager.createSTLExportOptions(body, str(path))
@@ -890,6 +1061,7 @@ def export_meshes(design, fusion, output):
             'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size}
     if set(manifest['parts']) != {'Body', 'Lid', 'Latch', 'Latch 2'}:
         raise RuntimeError('STL export requires exactly four named bodies')
+    manifest['parameters_mm'] = {name:design.userParameters.itemByName(name).value*10 for name in DEFAULTS}
     manifest['mesh_settings'] = {'surface_deviation_mm': .005, 'normal_deviation_degrees': .5,
                                  'maximum_edge_length_mm': 1}
     path = output / 'manifest.json'
@@ -918,6 +1090,9 @@ def run(context):
         adsk.doEvents()
     try:
         dimensions(DEFAULTS)
+        reinforcement_specs(BUILD_RIBS)
+        if any(BUILD_RIBS.values()):
+            reinforcement_dimensions(DEFAULTS)
         document = app.documents.add(core.DocumentTypes.FusionDesignDocumentType)
         document.name = 'Snaplock Storage Box — native feature reconstruction'
         design = fusion.Design.cast(app.activeProduct)

@@ -23,6 +23,7 @@ class FusionExport(unittest.TestCase):
             Path(opt.filename).write_bytes(opt.body.name.encode())
             return True
         design = NS(rootComponent=NS(bRepBodies=bodies),
+                    userParameters=NS(itemByName=lambda name:NS(value=model.DEFAULTS[name]/10)),
                     exportManager=NS(createSTLExportOptions=create, execute=execute))
         fusion = NS(DistanceUnits=NS(MillimeterDistanceUnits=1),
                     MeshRefinementSettings=NS(MeshRefinementHigh=2))
@@ -31,6 +32,7 @@ class FusionExport(unittest.TestCase):
             data = json.loads(path.read_text())
             self.assertEqual(set(data['parts']), {'Body', 'Lid', 'Latch', 'Latch 2'})
             self.assertEqual(len(data['script_sha256']), 64)
+            self.assertEqual(data['parameters_mm'],model.DEFAULTS)
             for row in data['parts'].values():
                 self.assertTrue((Path(temp) / row['file']).is_file())
                 self.assertEqual(len(row['sha256']), 64)

@@ -108,6 +108,8 @@ Số lời gọi builder, số marker log, số sketch/plane suy ra từ source 
 
 ## Hồ sơ bàn giao giúp agent tiếp tục đúng checkpoint.
 
+[Gân trong SCAD → Fusion 0.5.0](fusion-reinforcement.md) áp dụng quy trình chốt SCAD rồi chuyển profile thẳng sang Join Extrude, Mirror và Pattern. Agent dùng một sketch mẫu mỗi nhóm và mỗi phương; số lượng và khoảng cách Pattern bám công thức theo kích thước hộp. Audit biểu thức CSG xác nhận hình học trước lần Run native, manifest lưu công tắc cùng tham số để dựng đúng bản SCAD đối chiếu. Biến thể nhỏ có một trạm kiểm tra biên số lượng Pattern; sketch solver, feature phụ thuộc và recompute thực tế được xác nhận qua log của lần Run Fusion tương ứng.
+
 Một hồ sơ bàn giao chứa mục tiêu, phạm vi, source/hash, tham số, quyết định hình học, diff, lệnh chạy, kết quả, trạng thái runtime và bước xác nhận kế tiếp. Sổ lỗi giữ regression cho ca đã sửa và nêu miền áp dụng của recipe.
 
 Agent tiếp nối đọc checkpoint trước, đối chiếu Git status và hash hiện tại, rồi thực hiện bước còn lại của mục tiêu. Kiến thức đã rút được lưu thành tài liệu dự án có version; dữ liệu lần chạy được lưu thành báo cáo riêng theo source/hash.

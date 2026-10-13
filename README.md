@@ -49,6 +49,8 @@ Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc
 
 ## Chạy trong Fusion
 
+**Bản 0.5.0:** [Gân trong SCAD → Fusion](docs/fusion-reinforcement.md) bổ sung ba công tắc `BUILD_RIBS`, sáu tham số gân và dựng bằng Extrude/Mirror/Pattern. Cả ba công tắc mặc định `False`, cùng file SCAD chính; mẫu gân 240 × 220 × 100 mm dùng cả ba `True`. 47 test cùng 24 phép đối chiếu CSG offline đã đạt. Lần Run Fusion tiếp theo xác nhận feature và recompute native. `audit-fusion-ribs.py --native <export-folder>` đối chiếu STL với SCAD theo chính tham số và công tắc trong manifest export.
+
 **Bản thử 0.4.0:** [răng khóa bằng cung R5 và elip](docs/latch-analytic-construction.md) dùng bốn tiết diện XZ, một Extrude và hai Loft ngắn. [Khe hybrid](docs/scad-slot-hybrid.md) dùng một Extrude đuôi cùng Loft tám tiết diện. 36 test offline xác nhận công thức, vị trí tiết diện và ownership tool mô phỏng. Lần Run tiếp theo cung cấp bằng chứng native cho solver, Loft, Join, Mirror và biến thể độ dày. Log ghi `BUILD_METRICS` cùng `SLOT_BUILD`; mỗi audit lưu source hash xác định checkpoint.
 
 [Add-in thử chuỗi Plane → Sketch → Loft](fusion/LoftSketchTest/README.md) dựng năm tiết diện ở năm cao độ, rồi dùng một Loft nối thành khối. Log ghi công thức, vị trí và kết quả kiểm tra biến thể.
