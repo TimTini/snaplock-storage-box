@@ -1,0 +1,661 @@
+{
+  "status": "passed",
+  "source_sha256": "0f4a51309ff69f6c3ed25a6d902a9335b9e3f3ec79a6fa83fad949174526af29",
+  "fusion_version": "2705.1.30",
+  "helper_sha256": "288d935eff777aba4503efa1c5f9f86e7b02848656a72866e01fe42f4d1952ca",
+  "raw_log_sha256": "0bfde49083e4c13607e69b5856057d6f62342179d50d49e93674fff25bd3bcbd",
+  "events": [
+    {
+      "utc": "2026-10-13T06:18:07.628349+00:00",
+      "step": "constraints_before_fix",
+      "sketch": {
+        "name": "Constant measured arc at oversweep start",
+        "fully_constrained": false,
+        "constraints": 0,
+        "dimensions": 0,
+        "entities": [
+          {
+            "kind": "curve",
+            "index": 0,
+            "type": "adsk::fusion::SketchArc",
+            "fixed": true,
+            "fully_constrained": true
+          },
+          {
+            "kind": "point",
+            "index": 0,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 1,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": false,
+            "fully_constrained": false,
+            "sketch_coordinates_mm": [
+              1.8679999999999999,
+              15.751,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 2,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": false,
+            "fully_constrained": false,
+            "sketch_coordinates_mm": [
+              2.251,
+              16.5724,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 3,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              2.2509174820899682,
+              16.072446413878186,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "utc": "2026-10-13T06:18:07.630886+00:00",
+      "step": "constraints_after_fix",
+      "sketch": {
+        "name": "Constant measured arc at oversweep start",
+        "fully_constrained": true,
+        "constraints": 0,
+        "dimensions": 0,
+        "entities": [
+          {
+            "kind": "curve",
+            "index": 0,
+            "type": "adsk::fusion::SketchArc",
+            "fixed": true,
+            "fully_constrained": true
+          },
+          {
+            "kind": "point",
+            "index": 0,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 1,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              1.8679999999999999,
+              15.751,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 2,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              2.251,
+              16.5724,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 3,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              2.2509174820899682,
+              16.072446413878186,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "utc": "2026-10-13T06:18:07.647746+00:00",
+      "step": "constraints_before_fix",
+      "sketch": {
+        "name": "Constant analytic elliptical path",
+        "fully_constrained": false,
+        "constraints": 0,
+        "dimensions": 0,
+        "entities": [
+          {
+            "kind": "curve",
+            "index": 0,
+            "type": "adsk::fusion::SketchEllipticalArc",
+            "fixed": true,
+            "fully_constrained": true
+          },
+          {
+            "kind": "point",
+            "index": 0,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 1,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.976,
+              -4.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 2,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": false,
+            "fully_constrained": false,
+            "sketch_coordinates_mm": [
+              1.8687999999999998,
+              -8.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 3,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": false,
+            "fully_constrained": false,
+            "sketch_coordinates_mm": [
+              1.8687999999999998,
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "utc": "2026-10-13T06:18:07.651536+00:00",
+      "step": "constraints_after_fix",
+      "sketch": {
+        "name": "Constant analytic elliptical path",
+        "fully_constrained": true,
+        "constraints": 0,
+        "dimensions": 0,
+        "entities": [
+          {
+            "kind": "curve",
+            "index": 0,
+            "type": "adsk::fusion::SketchEllipticalArc",
+            "fixed": true,
+            "fully_constrained": true
+          },
+          {
+            "kind": "point",
+            "index": 0,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 1,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              0.976,
+              -4.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 2,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              1.8687999999999998,
+              -8.0,
+              0.0
+            ]
+          },
+          {
+            "kind": "point",
+            "index": 3,
+            "type": "adsk::fusion::SketchPoint",
+            "fixed": true,
+            "fully_constrained": true,
+            "sketch_coordinates_mm": [
+              1.8687999999999998,
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "utc": "2026-10-13T06:18:07.745461+00:00",
+      "step": "timeline",
+      "label": "initial",
+      "items": [
+        {
+          "index": 0,
+          "name": "Constant measured arc at oversweep start",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 1,
+          "name": "Path at measured arc Y",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 2,
+          "name": "Constant analytic elliptical path",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 3,
+          "name": "Parallel arc Sweep",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 4,
+          "name": "Centre patch on thickness",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 5,
+          "name": "Top clipping plane",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 6,
+          "name": "Bottom surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 7,
+          "name": "Bottom excess surface removal",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 8,
+          "name": "Top surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 9,
+          "name": "Top excess surface removal",
+          "healthy": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:07.746346+00:00",
+      "step": "counts",
+      "label": "initial",
+      "counts": {
+        "planes": 2,
+        "sketches": 2,
+        "sweeps": 1,
+        "lofts": 0,
+        "bodies": 1,
+        "timeline": 10
+      },
+      "constrained": [
+        true,
+        true
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:07.819483+00:00",
+      "step": "measurements",
+      "label": "initial",
+      "thickness_mm": 6.000000000000001,
+      "faces": 1,
+      "forward_samples": 231,
+      "reverse_samples": 441,
+      "forward_max_mm": 0.000800000000000245,
+      "reverse_max_mm": 0.0007998769363291083,
+      "tolerance_mm": 0.001
+    },
+    {
+      "utc": "2026-10-13T06:18:07.847226+00:00",
+      "step": "timeline",
+      "label": "thin",
+      "items": [
+        {
+          "index": 0,
+          "name": "Constant measured arc at oversweep start",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 1,
+          "name": "Path at measured arc Y",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 2,
+          "name": "Constant analytic elliptical path",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 3,
+          "name": "Parallel arc Sweep",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 4,
+          "name": "Centre patch on thickness",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 5,
+          "name": "Top clipping plane",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 6,
+          "name": "Bottom surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 7,
+          "name": "Bottom excess surface removal",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 8,
+          "name": "Top surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 9,
+          "name": "Top excess surface removal",
+          "healthy": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:07.848151+00:00",
+      "step": "counts",
+      "label": "thin",
+      "counts": {
+        "planes": 2,
+        "sketches": 2,
+        "sweeps": 1,
+        "lofts": 0,
+        "bodies": 1,
+        "timeline": 10
+      },
+      "constrained": [
+        true,
+        true
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:07.922685+00:00",
+      "step": "measurements",
+      "label": "thin",
+      "thickness_mm": 5.0,
+      "faces": 1,
+      "forward_samples": 231,
+      "reverse_samples": 441,
+      "forward_max_mm": 0.000800000000000245,
+      "reverse_max_mm": 0.0007998769363291083,
+      "tolerance_mm": 0.001
+    },
+    {
+      "utc": "2026-10-13T06:18:07.952214+00:00",
+      "step": "timeline",
+      "label": "thick",
+      "items": [
+        {
+          "index": 0,
+          "name": "Constant measured arc at oversweep start",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 1,
+          "name": "Path at measured arc Y",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 2,
+          "name": "Constant analytic elliptical path",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 3,
+          "name": "Parallel arc Sweep",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 4,
+          "name": "Centre patch on thickness",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 5,
+          "name": "Top clipping plane",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 6,
+          "name": "Bottom surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 7,
+          "name": "Bottom excess surface removal",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 8,
+          "name": "Top surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 9,
+          "name": "Top excess surface removal",
+          "healthy": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:07.953128+00:00",
+      "step": "counts",
+      "label": "thick",
+      "counts": {
+        "planes": 2,
+        "sketches": 2,
+        "sweeps": 1,
+        "lofts": 0,
+        "bodies": 1,
+        "timeline": 10
+      },
+      "constrained": [
+        true,
+        true
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:08.026585+00:00",
+      "step": "measurements",
+      "label": "thick",
+      "thickness_mm": 6.5,
+      "faces": 1,
+      "forward_samples": 231,
+      "reverse_samples": 441,
+      "forward_max_mm": 0.000800000000000245,
+      "reverse_max_mm": 0.0007998769363295522,
+      "tolerance_mm": 0.001
+    },
+    {
+      "utc": "2026-10-13T06:18:08.055397+00:00",
+      "step": "timeline",
+      "label": "restored",
+      "items": [
+        {
+          "index": 0,
+          "name": "Constant measured arc at oversweep start",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 1,
+          "name": "Path at measured arc Y",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 2,
+          "name": "Constant analytic elliptical path",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 3,
+          "name": "Parallel arc Sweep",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 4,
+          "name": "Centre patch on thickness",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 5,
+          "name": "Top clipping plane",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 6,
+          "name": "Bottom surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 7,
+          "name": "Bottom excess surface removal",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 8,
+          "name": "Top surface split",
+          "healthy": true,
+          "message": ""
+        },
+        {
+          "index": 9,
+          "name": "Top excess surface removal",
+          "healthy": true,
+          "message": ""
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:08.056348+00:00",
+      "step": "counts",
+      "label": "restored",
+      "counts": {
+        "planes": 2,
+        "sketches": 2,
+        "sweeps": 1,
+        "lofts": 0,
+        "bodies": 1,
+        "timeline": 10
+      },
+      "constrained": [
+        true,
+        true
+      ]
+    },
+    {
+      "utc": "2026-10-13T06:18:08.132910+00:00",
+      "step": "measurements",
+      "label": "restored",
+      "thickness_mm": 6.000000000000001,
+      "faces": 1,
+      "forward_samples": 231,
+      "reverse_samples": 441,
+      "forward_max_mm": 0.000800000000000245,
+      "reverse_max_mm": 0.0007998769363291083,
+      "tolerance_mm": 0.001
+    }
+  ]
+}

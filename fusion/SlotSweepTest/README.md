@@ -26,7 +26,11 @@ Phiên bản 0.1.1 Fix các curve và các SketchPoint riêng của hai sketch h
 
 Source có kiểm tra công thức offline cho đường elip, ba điểm đo, dịch chuyển cứng và khả năng phát hiện điểm lệch. Chạy native cung cấp bằng chứng cho solver, Sweep và cập nhật timeline. Tích hợp vào khe hoàn chỉnh tiếp nối mốc native đạt, ghép mặt kín và so sánh toàn bộ latch với SCAD/STL.
 
-Lần chạy native của 0.1.0 đã tạo một surface body với 10 timeline item healthy tại chiều dày 6 mm và dừng ở contract fully constrained của hai sketch. Mốc chạy 0.1.1 xác nhận ràng buộc bổ sung rồi tiếp tục phép đo và bộ biến thể.
+Lần chạy native của 0.1.0 đã tạo một surface body với 10 timeline item healthy tại chiều dày 6 mm và dừng ở contract fully constrained của hai sketch. [Log native 0.1.1 đã đối chiếu hash](../../docs/validation/slot-sweep-native.json) xác nhận cả hai sketch fully constrained, một face và 10 timeline item healthy qua chiều dày 6 → 5 → 6,5 → 6 mm trên Fusion 2705.1.30. Mỗi cấu hình đo 231 điểm theo chiều thuận và 441 điểm theo chiều ngược; residual lớn nhất là 0,0008 mm so với ngưỡng 0,001 mm.
+
+Log trước Fix điểm xác nhận cả hai curve đã fixed/fully constrained trong khi hai đầu cung của mỗi curve vẫn tự do. Fix bổ sung các điểm đưa cả hai sketch về fully constrained. Bài học áp dụng cho sketch hằng đo từ mẫu: curve và SketchPoint có trạng thái ràng buộc riêng; agent kiểm tra từng đối tượng và contract toàn sketch.
+
+Độ dịch X khởi tạo profile trong 0.1.1 là 2,251 mm; công thức elip tại đầu patch cho 2,2518 mm. Chênh 0,0008 mm này khớp residual quan sát. Mốc native giữ nguyên source đã đo; bước tích hợp dùng công thức chung cho điểm đầu profile và đường dẫn, đồng thời đối chiếu lại toàn bộ khe.
 
 ## Nguồn Autodesk
 

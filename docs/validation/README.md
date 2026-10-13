@@ -4,6 +4,7 @@ Các bản sao trong thư mục này giữ số đo, hash source và kết quả
 
 | Bằng chứng | Phạm vi |
 |---|---|
+| [Sweep Parallel native](slot-sweep-native.json) | Cung khe dịch chuyển, 2 plane/2 sketch/0 Loft, 10 timeline item healthy, fully constrained và chiều dày 6 → 5 → 6,5 → 6 mm; residual lấy mẫu lớn nhất 0,0008 mm |
 | [SCAD mặc định](scad-audit-default.json) và [biến thể](scad-audit-variant.json) | Mesh kín, bounds và sai khác thể tích của SCAD |
 | [Răng SCAD tròn/elip](scad-catch-csg.json) và [ảnh mặt cắt](scad-catch-csg-sections.png) | So sánh snapshot, STL và ba chiều dày; khoảng cách lấy mẫu hai chiều và timing tham khảo |
 | [Khe hybrid](scad-slot-hybrid.json), [bộ thử tiết diện](scad-slot-section-probes.json) và [ảnh đối chiếu](scad-slot-hybrid.png) | Đuôi Extrude, tám tiết diện trước; ngưỡng 0,03 mm và ba chiều dày |
