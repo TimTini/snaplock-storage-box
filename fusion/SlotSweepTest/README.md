@@ -32,6 +32,12 @@ Log trước Fix điểm xác nhận cả hai curve đã fixed/fully constrained
 
 Độ dịch X khởi tạo profile trong 0.1.1 là 2,251 mm; công thức elip tại đầu patch cho 2,2518 mm. Chênh 0,0008 mm này khớp residual quan sát. Mốc native giữ nguyên source đã đo; bước tích hợp dùng công thức chung cho điểm đầu profile và đường dẫn, đồng thời đối chiếu lại toàn bộ khe.
 
+## Quyết định sử dụng trong model
+
+Khe Snaplock hiện tại tiếp tục dùng Loft tám tiết diện liên kết với `latch_thickness`. Phần trước khe có 7 plane mới, 8 sketch và 1 Loft, tổng 16 bước theo source, tạo toàn bộ khối dụng cụ phía trước. Bài thử Sweep có 10 bước native cho một mặt cung. Mỗi số đếm đi cùng phạm vi đầu ra tương ứng.
+
+Agent đánh giá ứng viên thay thế toàn khe bằng tổng bước hoàn thiện cùng hình học, số đầu vào sửa độc lập, công thức, sai lệch và thời gian. Chiều dày của cả hai cách cập nhật qua tham số; hình dạng cung/đường elip của bài thử dùng sketch hằng với Fix. Phép dựng trực tiếp được ưu tiên khi tạo mô hình gọn và dễ chỉnh. Loft nhiều tiết diện liên kết công thức được giữ khi đáp ứng các tiêu chí tốt hơn phương án thay thế.
+
 ## Nguồn Autodesk
 
 - [Sweep Parallel và các chế độ hướng profile](https://help.autodesk.com/cloudhelp/ENU/Fusion-Patch/files/SFC-SWEEP.htm).

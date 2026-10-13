@@ -24,6 +24,8 @@ Agent ưu tiên hình học giải tích và feature diễn đạt trực tiếp
 
 [Bài thử Sweep Parallel cho cung khe](../fusion/SlotSweepTest/README.md) cung cấp source, bộ biến thể chiều dày và log native để xác nhận một vùng dịch chuyển cứng trước khi ghép vào model hoàn chỉnh.
 
+Agent so sánh các phương pháp trên cùng phần hình học và cùng tiêu chí đầu ra. Tổng bước bao gồm plane, sketch, tạo mặt/khối, Move, Split, Remove, Stitch, Combine và các feature phụ thực tế của phương pháp. Khả năng chỉnh sửa được đánh giá bằng số đầu vào độc lập, User Parameters và công thức dùng chung. Phương án được chọn có cây feature gọn, quan hệ dễ hiểu và sai lệch đạt mục tiêu. Loft nhiều tiết diện liên kết công thức được giữ khi phương án đó đáp ứng các tiêu chí tốt hơn ứng viên thay thế. Khe Snaplock hiện tại giữ Loft tám tiết diện; bài thử Sweep cung cấp bằng chứng cho một mặt cung với phạm vi riêng.
+
 Agent tạo User Parameters và expression cho kích thước, vị trí và các quan hệ phụ thuộc. Đơn vị API và đơn vị báo cáo được chuyển đổi rõ. Các lựa chọn topology và nội dung tạo lúc Run được ghi trong hướng dẫn.
 
 Agent giữ các đặc trưng thiết kế đã chốt, đồng thời dùng cấu trúc native gọn theo chức năng. Mỗi thay đổi đơn giản hóa có mô tả và phép đối chiếu. Agent tích hợp chỉnh sửa CAD theo trục, pivot và công thức hình học liên kết.

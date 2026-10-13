@@ -62,6 +62,8 @@ Agent nhận diện đường thẳng, cung tròn, elip và mặt tròn xoay tr�
 
 [Bài thử cung khe bằng Sweep Parallel](../fusion/SlotSweepTest/README.md) giữ một cung đo và một đường elip trong hai sketch. Chiều dày liên kết qua Move và mặt phẳng cắt; log native đo patch qua các biến thể để xác nhận ứng viên trước khi tích hợp.
 
+Tiêu chí chốt phương pháp là tổng bước trên cùng phạm vi hình học, số đầu vào sửa độc lập, khả năng cập nhật và sai lệch. Một công thức chung có thể điều khiển nhiều tiết diện. Khe Snaplock giữ Loft tám tiết diện theo chiều dày: 7 plane mới + 8 sketch + 1 Loft tạo toàn bộ khối dụng cụ phần trước khe. Sweep thử nghiệm có 10 timeline item cho một mặt cung; so sánh thay thế toàn khe cần tính thêm các mặt và feature hoàn thiện tương ứng. Phép dựng trực tiếp được chọn khi đạt lợi ích gọn và dễ sửa qua phép đối chiếu đầy đủ.
+
 Checkpoint hiện tại của răng Snaplock là source, review API, unit và mesh offline; checkpoint Fusion runtime tiếp nối các bước trên.
 
 ## Tài liệu API
