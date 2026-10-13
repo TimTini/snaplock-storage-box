@@ -1,5 +1,7 @@
 # Bản in test kích thước nhỏ
 
+**Kết quả lắp 13/10/2026:** preset nắp 11,7 mm làm ổ cầu và răng latch thấp hơn vị trí tham chiếu 3,3 mm. [Kiểm tra assembly](../../docs/latch-minimum-fit.md) tái hiện khoảng 34,684 mm³ giao nhau giữa mỗi latch với thân. [Nắp đối chứng 15 mm](../minimum-lid15/README.md) cung cấp STL riêng để thử tiếp với thân và latch đã in. Các file bên dưới giữ nguyên trạng thái mẫu cũ để đối chiếu.
+
 Bản test dùng source SCAD chính và [preset riêng](parameters.json). Preset thay đổi đúng bốn tham số, với bước chọn 0,1 mm:
 
 | Tham số | Giá trị test (mm) | Ngưỡng theo các tham số mặc định (mm) |

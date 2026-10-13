@@ -1,0 +1,75 @@
+{
+  "scope": "rigid STL assembly; physical deformation and snap force require print testing",
+  "audit_script_sha256": "5d0a5bbb87950a4647591a11a9b8477f668f9b362d8ee6caa76c632192235960",
+  "scad_sha256": "b9358a419a16ec6fe20e6f336ab78fef6c8c0b9cdb568c45a96f8e72def929de",
+  "parameters_mm": {
+    "length": 107.9,
+    "width": 30.1,
+    "body_height": 30.2,
+    "lid_height": 11.7
+  },
+  "printed_part_hashes": {
+    "body": "7a88229e1b4c71b66dcaa8ef61e94f6aa2d506069d9e6dbecb0995f5f3b80d9f",
+    "lid": "f055c29c776524035d51fe615e3e41af7b109fac8df1ccb95f2e597878decd84",
+    "latch": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+  },
+  "latch_extents_mm": [
+    27.99598376499489,
+    31.83514404296875,
+    6.0
+  ],
+  "original_latch_extents_mm": [
+    28.0,
+    31.83514404296875,
+    6.0
+  ],
+  "pivot_lowering_mm": 3.3000000000000007,
+  "ball_pair_pitch_mm": 20.5,
+  "socket_pair_pitch_mm": 21,
+  "per_ball_inward_x_offset_mm": 0.25,
+  "poses": {
+    "minimum": {
+      "lid_height_mm": 11.7,
+      "lid_socket_world_z_mm": 35.9,
+      "catch_core_world_z_interval_mm": [
+        16.8276,
+        20.8276
+      ],
+      "body_pocket_world_z_interval_mm": [
+        18.7,
+        25.2
+      ],
+      "latch_body_overlap_mm3": [
+        34.68440926727482,
+        34.68446717122293
+      ],
+      "latch_lid_overlap_mm3": [
+        -2.400423609882907e-16,
+        1.0046488380793805e-16
+      ],
+      "body_lid_overlap_mm3": 6.2745953474611005
+    },
+    "control-height15": {
+      "lid_height_mm": 15,
+      "lid_socket_world_z_mm": 39.2,
+      "catch_core_world_z_interval_mm": [
+        20.127600000000005,
+        24.127600000000005
+      ],
+      "body_pocket_world_z_interval_mm": [
+        18.7,
+        25.2
+      ],
+      "latch_body_overlap_mm3": [
+        0.0001726346626225975,
+        0.00017263466264275383
+      ],
+      "latch_lid_overlap_mm3": [
+        -2.365252091407477e-14,
+        2.2811613709095013e-16
+      ],
+      "body_lid_overlap_mm3": 6.2747627825592005
+    }
+  },
+  "control_lid_sha256": "ff7caec766d8ac62d8a19639bbc20000192428179d38e7ce1c2a0d1ba010f9df"
+}
