@@ -1,0 +1,14 @@
+{
+  "fileFormatVersion": "1",
+  "parameterSets": {
+    "reinforced-240x220": {
+      "part": "body",
+      "length": "240",
+      "width": "220",
+      "body_height": "100",
+      "wall_ribs": "true",
+      "wall_floor_ribs": "true",
+      "floor_ribs": "true"
+    }
+  }
+}

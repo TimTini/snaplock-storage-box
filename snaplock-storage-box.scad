@@ -26,6 +26,18 @@ pin_radius = 5;
 latch_ball_radius = 3.75;
 fit_clearance = 0;
 latch_thickness = 6;
+/* [Internal reinforcement] */
+// Independent switches: wall uprights, wall-to-floor feet, and floor grid.
+wall_ribs = false;
+wall_floor_ribs = false;
+floor_ribs = false;
+// Maximum distance between centred rib stations (mm).
+rib_spacing = 45;
+rib_thickness = 2.4;
+floor_rib_height = 4;
+// Upright wall projection and width of the 45-degree foot (mm).
+wall_rib_depth = 3;
+wall_rib_foot = 12;
 /* [Print layout] */
 part = "layout"; // [layout,body,lid,latch]
 layout_gap = 20;
@@ -48,6 +60,10 @@ assert(lid_height>bevel_height+3 && fit_clearance<=0.5);
 assert(mount_end>=corner_radius+20 && layout_gap>=0);
 assert(pin_radius>4.5 && pin_radius<=5.5 && latch_ball_radius>=3.5 && latch_ball_radius<=4);
 assert($fn>=32);
+assert(is_bool(wall_ribs) && is_bool(wall_floor_ribs) && is_bool(floor_ribs));
+assert(rib_thickness>0 && rib_spacing>rib_thickness);
+assert(floor_rib_height>0 && floor_rib_height<body_height-body_floor-20);
+assert(wall_rib_depth>0 && wall_rib_foot>0);
 
 // Circular arcs through measured start, middle and end. Used only for local profiles.
 function cross2(a,b) = a[0]*b[1]-a[1]*b[0];
@@ -171,15 +187,60 @@ module lid_mount() {
     }
 }
 
-module box(lid=false) {
-    difference() {
+function rib_stations(span) =
+    let(margin=max(corner_radius,wall+rib_thickness/2),
+        count=max(1,ceil((span-2*margin)/rib_spacing)-1))
+    [for(i=[1:count]) margin+(span-2*margin)*i/(count+1)];
+
+module internal_reinforcement() {
+    if(floor_ribs || wall_ribs || wall_floor_ribs) intersection() {
+        // Clip additions to the original outside shell, retaining its envelope.
+        shell_blank();
         union() {
-            shell_blank(lid);
-            for(x=[mount_end+(lid?0.1:0),length-mount_end+(lid?0.1:0)])
-                translate([x,0,0]) for(s=[-1,1]) scale([s,1,1])
-                    if(lid) lid_mount(); else body_mount();
+            if(floor_ribs) {
+                for(x=rib_stations(length))
+                    translate([x-rib_thickness/2,wall-eps,body_floor-eps])
+                        cube([rib_thickness,width-2*wall+2*eps,floor_rib_height+eps]);
+                for(y=rib_stations(width))
+                    translate([wall-eps,y-rib_thickness/2,body_floor-eps])
+                        cube([length-2*wall+2*eps,rib_thickness,floor_rib_height+eps]);
+            }
+            if(wall_ribs || wall_floor_ribs) {
+                // Keep the upper 20 mm available for the existing mechanism.
+                top=body_height-20;
+                foot=min(wall_rib_foot,top-body_floor,(min(length,width)-2*wall)/4);
+                depth=min(wall_rib_depth,(top-body_floor)/2,(min(length,width)-2*wall)/4);
+                profiles=concat(
+                    wall_ribs ? [[[wall-eps,body_floor-eps],[wall+depth,body_floor-eps],
+                                  [wall+depth,top-depth],[wall-eps,top]]] : [],
+                    wall_floor_ribs ? [[[wall-eps,body_floor-eps],[wall+foot,body_floor-eps],
+                                        [wall-eps,body_floor+foot]]] : []);
+                for(profile=profiles) {
+                    for(x=rib_stations(length)) for(s=[0,1])
+                        translate([0,s*width,0]) mirror([0,s,0])
+                            web(x-rib_thickness/2,rib_thickness,profile);
+                    for(y=rib_stations(width)) for(s=[0,1])
+                        translate([s*length,0,0]) mirror([s,0,0])
+                            multmatrix([[0,1,0,0],[1,0,0,0],[0,0,1,0],[0,0,0,1]])
+                                web(y-rib_thickness/2,rib_thickness,profile);
+                }
+            }
         }
-        cavity(lid);
+    }
+}
+
+module box(lid=false) {
+    union() {
+        difference() {
+            union() {
+                shell_blank(lid);
+                for(x=[mount_end+(lid?0.1:0),length-mount_end+(lid?0.1:0)])
+                    translate([x,0,0]) for(s=[-1,1]) scale([s,1,1])
+                        if(lid) lid_mount(); else body_mount();
+            }
+            cavity(lid);
+        }
+        if(!lid) internal_reinforcement();
     }
 }
 

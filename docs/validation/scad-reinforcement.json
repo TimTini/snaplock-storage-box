@@ -1,0 +1,817 @@
+{
+  "scad_sha256": "57e1a467d137bc34a337cfec3cfc97b4fb91a179679f9396d1e252efadc8e5c0",
+  "scope": "SCAD geometry; physical load validation follows printed samples",
+  "cases": {
+    "original_off": {
+      "part": "body",
+      "definitions": [
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          237.85000610351562,
+          131.14999389648438,
+          56.2491455078125
+        ]
+      ],
+      "volume_mm3": 165365.9006724536,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "4f6706eb66c52c4cd810924d366686d30ca2b5e03b909a46d52377d95b4130f6"
+    },
+    "original_default": {
+      "part": "body",
+      "definitions": [],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          237.85000610351562,
+          131.14999389648438,
+          56.2491455078125
+        ]
+      ],
+      "volume_mm3": 165365.9006724536,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "4f6706eb66c52c4cd810924d366686d30ca2b5e03b909a46d52377d95b4130f6"
+    },
+    "large_off": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 455897.9739437538,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "e7bba5b95038c4f7a432e9b2af6160d27eb490bc870312a510417270959ed307"
+    },
+    "large_floor": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 477677.4731340371,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "b81c96772bf7d2d228c62323062bed0bc4eb3d355c4cd36232f05ccbd83284cb",
+      "added_volume_mm3": 21779.490653134024,
+      "removed_volume_mm3": 0.003928436160398026,
+      "added_bounds_mm": [
+        [
+          5.390315055847168,
+          5.390315055847168,
+          2.0
+        ],
+        [
+          344.60968017578125,
+          197.0,
+          10.139638900756836
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.007513349099870259
+    },
+    "large_wall": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=true",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 466115.87855353457,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "8f2a092aded5ff2ff9423eaad37b5975d85ad842463dc22094161bfbd519d6e2",
+      "added_volume_mm3": 10217.89938703774,
+      "removed_volume_mm3": 0.0028347660374947736,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.006139287551189462
+    },
+    "large_wall_floor": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 458435.25472161296,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "cb3fc109f86ffb7538942886746b38cdbe924168a13d965840a3ed7f1164fe65",
+      "added_volume_mm3": 2537.2715925098782,
+      "removed_volume_mm3": 0.002659831951540015,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          13.99899959564209
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.006154863474145664
+    },
+    "large_floor_wall": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 487879.91577394056,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "604dbfa505384367059cb1e379a077277b94e751c2710afd71d93e5dd70ed192",
+      "added_volume_mm3": 31981.9367132222,
+      "removed_volume_mm3": 0.003675395816875001,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.006242788499394265
+    },
+    "large_floor_gusset": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=false",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 478975.61059105396,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "a8fa87910083af5b902390581045796a217158eb7e6a7726f9dd53a1aa3cd588",
+      "added_volume_mm3": 23077.62209967827,
+      "removed_volume_mm3": 0.0011855551993373108,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          13.99899959564209
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.00869090492007256
+    },
+    "large_wall_gusset": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 467939.32930811244,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "7f75a92f12ca33544fcea0f34003dc4f709cce303d080bf16879ffe2ddeb6fff",
+      "added_volume_mm3": 12041.3459417469,
+      "removed_volume_mm3": 0.0026820574421435595,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.005955524945740398
+    },
+    "large_all": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 488479.6805278038,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "2e92702c28a82421c12c1bf055c040b27829aaa2e08ebe9197aa77b123c3788b",
+      "added_volume_mm3": 32581.6908095703,
+      "removed_volume_mm3": 0.000745383346232605,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.01111085122520299
+    },
+    "large_dense": {
+      "part": "body",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true",
+        "rib_spacing=32",
+        "rib_thickness=3",
+        "floor_rib_height=6"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          350.0,
+          208.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 536796.0288164578,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "740c24c113dd6c352136219a6eea4df924fbec3327c278d0dd5c535bd5caa7a7",
+      "added_volume_mm3": 80898.0454685128,
+      "removed_volume_mm3": 0.0032564304557733217,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          347.0,
+          197.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.007611152676158309
+    },
+    "minimum_off": {
+      "part": "body",
+      "definitions": [
+        "length=107.9",
+        "width=30.1",
+        "body_height=30.2",
+        "lid_height=11.7",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          107.9000015258789,
+          38.099998474121094,
+          34.44914627075195
+        ]
+      ],
+      "volume_mm3": 31738.302070551446,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "7a88229e1b4c71b66dcaa8ef61e94f6aa2d506069d9e6dbecb0995f5f3b80d9f"
+    },
+    "minimum_default": {
+      "part": "body",
+      "definitions": [
+        "length=107.9",
+        "width=30.1",
+        "body_height=30.2",
+        "lid_height=11.7"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          107.9000015258789,
+          38.099998474121094,
+          34.44914627075195
+        ]
+      ],
+      "volume_mm3": 31738.302070551446,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "7a88229e1b4c71b66dcaa8ef61e94f6aa2d506069d9e6dbecb0995f5f3b80d9f"
+    },
+    "minimum_all": {
+      "part": "body",
+      "definitions": [
+        "length=107.9",
+        "width=30.1",
+        "body_height=30.2",
+        "lid_height=11.7",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          107.9000015258789,
+          38.099998474121094,
+          34.44914627075195
+        ]
+      ],
+      "volume_mm3": 32818.977328898,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "ecc7ead089a7d78471b53478d6b9562c3848dc2537eb94bef03fabfd77bdeb42",
+      "added_volume_mm3": 1080.675330575593,
+      "removed_volume_mm3": 5.686984726101703e-06,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          104.9000015258789,
+          27.100000381469727,
+          10.199000358581543
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 7.980753402542667e-05
+    },
+    "original_all": {
+      "part": "body",
+      "definitions": [
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          237.85000610351562,
+          131.14999389648438,
+          56.2491455078125
+        ]
+      ],
+      "volume_mm3": 176057.38075158015,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "d01e386f8e2950b4123719ca34d332d12dbed2f7c45719b7986e0301acad22a1",
+      "added_volume_mm3": 10691.480064915975,
+      "removed_volume_mm3": 0.0010732019885229722,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          234.85000610351562,
+          120.1500015258789,
+          31.999000549316406
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.0005632334080952038
+    },
+    "lid_off": {
+      "part": "lid",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          350.0,
+          209.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 245584.4486560258,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "69ee67ad66fe21edc61576e5b83025afe3180000e467d68823eb1a1f9503ecb6"
+    },
+    "lid_on": {
+      "part": "lid",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          350.0,
+          209.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 245584.4486560258,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "69ee67ad66fe21edc61576e5b83025afe3180000e467d68823eb1a1f9503ecb6"
+    },
+    "latch_off": {
+      "part": "latch",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.9884392478793,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+    },
+    "latch_on": {
+      "part": "latch",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.9884392478793,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+    },
+    "large_layout": {
+      "part": "layout",
+      "definitions": [
+        "length=350",
+        "width=200",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          397.99798583984375,
+          446.2403564453125,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 741090.1097060916,
+      "watertight": true,
+      "components": 4,
+      "stl_sha256": "d85557f9a67df09c9e1e980b9bc0e8aa0d8e7636f2eafeb260001faff2b22e08"
+    },
+    "printer_off": {
+      "part": "body",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=false",
+        "wall_ribs=false",
+        "wall_floor_ribs=false"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          240.0,
+          228.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 369031.56162606366,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "2ca58574559542586ec77eed4092fcf812fd6cb9027f5562669801b39dd918a5"
+    },
+    "printer_all": {
+      "part": "body",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          240.0,
+          228.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 393963.3732945311,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "e7b8ff8851ae1f8aa7dd55de94fe0dc751ba993aab1647554e71c4bc44433723",
+      "added_volume_mm3": 24931.80798358923,
+      "removed_volume_mm3": 0.002557810745202005,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          237.0,
+          217.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.003028648018263206
+    },
+    "printer_lid": {
+      "part": "lid",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          240.0,
+          229.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 189230.25622709622,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "a3f7ad0b1c51658ca30a3873df75b72ab2307b6899e004ebd7434b77673932ed"
+    },
+    "printer_latch": {
+      "part": "latch",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.9884392478793,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+    }
+  },
+  "usable_print_volume_mm": [
+    250,
+    250,
+    250
+  ],
+  "baseline_scad_sha256": "b49402478c9219a5acdbb5b6198b0bb5763e52ef1cc04d2718bcc2688e96b22e",
+  "default_matches_baseline": true,
+  "status": "passed"
+}

@@ -28,12 +28,12 @@ def references():
     return dict(body=body, lid=lid, latch=latch)
 
 
-def build(part, out, definitions=()):
+def build(part, out, definitions=(), source=SCAD):
     command = [str(OPENSCAD), '--backend', 'Manifold', '--hardwarnings', '--export-format', 'binstl',
                '-D', f'part="{part}"', '-o', str(out)]
     for definition in definitions:
         command += ['-D', definition]
-    result = subprocess.run(command + [str(SCAD)], capture_output=True, text=True)
+    result = subprocess.run(command + [str(source)], capture_output=True, text=True)
     (out.with_suffix('.log')).write_text(result.stdout + result.stderr, encoding='utf-8')
     assert result.returncode == 0, result.stderr
     mesh = trimesh.load_mesh(out)

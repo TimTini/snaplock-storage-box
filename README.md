@@ -14,6 +14,8 @@ Kích thước vỏ chính đo từ mẫu là **237,85 × 123,15 mm**, cao thân
 
 Customizer đặt nhóm `Main dimensions` lên đầu với `length`, `width` và `body_height`. Thân và nắp dùng chung `length` và `width`; `lid_height` nằm trong nhóm `Lid and shell details`. Các nhóm cơ cấu, bố trí in và độ mịn nằm phía dưới.
 
+Nhóm `Internal reinforcement` bổ sung ba công tắc gân độc lập trong thân hộp: `wall_ribs` cho gân đứng trên thành, `wall_floor_ribs` cho chân tam giác nối thành với đáy, `floor_ribs` cho lưới gân đáy. Mỗi công tắc bật/tắt trực tiếp; khoảng cách và kích thước gân chỉnh được. [Mẫu 240 × 220 × 100 mm](print-tests/reinforced-240x220/README.md) bật cả ba nhóm, có preset và STL riêng cho khổ in sử dụng 250 mm. File chính mặc định tắt cả ba để giữ hình học mẫu gốc. SCAD được dựng và kiểm chứng trước bước chuyển gân sang Fusion.
+
 Mẫu giữ gân loe, mặt vát, đầu cầu/ổ cầu, mép ngàm côn 50°, hốc trụ với chamfer và tiết diện đàn hồi thay đổi theo chiều dày khóa. [Chi tiết hình học và kiểm chứng](docs/scad-reference.md) ghi phép dựng cùng vùng xấp xỉ.
 
 **Kiểm chứng hiện tại:** cấu hình mặc định và biến thể vỏ 280 × 155 mm, thân cao 70 mm, đều tạo bốn solid kín trong layout. So sánh boolean với bốn phần chính của STL xác nhận sai khác thể tích đối xứng: thân **0,0927%**, nắp **0,0659%**, mỗi khóa **0,0492%**. Sai lệch tọa độ bao lớn nhất **0,0097 mm**. Đây là các chỉ số hình học; thử in, lực khóa và độ bền là mốc kiểm chứng vật lý tiếp theo.

@@ -1,0 +1,112 @@
+{
+  "scad_sha256": "57e1a467d137bc34a337cfec3cfc97b4fb91a179679f9396d1e252efadc8e5c0",
+  "preset_sha256": "f7cbf6fb038373020970cfb98d290d322d8cb4738dd8c83506c1bb0523cb56d6",
+  "usable_print_volume_mm": [
+    250,
+    250,
+    250
+  ],
+  "parts": {
+    "body": {
+      "part": "body",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.99658203125,
+          0.0
+        ],
+        [
+          240.0,
+          228.0,
+          104.2491455078125
+        ]
+      ],
+      "volume_mm3": 393963.3732945311,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "e7b8ff8851ae1f8aa7dd55de94fe0dc751ba993aab1647554e71c4bc44433723",
+      "added_volume_mm3": 24931.80798358923,
+      "removed_volume_mm3": 0.002557810745202005,
+      "added_bounds_mm": [
+        [
+          3.0,
+          3.0,
+          2.0
+        ],
+        [
+          237.0,
+          217.0,
+          79.9990005493164
+        ]
+      ],
+      "boolean_remnant_volume_mm3": 0.003028648018263206
+    },
+    "lid": {
+      "part": "lid",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0,
+          -8.0,
+          0.0
+        ],
+        [
+          240.0,
+          229.2403564453125,
+          19.495716094970703
+        ]
+      ],
+      "volume_mm3": 189230.25622709622,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "a3f7ad0b1c51658ca30a3873df75b72ab2307b6899e004ebd7434b77673932ed"
+    },
+    "latch": {
+      "part": "latch",
+      "definitions": [
+        "length=240",
+        "width=220",
+        "body_height=100",
+        "floor_ribs=true",
+        "wall_ribs=true",
+        "wall_floor_ribs=true"
+      ],
+      "bounds_mm": [
+        [
+          0.0020077968947589397,
+          0.0,
+          0.0
+        ],
+        [
+          27.99799156188965,
+          31.83514404296875,
+          6.0
+        ]
+      ],
+      "volume_mm3": 3512.9884392478793,
+      "watertight": true,
+      "components": 1,
+      "stl_sha256": "92a538508b820f076c9820fc0ba89685ab92c3dab5825b5ff013c5824719059b"
+    }
+  },
+  "scope": "SCAD geometry; physical load validation follows printed samples",
+  "status": "passed",
+  "preset_native_export_verified": true,
+  "preset_export_sha256": "eafa774c0cd423a8ae6dd22ac68c2559c6b9e0d66696247df282e7609f9655e2",
+  "preset_zero_area_fragments": 3
+}
