@@ -37,6 +37,8 @@ Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc
 
 ## Chạy trong Fusion
 
+[Add-in thử chuỗi Plane → Sketch → Loft](fusion/LoftSketchTest/README.md) dựng năm tiết diện ở năm cao độ, rồi dùng một Loft nối thành khối. Log ghi công thức, vị trí và kết quả kiểm tra biến thể.
+
 [Add-in thử Plane và Sketch](fusion/PlaneSketchTest/README.md) so sánh ba cách tạo cùng hình học: plane riêng, plane dùng chung và Extrude Start Offset. Bài thử tạo ba document mới và kiểm tra thay đổi tham số trực tiếp trong Fusion.
 
 Log chẩn đoán xác định bốn cạnh `Latch plate` còn tự do trong khi các điểm đã đủ ràng buộc. Script tại commit `6bc9da4` đổi thứ tự dựng profile: tạo điểm/cạnh trước, áp dimension và constraint tọa độ sau. Bộ 28 test offline xác nhận luồng thứ tự và chẩn đoán. Hướng sửa đang ở mốc kiểm chứng offline; lần chạy native tiếp theo xác nhận tác dụng trong Fusion. Mốc native thành công bên trên thuộc source `4cad327e…`, trước thay đổi này.

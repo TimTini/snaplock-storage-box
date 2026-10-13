@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion",
+  "type": "addin",
+  "author": "",
+  "description": {"": "Five Plane-Sketch pairs followed by one solid Loft, with native measurement logs."},
+  "version": "0.1.0",
+  "supportedOS": "windows|mac",
+  "runOnStartup": false,
+  "editEnabled": true
+}

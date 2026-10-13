@@ -1,5 +1,7 @@
 # PlaneSketchTest — thử mặt phẳng và sketch trong Fusion
 
+[LoftSketchTest](../LoftSketchTest/README.md) minh họa chuỗi năm cặp Plane → Sketch liên tiếp rồi một Loft dùng cả năm tiết diện.
+
 Add-in tạo ba document mới, mỗi document có ba trụ cùng hình học. Mỗi lần Run thực hiện bài thử trực tiếp. Document đang mở được kích hoạt lại khi bài thử kết thúc; ba document thử vẫn nằm trong các tab của Fusion.
 
 | Document | Cách dựng | Plane tạo thêm | Sketch | Extrude | Timeline dự kiến |
