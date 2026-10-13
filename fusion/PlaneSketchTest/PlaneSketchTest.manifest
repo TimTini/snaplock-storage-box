@@ -1,0 +1,10 @@
+{
+  "autodeskProduct": "Fusion",
+  "type": "addin",
+  "author": "",
+  "description": {"": "Compare separate planes, a shared plane and Extrude start offsets."},
+  "version": "0.1.0",
+  "supportedOS": "windows|mac",
+  "runOnStartup": false,
+  "editEnabled": true
+}
