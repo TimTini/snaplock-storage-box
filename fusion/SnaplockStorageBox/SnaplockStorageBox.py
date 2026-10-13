@@ -622,21 +622,33 @@ def build_latch_teeth(n, latch, symmetry):
     """R5 core and two short ellipse-to-circle transitions, clipped to thickness."""
     op = n.fusion.FeatureOperations
     base = n.comp.xZConstructionPlane
-    if abs(base.geometry.normal.y + 1) > 1e-8:
-        raise RuntimeError('Catch analytic construction expects XZ normal toward -Y')
-    # XZ's positive normal is -Y, hence negative plane offsets and extrusion.
-    shoulder_front = n.ellipse(base, '-17.0724 mm', '8.25 mm',
+    normal = base.geometry.normal
+    if abs(abs(normal.y) - 1) > 1e-8 or abs(normal.x) + abs(normal.z) > 1e-8:
+        raise RuntimeError('Catch XZ plane normal must align with model Y: ' +
+                           str([normal.x, normal.y, normal.z]))
+    sign = 1 if normal.y > 0 else -1
+    n.progress('CATCH_XZ_PLANE ' + json.dumps({'normal_xyz': [normal.x, normal.y, normal.z],
+                                             'offset_sign_for_positive_y': sign}))
+    shoulder_front = n.ellipse(base, '{:.4f} mm'.format(sign * 17.0724), '8.25 mm',
                                'latch_thickness / 2', '6.75 mm', '5 mm',
                                'Catch front shoulder ellipse')
-    tip_front = n.circle(base, '-18.0724 mm', '5.5 mm', 'latch_thickness / 2',
+    tip_front = n.circle(base, '{:.4f} mm'.format(sign * 18.0724), '5.5 mm', 'latch_thickness / 2',
                          '5 mm', 'Catch R5 front section')
+    sketch_normal = tip_front.xDirection.crossProduct(tip_front.yDirection)
+    if abs(abs(sketch_normal.y) - 1) > 1e-8 or abs(sketch_normal.x) + abs(sketch_normal.z) > 1e-8:
+        raise RuntimeError('Catch sketch normal must align with model Y: ' +
+                           str([sketch_normal.x, sketch_normal.y, sketch_normal.z]))
+    core_negative = sketch_normal.y < 0
+    n.progress('CATCH_CORE_DIRECTION ' + json.dumps({
+        'sketch_normal_xyz': [sketch_normal.x, sketch_normal.y, sketch_normal.z],
+        'negative_extent_for_positive_y': core_negative}))
     front = n.loft(shoulder_front, tip_front, op.NewBodyFeatureOperation,
                    'Catch front transition').bodies.item(0)
     core = n.extrude(tip_front, '4 mm', op.NewBodyFeatureOperation,
-                     'Catch R5 core', negative=True).bodies.item(0)
-    tip_rear = n.circle(base, '-22.0724 mm', '5.5 mm', 'latch_thickness / 2',
+                     'Catch R5 core', negative=core_negative).bodies.item(0)
+    tip_rear = n.circle(base, '{:.4f} mm'.format(sign * 22.0724), '5.5 mm', 'latch_thickness / 2',
                         '5 mm', 'Catch R5 rear section')
-    shoulder_rear = n.ellipse(base, '-23.0724 mm', '8.25 mm',
+    shoulder_rear = n.ellipse(base, '{:.4f} mm'.format(sign * 23.0724), '8.25 mm',
                               'latch_thickness / 2', '6.75 mm', '5 mm',
                               'Catch rear shoulder ellipse')
     rear = n.loft(tip_rear, shoulder_rear, op.NewBodyFeatureOperation,

@@ -8,7 +8,7 @@ Gọi `t = latch_thickness`, `u = z - t/2` và `d = 5 - sqrt(25-u²)`. Biên đ�
 
 Tiết diện vai nằm tại Y=17.0724 và 23.0724 mm. Tiết diện R5 nằm tại Y=18.0724 và 22.0724 mm. Đoạn giữa dùng Extrude dài 4 mm. Hai đoạn chuyển tiếp dài 1 mm dùng hai Loft với hai profile mỗi Loft. Các khối được Join, Intersect với envelope X=[-2,3.5], Y=[17.0724,23.0724], Z=[0,t], rồi Mirror body qua X=14 và Join vào tấm khóa.
 
-Các tâm cung/elip dùng biểu thức `latch_thickness / 2`; chiều cao envelope dùng `latch_thickness`. Sketch giữ dimension của tâm, bán kính và bán trục. Hệ trục sketch được ánh xạ bằng `xDirection` và `yDirection` thực tế. Kiểm tra runtime xác nhận normal của Origin XZ hướng -Y trước khi dùng offset âm.
+Các tâm cung/elip dùng biểu thức `latch_thickness / 2`; chiều cao envelope dùng `latch_thickness`. Sketch giữ dimension của tâm, bán kính và bán trục. Hệ trục sketch được ánh xạ bằng `xDirection` và `yDirection` thực tế. Dấu offset được tính từ normal của Origin XZ; hướng Extrude được tính riêng từ tích có hướng `xDirection × yDirection` của sketch. Cả hai normal được kiểm tra thẳng hàng với trục Y. Log `CATCH_XZ_PLANE` và `CATCH_CORE_DIRECTION` ghi giá trị thực tế cùng dấu được chọn.
 
 ## Số lượng theo source
 
