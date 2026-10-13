@@ -4,6 +4,7 @@ Các bản sao trong thư mục này giữ số đo, hash source và kết quả
 
 | Bằng chứng | Phạm vi |
 |---|---|
+| [Ma trận 65 cấu hình](latch-size-matrix.json), [CSV](latch-size-matrix.csv) và [ảnh lắp](latch-size-assemblies.png) | 54 cấu hình đạt tiêu chí latch, 10 cấu hình đổi chiều cao nắp cấn latch, một thân 25 mm mặc định bị SCAD từ chối; tiếp xúc thân–nắp/bản lề ghi riêng |
 | [Lắp latch minimum](latch-minimum-fit.json) và [mặt cắt](latch-minimum-fit-sections.png) | Đúng STL bộ minimum đã in; nắp 11,7 mm hạ ổ cầu/răng 3,3 mm; đối chứng nắp 15 mm giữ Body/Latch và giảm giao latch–thân từ 34,684 xuống 0,000173 mm³ |
 | [Gân Fusion offline](fusion-reinforcement-offline.json) | 24 phép CSG từ biểu thức native so SCAD, ba kích thước × tám tổ hợp công tắc; lần Run Fusion xác nhận solver/kernel và cập nhật Pattern |
 | [Gân trong SCAD](scad-reinforcement.json) | Ba công tắc, đủ tám tổ hợp bật/tắt và 27 cấu hình; baseline và bản gân cao/chân lớn; khoảng hở nắp đóng và năm góc mở lấy mẫu; preset 240 × 220 × 100 mm cho khổ sử dụng 250 mm |

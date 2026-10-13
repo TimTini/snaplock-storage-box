@@ -8,6 +8,8 @@ Bản [in test kích thước nhỏ](print-tests/minimum/README.md) có STL sẵ
 
 **Kiểm tra lắp mẫu minimum:** [Assembly latch](docs/latch-minimum-fit.md) xác định nắp 11,7 mm hạ ổ cầu/răng khóa 3,3 mm so với cơ cấu tham chiếu, tạo cấn với thân. [Nắp đối chứng 15 mm](print-tests/minimum-lid15/README.md) dùng tiếp thân và latch đã in, kèm STL riêng và kết quả đo giao hình học.
 
+[Ma trận 65 cấu hình](docs/latch-size-matrix.md) mở rộng kiểm tra lắp kín sang 51 bộ kích thước thân, các cỡ 240 × 120 trong ảnh, sáu chiều cao nắp và ba cấu hình có gân. Báo cáo tách kết quả latch, giới hạn source và giao thân–nắp/bản lề.
+
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. File độc lập, dựng hình bằng primitive, phép boolean, mặt cắt có tham số và module. Chọn `part` trong Customizer: `layout` hiện thân, nắp và hai khóa; `body`, `lid`, `latch` hiện từng chi tiết. F6 render solid; các tham số nằm đầu file.
 
 **Checkpoint SCAD 13/10/2026:** [răng khóa dùng trụ R5, elip và hai vùng bao lồi ngắn](docs/scad-catch-csg.md) thay 25 tiết diện của phần răng. [Khe đàn hồi hybrid](docs/scad-slot-hybrid.md) dùng đuôi Extrude và tám tiết diện phần trước; cực đại khoảng cách quan sát với snapshot là 0,02426 mm qua ba chiều dày 5/6/6,5 mm, theo ngưỡng 0,03 mm. Fusion Python 0.4.0 dùng cùng cấu trúc và công thức, với bước Run native riêng.

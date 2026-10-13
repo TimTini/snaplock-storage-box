@@ -1,5 +1,7 @@
 # Kiểm tra lắp latch của mẫu minimum
 
+[Ma trận mở rộng 65 cấu hình](latch-size-matrix.md) kiểm tra các cỡ 240 × 120 trong ảnh và vài chục tổ hợp khác. Kết quả tách tiêu chí giao latch, cấn latch và giới hạn source, cùng số đo thân–nắp/bản lề.
+
 Người dùng báo bộ minimum in thật gắn được latch vào nắp; khi cài latch vào thân, mép nắp và mép thân bị hở. Phép kiểm tra sau dùng đúng ba STL trong `print-tests/minimum` và dựng một nắp cao 15 mm làm đối chứng.
 
 ## Nguyên nhân hình học
