@@ -172,6 +172,7 @@ class Native:
         import adsk.fusion as fusion
         self.core, self.fusion = core, fusion
         self.design, self.comp, self.progress = design, component, progress
+        self._planes = []
         self.value = core.ValueInput.createByString
         self.point = core.Point3D.create
 
@@ -189,11 +190,17 @@ class Native:
         # whose current value happens to be zero: it must remain associative.
         if offset == '0 mm':
             return base
+        # Reuse only identical references and expressions within this build;
+        # equal evaluated heights can diverge when parameters change.
+        for previous_base, previous_offset, plane in self._planes:
+            if previous_base == base and previous_offset == offset:
+                return plane
         inp = self.comp.constructionPlanes.createInput()
         if not inp.setByOffset(base, self.value(offset)):
             raise RuntimeError('Cannot define plane: ' + name)
         result = self.comp.constructionPlanes.add(inp)
         result.name, result.isLightBulbOn = name, False
+        self._planes.append((base, offset, result))
         return result
 
     def coordinates(self, sk, base, coords):
@@ -635,9 +642,7 @@ def mount_make_body_front(n, anchor):
                     '4 mm', 'Front pocket upper chamfer end')
     lower_tool = n.loft(bottom, bottom2, op.NewBodyFeatureOperation,
                          'Front pocket lower chamfer').bodies.item(0)
-    barrel_sk = n.circle(n.comp.xYConstructionPlane, 'body_height - 10.5 mm', x, y,
-                         '5 mm', 'Front pocket barrel profile')
-    barrel_tool = n.extrude(barrel_sk, '4.5 mm', op.NewBodyFeatureOperation,
+    barrel_tool = n.extrude(bottom2, '4.5 mm', op.NewBodyFeatureOperation,
                             'Front pocket barrel').bodies.item(0)
     upper_tool = n.loft(top1, top2, op.NewBodyFeatureOperation,
                         'Front pocket upper chamfer').bodies.item(0)

@@ -88,6 +88,8 @@ Bộ 3MF thời khóa biểu tách bảng, nhóm bảng tên và nhóm thẻ mô
 
 ## Agent tối ưu timeline theo vai trò và phụ thuộc.
 
+[Rà phương pháp toàn Snaplock](modeling-method-review.md) áp dụng việc dùng chung plane khi base và biểu thức offset trùng nhau, cùng dùng lại profile tròn có hai consumer. Agent giữ key theo biểu thức để quan hệ tham số tiếp tục cập nhật. Các ứng viên Revolve cho hốc/lip được đánh giá bằng hình học và tổng bước; chuỗi tám tiết diện đã đạt dung sai tiếp tục giữ theo phạm vi bằng chứng của nó.
+
 Chuỗi plane → sketch → feature lần lượt đặt tiết diện, định nghĩa profile và tạo hình khối. Một tiết diện Loft có cao độ riêng tạo ra nhu cầu plane/sketch tương ứng. Hai sketch dùng cùng base và expression offset có thể chia sẻ một plane sau khi kiểm chứng tham chiếu và recompute.
 
 Agent lập bảng producer → consumer cho sketch, tool body và feature. Body dụng cụ được theo dõi đến phép Combine hoặc feature tiêu thụ. Body cuối được đối chiếu với contract thiết kế. Số object và thời gian dựng được đo tại checkpoint có hash rõ ràng.

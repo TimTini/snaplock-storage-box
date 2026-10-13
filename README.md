@@ -45,11 +45,11 @@ Bản dựng lại có tham số từ STL `Snaplock_Storage_Boxes_240x120(2).stl
 
 [Tài liệu tự học OpenSCAD và Fusion Python](docs/fusion-python-tu-hoc.md) tổng hợp bài học từ năm dự án, hệ tọa độ sketch, Pattern 2 × 1, quản lý body, timeline và kiểm chứng.
 
-Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc trụ có hai chamfer 1 mm, chốt cầu được giới hạn đúng vùng, mép trước khóa R5 và răng/khe đàn hồi loft qua 25 tiết diện theo chiều dày. Lòng hộp được khoét sau khi ghép tai theo thứ tự boolean của SCAD. Fusion loft nội suy giữa các tiết diện, còn SCAD nối các tiết diện bằng mặt phẳng; sai khác của đầu ra native sẽ được đo từ STL xuất bởi Fusion.
+Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc trụ có hai chamfer 1 mm, chốt cầu được giới hạn đúng vùng và mép trước khóa R5. Răng khóa dùng trụ R5, tiết diện elip và hai Loft chuyển tiếp ngắn; khe đàn hồi dùng đuôi Extrude và phần trước Loft tám tiết diện. Lòng hộp được khoét sau khi ghép tai theo thứ tự boolean của SCAD. Fusion Loft nội suy giữa các tiết diện, còn SCAD nối các tiết diện bằng mặt phẳng; sai khác của đầu ra native được đo từ STL xuất bởi Fusion.
 
 ## Chạy trong Fusion
 
-**Bản 0.5.0:** [Gân trong SCAD → Fusion](docs/fusion-reinforcement.md) bổ sung ba công tắc `BUILD_RIBS`, sáu tham số gân và dựng bằng Extrude/Mirror/Pattern. Cả ba công tắc mặc định `False`, cùng file SCAD chính; mẫu gân 240 × 220 × 100 mm dùng cả ba `True`. 47 test cùng 24 phép đối chiếu CSG offline đã đạt. Lần Run Fusion tiếp theo xác nhận feature và recompute native. `audit-fusion-ribs.py --native <export-folder>` đối chiếu STL với SCAD theo chính tham số và công tắc trong manifest export.
+**Bản 0.5.1:** [Rà phương pháp toàn project](docs/modeling-method-review.md) bổ sung dùng chung plane cùng base/công thức và sketch tròn hốc ngàm. [Gân trong SCAD → Fusion](docs/fusion-reinforcement.md) dùng ba công tắc `BUILD_RIBS`, sáu tham số gân và Extrude/Mirror/Pattern. Cả ba công tắc mặc định `False`, cùng file SCAD chính; mẫu gân enhanced 240 × 220 × 100 mm dùng cả ba `True`. 50 test cùng 24 phép đối chiếu CSG offline đã đạt. Lần Run Fusion tiếp theo xác nhận feature và recompute native. `audit-fusion-ribs.py --native <export-folder>` đối chiếu STL với SCAD theo chính tham số và công tắc trong manifest export.
 
 **Bản thử 0.4.0:** [răng khóa bằng cung R5 và elip](docs/latch-analytic-construction.md) dùng bốn tiết diện XZ, một Extrude và hai Loft ngắn. [Khe hybrid](docs/scad-slot-hybrid.md) dùng một Extrude đuôi cùng Loft tám tiết diện. 36 test offline xác nhận công thức, vị trí tiết diện và ownership tool mô phỏng. Lần Run tiếp theo cung cấp bằng chứng native cho solver, Loft, Join, Mirror và biến thể độ dày. Log ghi `BUILD_METRICS` cùng `SLOT_BUILD`; mỗi audit lưu source hash xác định checkpoint.
 
@@ -68,7 +68,13 @@ Mặc định `VERIFY_VARIANTS = True`: sau khi dựng, script đổi kích thư
 
 Sau khi dựng và kiểm tra thành công, script xuất bốn STL theo mm vào `fusion/SnaplockStorageBox/exports/<timestamp>/`. Hộp thoại cuối và `last-run.log` ghi thư mục cụ thể. `manifest.json` lưu hash source Python, hash từng STL và độ mịn mesh (surface deviation 0,005 mm). Mỗi lần chạy có thư mục riêng.
 
-Chạy so sánh đầu ra Fusion với STL gốc và SCAD đã audit:
+Export 0.5.x có `parameters_mm` và `reinforcement` trong manifest. Lệnh sau dựng đúng SCAD từ cấu hình export rồi đối chiếu từng part, áp dụng cho cả mẫu gốc và mẫu có gân:
+
+```powershell
+python audit-fusion-ribs.py --native 'fusion/SnaplockStorageBox/exports/<timestamp>' --output 'exports/fusion-native-check'
+```
+
+Cấu hình mặc định theo STL gốc, ba nhóm gân tắt và toàn bộ kích thước mặc định SCAD dùng thêm phép so với cả STL gốc và SCAD đã audit:
 
 ```powershell
 python audit-fusion.py 'fusion/SnaplockStorageBox/exports/<timestamp>'
@@ -82,7 +88,7 @@ Thay `<timestamp>` bằng thư mục được ghi trong log. Script chỉ bù t�
 |---|---|
 | Vỏ và vát đáy thân/nắp | Loft giữa hai tiết diện có đường thẳng/cung tròn, Extrude thành đứng, Loft Cut và Extrude Cut cho lòng |
 | Ổ/chốt cầu | Revolve 360° từ nửa đường tròn; Cut, Intersect và Combine để giữ đúng vùng chi tiết |
-| Khóa | Loft 25 tiết diện cho răng/khe đàn hồi; Revolve đầu cầu; Extrude Cut mép trước R5; cylinder tool + Fillet R2 + Combine Cut cho rãnh cong; Extrude Cut mặt dốc mở khóa |
+| Khóa | Trụ R5/elip và hai Loft ngắn cho răng; đuôi Extrude cùng Loft tám tiết diện cho khe; Revolve đầu cầu; Extrude Cut mép trước R5; cylinder tool + Fillet R2 + Combine Cut cho rãnh cong; Extrude Cut mặt dốc mở khóa |
 | Tai ghép | Extrude tiết diện YZ, Intersect footprint XY, Loft côn tròn và boolean lip vòng; ổ trụ với hai đầu côn 1 mm |
 | Chi tiết lặp | Mirror hai đầu của mỗi cụm; Rectangular Pattern hai cụm theo chiều dài; Body Pattern tạo khóa thứ hai |
 | Bố trí | Move feature có biểu thức liên kết tham số; một component gốc chứa Body, Lid, Latch, Latch 2 |
@@ -94,6 +100,8 @@ Bản này bố trí chi tiết tách rời; Joint chuyển động thuộc bư�
 Giới hạn Personal Use là [10 tài liệu đang cho phép chỉnh sửa](https://www.autodesk.com/products/fusion-360/blog/the-10-document-limit-for-personal-use-explained-in-7-steps/). Script tạo một tài liệu mới cho toàn bộ mẫu.
 
 ## Rà soát feature và timeline
+
+[Rà toàn project tại bản 0.5.1](docs/modeling-method-review.md) ghi các vùng đã áp dụng phương pháp, phần dùng chung plane/sketch, ứng viên Revolve cần đối chiếu và bước xác nhận native. Các số liệu bản 0.2.0 bên dưới là checkpoint lịch sử trước tối ưu răng, khe và gân.
 
 - Bỏ construction plane offset literal `0 mm`; sketch dùng trực tiếp mặt phẳng gốc. Những offset bằng biểu thức/tham số vẫn được giữ, kể cả khi giá trị hiện tại bằng 0, để chỉnh tham số còn cập nhật đúng.
 - Các Body Pattern đặt phương một bằng 2 và phương hai bằng 1. Bỏ `patternComputeOption` khỏi helper này vì cả ba caller đều pattern body; tùy chọn đó chỉ áp dụng khi pattern feature. Xem [quantityTwo](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_RectangularPatternFeatureInput_quantityTwo.htm).

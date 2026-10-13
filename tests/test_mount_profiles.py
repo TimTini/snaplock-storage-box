@@ -59,3 +59,12 @@ class MountProfiles(unittest.TestCase):
         for call in lip_calls:
             self.assertAlmostEqual(mm(call.args[2]), 126.15)
             self.assertAlmostEqual(mm(call.args[3]), 61)
+
+    def test_pocket_barrel_uses_lower_chamfer_endpoint_profile(self):
+        n = self.native()
+        n.circle.side_effect = lambda *args: NS(name=args[-1])
+        model.mount_make_body_front(n, 'mount_end')
+        chamfer = next(c for c in n.loft.call_args_list if c.args[3]=='Front pocket lower chamfer')
+        barrel = next(c for c in n.extrude.call_args_list if c.args[3]=='Front pocket barrel')
+        self.assertIs(barrel.args[0], chamfer.args[1])
+        self.assertEqual(barrel.args[1], '4.5 mm')

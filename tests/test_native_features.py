@@ -93,6 +93,7 @@ class NativeFeatureTests(unittest.TestCase):
 
     def test_parameter_currently_zero_keeps_associative_offset_plane(self):
         n = model.Native.__new__(model.Native)
+        n._planes = []
         n.value = lambda value: value
         inp = NS(setByOffset=Mock(return_value=True))
         result = NS(name='', isLightBulbOn=True)
@@ -100,6 +101,36 @@ class NativeFeatureTests(unittest.TestCase):
         base = object()
         self.assertIs(n.plane(base, 'fit_clearance', 'Parametric offset'), result)
         inp.setByOffset.assert_called_once_with(base, 'fit_clearance')
+
+    def test_reuses_only_matching_base_and_exact_offset_expression(self):
+        n = model.Native.__new__(model.Native)
+        n._planes = []
+        n.value = lambda value: value
+        inp = NS(setByOffset=Mock(return_value=True))
+        planes = NS(createInput=Mock(return_value=inp),
+                    add=Mock(side_effect=lambda _: NS(name='', isLightBulbOn=True)))
+        n.comp = NS(constructionPlanes=planes)
+        base, other = object(), object()
+        first = n.plane(base, 'body_height - 10.5 mm', 'Chamfer end')
+        self.assertIs(n.plane(base, 'body_height - 10.5 mm', 'Barrel start'), first)
+        self.assertIsNot(n.plane(other, 'body_height - 10.5 mm', 'Other base'), first)
+        self.assertIsNot(n.plane(base, 'body_height - 10 mm - 0.5 mm', 'Other expression'), first)
+        self.assertEqual(planes.add.call_count, 3)
+        self.assertEqual(first.name, 'Chamfer end')
+
+    def test_plane_reuse_is_scoped_to_one_native_builder(self):
+        base = object()
+        inp = NS(setByOffset=Mock(return_value=True))
+        planes = NS(createInput=Mock(return_value=inp),
+                    add=Mock(side_effect=lambda _: NS(name='', isLightBulbOn=True)))
+        builders = [model.Native.__new__(model.Native) for _ in range(2)]
+        for n in builders:
+            n._planes = []
+            n.value = lambda value: value
+            n.comp = NS(constructionPlanes=planes)
+        self.assertIsNot(builders[0].plane(base, 'body_height', 'First document'),
+                         builders[1].plane(base, 'body_height', 'Second document'))
+        self.assertEqual(planes.add.call_count, 2)
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-# Gân trong SCAD → Fusion Python 0.5.0
+# Gân trong SCAD → Fusion Python 0.5.1
 
 SCAD tại checkpoint `bd919e1` là baseline đã được người dùng chốt. Fusion 0.5.0 chuyển ba nhóm gân trong lòng hộp sang các feature có tham số: Extrude, Mirror và Rectangular Pattern. Răng khóa, khe đàn hồi, nắp và tai bản lề tiếp tục dùng cấu trúc của bản 0.4.0.
 
@@ -12,13 +12,15 @@ Ba công tắc đầu [script](../fusion/SnaplockStorageBox/SnaplockStorageBox.p
 | `wall_floor_ribs` | Chân tam giác nối thành với đáy |
 | `floor_ribs` | Lưới gân trên mặt trong đáy |
 
-Mẫu đã chốt 240 × 220 × 100 mm dùng cả ba công tắc `True`. Đặt dòng `BUILD_RIBS` như sau, rồi sửa ba giá trị `length`, `width`, `body_height` trong `DEFAULTS` thành `240.0`, `220.0`, `100.0`.
+Mẫu enhanced đã chốt 240 × 220 × 100 mm dùng cả ba công tắc `True` và kích thước gân mặc định 45/2,4/4/5/20/5 mm trong bảng bên dưới. Cấu hình này khớp [preset enhanced](../print-tests/reinforced-240x220-enhanced/parameters.json). Đặt dòng `BUILD_RIBS` như sau, rồi sửa ba giá trị `length`, `width`, `body_height` trong `DEFAULTS` thành `240.0`, `220.0`, `100.0`.
 
 ```python
 BUILD_RIBS = {'wall_ribs': True, 'wall_floor_ribs': True, 'floor_ribs': True}
 ```
 
 Giữ các mục còn lại trong `DEFAULTS`. Chạy **Utilities → Add-Ins → Scripts and Add-Ins → Scripts → SnaplockStorageBox → Run**. Script tạo document mới, kiểm tra biến thể và xuất STL theo cấu hình ban đầu sau khi phục hồi tham số.
+
+[Preset baseline trước tăng gân](../print-tests/reinforced-240x220/parameters.json) dùng `wall_rib_depth=3`, `wall_rib_foot=12`, `wall_rib_top_clearance=20` mm; đặt ba giá trị đó trong `DEFAULTS` để dựng đúng mẫu baseline. Bản 0.5.1 thêm dùng chung plane theo base/công thức và profile tròn hốc ngàm; [báo cáo rà phương pháp](modeling-method-review.md) ghi phạm vi thay đổi cùng kiểm chứng.
 
 Các kích thước gân chỉnh tiếp trong **Modify → Change Parameters**. Công thức native của plane, sketch, Extrude, Mirror và Pattern tham chiếu trực tiếp các tham số này. Việc chọn lại nhóm gân được áp dụng qua `BUILD_RIBS` và lần Run tạo document mới. STL được xuất tại thời điểm Run; thao tác chỉnh document sau đó tạo ra trạng thái mới để xuất lại bằng Fusion.
 
