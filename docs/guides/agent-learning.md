@@ -1,5 +1,7 @@
 ﻿# Agent học từ quy trình OpenSCAD đến Fusion Python.
 
+[Fusion 0.6.0 đồng bộ cơ cấu](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint SCAD 14/10/2026. Blank, răng, channel, ramp và tâm tai đã được cập nhật theo công thức. Hai tool relief dùng chung tám sketch với các phép Move dương 15 mm và `lid_height`. Bộ offline gồm 58 test đạt; bước Run native tiếp theo xác nhận solver, topology và recompute. Các mốc Fusion 0.5.1 trong hồ sơ mô tả trạng thái lịch sử trước bước đồng bộ.
+
 Bộ tài liệu dùng chung cho năm dự án, gồm [cẩm nang này](agent-learning.md), [sổ lỗi và cách sửa](error-cookbook.md), [mẫu giao việc](scad-to-fusion-task.md) và [tài liệu kỹ thuật chi tiết](fusion-python-tu-hoc.md). Nội dung dùng câu khẳng định và các chỉ dẫn tích cực. Mỗi kết luận kỹ thuật gắn với source, test hoặc báo cáo của phiên bản tương ứng.
 
 Lộ trình [đọc nguồn internet và thực hành](internet-learning.md) bổ sung tài liệu OpenSCAD, Autodesk Fusion API, BOSL2, Trimesh, CloudCompare và CGAL, kèm bài thử cùng bằng chứng cần lưu.

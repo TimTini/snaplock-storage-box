@@ -3,7 +3,7 @@
   "type": "script",
   "author": "",
   "description": {"": "Parametric snaplock storage box reconstructed with native Fusion features."},
-  "version": "0.5.1",
+  "version": "0.6.0",
   "supportedOS": "windows|mac",
   "editEnabled": true
 }

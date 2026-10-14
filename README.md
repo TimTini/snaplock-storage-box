@@ -42,4 +42,4 @@ python tools/compare-scad.py
 
 Audit đối chiếu STL gốc dùng file local `reference/Snaplock_Storage_Boxes_240x120(2).stl`. [Báo cáo source hiện tại](docs/validation/scad-current-default.json) tách kiểm tra solid khỏi mục tiêu giống STL lịch sử; sai khác nắp 0,2481% được ghi cùng ngưỡng lịch sử 0,2%.
 
-**Fusion 0.5.1 giữ baseline cơ cấu trước đợt sửa SCAD này.** Bước chuyển công thức latch/bản lề và Run native Fusion là mốc riêng. Bước kiểm chứng tiếp theo là in mẫu vật lý để đo độ khít, lực gài và tuổi thọ đàn hồi. [README checkpoint trước](docs/history/README-before-parametric-fix.md) giữ các quyết định và báo cáo lịch sử.
+**Fusion Python 0.6.0 đã cập nhật công thức latch và tâm tai theo SCAD.** [Hồ sơ đồng bộ Fusion](docs/geometry/fusion-parametric-sync.md) ghi kiểm chứng offline và bước Run native tiếp theo. Bước kiểm chứng vật lý tiếp theo là in mẫu để đo độ khít, lực gài và tuổi thọ đàn hồi. [README checkpoint trước](docs/history/README-before-parametric-fix.md) giữ các quyết định và báo cáo lịch sử.

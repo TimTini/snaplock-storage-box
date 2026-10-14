@@ -1,0 +1,21 @@
+{
+  "scope": "Fusion source and offline expression/construction tests; native Fusion Run pending",
+  "version": "0.6.0",
+  "script_sha256": "b69decbc299c567b23e8f4658dd958f47491806b81df5da6f6075442df801ccb",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "unit_tests": 58,
+  "unit_test_result": "OK",
+  "native_run_status": "pending",
+  "physical_print_status": "pending",
+  "native_verification_variants": "VERIFY_VARIANTS=True in production script",
+  "checks": [
+    "shared body/lid anchors",
+    "lid-height-linked catch/ramp/blank/tail",
+    "head/catch clearance windows",
+    "eight reused section sketches",
+    "tool-body consumption",
+    "native exact sphere retained; SCAD-only facet compensation",
+    "lid-height and mount source bounds"
+  ],
+  "review": "independent read-only review: no definite formula defect; shared-loft and coplanar-tool kernel behavior awaits native Run"
+}

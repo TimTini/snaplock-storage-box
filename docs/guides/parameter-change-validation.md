@@ -1,5 +1,7 @@
 # Quy trình kiểm tra toàn bộ model khi thay đổi tham số
 
+[Fusion 0.6.0 đồng bộ cơ cấu](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint SCAD 14/10/2026. Blank, răng, channel, ramp và tâm tai đã được cập nhật theo công thức. Hai tool relief dùng chung tám sketch với các phép Move dương 15 mm và `lid_height`. Bộ offline gồm 58 test đạt; bước Run native tiếp theo xác nhận solver, topology và recompute. Các mốc Fusion 0.5.1 trong hồ sơ mô tả trạng thái lịch sử trước bước đồng bộ.
+
 Quy trình áp dụng cho model SCAD và bản Fusion chuyển từ cùng baseline. Agent kiểm tra cả hình học từng part, quan hệ lắp, cơ cấu, chuyển động và khổ in. Hồ sơ thử được gắn với source/hash, phiên bản công cụ, tham số và đầu ra cụ thể. Nội dung này bổ sung bước kiểm chứng bắt buộc trước khi chốt một preset in thử hoặc chuyển baseline sang Fusion.
 
 ## 1. Agent chốt miền thiết kế và giới hạn sử dụng.

@@ -1,5 +1,7 @@
 ﻿# Sổ lỗi OpenSCAD và Fusion ghi cách sửa cùng phạm vi kiểm chứng.
 
+[Fusion 0.6.0 đồng bộ cơ cấu](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint SCAD 14/10/2026. Blank, răng, channel, ramp và tâm tai đã được cập nhật theo công thức. Hai tool relief dùng chung tám sketch với các phép Move dương 15 mm và `lid_height`. Bộ offline gồm 58 test đạt; bước Run native tiếp theo xác nhận solver, topology và recompute. Các mốc Fusion 0.5.1 trong hồ sơ mô tả trạng thái lịch sử trước bước đồng bộ.
+
 Sổ lỗi thuộc [bộ tài liệu agent](agent-learning.md). Mỗi ca ghi hiện tượng, bằng chứng, thay đổi và mức xác nhận. Các recipe sketch được áp dụng theo loại entity và cấu trúc cụ thể của từng dự án.
 
 ## Ca 1 xác định expression bị Fusion từ chối.

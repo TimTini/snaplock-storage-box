@@ -2,6 +2,8 @@
 
 ## Source hiện tại — 14/10/2026
 
+- [Fusion 0.6.0 offline](fusion-parametric-sync-offline.json): 58 test đạt, công thức cơ cấu đồng bộ với SCAD; checkpoint Run native tiếp theo xác nhận solver và topology BRep.
+
 - [Assembly JSON](scad-parametric-assembly.json), [CSV](scad-parametric-assembly.csv), [biểu đồ](scad-parametric-summary.png) và [ảnh bộ lắp](scad-parametric-assemblies.png): 112 đầu vào, 107 bộ lắp đóng đạt và 5 đầu vào bị từ chối theo giới hạn source; 48 tư thế mở lấy mẫu.
 - [Đối chiếu STL gốc](scad-current-default.json): hash source hiện tại, kiểm tra solid và trạng thái mục tiêu sai khác lịch sử được ghi riêng.
 - [Diễn giải công thức và phạm vi](../geometry/latch-parametric-fix.md).

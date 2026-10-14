@@ -38,7 +38,10 @@ DERIVED = {
     'lid_inner_bevel': 'bottom_bevel - wall + lid_floor / sqrt(3)',
     'lid_inner_bevel_top': 'lid_floor + lid_inner_bevel * sqrt(3)',
     'mount_spacing': 'length - 2 * mount_end',
-    'lid_mount_end': 'mount_end + 0.1 mm',
+    'lid_mount_end': 'mount_end',
+    'latch_span_delta': 'lid_height - 15 mm',
+    'latch_relief_floor': 'if(latch_span_delta < 0 mm; 7 mm; -0.001 mm)',
+    'latch_head_window_end': '17.0724 mm + min(0 mm; latch_span_delta)',
     'lid_layout_y': 'width + layout_gap + 18 mm',
     'latch_layout_y': '2 * width + 2 * layout_gap + 36 mm',
 }
@@ -63,14 +66,14 @@ def dimensions(p):
         raise ValueError('latch_ball_radius must be in [3.5, 4] mm')
     if not 5 <= p['latch_thickness'] <= 6.5:
         raise ValueError('latch_thickness must be in [5, 6.5] mm for the measured ramp/notch')
-    if p['length'] <= 2 * p['mount_end'] + 39:
+    if p['length'] <= 2 * (p['mount_end'] + 21):
         raise ValueError('length does not leave space between the mount pairs')
     if p['width'] <= 2 * p['corner_radius'] + 2 * p['wall']:
         raise ValueError('width is too small for the cavity corners')
     lid_bevel = p['bottom_bevel'] - p['wall'] + p['lid_floor'] / math.sqrt(3)
     if lid_bevel <= 0 or lid_bevel >= p['corner_radius'] - p['wall']:
         raise ValueError('lid inner bevel must be positive and smaller than its inside corner radius')
-    if p['mount_end'] <= p['corner_radius'] + 19.5:
+    if p['mount_end'] < p['corner_radius'] + 20:
         raise ValueError('mount_end places a mounting web on a rounded corner')
     if 2 * p['corner_radius'] >= min(p['length'], p['width']):
         raise ValueError('outside corner radius consumes the straight sides')
@@ -86,11 +89,11 @@ def dimensions(p):
         'lid_inner_bevel_top': p['lid_floor'] + (p['bottom_bevel'] - p['wall'] + p['lid_floor'] / root3) * root3,
         'mount_spacing': p['length'] - 2 * p['mount_end'],
         'mount_centres': [p['mount_end'], p['length'] - p['mount_end']],
-        'lid_mount_centres': [p['mount_end'] + .1, p['length'] - p['mount_end'] + .1],
+        'lid_mount_centres': [p['mount_end'], p['length'] - p['mount_end']],
     }
     if p['body_height'] <= max(d['body_inner_bevel_top'], d['outer_bevel_height']) + 20:
         raise ValueError('body_height is too small for the mounts and floor bevel')
-    if p['lid_height'] <= max(d['lid_inner_bevel_top'], d['outer_bevel_height']) + 3:
+    if p['lid_height'] <= max(d['lid_inner_bevel_top'], d['outer_bevel_height'] + 3):
         raise ValueError('lid_height is too small for the cavity bevel')
     if p['wall'] >= p['corner_radius'] or p['wall'] >= p['width'] / 2:
         raise ValueError('wall consumes the cavity')
@@ -776,32 +779,53 @@ def slot_front_section(fraction):
     return z, slot, arcs
 
 
+def shift_profile_y(coords, arcs, offset):
+    shifted = [(x, '('+y+') + ('+offset+')') for x, y in coords]
+    shifted_arcs = {i: ((mid[0], '('+mid[1]+') + ('+offset+')'), radius)
+                    for i, (mid, radius) in arcs.items()}
+    return shifted, shifted_arcs
+
+
 def build_latch_relief(n, body, symmetry):
     op = n.fusion.FeatureOperations
     xy = n.comp.xYConstructionPlane
-    tail = n.profile(xy, '0 mm', [
+    coords, arcs = shift_profile_y([
         ('3.5 mm', '17.0714 mm'), ('5 mm', '17.0714 mm'),
         ('5 mm', '26.0724 mm'), ('4 mm', '26.0724 mm'),
-        ('4 mm', '17.5724 mm'), ('3.5 mm', '17.0724 mm')], 'Relief fixed tail', {
+        ('4 mm', '17.5724 mm'), ('3.5 mm', '17.0724 mm')], {
             2: (('4.5 mm', '26.5724 mm'), '.5 mm'),
-            4: (('3.5 mm + 0.5 mm / sqrt(2)', '17.5724 mm - 0.5 mm / sqrt(2)'), '.5 mm')})
+            4: (('3.5 mm + 0.5 mm / sqrt(2)', '17.5724 mm - 0.5 mm / sqrt(2)'), '.5 mm')},
+        'latch_span_delta')
+    tail = n.profile(xy, '0 mm', coords, 'Relief fixed tail', arcs)
     tail_tool = n.extrude(tail, 'latch_thickness', op.NewBodyFeatureOperation,
                           'Relief fixed tail extrusion').bodies.item(0)
     sections = []
     for index in range(SLOT_SECTION_COUNT):
-        fraction = index / (SLOT_SECTION_COUNT-1)
-        z, coords, arcs = slot_front_section(fraction)
+        z, coords, arcs = slot_front_section(index / (SLOT_SECTION_COUNT-1))
+        # Reuse these eight sketches for both windows. Positive moves stay valid
+        # at lid_height=15, where a delta-only Move would have zero displacement.
+        coords, arcs = shift_profile_y(coords, arcs, '-15 mm')
         sections.append(n.profile(xy, z, coords, 'Relief front section {:02d}'.format(index), arcs))
+    head = n.section_loft(sections, op.NewBodyFeatureOperation, 'Head relief tool').bodies.item(0)
     tool = n.section_loft(sections, op.NewBodyFeatureOperation, 'Spring relief tool').bodies.item(0)
+    n.translate(head, '0 mm', '15 mm', '0 mm', 'Place head relief')
+    n.translate(tool, '0 mm', 'lid_height', '0 mm', 'Place moving catch relief')
     n.combine(tool, [tail_tool], op.JoinFeatureOperation, 'Join front and fixed tail relief')
-    # Mirror tool bodies, then cut; a mirrored Cut with an outside overhang grew bounds.
-    n.mirror([tool], symmetry, 'Mirror spring relief tool')
+    for target, upper, label in [(head, 'latch_head_window_end', 'Head'),
+                                 (tool, '40 mm + abs(latch_span_delta)', 'Catch')]:
+        clip = n.rectangle(xy, '-0.001 mm', '-3 mm', 'latch_relief_floor', '34 mm',
+                           '('+upper+') - latch_relief_floor', label+' relief envelope')
+        clip_body = n.extrude(clip, 'latch_thickness + 0.002 mm', op.NewBodyFeatureOperation,
+                              label+' relief clipping tool').bodies.item(0)
+        n.combine(target, [clip_body], op.IntersectFeatureOperation, label+' relief clipping')
+    n.mirror([head, tool], symmetry, 'Mirror spring relief tools')
     tools = [b for b in n.comp.bRepBodies if b.name != 'Latch']
-    if len(tools) != 2:
-        raise RuntimeError('Spring relief tools: expected 2, found ' + str(len(tools)))
+    if len(tools) != 4:
+        raise RuntimeError('Spring relief tools: expected 4, found ' + str(len(tools)))
     n.combine(body, tools, op.CutFeatureOperation, 'Spring relief cuts')
-    n.progress('SLOT_BUILD ' + json.dumps({'front_sections': len(sections),
+    n.progress('SLOT_BUILD ' + json.dumps({'front_sections': len(sections), 'front_tool_lofts': 2,
                                           'fixed_tail_extrusions': 1, 'sampling': 'equal R5 angle',
+                                          'span_expression': DERIVED['latch_span_delta'],
                                           'scad_sampled_distance_target_mm': 0.03}))
 
 
@@ -816,10 +840,10 @@ def build_latch_teeth(n, latch, symmetry):
     sign = 1 if normal.y > 0 else -1
     n.progress('CATCH_XZ_PLANE ' + json.dumps({'normal_xyz': [normal.x, normal.y, normal.z],
                                              'offset_sign_for_positive_y': sign}))
-    shoulder_front = n.ellipse(base, '{:.4f} mm'.format(sign * 17.0724), '8.25 mm',
+    shoulder_front = n.ellipse(base, '{} * (17.0724 mm + latch_span_delta)'.format(sign), '8.25 mm',
                                'latch_thickness / 2', '6.75 mm', '5 mm',
                                'Catch front shoulder ellipse')
-    tip_front = n.circle(base, '{:.4f} mm'.format(sign * 18.0724), '5.5 mm', 'latch_thickness / 2',
+    tip_front = n.circle(base, '{} * (18.0724 mm + latch_span_delta)'.format(sign), '5.5 mm', 'latch_thickness / 2',
                          '5 mm', 'Catch R5 front section')
     sketch_normal = tip_front.xDirection.crossProduct(tip_front.yDirection)
     if abs(abs(sketch_normal.y) - 1) > 1e-8 or abs(sketch_normal.x) + abs(sketch_normal.z) > 1e-8:
@@ -833,16 +857,16 @@ def build_latch_teeth(n, latch, symmetry):
                    'Catch front transition').bodies.item(0)
     core = n.extrude(tip_front, '4 mm', op.NewBodyFeatureOperation,
                      'Catch R5 core', negative=core_negative).bodies.item(0)
-    tip_rear = n.circle(base, '{:.4f} mm'.format(sign * 22.0724), '5.5 mm', 'latch_thickness / 2',
+    tip_rear = n.circle(base, '{} * (22.0724 mm + latch_span_delta)'.format(sign), '5.5 mm', 'latch_thickness / 2',
                         '5 mm', 'Catch R5 rear section')
-    shoulder_rear = n.ellipse(base, '{:.4f} mm'.format(sign * 23.0724), '8.25 mm',
+    shoulder_rear = n.ellipse(base, '{} * (23.0724 mm + latch_span_delta)'.format(sign), '8.25 mm',
                               'latch_thickness / 2', '6.75 mm', '5 mm',
                               'Catch rear shoulder ellipse')
     rear = n.loft(tip_rear, shoulder_rear, op.NewBodyFeatureOperation,
                   'Catch rear transition').bodies.item(0)
     n.combine(front, [core, rear], op.JoinFeatureOperation, 'Join catch analytic envelope')
     clipping = n.rectangle(n.comp.xYConstructionPlane, '0 mm', '-2 mm',
-                           '17.0724 mm', '5.5 mm', '6 mm', 'Catch thickness envelope')
+                           '17.0724 mm + latch_span_delta', '5.5 mm', '6 mm', 'Catch thickness envelope')
     clip = n.extrude(clipping, 'latch_thickness', op.NewBodyFeatureOperation,
                      'Catch thickness clipping tool').bodies.item(0)
     n.combine(front, [clip], op.IntersectFeatureOperation, 'Clip catch analytic envelope')
@@ -877,7 +901,7 @@ def build_latch(n):
     op = n.fusion.FeatureOperations
     xy, yz = n.comp.xYConstructionPlane, n.comp.yZConstructionPlane
     mid = n.plane(yz, '14 mm', 'Latch symmetry')
-    base = n.rectangle(xy, '0 mm', '1.5 mm', '0 mm', '25 mm', '32.9 mm', 'Latch plate')
+    base = n.rectangle(xy, '0 mm', '1.5 mm', '0 mm', '25 mm', '32.9 mm + latch_span_delta', 'Latch plate')
     body = n.extrude(base, 'latch_thickness', op.NewBodyFeatureOperation, 'Latch blank').bodies.item(0)
     body.name = 'Latch'
     build_latch_teeth(n, body, mid)
@@ -886,7 +910,7 @@ def build_latch(n):
     n.mirror([ball], mid, 'Mirror pivot sphere')
     # Trim native spheres to the measured print-flat top, bottom and front faces.
     for z, negative, name in [('latch_thickness', False, 'Flat sphere tops'), ('0 mm', True, 'Flat sphere bottoms')]:
-        sk = n.rectangle(xy, z, '-2 mm', '-2 mm', '32 mm', '36 mm', name + ' trim')
+        sk = n.rectangle(xy, z, '-2 mm', '-2 mm', '32 mm', '36 mm + max(0 mm; latch_span_delta)', name + ' trim')
         n.extrude(sk, 'latch_ball_radius', op.CutFeatureOperation, name, body, negative)
     front_y = '5 mm - sqrt((5 mm)^2 - (latch_thickness / 2)^2)'
     sk = n.profile(yz, '-2 mm', [('-2 mm', '0 mm'), (front_y, '0 mm'),
@@ -903,9 +927,9 @@ def build_latch(n):
     n.combine(body, [tool], op.CutFeatureOperation, 'Rounded pivot notch')
     build_latch_relief(n, body, mid)
     # Y+Z=32.9 is a measured plane, not a guessed radius/chamfer.
-    sk = n.profile(yz, '-2 mm', [('26.9 mm','latch_thickness'),
-        ('31.835144 mm','latch_thickness - 4.935139 mm'),
-        ('31.743874 mm','0 mm'),('35 mm','0 mm'),('35 mm','latch_thickness')], 'Latch opening ramp trim')
+    sk = n.profile(yz, '-2 mm', [('26.9 mm + latch_span_delta','latch_thickness'),
+        ('31.835144 mm + latch_span_delta','latch_thickness - 4.935139 mm'),
+        ('31.743874 mm + latch_span_delta','0 mm'),('35 mm + latch_span_delta','0 mm'),('35 mm + latch_span_delta','latch_thickness')], 'Latch opening ramp trim')
     n.extrude(sk, '32 mm', op.CutFeatureOperation, 'Opening ramp', body)
     return body
 
@@ -986,7 +1010,7 @@ def check_model(design):
         actual = [centre.x * 10, centre.y * 10, centre.z * 10,
                   (curve.majorAxisRadius if major > 5 else curve.radius) * 10,
                   (curve.minorAxisRadius if major > 5 else curve.radius) * 10]
-        expected = [x, y, p['latch_thickness'] / 2, major, 5]
+        expected = [x, y + p['lid_height'] - 15, p['latch_thickness'] / 2, major, 5]
         if any(abs(a - b) > .0001 for a, b in zip(actual, expected)):
             raise RuntimeError(name + ': analytic section mismatch: ' + str(actual))
         report.append(name + ': centre_xyz_and_radii_mm=' + str(actual))
@@ -1003,8 +1027,8 @@ def check_model(design):
         expected = {
             'Body': [p['length'], p['width'] + 17, p['body_height'] + 4.25],
             'Lid': [p['length'], p['width'] + 17.25, p['lid_height'] + 4.5],
-            'Latch': [20.5 + 2 * p['latch_ball_radius'], 31.835144, p['latch_thickness']],
-            'Latch 2': [20.5 + 2 * p['latch_ball_radius'], 31.835144, p['latch_thickness']],
+            'Latch': [20.5 + 2 * p['latch_ball_radius'], 31.835144 + p['lid_height'] - 15, p['latch_thickness']],
+            'Latch 2': [20.5 + 2 * p['latch_ball_radius'], 31.835144 + p['lid_height'] - 15, p['latch_thickness']],
         }[b.name]
         if any(abs(actual - wanted) > .02 for actual, wanted in zip(extents, expected)):
             raise RuntimeError(b.name + ': unexpected bounds ' + str(extents) + '; expected ' + str(expected))
@@ -1025,7 +1049,11 @@ def verify_variants(design, progress):
     try:
         variants = [{'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'},
                         {'fit_clearance': '0.2 mm'},
-                        {'latch_thickness': '5 mm'}, {'latch_thickness': '6.5 mm'}]
+                        {'latch_thickness': '5 mm'}, {'latch_thickness': '6.5 mm'},
+                        {'lid_height': '11.7 mm'}, {'lid_height': '20 mm'},
+                        {'lid_height': '50 mm'}, {'lid_height': '233.1 mm'},
+                        {'length':'107.9 mm','width':'30.1 mm','body_height':'30.2 mm','lid_height':'11.7 mm'},
+                        {'length':'250 mm','width':'232.7 mm','body_height':'245.7 mm'}]
         if any(BUILD_RIBS.values()):
             variants += [{'length':'240 mm','width':'220 mm','body_height':'100 mm'},
                          {'length':'107.9 mm','width':'30.1 mm','body_height':'30.2 mm','lid_height':'12.5 mm'},

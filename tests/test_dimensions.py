@@ -50,8 +50,8 @@ class DimensionsTests(unittest.TestCase):
             d = m.dimensions(dict(m.DEFAULTS, length=length))
             self.assertEqual(d['mount_centres'], [32.9, length-32.9])
             self.assertAlmostEqual(d['mount_spacing'], length-65.8)
-            self.assertAlmostEqual(d['lid_mount_centres'][0], 33.0)
-            self.assertAlmostEqual(d['lid_mount_centres'][1], length-32.8)
+            self.assertAlmostEqual(d['lid_mount_centres'][0], 32.9)
+            self.assertAlmostEqual(d['lid_mount_centres'][1], length-32.9)
 
 if __name__ == '__main__':
     unittest.main()

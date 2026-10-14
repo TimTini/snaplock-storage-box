@@ -1,5 +1,7 @@
 # Tài liệu
 
+[Fusion Python 0.6.0](geometry/fusion-parametric-sync.md) cập nhật công thức theo SCAD; hồ sơ phân biệt kiểm chứng offline và checkpoint Run native.
+
 [Cập nhật SCAD và assembly ngày 14/10/2026](geometry/latch-parametric-fix.md) là hồ sơ hiện tại. [Mẫu in](../samples/README.md) dùng STL đã xuất lại. [README checkpoint trước](history/README-before-parametric-fix.md) giữ lịch sử quyết định.
 
 - [Hướng dẫn quy trình](guides/): xem cách dựng SCAD, chuyển sang Fusion, kiểm chứng tham số và xử lý lỗi.

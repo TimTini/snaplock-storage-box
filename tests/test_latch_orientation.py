@@ -17,7 +17,7 @@ class LatchOrientationTests(unittest.TestCase):
     def setUp(self):
         self.symmetry = NS(geometry=NS(origin=NS(x=1.4)))
 
-    def native(self, plane_y, sketch_y, mirror_return_count=2):
+    def native(self, plane_y, sketch_y, mirror_return_count=2, delta=0):
         placements, extrusions = [], []
         def solid(name, low_x, high_x):
             return NS(name=name, volume=1, preciseBoundingBox=NS(
@@ -32,7 +32,7 @@ class LatchOrientationTests(unittest.TestCase):
         sketch = NS(xDirection=NS(crossProduct=lambda other: NS(x=0, y=sketch_y, z=0)),
                     yDirection=object())
         def section(base, offset, *args):
-            placements.append(float(offset.replace(' mm', '')) * plane_y)
+            placements.append(eval(offset.replace(' mm', ''), {'__builtins__': {}}, {'latch_span_delta': delta}) * plane_y)
             return sketch
         def extrude(sketch, distance, operation, name, **kwargs):
             extrusions.append((name, kwargs.get('negative', False)))
@@ -66,6 +66,14 @@ class LatchOrientationTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, 'normal'):
             model.build_latch_teeth(native, object(), self.symmetry)
         self.assertEqual(placements, [])
+
+    def test_catch_sections_follow_lid_height_for_both_plane_normals(self):
+        for height in (11.7, 20, 50, 233.1, 245.5):
+            for normal in (-1, 1):
+                native, placements, _ = self.native(normal, normal, delta=height-15)
+                model.build_latch_teeth(native, object(), self.symmetry)
+                for actual, baseline in zip(placements, (17.0724,18.0724,22.0724,23.0724)):
+                    self.assertAlmostEqual(actual, baseline + height - 15)
 
     def test_mirror_selects_geometric_copy_not_feature_collection_count(self):
         for returned_count in (0, 1, 2):

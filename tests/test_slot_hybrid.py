@@ -35,25 +35,24 @@ class SlotHybrid(unittest.TestCase):
                 self.assertTrue(all(math.isfinite(mm(value, thickness)) for point in coords for value in point))
 
     def test_tool_join_mirror_and_cut_keep_only_latch(self):
-        latch, tail, front, mirrored = [NS(name=name) for name in ('Latch', 'Tail', 'Front', 'Mirror')]
+        latch = NS(name='Latch')
         bodies = [latch]
         result = lambda body: NS(bodies=NS(item=lambda i: body))
-        def extrude(*args):
-            bodies.append(tail)
-            return result(tail)
-        def loft(*args):
-            bodies.append(front)
-            return result(front)
+        def create(*args):
+            body = NS(name=args[3] if len(args)>3 else 'Tool')
+            bodies.append(body)
+            return result(body)
         def combine(target, tools, operation, name):
             for tool in tools:
                 bodies.remove(tool)
-        def mirror(*args):
-            bodies.append(mirrored)
+        def mirror(seeds, *args):
+            bodies.extend(NS(name='Mirror '+seed.name) for seed in seeds)
         native = NS(comp=NS(xYConstructionPlane=object(), bRepBodies=bodies),
                     fusion=NS(FeatureOperations=NS(NewBodyFeatureOperation=0, JoinFeatureOperation=1,
-                                                    CutFeatureOperation=2)),
-                    profile=Mock(side_effect=lambda *a: a[4]), extrude=Mock(side_effect=extrude),
-                    section_loft=Mock(side_effect=loft), combine=Mock(side_effect=combine),
+                                                    CutFeatureOperation=2, IntersectFeatureOperation=3)),
+                    profile=Mock(side_effect=lambda *a: a[4]), rectangle=Mock(),
+                    extrude=Mock(side_effect=create), translate=Mock(),
+                    section_loft=Mock(side_effect=create), combine=Mock(side_effect=combine),
                     mirror=Mock(side_effect=mirror), progress=Mock())
         symmetry = object()
         model.build_latch_relief(native, latch, symmetry)
@@ -69,12 +68,13 @@ class SlotHybrid(unittest.TestCase):
                 expected = thickness/2+5*math.sin(math.asin(thickness/10)*(2*index/7-1))
                 self.assertAlmostEqual(mm(offset, thickness), expected)
         tail_call = native.profile.call_args_list[0]
-        self.assertEqual(tail_call.args[2][0], ('3.5 mm', '17.0714 mm'))
-        self.assertEqual(tail_call.args[2][-1], ('3.5 mm', '17.0724 mm'))
+        self.assertEqual(tail_call.args[2][0], ('3.5 mm', '(17.0714 mm) + (latch_span_delta)'))
+        self.assertEqual(tail_call.args[2][-1], ('3.5 mm', '(17.0724 mm) + (latch_span_delta)'))
         self.assertEqual(set(tail_call.args[4]), {2, 4})
-        self.assertEqual(native.mirror.call_args.args[:2], ([front], symmetry))
-        self.assertEqual(native.combine.call_args_list[0].args[:2], (front, [tail]))
-        self.assertEqual(native.combine.call_args_list[-1].args[:2], (latch, [front, mirrored]))
+        self.assertEqual(len(native.mirror.call_args.args[0]), 2)
+        self.assertIs(native.mirror.call_args.args[1], symmetry)
+        self.assertIs(native.combine.call_args_list[-1].args[0], latch)
+        self.assertEqual(len(native.combine.call_args_list[-1].args[1]), 4)
         self.assertEqual(native.combine.call_args_list[-1].args[2], 2)
         native.progress.assert_called()
 
