@@ -2,6 +2,8 @@
 
 ## Source hiện tại — 14/10/2026
 
+- [Workflow MCP dùng lại](fusion-mcp-workflow.json): hash CLI/wrapper, 66 test, inspect/schema/native run, 30 cặp BRep, audit STL và hash xác nhận log production được bảo toàn.
+
 - [Fusion 0.6.1 native](fusion-parametric-native.json), [log](fusion-parametric-native.log), [ảnh](fusion-parametric-native.png): build, 10 biến thể recompute, 30 cặp kiểm tra assembly BRep, bốn STL kín và đối chiếu hình học; mesh High ghi giới hạn giao thân–nắp riêng.
 
 - [Fusion 0.6.0 offline](fusion-parametric-sync-offline.json): 58 test đạt, công thức cơ cấu đồng bộ với SCAD; checkpoint Run native tiếp theo xác nhận solver và topology BRep.

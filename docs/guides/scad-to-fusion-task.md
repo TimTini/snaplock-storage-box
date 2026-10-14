@@ -22,6 +22,8 @@ Agent áp dụng [quy trình test toàn bộ khi đổi tham số](parameter-cha
 
 ## Agent dựng script Python native trong Fusion.
 
+Agent áp dụng [quy trình kiểm chứng qua MCP Fusion](fusion-mcp-testing.md) sau khi script đã qua regression offline. Wrapper gọi hàm dựng/kiểm tra của source chính, tạo document test riêng, giữ exception và log stage, thử biến thể tham số, đo giao temporary BRep rồi audit STL độc lập. Hồ sơ bàn giao gắn source/wrapper hash với ma trận, phiên bản Fusion, log và bộ xuất.
+
 Agent ưu tiên hình học giải tích và feature diễn đạt trực tiếp quy luật: sketch đường thẳng/cung tròn/elip, Extrude/Cut, Revolve, Sweep, Fillet, Chamfer, Combine, Mirror và Pattern. Profile dịch chuyển giữ nguyên hướng được đánh giá bằng Sweep Parallel; profile thay đổi được đánh giá bằng guide rail, guide surface và ghép mặt theo quy luật của từng vùng. Loft ít tiết diện phục vụ đoạn chuyển tiếp phù hợp. Loft nhiều tiết diện có mức ưu tiên cuối cùng, được chọn sau khi các phương pháp trực tiếp đã được đánh giá bằng công thức, khả năng cập nhật và sai lệch hình học. Cây feature có tên thể hiện chức năng. Component/body được tổ chức theo `[bố trí part hoặc assembly]`, với ownership và tool được theo dõi rõ.
 
 [Bài thử Sweep Parallel cho cung khe](../../fusion/tests/SlotSweepTest/README.md) cung cấp source, bộ biến thể chiều dày và log native để xác nhận một vùng dịch chuyển cứng trước khi ghép vào model hoàn chỉnh.

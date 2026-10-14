@@ -1,5 +1,7 @@
 # Fusion
 
+[Hướng dẫn test MCP](../docs/guides/fusion-mcp-testing.md) và [wrapper dùng lại](tests/McpNativeTest/README.md) cung cấp đường chạy native từ CLI. Lệnh `python tools/fusion-mcp-test.py` đọc trạng thái; `python tools/fusion-mcp-test.py --run` tạo document test, kiểm tra recompute/BRep và xuất bộ bằng chứng.
+
 - [`SnaplockStorageBox/`](SnaplockStorageBox/) chứa add-in chính, manifest và script `SnaplockStorageBox.py`. Script Python là entrypoint của add-in; trong Fusion, đăng ký thư mục này. Kết quả native của add-in được ghi cạnh source trong `SnaplockStorageBox/exports/`.
 - [`tests/`](tests/) chứa các add-in độc lập dùng để khảo sát Plane, Sketch, Loft và Sweep. Mỗi thư mục con có README và manifest riêng; đăng ký đúng thư mục con cần chạy.
 

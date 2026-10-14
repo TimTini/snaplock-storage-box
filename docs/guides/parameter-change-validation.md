@@ -4,6 +4,8 @@
 
 Quy trình áp dụng cho model SCAD và bản Fusion chuyển từ cùng baseline. Agent kiểm tra cả hình học từng part, quan hệ lắp, cơ cấu, chuyển động và khổ in. Hồ sơ thử được gắn với source/hash, phiên bản công cụ, tham số và đầu ra cụ thể. Nội dung này bổ sung bước kiểm chứng bắt buộc trước khi chốt một preset in thử hoặc chuyển baseline sang Fusion.
 
+[Quy trình MCP Fusion](fusion-mcp-testing.md) và CLI `python tools/fusion-mcp-test.py --run` thực thi kiểm tra native bằng source chính. Agent kiểm tra ma trận recompute, các cặp BRep đã đặt vào tư thế lắp, khôi phục tham số rồi xuất mesh để audit riêng. Bộ tham số đại diện đi cùng biên nhỏ nhất/lớn nhất và trạng thái topology đang chạy.
+
 ## 1. Agent chốt miền thiết kế và giới hạn sử dụng.
 
 Agent lập bảng tham số đầu vào, công thức phụ thuộc, topology và các cặp part lắp với nhau. Miền source, miền cơ cấu hoạt động và miền vừa máy in được ghi riêng. Giới hạn 250 mm được áp dụng lên kích thước bao thực của từng part theo hướng in; kích thước vỏ là đầu vào thiết kế.

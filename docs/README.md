@@ -9,3 +9,5 @@
 - [Bằng chứng kiểm chứng](validation/README.md): xem báo cáo, log và hình ảnh đã lưu.
 
 Các audit Python nằm trong `tools/`; chạy lệnh từ thư mục gốc repo.
+
+[Quy trình agent test Fusion qua MCP](guides/fusion-mcp-testing.md) hướng dẫn kết nối local, wrapper native, xử lý lỗi, kiểm tra BRep/STL và lưu bằng chứng. [CLI dùng lại](../tools/fusion-mcp-test.py) mặc định đọc trạng thái; `--run` tạo và kiểm chứng document test mới.

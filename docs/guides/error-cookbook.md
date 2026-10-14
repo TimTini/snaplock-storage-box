@@ -182,6 +182,30 @@ Nguồn: [test đặt tên khay](https://github.com/TimTini/bath-sponge-tray/blo
 
 **Cách xử lý:** agent nối chiều dài chi tiết với tham số sở hữu quan hệ, giữ các datum lắp trong cùng frame rồi kiểm tra mesh sau transform. Ma trận hình học đi cùng kiểm tra cửa sổ clearance trước, kênh sau 1 mm và miền tham số. Lực cài, độ biến dạng và tuổi thọ được xác nhận bằng thử vật lý.
 
-**Mức xác nhận:** [Regression assembly](../../tests/test_scad_assembly.py) kiểm tra source, cặp lắp và các pose mở theo ma trận. [Báo cáo assembly](../validation/scad-parametric-assembly.json) và [audit mặc định](../validation/scad-current-default.json) lưu kết quả cùng source hash. Fusion production 0.5.1 giữ baseline trước cập nhật SCAD; native run cho cập nhật này là checkpoint kế tiếp.
+**Mức xác nhận:** [Regression assembly](../../tests/test_scad_assembly.py) kiểm tra source, cặp lắp và các pose mở lấy mẫu. [Báo cáo assembly](../validation/scad-parametric-assembly.json) và [audit mặc định](../validation/scad-current-default.json) lưu kết quả cùng source hash. Fusion 0.5.1 là baseline lịch sử trước cập nhật; [Fusion 0.6.1](../geometry/fusion-parametric-sync.md) đã qua build/recompute native, kiểm tra BRep lắp đóng và audit STL.
 
 Nguồn: [SCAD](../../snaplock-storage-box.scad), [audit transform](../../tools/audit-latch-fit.py), [regression assembly](../../tests/test_scad_assembly.py).
+
+## Ca 16 giữ phiên MCP Fusion trên một kết nối HTTP.
+
+**Bằng chứng:** Fusion 2705.1.30 trả metadata initialize và tools/list; client tách request sang kết nối khác gặp mất trạng thái phiên. Client giữ initialize, notification và lượt tools/call trên cùng connection đã chạy script native thành công.
+
+**Cách xử lý:** agent dùng HTTP persistent, đọc response đầy đủ, truyền MCP-Session-Id và khởi tạo phiên mới cho lượt gọi mới. [CLI MCP](../../tools/fusion-mcp-test.py) cùng [regression transport](../../tests/test_fusion_mcp.py) thực thi thứ tự này.
+
+## Ca 17 tách lỗi BRep tolerant và seam STL tại ngàm.
+
+**Bằng chứng:** nắp là solid native trong khi mesh xuất có cạnh hở. Các cạnh được định vị tại mép ngàm gần trùng mặt côn với cung web. Hiệu chỉnh hai bán kính côn thêm 0,001 mm giữ độ dốc, và mesh xuất sau đó kín với 0 cạnh hở.
+
+**Cách xử lý:** agent đo vị trí và độ lớn lỗi, thử trên document test, kiểm tra source/BRep/mesh trước và sau rồi giữ khoảng phân cách nhỏ nhất đã có bằng chứng. Giá trị 0,001 mm thuộc ca Snaplock này. [Hồ sơ native](../geometry/fusion-parametric-sync.md) ghi phạm vi và hash.
+
+## Ca 18 đo tessellation và đối chiếu preset native.
+
+**Bằng chứng:** custom tessellation tạo nắp khoảng 806 MB; preset High sau hiệu chỉnh seam tạo nắp khoảng 0,55 MB và đạt audit độc lập. Hai lượt chạy dùng cùng hình học mục tiêu, còn thông số mesh được ghi riêng theo phiên bản.
+
+**Cách xử lý:** agent thử preset native trước, đo số triangle/dung lượng, xác nhận mesh kín và so với baseline. Các override mesh được quyết định theo sai lệch bề mặt đã đo và khả năng xử lý file.
+
+## Ca 19 ghi riêng giao BRep chính xác và giao mesh.
+
+**Bằng chứng:** baseline cùng bốn cấu hình bổ sung có 30 cặp BRep lắp đóng giao bằng 0. Mesh High baseline ghi giao thân–nắp khoảng 0,40478 mm³, vượt ngưỡng mesh 0,01 mm³, trong khi các cặp latch dưới ngưỡng.
+
+**Cách xử lý:** agent giữ trạng thái từng phép kiểm tra theo đúng biểu diễn và ngưỡng. Mẫu in tiếp tục xác nhận độ khít, lực gài và độ bền ở checkpoint vật lý.
