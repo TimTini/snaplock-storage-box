@@ -679,11 +679,13 @@ def mount_make_lid_rear(n, anchor):
                      '-3 mm', '6 mm', '9.5 mm', 'Lid lip outer profile')
     ring = n.extrude(outer, '3.734 mm', op.NewBodyFeatureOperation,
                      'Lid annular lip cylinder').bodies.item(0)
+    # Separate the taper and measured web arc by 1 micron. Native tolerant
+    # BRep accepted their near-coincidence, but STL tessellation left open seams.
     inner_start = n.circle(n.comp.yZConstructionPlane, mount_offset(anchor, '-12.751 mm'),
-        '-3 mm', '6 mm', '9.486833 mm - 3.734 mm * tan(50 deg) - 0.001 mm * tan(50 deg)',
+        '-3 mm', '6 mm', '9.486833 mm - 3.734 mm * tan(50 deg) - 0.001 mm * tan(50 deg) + 0.001 mm',
         'Lid lip taper start')
     inner_end = n.circle(n.comp.yZConstructionPlane, mount_offset(anchor, '-9.015 mm'),
-        '-3 mm', '6 mm', '9.486833 mm + 0.001 mm * tan(50 deg)', 'Lid lip taper end')
+        '-3 mm', '6 mm', '9.486833 mm + 0.001 mm * tan(50 deg) + 0.001 mm', 'Lid lip taper end')
     inner = n.loft(inner_start, inner_end, op.NewBodyFeatureOperation,
                    'Lid annular lip taper tool').bodies.item(0)
     n.combine(ring, [inner], op.CutFeatureOperation, 'Cut tapered lid lip opening')
@@ -1083,9 +1085,8 @@ def export_meshes(design, fusion, output):
         options = design.exportManager.createSTLExportOptions(body, str(path))
         options.unitType = fusion.DistanceUnits.MillimeterDistanceUnits
         options.meshRefinement = fusion.MeshRefinementSettings.MeshRefinementHigh
-        options.surfaceDeviation = .0005  # API cm = 0.005 mm.
-        options.normalDeviation = math.radians(.5)
-        options.maximumEdgeLength = .1  # API cm = 1 mm.
+        # Use Fusion's native High preset; custom overrides over-tessellated
+        # this runtime and produced hundreds of MB per shell.
         options.isBinaryFormat = True
         options.sendToPrintUtility = False
         if not design.exportManager.execute(options) or not path.is_file():
@@ -1095,8 +1096,7 @@ def export_meshes(design, fusion, output):
     if set(manifest['parts']) != {'Body', 'Lid', 'Latch', 'Latch 2'}:
         raise RuntimeError('STL export requires exactly four named bodies')
     manifest['parameters_mm'] = {name:design.userParameters.itemByName(name).value*10 for name in DEFAULTS}
-    manifest['mesh_settings'] = {'surface_deviation_mm': .005, 'normal_deviation_degrees': .5,
-                                 'maximum_edge_length_mm': 1}
+    manifest['mesh_settings'] = {'refinement': 'high'}
     path = output / 'manifest.json'
     path.write_text(json.dumps(manifest, indent=2), encoding='utf8')
     return path

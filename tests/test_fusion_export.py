@@ -33,13 +33,17 @@ class FusionExport(unittest.TestCase):
             self.assertEqual(set(data['parts']), {'Body', 'Lid', 'Latch', 'Latch 2'})
             self.assertEqual(len(data['script_sha256']), 64)
             self.assertEqual(data['parameters_mm'],model.DEFAULTS)
+            self.assertEqual(data['mesh_settings']['refinement'], 'high')
             for row in data['parts'].values():
                 self.assertTrue((Path(temp) / row['file']).is_file())
                 self.assertEqual(len(row['sha256']), 64)
         self.assertEqual(len(options), 4)
         for opt in options:
             self.assertEqual(opt.unitType, 1)
-            self.assertAlmostEqual(opt.surfaceDeviation, .0005)
+            self.assertEqual(opt.meshRefinement, 2)
+            self.assertFalse(hasattr(opt,'surfaceDeviation'))
+            self.assertFalse(hasattr(opt,'normalDeviation'))
+            self.assertFalse(hasattr(opt,'maximumEdgeLength'))
 
     def test_failed_export_does_not_create_success_manifest(self):
         design = NS(rootComponent=NS(bRepBodies=[NS(name='Body')]),

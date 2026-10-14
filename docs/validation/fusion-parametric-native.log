@@ -1,0 +1,195 @@
+Native Fusion MCP validation
+Fusion version: 2705.1.30
+Build native bodies
+(Unsaved): Latch blank
+CATCH_XZ_PLANE {"normal_xyz": [0.0, 1.0, 0.0], "offset_sign_for_positive_y": 1}
+CATCH_CORE_DIRECTION {"sketch_normal_xyz": [-0.0, 1.0, 0.0], "negative_extent_for_positive_y": false}
+(Unsaved): Catch front transition
+(Unsaved): Catch R5 core
+(Unsaved): Catch rear transition
+(Unsaved): Join catch analytic envelope
+(Unsaved): Catch thickness clipping tool
+(Unsaved): Clip catch analytic envelope
+(Unsaved): Mirror catch analytic body
+CATCH_MIRROR_BODIES {"feature_body_count": 2, "expected_bounds_mm": [24.5, 17.0724, 0.0, 27.5, 23.072400000000002, 6.000000000000001], "component_bodies": [{"name": "Latch", "bounds_mm": [1.5000000000000002, 0.0, 0.0, 26.5, 32.9, 6.000000000000001], "volume_mm3": 4935.000000000001, "matches_mirrored_tooth": false}, {"name": "Body2", "bounds_mm": [0.5000000000000004, 17.0724, 0.0, 3.5000000000000004, 23.072400000000002, 6.000000000000001], "volume_mm3": 89.85580102093388, "matches_mirrored_tooth": false}, {"name": "Body6", "bounds_mm": [24.5, 17.0724, 0.0, 27.5, 23.072400000000002, 6.000000000000001], "volume_mm3": 89.85580102093387, "matches_mirrored_tooth": true}]}
+(Unsaved): Join both catch teeth
+(Unsaved): Latch pivot sphere
+(Unsaved): Mirror pivot sphere
+(Unsaved): Flat sphere tops
+(Unsaved): Flat sphere bottoms
+(Unsaved): R5 pivot front relief
+(Unsaved): Notch cylinder tool
+(Unsaved): Notch tool end fillets
+(Unsaved): Rounded pivot notch
+(Unsaved): Relief fixed tail extrusion
+(Unsaved): Head relief tool
+(Unsaved): Spring relief tool
+(Unsaved): Place head relief
+(Unsaved): Place moving catch relief
+(Unsaved): Join front and fixed tail relief
+(Unsaved): Head relief clipping tool
+(Unsaved): Head relief clipping
+(Unsaved): Catch relief clipping tool
+(Unsaved): Catch relief clipping
+(Unsaved): Mirror spring relief tools
+(Unsaved): Spring relief cuts
+SLOT_BUILD {"front_sections": 8, "front_tool_lofts": 2, "fixed_tail_extrusions": 1, "sampling": "equal R5 angle", "span_expression": "lid_height - 15 mm", "scad_sampled_distance_target_mm": 0.03}
+(Unsaved): Opening ramp
+(Unsaved): Print layout latch
+(Unsaved): Outside 60 degree bevel
+(Unsaved): Straight walls
+(Unsaved): Lid latch web
+(Unsaved): Lid latch footprint
+(Unsaved): Clip lid latch footprint
+(Unsaved): Lid latch pad
+(Unsaved): Lid annular lip cylinder
+(Unsaved): Lid annular lip taper tool
+(Unsaved): Cut tapered lid lip opening
+(Unsaved): Lid lip clip
+(Unsaved): Clip lid lip
+(Unsaved): Join lid latch pad and lip
+(Unsaved): Trim lid latch to pad and lip
+(Unsaved): Lid spherical socket
+(Unsaved): Lid pivot web
+(Unsaved): Lid pivot footprint
+(Unsaved): Clip lid pivot footprint
+(Unsaved): Lid pivot sphere
+(Unsaved): Pivot envelope cylinder
+(Unsaved): Limit pivot sphere radially
+(Unsaved): Pivot cap clipping box
+(Unsaved): Clip pivot sphere cap
+(Unsaved): Join clipped pivot cap
+(Unsaved): Mirror first site ends
+(Unsaved): Second mounting site
+(Unsaved): Join all mounting webs
+(Unsaved): Inside floor bevel
+(Unsaved): Open cavity
+(Unsaved): Print layout lid
+(Unsaved): Outside 60 degree bevel
+(Unsaved): Straight walls
+(Unsaved): Rear hinge web
+(Unsaved): Rear hinge footprint
+(Unsaved): Clip rear hinge web
+(Unsaved): Rear spherical socket
+(Unsaved): Front catch web
+(Unsaved): Front catch footprint
+(Unsaved): Clip front catch footprint
+(Unsaved): Front catch pad
+(Unsaved): Front annular lip cone
+(Unsaved): Front lip bore
+(Unsaved): Join front pad and lip
+(Unsaved): Trim front catch to pad and lip
+(Unsaved): Front pocket lower chamfer
+(Unsaved): Front pocket barrel
+(Unsaved): Front pocket upper chamfer
+(Unsaved): Cut chamfered vertical pocket
+(Unsaved): Mirror first site ends
+(Unsaved): Second mounting site
+(Unsaved): Join all mounting webs
+(Unsaved): Inside floor bevel
+(Unsaved): Open cavity
+Before latch pattern: ['Latch', 'Lid', 'Body']
+(Unsaved): Second latch body
+Latch pattern output bodies: ['Latch (1)', 'Latch']
+BUILD_SECONDS 55.473829300000034
+BASELINE Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+BASELINE Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 3.0000000000000004, 5.0, 5.0]
+BASELINE Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 3.0000000000000004, 5.0, 5.0]
+BASELINE Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+BASELINE Latch: bounds_mm=[28.000000000000004, 31.835144, 6.000000000000001], volume_mm3=3512.281
+BASELINE Lid: bounds_mm=[237.85, 140.39998951921487, 19.500000000003052], volume_mm3=113480.189
+BASELINE Body: bounds_mm=[237.85, 140.15000000996665, 56.25], volume_mm3=165378.139
+BASELINE Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.000000000000001], volume_mm3=3512.281
+Verify native parameter variants
+Verify parameter variant: {'length': '280 mm', 'width': '155 mm', 'body_height': '70 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 31.835144, 6.000000000000001], volume_mm3=3512.281
+VARIANT Lid: bounds_mm=[280.0, 172.24998951921486, 19.50000000000307], volume_mm3=159715.492
+VARIANT Body: bounds_mm=[280.0, 172.00000000996664, 74.25], volume_mm3=260623.347
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.000000000000001], volume_mm3=3512.281
+Verify parameter variant: {'fit_clearance': '0.2 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 31.835144, 6.000000000000001], volume_mm3=3512.281
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 19.50000000000307], volume_mm3=113449.209
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165349.923
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.000000000000001], volume_mm3=3512.281
+Verify parameter variant: {'latch_thickness': '5 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 2.5, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 2.5, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 2.5, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 2.5, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 31.835144, 5.0], volume_mm3=2888.211
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 19.50000000000307], volume_mm3=113480.189
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 31.835144, 5.0], volume_mm3=2888.211
+Verify parameter variant: {'latch_thickness': '6.5 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 3.25, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 3.25, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 3.25, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 3.25, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 31.835144, 6.5], volume_mm3=3823.705
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 19.50000000000307], volume_mm3=113480.189
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.5], volume_mm3=3823.705
+Verify parameter variant: {'lid_height': '11.7 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 13.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 14.7724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 18.7724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 19.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 28.535144000000017, 6.000000000000001], volume_mm3=2955.267
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 16.20000000000307], volume_mm3=105058.363
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 28.535144000000017, 6.000000000000001], volume_mm3=2955.267
+Verify parameter variant: {'lid_height': '20 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 22.072399999999995, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 23.072400000000002, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 27.072400000000002, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 28.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 36.835144, 6.000000000000001], volume_mm3=4099.176
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 24.500000000003066], volume_mm3=125856.028
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 36.835144, 6.000000000000001], volume_mm3=4099.176
+Verify parameter variant: {'lid_height': '50 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 52.072399999999995, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 53.0724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 57.0724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 58.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 66.835144, 6.000000000000001], volume_mm3=8534.321
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 54.500000000003055], volume_mm3=200102.022
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 66.835144, 6.000000000000001], volume_mm3=8534.321
+Verify parameter variant: {'lid_height': '233.1 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 235.1724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 236.17240000000004, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 240.1724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 241.17240000000004, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 249.93514400000004, 6.000000000000001], volume_mm3=35999.335
+VARIANT Lid: bounds_mm=[237.85, 140.3999895192149, 237.60000000000306], volume_mm3=653249.687
+VARIANT Body: bounds_mm=[237.85, 140.15000000996667, 56.25], volume_mm3=165378.139
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 249.93514400000004, 6.000000000000001], volume_mm3=35999.335
+Verify parameter variant: {'length': '107.9 mm', 'width': '30.1 mm', 'body_height': '30.2 mm', 'lid_height': '11.7 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 13.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 14.7724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 18.7724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 19.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 28.535144, 6.000000000000001], volume_mm3=2955.267
+VARIANT Lid: bounds_mm=[107.9, 47.349989519214844, 16.20000000000305], volume_mm3=19563.665
+VARIANT Body: bounds_mm=[107.9, 47.10000000996664, 34.449999999999996], volume_mm3=31746.505
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 28.535144, 6.000000000000001], volume_mm3=2955.267
+Verify parameter variant: {'length': '250 mm', 'width': '232.7 mm', 'body_height': '245.7 mm'}
+VARIANT Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 17.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 18.0724, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 22.072400000000002, 3.0000000000000004, 5.0, 5.0]
+VARIANT Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 23.0724, 3.0000000000000004, 6.749999999999999, 5.0]
+VARIANT Latch: bounds_mm=[28.000000000000004, 31.835144, 6.000000000000001], volume_mm3=3512.281
+VARIANT Lid: bounds_mm=[250.0, 249.94998951921485, 19.500000000003023], volume_mm3=206526.159
+VARIANT Body: bounds_mm=[250.0, 249.70000000996663, 249.95000000000002], volume_mm3=799760.849
+VARIANT Latch 2: bounds_mm=[28.000000000000007, 31.835144, 6.000000000000001], volume_mm3=3512.281
+Native STL manifest: fusion/SnaplockStorageBox/exports/<timestamp>\manifest.json
+NATIVE_BUILD_AND_RECOMPUTE_OK

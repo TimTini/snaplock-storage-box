@@ -20,6 +20,20 @@ def mm(expression):
 
 
 class MountProfiles(unittest.TestCase):
+    def test_lid_taper_has_numeric_separation_from_nearly_coincident_web(self):
+        n = self.native()
+        model.mount_make_lid_rear(n, 'mount_end')
+        starts = [call for call in n.circle.call_args_list if call.args[-1]=='Lid lip taper start']
+        ends = [call for call in n.circle.call_args_list if call.args[-1]=='Lid lip taper end']
+        self.assertEqual(len(starts),1)
+        self.assertEqual(len(ends),1)
+        expected_start=9.486833-3.735*math.tan(math.radians(50))+.001
+        expected_end=9.486833+.001*math.tan(math.radians(50))+.001
+        for call,expected in zip((starts[0],ends[0]),(expected_start,expected_end)):
+            actual=eval(call.args[4].replace(' mm','').replace(' deg',''),
+                        {'__builtins__':{},'tan':lambda x:math.tan(math.radians(x))})
+            self.assertAlmostEqual(actual,expected)
+
     def native(self):
         body = NS()
         feature = NS(bodies=NS(item=lambda index: body))

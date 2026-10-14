@@ -1,5 +1,7 @@
 # Latch theo chiều cao nắp và kiểm chứng assembly — 14/10/2026
 
+[Fusion 0.6.1](fusion-parametric-sync.md) đã chạy native với build/recompute, BRep lắp đóng và audit STL; hồ sơ Fusion liên kết ghi bằng chứng hiện tại.
+
 [Fusion Python 0.6.0](fusion-parametric-sync.md) tiếp nối checkpoint này bằng cập nhật công thức trong source và 58 test offline. Nhận định Fusion 0.5.1 ở cuối hồ sơ mô tả trạng thái trước bước đồng bộ.
 
 Source chính là [snaplock-storage-box.scad](../../snaplock-storage-box.scad), SHA256 `e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55`. Bộ STL trong [samples](../../samples/README.md) và `outputs/default/` được xuất lại từ source này.

@@ -1,6 +1,6 @@
 # Tài liệu
 
-[Fusion Python 0.6.0](geometry/fusion-parametric-sync.md) cập nhật công thức theo SCAD; hồ sơ phân biệt kiểm chứng offline và checkpoint Run native.
+[Fusion Python 0.6.1](geometry/fusion-parametric-sync.md) cập nhật công thức theo SCAD và đã chạy native; hồ sơ phân biệt kiểm chứng offline, BRep, STL và bước in vật lý.
 
 [Cập nhật SCAD và assembly ngày 14/10/2026](geometry/latch-parametric-fix.md) là hồ sơ hiện tại. [Mẫu in](../samples/README.md) dùng STL đã xuất lại. [README checkpoint trước](history/README-before-parametric-fix.md) giữ lịch sử quyết định.
 
