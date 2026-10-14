@@ -1,0 +1,86 @@
+{
+  "scope": "Fusion 0.6.2 minimum native STL against matching SCAD minimum; physical fit is a separate checkpoint",
+  "fusion_script_sha256": "47c1aee1dfa096a11499ad687714661a82cba6c1539170f9662e5785d2f43b0a",
+  "scad_sha256": "e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55",
+  "alignment": "minimum-corner translation only",
+  "parts": {
+    "Latch": {
+      "translation_mm": [
+        -0.001805261243134737,
+        -136.1999969482422,
+        1.5311713671481256e-17
+      ],
+      "volume_mm3": 2995.0529837557474,
+      "reference_volume_mm3": 2995.0220976694422,
+      "bounds_error_mm": 0.003609613049775362,
+      "extra_mm3": 0.8407805775659654,
+      "missing_mm3": 0.8098944912608204,
+      "symmetric_difference_percent": 0.0551139529191203,
+      "within_target": true
+    },
+    "Lid": {
+      "translation_mm": [
+        2.8102520310824275e-15,
+        -68.0999984741211,
+        0.0
+      ],
+      "volume_mm3": 19560.327801245574,
+      "reference_volume_mm3": 19557.78783912803,
+      "bounds_error_mm": 0.00916290283203125,
+      "extra_mm3": 4.740331927096122,
+      "missing_mm3": 2.200369809550466,
+      "symmetric_difference_percent": 0.03548817378395304,
+      "within_target": true
+    },
+    "Body": {
+      "translation_mm": [
+        2.8102520310824275e-15,
+        8.869171142578125e-05,
+        0.0
+      ],
+      "volume_mm3": 31743.583384019235,
+      "reference_volume_mm3": 31737.62968855104,
+      "bounds_error_mm": 0.000148773193359375,
+      "extra_mm3": 9.22870493953451,
+      "missing_mm3": 3.2750094713373983,
+      "symmetric_difference_percent": 0.03939712742751696,
+      "within_target": true
+    },
+    "Latch 2": {
+      "translation_mm": [
+        -48.001806900370866,
+        -136.1999969482422,
+        1.5311713671481256e-17
+      ],
+      "volume_mm3": 2995.052984814453,
+      "reference_volume_mm3": 2995.0220976694422,
+      "bounds_error_mm": 0.0036131595261394978,
+      "extra_mm3": 0.8412702774339778,
+      "missing_mm3": 0.8103831324233397,
+      "symmetric_difference_percent": 0.055146618488809855,
+      "within_target": true
+    }
+  },
+  "within_target": true,
+  "layout": {
+    "sha256": "e37f2c32e75ee481804d5e065a5da083738c863a0f6fce5d2f7f0d257191f786",
+    "components": 4,
+    "extents_mm": [
+      107.9000015258789,
+      173.73180866241455,
+      34.44929504394531
+    ],
+    "bounds_mm": [
+      [
+        -2.8102520310824275e-15,
+        -8.996670722961426,
+        -1.5311713671481256e-17
+      ],
+      [
+        107.9000015258789,
+        164.73513793945312,
+        34.44929504394531
+      ]
+    ]
+  }
+}

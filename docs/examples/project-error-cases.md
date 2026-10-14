@@ -211,3 +211,15 @@ Nguồn: [SCAD](../../snaplock-storage-box.scad), [audit transform](../../tools/
 **Bằng chứng:** baseline cùng bốn cấu hình bổ sung có 30 cặp BRep lắp đóng giao bằng 0. Mesh High baseline ghi giao thân–nắp khoảng 0,40478 mm³, vượt ngưỡng mesh 0,01 mm³, trong khi các cặp latch dưới ngưỡng.
 
 **Cách xử lý:** agent giữ trạng thái từng phép kiểm tra theo đúng biểu diễn và ngưỡng. Mẫu in tiếp tục xác nhận độ khít, lực gài và độ bền ở checkpoint vật lý.
+
+## Ca 20 giữ sketch cùng phía datum khi biểu thức đổi dấu.
+
+**Điều kiện áp dụng:** profile dùng kích thước offset `abs(expression)` và tọa độ mục tiêu đi qua datum khi đổi tham số.
+
+**Bằng chứng ngày 14/10/2026:** Fusion 2705.1.30 recompute nắp 15 → 11,7 mm cho `latch_relief_floor=7 mm`, trong khi đỉnh dưới của hai sketch envelope ở Y=−7 mm. Solver giữ phía datum của sketch ban đầu. Sketch vẫn fully constrained và BRep vẫn healthy. Latch minimum 0.6.1 có sai khác thể tích 1,35912% với SCAD, thiếu khoảng 40,06549 mm³ vật liệu.
+
+**Cách xử lý:** Fusion 0.6.2 đặt đáy sketch ở `latch_relief_floor + 10 mm`, giữ tọa độ dương 9,999 hoặc 17 mm; Move tool Y=−10 mm đưa đáy cắt về −0,001 hoặc +7 mm. Runtime đo tọa độ thực tế của cả hai sketch; regression kiểm tra hai nhánh và hai Move. Backup source 0.6.1 giữ tại checkpoint local.
+
+**Kiểm chứng:** 0.6.2 dựng mới, recompute 10 biến thể và kiểm tra 30 cặp BRep lắp đóng. STL minimum native có sai khác thể tích latch khoảng 0,05515%, đạt mục tiêu dưới 0,3%; cả bốn part là solid kín. [Audit minimum](../../samples/fusion-minimum/audit.json) và [báo cáo native](../validation/fusion-parametric-native-0.6.2.json) lưu số đo và hash. Mẫu in tiếp tục xác nhận lực gài và độ khít.
+
+**Phương pháp dùng lại:** agent đo tọa độ hình học thực sau recompute, chọn datum ổn định khi offset đổi dấu, và đối chiếu export với SCAD cùng preset. Body health, bounds tổng thể, sketch fully constrained và BRep assembly xác nhận từng thuộc tính tương ứng; fidelity hình học được xác nhận bằng phép so sánh riêng.

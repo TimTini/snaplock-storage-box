@@ -1,9 +1,10 @@
-# Mẫu in từ SCAD hiện tại
+# Mẫu in SCAD và Fusion
 
-Mỗi thư mục chứa preset và STL xuất từ cùng source, kèm hash trong `audit.json`. Nắp và latch được ghép theo cùng chiều cao nắp. Mỗi hộp dùng một thân, một nắp và hai latch.
+Mỗi mẫu SCAD chứa preset và STL cùng source, kèm hash trong `audit.json`. Mẫu Fusion minimum chứa STL native, manifest và audit đối chiếu SCAD cùng tham số. Nắp và latch được ghép theo cùng chiều cao nắp. Mỗi hộp dùng một thân, một nắp và hai latch.
 
 | Bộ mẫu | Mục đích |
 |---|---|
+| [fusion-minimum](fusion-minimum/README.md) | STL native Fusion 0.6.2: thân 107,9 × 30,1 × 30,2 mm, nắp 11,7 mm và hai latch |
 | [minimum](minimum/README.md) | Thân 107,9 × 30,1 × 30,2 mm, nắp 11,7 mm, latch ngắn tương ứng |
 | [minimum-lid15](minimum-lid15/README.md) | Nắp 15 mm và latch baseline; dùng thân của minimum |
 | [reinforced-240x220](reinforced-240x220/README.md) | Gân baseline: độ nhô 3 mm, chân 12 mm, chừa đầu 20 mm |

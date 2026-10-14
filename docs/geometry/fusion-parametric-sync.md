@@ -1,6 +1,8 @@
-# Fusion Python 0.6.1 — đồng bộ và kiểm chứng native
+# Fusion Python 0.6.2 — đồng bộ và kiểm chứng native
 
-Ngày 14/10/2026, script đã được chạy qua MCP local trong Fusion 2705.1.30. [Báo cáo native](../validation/fusion-parametric-native.json) và [log](../validation/fusion-parametric-native.log) ghi source/hash, 10 biến thể recompute, bốn solid, 40 plane, 57 sketch và 181 timeline item. Tất cả sketch fully constrained và feature healthy. Bộ unit test hiện tại gồm 59 test đạt.
+Ngày 14/10/2026, bản 0.6.2 chạy native với 10 biến thể recompute và 30 cặp BRep lắp đóng có giao 0 mm³. Bản dựng có bốn solid, 40 plane, 57 sketch và 183 timeline item. Bộ offline gồm 68 test đạt. [Báo cáo 0.6.2](../validation/fusion-parametric-native-0.6.2.json) lưu kết quả cùng hash. [Bộ minimum](../../samples/fusion-minimum/README.md) đạt audit với SCAD cùng tham số. Hai Move bổ sung đặt tool cắt về đúng tọa độ sau khi sketch dùng datum dương ổn định. Runtime đo vị trí thực tế của cả hai envelope.
+
+Checkpoint 0.6.1 ngày 14/10/2026: script đã được chạy qua MCP local trong Fusion 2705.1.30. [Báo cáo native](../validation/fusion-parametric-native.json) và [log](../validation/fusion-parametric-native.log) ghi source/hash, 10 biến thể recompute, bốn solid, 40 plane, 57 sketch và 181 timeline item. Tất cả sketch fully constrained và feature healthy. Bộ unit test hiện tại gồm 59 test đạt.
 
 Kiểm tra bằng temporary BRep đặt chi tiết đúng tư thế đóng cho baseline và bốn cấu hình minimum/nắp 20/nắp 233,1/cỡ 250 × 232,7 × 245,7 mm. Cả sáu cặp chi tiết ở mỗi cấu hình có giao thể tích bằng 0 mm³. Phép thử giữ nguyên timeline và khôi phục tham số mặc định sau kiểm tra.
 
@@ -26,7 +28,7 @@ Fusion dựng cầu bằng Revolve chính xác và giữ bán kính ổ `pin_rad
 
 Regression kiểm tra tâm tai, vị trí bốn tiết diện răng theo chiều cao nắp ở cả hai hướng pháp tuyến, dịch profile và midpoint cung, tái sử dụng tám sketch, tiêu thụ bốn tool sau mirror và hiệu chỉnh côn. [Manifest offline 0.6.0](../validation/fusion-parametric-sync-offline.json) giữ checkpoint trước lần chạy native. [Assembly SCAD](latch-parametric-fix.md) giữ bằng chứng hình học của baseline tương ứng.
 
-Trong Fusion, mở **Utilities → Scripts and Add-Ins → Scripts**, thêm thư mục `fusion/SnaplockStorageBox`, chọn `SnaplockStorageBox` và Run. Script tạo document mới và giữ thiết kế đang mở. Thiết kế đã dựng bằng script cũ giữ timeline cũ; Run 0.6.1 tạo timeline dùng công thức mới.
+Trong Fusion, mở **Utilities → Scripts and Add-Ins → Scripts**, thêm thư mục `fusion/SnaplockStorageBox`, chọn `SnaplockStorageBox` và Run. Script tạo document mới và giữ thiết kế đang mở. Thiết kế đã dựng bằng script cũ giữ timeline cũ; Run 0.6.2 tạo timeline dùng công thức mới.
 
 `VERIFY_VARIANTS=True` chạy kiểm tra recompute cho chiều cao nắp 11,7/20/50/233,1 mm, mẫu mini và cấu hình 250 × 232,7 × 245,7 mm, cùng các biến thể có sẵn. Mỗi lượt kiểm tra bốn solid, bounds, fully constrained sketches, vị trí tiết diện răng và timeline healthy. Sau thử, script khôi phục tham số ban đầu rồi xuất STL cùng manifest/hash.
 

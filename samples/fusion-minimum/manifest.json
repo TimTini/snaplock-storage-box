@@ -1,0 +1,59 @@
+{
+  "script_sha256": "47c1aee1dfa096a11499ad687714661a82cba6c1539170f9662e5785d2f43b0a",
+  "units": "mm",
+  "parts": {
+    "Latch": {
+      "file": "latch.stl",
+      "sha256": "4f7f3043835ec9300dc4ecc1b2fef15d5bc5191e237a8b730cb229eb19e1d362",
+      "bytes": 739084
+    },
+    "Lid": {
+      "file": "lid.stl",
+      "sha256": "da383c506b1e0f19d0ebe24cd392cba52abc3feef1c51943318b907405bd1dcc",
+      "bytes": 792084
+    },
+    "Body": {
+      "file": "body.stl",
+      "sha256": "71bfa67ba2760c023f20d46ca9e712a91460b883fb93893006a49ad1460dbbe3",
+      "bytes": 883684
+    },
+    "Latch 2": {
+      "file": "latch-2.stl",
+      "sha256": "03178822ee67aa608993533678507c3366299a7ba5cf0545a1a337c40b1292af",
+      "bytes": 739084
+    }
+  },
+  "reinforcement": {
+    "wall_ribs": false,
+    "wall_floor_ribs": false,
+    "floor_ribs": false
+  },
+  "parameters_mm": {
+    "length": 107.9,
+    "width": 30.1,
+    "body_height": 30.2,
+    "lid_height": 11.7,
+    "wall": 3.0000000000000004,
+    "body_floor": 2.0,
+    "lid_floor": 3.0000000000000004,
+    "corner_radius": 12.000000000000002,
+    "body_inner_radius": 8.0,
+    "bottom_bevel": 5.0,
+    "body_inner_bevel": 4.7,
+    "mount_end": 32.9,
+    "pin_radius": 5.0,
+    "latch_ball_radius": 3.75,
+    "fit_clearance": 0.0,
+    "latch_thickness": 6.000000000000001,
+    "layout_gap": 20.0,
+    "rib_spacing": 45.0,
+    "rib_thickness": 2.4,
+    "floor_rib_height": 4.0,
+    "wall_rib_depth": 5.0,
+    "wall_rib_foot": 20.0,
+    "wall_rib_top_clearance": 5.0
+  },
+  "mesh_settings": {
+    "refinement": "high"
+  }
+}

@@ -36,10 +36,17 @@ class FusionLatchSpan(unittest.TestCase):
         self.assertEqual(len(n.section_loft.call_args_list[0].args[0]), 8)
         self.assertEqual(n.section_loft.call_args_list[0].args[0],
                          n.section_loft.call_args_list[1].args[0])
-        self.assertEqual([c.args[2] for c in n.translate.call_args_list], ['15 mm','lid_height'])
+        self.assertEqual([c.args[2] for c in n.translate.call_args_list],
+                         ['15 mm','lid_height','-10 mm','-10 mm'])
         rectangles = ' '.join(str(c.args) for c in n.rectangle.call_args_list)
         self.assertIn('latch_relief_floor', rectangles)
         self.assertIn('latch_head_window_end', rectangles)
+        for call in n.rectangle.call_args_list:
+            self.assertEqual(call.args[3], 'latch_relief_floor + 10 mm')
+            for floor in (-.001,7):
+                coordinate=eval(call.args[3].replace(' mm',''),{}, {'latch_relief_floor':floor})
+                self.assertGreater(coordinate,0)
+                self.assertAlmostEqual(coordinate-10,floor)
         tail = n.profile.call_args_list[0].args[2]
         self.assertTrue(all('latch_span_delta' in y for x,y in tail))
 

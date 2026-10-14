@@ -1,0 +1,60 @@
+{
+  "scope": "minimum preset exported from native parametric Fusion; physical print is a separate checkpoint",
+  "fusion_version": "2705.1.30",
+  "script_sha256": "47c1aee1dfa096a11499ad687714661a82cba6c1539170f9662e5785d2f43b0a",
+  "baseline_archive_sha256": "8dd29e76cbba89a8b3b2ea58b149773471bd76b218eba4a01c2ac4ff443a69d5",
+  "preset": {
+    "length": 107.9,
+    "width": 30.1,
+    "body_height": 30.2,
+    "lid_height": 11.7
+  },
+  "checks": [
+    "Catch front shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 13.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]",
+    "Catch R5 front section: centre_xyz_and_radii_mm=[5.5, 14.7724, 3.0000000000000004, 5.0, 5.0]",
+    "Catch R5 rear section: centre_xyz_and_radii_mm=[5.5, 18.7724, 3.0000000000000004, 5.0, 5.0]",
+    "Catch rear shoulder ellipse: centre_xyz_and_radii_mm=[8.25, 19.772399999999998, 3.0000000000000004, 6.749999999999999, 5.0]",
+    "Head relief envelope: sketch_floor_mm=17.0; tool_move_y_mm=-10",
+    "Catch relief envelope: sketch_floor_mm=17.0; tool_move_y_mm=-10",
+    "Latch: bounds_mm=[28.000000000000004, 28.535144, 6.000000000000001], volume_mm3=2994.752",
+    "Lid: bounds_mm=[107.9, 47.349989519214844, 16.200000000003023], volume_mm3=19563.665",
+    "Body: bounds_mm=[107.9, 47.10000000996664, 34.449999999999996], volume_mm3=31746.505",
+    "Latch 2: bounds_mm=[28.000000000000007, 28.535144, 6.000000000000001], volume_mm3=2994.752"
+  ],
+  "closed_brep_pairs": {
+    "Body / Lid": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    },
+    "Body / Latch": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    },
+    "Body / Latch 2": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    },
+    "Lid / Latch": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    },
+    "Lid / Latch 2": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    },
+    "Latch / Latch 2": {
+      "boolean_success": true,
+      "faces": 0,
+      "overlap_mm3": 0.0
+    }
+  },
+  "solid_bodies": 4,
+  "timeline": 183,
+  "planes": 40,
+  "sketches": 57
+}

@@ -74,9 +74,26 @@ class SingleComponentTests(unittest.TestCase):
             self.root.sketches.append(NS(name=name, isFullyConstrained=True,
                 sketchCurves=NS(sketchEllipses=Collection([curve]), sketchCircles=Collection([curve]))))
 
+        for name in ('Head relief envelope', 'Catch relief envelope'):
+            curve = NS(isConstruction=False, startSketchPoint=NS(worldGeometry=NS(y=.9999)))
+            self.root.sketches.append(NS(name=name, isFullyConstrained=True,
+                                        sketchCurves=Collection([curve])))
+
     def test_four_root_bodies_pass_without_occurrences(self):
         self.populate()
-        self.assertEqual(len(model.check_model(self.design)), 8)
+        self.assertEqual(len(model.check_model(self.design)), 10)
+
+    def test_relief_floor_on_wrong_datum_side_is_rejected(self):
+        self.populate()
+        self.root.sketches.itemByName('Head relief envelope').sketchCurves[0].startSketchPoint.worldGeometry.y = -.9999
+        with self.assertRaisesRegex(RuntimeError, 'relief floor changed datum side'):
+            model.check_model(self.design)
+
+    def test_missing_relief_envelope_is_rejected(self):
+        self.populate()
+        self.root.sketches.pop()
+        with self.assertRaisesRegex(RuntimeError, 'Missing relief envelope'):
+            model.check_model(self.design)
 
     def test_stale_analytic_section_height_is_rejected(self):
         self.populate()

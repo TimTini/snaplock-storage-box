@@ -815,10 +815,13 @@ def build_latch_relief(n, body, symmetry):
     n.combine(tool, [tail_tool], op.JoinFeatureOperation, 'Join front and fixed tail relief')
     for target, upper, label in [(head, 'latch_head_window_end', 'Head'),
                                  (tool, '40 mm + abs(latch_span_delta)', 'Catch')]:
-        clip = n.rectangle(xy, '-0.001 mm', '-3 mm', 'latch_relief_floor', '34 mm',
+        # Offset dimensions keep their original side of the datum when driven
+        # through abs(...). Keep this sketch Y positive, then move the tool back.
+        clip = n.rectangle(xy, '-0.001 mm', '-3 mm', 'latch_relief_floor + 10 mm', '34 mm',
                            '('+upper+') - latch_relief_floor', label+' relief envelope')
         clip_body = n.extrude(clip, 'latch_thickness + 0.002 mm', op.NewBodyFeatureOperation,
                               label+' relief clipping tool').bodies.item(0)
+        n.translate(clip_body, '0 mm', '-10 mm', '0 mm', label+' relief stable datum')
         n.combine(target, [clip_body], op.IntersectFeatureOperation, label+' relief clipping')
     n.mirror([head, tool], symmetry, 'Mirror spring relief tools')
     tools = [b for b in n.comp.bRepBodies if b.name != 'Latch']
@@ -1019,6 +1022,16 @@ def check_model(design):
     for sk in root.sketches:
         if not sk.isFullyConstrained:
             raise RuntimeError('Unconstrained sketch: ' + sk.name)
+    for name in ('Head relief envelope', 'Catch relief envelope'):
+        sketch = root.sketches.itemByName(name)
+        if sketch is None:
+            raise RuntimeError('Missing relief envelope: ' + name)
+        actual = min(curve.startSketchPoint.worldGeometry.y * 10 for curve in sketch.sketchCurves
+                     if not curve.isConstruction)
+        expected = (7 if p['lid_height'] < 15 else -.001) + 10
+        if abs(actual - expected) > .0001:
+            raise RuntimeError(name + ': relief floor changed datum side: ' + str(actual))
+        report.append(name + ': sketch_floor_mm=' + str(actual) + '; tool_move_y_mm=-10')
     for b in root.bRepBodies:
         if not b.isSolid:
             raise RuntimeError(b.name + ': expected a solid body')
