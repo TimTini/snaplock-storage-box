@@ -2,6 +2,8 @@
 
 Tài liệu này gom quy trình xử lý lỗi có thể dùng lại giữa các dự án. Lưu ca cụ thể, log nguyên bản, hash, kích thước và kết quả native trong hồ sơ dự án; giữ recipe ở đây theo điều kiện áp dụng và loại bằng chứng. [Ví dụ ca theo dự án](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/project-error-cases.md) là nơi đặt dữ liệu riêng khi có.
 
+Các recipe chung là engineering_practice để chẩn đoán; một recipe không mang mặc định verified cho mọi model. Case áp dụng giữ knowledge_state và evidence theo [template](templates.md#ghi-lỗi-và-bài-học). Nguồn API xác nhận contract, ca native xác nhận build/input đã ghi; phần chưa thử giữ unverified/blocked.
+
 ## Cách dùng recipe
 
 - Chọn recipe theo triệu chứng và giai đoạn xảy ra: đọc đầu vào, dựng biểu thức, tạo sketch, thêm feature, recompute, xuất mesh, truyền request hay lắp ráp.

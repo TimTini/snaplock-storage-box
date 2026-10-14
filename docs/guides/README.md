@@ -1,6 +1,6 @@
 # Bộ hướng dẫn chung STL, OpenSCAD và Fusion
 
-Phiên bản tài liệu: **1.0 — 14/10/2026**. Bắt đầu tại [START-HERE](START-HERE.md). Bộ này hướng dẫn phân tích STL, dựng OpenSCAD tham số và dựng/kiểm chứng Fusion native theo mục tiêu của từng nhiệm vụ.
+Phiên bản tài liệu: **1.0.1 — 14/10/2026**. Bắt đầu tại [START-HERE](START-HERE.md). Bộ này hướng dẫn phân tích STL, dựng OpenSCAD tham số và dựng/kiểm chứng Fusion native theo mục tiêu của từng nhiệm vụ.
 
 ## Phạm vi và cách chọn lộ trình
 

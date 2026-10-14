@@ -4,7 +4,7 @@
 
 Agent đọc [README](README.md), [cẩm nang](agent-learning.md), [môi trường](environment.md), [template](templates.md) và quy ước nhãn trong [sources](sources.md). Agent đọc chỉ dẫn workspace đang có trước khi thao tác. Nội dung bộ hướng dẫn cung cấp kiến thức và quy trình; quyền ghi, chạy CAD, công bố và điều khiển ứng dụng theo nhiệm vụ của người dùng.
 
-Agent tiếp nhận đọc checkpoint hiện có, Git status/diff và source/hash hiện tại. Hồ sơ bàn giao và runbook cũ được đối chiếu với phiên bản thực trước khi sử dụng.
+Agent tiếp nhận đọc checkpoint hiện có, Git status/diff và source/hash hiện tại. Tìm entry theo trigger/feature/API trong mục lục tri thức project hoặc work/learnings/INDEX.md khi có; [cẩm nang tự học](agent-learning.md#tự-học-và-tiếp-tục-công-việc) chỉ rõ retrieval, nơi lưu và evidence gate. Hồ sơ bàn giao/runbook cũ được đối chiếu với phiên bản thực; superseded entry dẫn tới replacement.
 
 ## 2. Chọn phần đọc theo đầu vào và đầu ra
 

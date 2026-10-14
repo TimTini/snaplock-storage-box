@@ -25,7 +25,13 @@ Validator mặc định lấy root theo vị trí script, không theo current wo
 
 Với bản copy, chạy lại validator/tests sau khi giải nén tại đường dẫn có khoảng trắng và từ một cwd khác. Ghi OS/Python, số file/link, exit code và hash ZIP. Windows, macOS và Linux được hướng dẫn về cách gọi; runtime đã thử của release được ghi riêng.
 
-Khi Windows PowerShell truyền source/dữ liệu Unicode qua pipeline tới Python, chọn encoding UTF-8 cho pipeline hoặc lưu source vào file UTF-8 rồi chạy file. Release này gặp tên đường dẫn bị thay bằng dấu hỏi khi stdin theo encoding mặc định; bản kiểm tra dùng Unicode escape trong harness và xác nhận đường dẫn thật có dấu hoạt động. Tên đường dẫn và dữ liệu được đối chiếu sau truyền, riêng với encoding của stdout.
+### Bài học pipeline Unicode — scope đã kiểm chứng
+
+Trigger: harness gửi source Python qua stdin từ Windows PowerShell 5.1, source chứa tên đường dẫn có dấu. Lượt 14/10/2026 quan sát WinError 123 với tên đường dẫn bị đổi thành dấu hỏi; chỉ đặt Console.OutputEncoding cho stdout vẫn gặp lỗi đó. Giữ source/data UTF-8 và kiểm tra đúng giá trị nhận ở phía Python, riêng với stdout.
+
+Hướng đã dùng thành công: source harness qua stdin dùng Unicode escape ASCII cho tên path; Python dựng tên Unicode thật rồi copy bundle vào đó. Validator/tests từ cwd khác và hash các file đạt, theo [evidence bản phát hành](VALIDATION.md). Knowledge_state verified ở phạm vi Windows/Python/build đó; việc này xác nhận path Unicode sau dựng, không xác nhận arbitrary Unicode qua pipeline.
+
+Chọn UTF-8 cho pipeline hoặc lưu source vào file UTF-8 là engineering_practice đề xuất, knowledge_state unverified trong evidence release 1.0: hai hướng này chưa được thử trong lượt đó. Khi dùng, chạy probe kiểm tra round-trip của source/data thực rồi mới nâng thành verified.
 
 ## 2. Chuẩn bị OpenSCAD theo capability của task
 

@@ -54,8 +54,19 @@ Phân biệt nhãn tri thức với status phép thử: official_reference, engi
 
 ## Ghi lỗi và bài học
 
+Nhãn nguồn tri thức, knowledge_state và kết quả phép thử là ba trường riêng. Một claim có official_reference vẫn cần check runtime khi procedure phụ thuộc runtime.
+
+Knowledge_state:
+
+- verified: đủ cổng evidence trong [cẩm nang](agent-learning.md), giới hạn theo môi trường và check đã ghi.
+- unverified: giả thuyết hoặc quy trình chưa đủ evidence; ghi bước xác nhận tiếp theo.
+- blocked: thiếu prerequisite/data/capability quyết định; ghi điều kiện mở chặn.
+- user-confirmed: lựa chọn hoặc preference được người dùng xác nhận; không biểu diễn kết quả runtime.
+- superseded: entry cũ có bản thay thế được dẫn rõ; giữ evidence cũ và lý do thay thế.
+
     Hiện tượng và trigger:
-    Điều kiện áp dụng, input/source/hash, môi trường/ngày:
+    Nhãn nguồn và knowledge_state:
+    Điều kiện áp dụng, prerequisites, input/source/hash, môi trường/ngày:
     Bằng chứng trực tiếp, log/stage/metric:
     Nguyên nhân đã xác định hoặc giả thuyết:
     Hướng đã thử và kết quả thực:
@@ -63,9 +74,10 @@ Phân biệt nhãn tri thức với status phép thử: official_reference, engi
     Lệnh/phép kiểm chứng, actual và threshold:
     Mức source/offline/native/export/physical:
     Giới hạn và trường hợp cần kiểm tra thêm:
-    Tài liệu/recipe liên quan và checkpoint thay thế:
+    Từ khóa, nơi lưu và entry trong mục lục:
+    Tài liệu/recipe liên quan, supersedes/superseded_by và lý do:
 
-Một quy trình thành công lần đầu vẫn có thể lưu với bằng chứng thật. Bài học được bổ sung vào recipe liên quan sau khi xác định điều kiện áp dụng; lịch sử run giữ dữ liệu riêng.
+Một quy trình thành công lần đầu vẫn có thể lưu với bằng chứng thật. Chỉ ghi những hướng thất bại đã quan sát; hồi quy có input cố ý sai được gắn nhãn regression_fixture và mục tiêu kiểm tra. Bài học cập nhật recipe hoặc ghi chú đang có sau khi xác định điều kiện áp dụng; lịch sử run giữ dữ liệu riêng.
 
 ## Handoff cho agent hoặc máy khác
 

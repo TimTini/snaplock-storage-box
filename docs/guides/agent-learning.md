@@ -57,8 +57,30 @@ SketchText và glyph sau explode có contract khác; đổi text sau khi tạo c
 
 ## Tự học và tiếp tục công việc
 
+### Tìm và đối chiếu trước khi làm
+
+Đọc runbook/checkpoint và mục lục tri thức của project, tìm theo triệu chứng, stage, feature hoặc API. Khi project có work/learnings/INDEX.md, chỉ mở entry phù hợp. Với bộ độc lập này, [mục lục README](README.md), [recipe](error-cookbook.md), [nguồn Sxx](sources.md) và [evidence phát hành](VALIDATION.md) là các điểm tra cứu. Ngày/build, input/source/hash và điều kiện của bài cũ được đối chiếu với task hiện tại trước khi áp dụng.
+
+### Chọn nội dung và nơi lưu
+
+Lưu bài học khi nhận định được sửa, tìm ra nguyên nhân khó hoặc có quy trình làm thay đổi quyết định ở task sau. Tiến trình thường ngày nằm trong runbook đang có; một câu sửa tài liệu rõ ràng dùng mục liên quan, thay vì tạo thêm log cho mọi thao tác.
+
+- Quy trình hoặc recipe đã có: cập nhật đúng mục và link evidence.
+- Ca cụ thể, giả thuyết hoặc thông tin ngắn: dùng ghi chú project; nếu chưa có hệ thống, tạo entry có nội dung trong work/learnings/ và thêm từ khóa, path, trạng thái vào INDEX.md.
+- Quy trình đủ bằng chứng nhưng cần khám phá độc lập: cân nhắc skill project khi chưa có tài liệu/skill phù hợp; dùng cơ chế và validator của host, giữ đường dẫn/tài nguyên đi cùng.
+
+Project-specific input, số đo và runtime giữ trong project đó; quy tắc dùng chung ở core ghi điều kiện và mức chứng cứ đã có. Một preference trực tiếp của người dùng mang user-confirmed, không biến thành kết quả chạy thực tế.
+
+### Cổng nâng thành bài học đã kiểm chứng
+
 Ghi tri thức theo **hiện tượng → bằng chứng → nguyên nhân xác định hoặc giả thuyết → thay đổi → kiểm chứng → điều kiện áp dụng**. Nguồn tài liệu, engineering practice, project observation và proposed exercise có nhãn riêng.
 
-Một recipe chỉ được nâng thành quy trình đã kiểm chứng khi có phép thử đạt, source/hash và môi trường. Ghi hướng thất bại thực sự đã thử; phần chưa xác nhận giữ nhãn. Cập nhật mục liên quan thay vì nhân bản tri thức giữa runbook và guide.
+Nâng một procedure thành verified khi ghi đủ trigger, phạm vi, prerequisites, ngày/môi trường, source/input hash, command hoặc phép đo cụ thể và actual đạt acceptance. Với bug, bổ sung failure quan sát, căn cứ chẩn đoán và regression tại đúng lớp. Lần thành công đầu tiên cũng là evidence hợp lệ; hướng thất bại chỉ được ghi khi thật sự đã thử. Exercise chưa chạy giữ unverified; thiếu điều kiện cần giữ blocked. [Template và status](templates.md) giúp tách knowledge_state với check status.
+
+### Cập nhật và phạm vi quyền
+
+Khi điều kiện hoặc bằng chứng cũ bị thay thế, gắn superseded tại entry cũ cùng link thay thế và lý do; lịch sử giữ ngày/hash/report. Khi evidence/source không truy cập được, ghi unavailable/blocked theo phần bị ảnh hưởng và mức còn đọc được; mở lại điều kiện kiểm chứng trước khi gọi bài đó là verified trên môi trường mới.
+
+Knowledge capture theo quyền ghi của task. Task read-only giữ kết quả trong trao đổi; phần live, publication, host rules/config, plugin và managed memory theo quyền riêng của host/người dùng. Evidence chia sẻ được loại secret, session, endpoint riêng và dữ liệu cá nhân. Self-learning bổ sung ghi chép, không tự tạo quyền sửa các vùng này.
 
 Handoff dùng [templates](templates.md), lỗi dùng [cookbook](error-cookbook.md), thay đổi kích thước dùng [parameter validation](parameter-change-validation.md). Agent sau đối chiếu checkpoint với source hiện tại rồi tiếp tục phần còn lại. Các hồ sơ dự án lưu riêng, ví dụ [Snaplock documentation](https://github.com/TimTini/snaplock-storage-box/tree/main/docs).

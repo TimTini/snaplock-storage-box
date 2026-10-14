@@ -11,6 +11,8 @@ Ngày đối chiếu nguồn cho bản 1.0: **14/10/2026**. Registry ghi claim c
 
 Mỗi kết luận mới ghi nhãn, claim ID, phạm vi/điều kiện, URL/section, version, ngày đối chiếu và evidence thực nếu có. Hướng dẫn core đặt link Sxx cạnh claim hoặc section có cùng phạm vi; case riêng giữ source/hash trong hồ sơ project.
 
+Nhãn nguồn trên đây tách khỏi knowledge_state verified/unverified/blocked/user-confirmed/superseded và check status passed/failed/not_run. Dùng [template bài học](templates.md#ghi-lỗi-và-bài-học) và [evidence gate](agent-learning.md#cổng-nâng-thành-bài-học-đã-kiểm-chứng) khi quyết định mức xác nhận. Mốc registry mô tả lần đọc nguồn đã lưu; API/build mới cần đối chiếu lại, không tự kế thừa kết quả runtime của ví dụ.
+
 <a id="s01"></a>
 ## S01 — Ngôn ngữ OpenSCAD
 
