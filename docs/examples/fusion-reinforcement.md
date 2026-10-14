@@ -1,3 +1,5 @@
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+
 # Gân trong SCAD → Fusion Python 0.5.1
 
 SCAD tại checkpoint `bd919e1` là baseline đã được người dùng chốt. Fusion 0.5.0 chuyển ba nhóm gân trong lòng hộp sang các feature có tham số: Extrude, Mirror và Rectangular Pattern. Răng khóa, khe đàn hồi, nắp và tai bản lề tiếp tục dùng cấu trúc của bản 0.4.0.

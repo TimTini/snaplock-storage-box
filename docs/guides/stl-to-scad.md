@@ -1,120 +1,110 @@
-# Quy trình STL → SCAD tạo mô hình tham số có bằng chứng hình học.
+# Phân tích STL và chọn route OpenSCAD/Fusion
 
-Tài liệu này hướng dẫn agent tái dựng một mẫu STL thành SCAD có thể sửa kích thước và tiếp tục chuyển sang Fusion Python. STL cung cấp bề mặt tam giác để đo; SCAD biểu diễn quy luật, tiết diện, primitive, module và quan hệ thiết kế được suy ra từ mẫu. Mục tiêu bám mẫu cùng mức xấp xỉ được chốt theo nhiệm vụ.
+Hướng dẫn này áp dụng cho dự án mới. STL cung cấp mặt tam giác để quan sát và đo; OpenSCAD biểu diễn quy luật hình học bằng tham số, profile, module và phép dựng. Fusion tiếp nhận baseline hình học đã có hồ sơ đo và mục tiêu chuyển đổi.
 
-Quy trình là **bảo toàn mẫu → phân tích mesh → tách part → chuẩn hóa tọa độ → đo và suy ra hình học → dựng SCAD → đối chiếu → thử biến thể → chốt baseline**. [Cẩm nang agent](agent-learning.md) nối baseline này với quy trình Fusion; [mẫu SCAD → Fusion](scad-to-fusion-task.md) dùng bản hình học đã chốt làm đầu vào.
+Chọn mục tiêu **tái tạo hình dáng**, **khôi phục ý đồ tham số** hoặc kết hợp cả hai. Mục tiêu hình dáng ưu tiên sai lệch so với bề mặt mẫu. Mục tiêu tham số suy ra các kích thước điều khiển, quan hệ và miền hoạt động; STL cung cấp lưới tam giác, còn bản vẽ, mẫu chức năng và tài liệu thiết kế cung cấp căn cứ cho công thức.
 
-## 1. Hồ sơ đầu vào xác định mẫu và mục tiêu.
+Quy trình đi qua các cổng: `đầu vào rõ → mesh phân loại → hệ tọa độ chốt → hình học suy luận → SCAD dựng được → kiểm chứng phù hợp → bàn giao`. Mỗi cổng ghi `PASS`, `blocked` hoặc `blocked`, kèm bằng chứng và bước kế tiếp.
 
-Agent lưu snapshot cùng SHA256 của STL, nguồn/giấy phép, kích thước file và số tam giác. Agent ghi mục đích của mẫu: tái dựng hình học, giữ chức năng, lấy một số đo tham khảo hoặc thiết kế biến thể. Các part và đặc trưng thuộc phạm vi được liệt kê rõ.
+Nguồn phương pháp được lập chỉ mục tại [sources.md](sources.md): [S01 OpenSCAD](sources.md#s01), [S03 Trimesh](sources.md#s03), [S04 CGAL](sources.md#s04), [S08 Fusion mesh](sources.md#s08). Tài liệu điều phối liên quan: [agent-learning.md](agent-learning.md), [parameter-change-validation.md](parameter-change-validation.md), [scad-to-fusion-task.md](scad-to-fusion-task.md) và [error-cookbook.md](error-cookbook.md).
 
-Đơn vị được xác nhận qua số đo đáng tin cậy, mô tả nguồn hoặc đối chiếu kích thước sử dụng. Bounds ban đầu và hệ số đổi đơn vị được lưu cùng căn cứ. Tên file đóng vai trò nhãn; giá trị đo quyết định bảng kích thước.
+## 1. Chốt đầu vào, mục tiêu và căn cứ
 
-Bảng mục tiêu gồm hình dáng ngoài, lòng chứa, độ dày, lỗ, bo/vát, ren, khóa, đường lắp và các chi tiết nhận diện. Mỗi mục có tiêu chí đo hoặc tiêu chí chức năng tương ứng. Ngưỡng chấp nhận được chọn theo task và đặc trưng sử dụng.
+1. Ghi đường dẫn, kích thước, định dạng, nguồn, giấy phép và SHA-256 của STL. Giữ một snapshot chỉ đọc làm chuẩn; tạo bản làm việc riêng cho mọi phép sửa mesh.
+2. Ghi mục tiêu, part thuộc phạm vi, đặc trưng chức năng, cách sử dụng và phép nghiệm thu. Chọn mục tiêu hình dáng, ý đồ tham số hoặc cả hai; mô tả đầu ra mong đợi theo từng mục tiêu.
+3. Xác nhận đơn vị bằng tài liệu nguồn, kích thước đáng tin cậy hoặc đặc trưng vật lý. Vì STL lưu tọa độ mà không kèm đơn vị, hãy ghi đơn vị đầu vào, đơn vị làm việc, hệ số quy đổi và căn cứ.
+4. Ghi bounds, số mặt, số đỉnh, ứng dụng/thư viện và phiên bản, import options, cảnh báo khi nạp, tọa độ gốc và ma trận instance nếu có.
+5. Đặt dung sai theo yêu cầu chức năng, kích thước, vật liệu, quy trình sản xuất và độ phân giải của mẫu. Ghi đại lượng, đơn vị, vùng áp dụng và lý do; dùng ngưỡng riêng cho kích thước, lắp, hình dáng và phép gần đúng.
 
-Đầu ra bước này là hồ sơ nguồn, bảng part, đơn vị, mục tiêu và danh sách phép kiểm chứng.
+Đầu ra là hồ sơ nguồn, mục tiêu, đơn vị, danh sách part/đặc trưng và bảng tiêu chí nghiệm thu. Trạng thái `blocked` áp dụng khi đơn vị, nguồn hoặc mục tiêu còn thiếu căn cứ.
 
-## 2. Phân tích mesh tạo bản đồ chi tiết và chất lượng dữ liệu.
+## 2. Phân loại mesh trước khi dựng
 
-Agent kiểm tra số connected component, bounds, winding, độ kín, thể tích và các vùng tự giao theo công cụ được chọn. Connected component cung cấp gợi ý tách mesh; vai trò part được xác định thêm từ vị trí, hình dáng và quan hệ cơ cấu. Hai khóa giống nhau có thể dùng chung một module và xuất số lượng theo layout.
+Kiểm tra bounds, số connected component, cạnh biên, độ kín (watertight), manifold, hướng mặt (winding), mặt suy biến, tự giao và thể tích có dấu. Lưu mỗi kết quả riêng cùng công cụ/phương pháp sử dụng.
 
-Các mảnh rời rất nhỏ được ghi diện tích, thể tích, vị trí và số mặt trước khi phân loại. Mọi xử lý mesh được thực hiện trên bản làm việc, với tiêu chí, hash trước/sau và báo cáo thay đổi. Snapshot đầu vào giữ vai trò căn cứ đối chiếu.
+Connected component là vùng mặt liên thông theo quan hệ kề. Một component có thể chứa nhiều chi tiết thiết kế; một part thiết kế có thể gồm nhiều component, mặt rời, chốt hoặc mảnh trang trí. Gán vai trò part bằng vị trí, hình dáng, chức năng và quan hệ lắp. Ghi bảng ánh xạ `component → part → vai trò`; xác nhận nhóm lặp, mảnh rời và bề mặt nội thất bằng quan sát.
 
-Agent xem tổng thể và khảo sát vùng chức năng riêng. Các đường nối, tai, gân và ngàm được đối chiếu với part lân cận để xác định vai trò và trình tự lắp.
+Phân luồng theo trạng thái mesh:
 
-Nguồn phương pháp gồm [Trimesh API](https://trimesh.org/trimesh.html#trimesh.Trimesh.is_volume) và [CGAL Polygon Mesh Processing](https://doc.cgal.org/latest/Polygon_mesh_processing/). Phép kiểm tra volume, winding và tự giao được ghi thành các kết quả riêng.
-
-## 3. Chuẩn hóa tọa độ giữ hình dạng và quan hệ lắp.
-
-Agent lưu tọa độ assembly gốc trước khi đưa từng part về hệ đo riêng. Trục quy ước được chọn theo mặt đáy, trục đối xứng, tâm chốt hoặc hướng extrusion. Phép xoay và tịnh tiến được ghi thành ma trận biến đổi có chiều áp dụng rõ ràng.
-
-Phép chuẩn hóa hình dạng dùng rigid transform; phép đổi tỷ lệ dùng hệ số đơn vị đã xác nhận ở hồ sơ đầu vào. Agent lưu cả phép biến đổi thuận và nghịch để đưa part về vị trí assembly.
-
-Đối chiếu hình dạng của từng part dùng hệ tọa độ đã chuẩn hóa. Đối chiếu lắp ráp dùng vị trí tương đối cùng tâm, trục và khe của các part. Hai phép đối chiếu có báo cáo riêng.
-
-Bằng chứng gồm bounds trước/sau, ma trận, tâm/trục chuẩn, ảnh và kích thước đặc trưng. [Hồ sơ Snaplock](../geometry/scad-reference.md) minh họa hệ trục và phép dựng theo số đo thực tế.
-
-## 4. Mặt cắt và phép khớp giúp suy ra quy luật hình học.
-
-Agent cắt mesh ở nhiều vị trí có ý nghĩa: đầu, giữa, cuối; sát đáy; vùng bo/vát; tâm chốt; đầu ren và vùng đàn hồi. Mỗi mặt phẳng cắt được lưu bằng origin, normal và phép chuyển 3D ↔ 2D. Các mặt cắt STL và SCAD dùng cùng mặt phẳng, tỷ lệ và hệ trục.
-
-Agent tìm các quy luật đơn giản trước: mặt phẳng, đoạn thẳng, cung tròn, trụ, cầu, nón, hình tròn xoay, đối xứng và tiết diện lặp. Tham số fit đi cùng phạm vi dữ liệu, cách lấy mẫu, RMS và sai lệch lớn nhất trên tập đo. Sai số fit phản ánh mức khớp tập đo; kiểm tra các mặt cắt khác bổ sung bằng chứng cho vùng hình học đó.
-
-[Bài thực hành răng Snaplock](../geometry/scad-catch-csg.md) suy cung R5 và elip từ công thức 25 tiết diện, chuyển sang primitive rồi so với snapshot và STL. Agent kiểm tra riêng đường cong tiết diện và mặt nối trung gian; `hull()` tạo bao lồi, còn Loft native có quy luật nội suy của CAD. Cách dựng được chốt theo sai lệch, biến thể tham số và mục tiêu chuyển sang Fusion.
-
-[Bài thực hành khe hybrid](../geometry/scad-slot-hybrid.md) tách vùng cố định sang Extrude và chọn tám tiết diện cho vùng biến đổi bằng bộ thử 5–9 tiết diện. Ngưỡng 0,03 mm phản ánh mục tiêu đối chiếu của chi tiết; hồ sơ giữ cả số đo với snapshot, STL gốc và các mức vượt ngưỡng. Agent chọn dung sai theo mục đích sử dụng, tách kiểm chứng hình học khỏi thử in và lực cơ cấu.
-
-| Dấu hiệu trên mẫu | Cách biểu diễn được khảo sát. |
+| Kết quả kiểm tra | Trạng thái và bước tiếp theo |
 |---|---|
-| Các mặt cắt có cùng biên qua chiều cao. | Agent khảo sát profile 2D cùng `linear_extrude`. |
-| Các mặt cắt vuông góc trục có dạng tròn đồng tâm. | Agent khảo sát trụ, nón, cầu hoặc `rotate_extrude` từ tiết diện dọc trục. |
-| Các cụm có cùng hình dạng và cách nhau đều. | Agent dùng một module cùng vòng lặp hoặc phép đối xứng theo tâm đã đo. |
-| Mặt cắt thay đổi dọc theo một hướng. | Agent mô tả các section cùng quy luật nội suy và kiểm chứng mặt cắt trung gian. |
-| Các ngàm, rãnh hoặc gân có hình dạng địa phương. | Agent gom số đo vào profile có tên, giữ vị trí theo công thức và ghi vùng xấp xỉ. |
+| Mesh kín, orientable, manifold, winding nhất quán, số tự giao bằng 0; volume hợp lệ | `SOLID_CANDIDATE`; dùng kiểm tra thể tích và các phép so khối sau khi xác nhận đơn vị và trục. |
+| Có cạnh biên hoặc lỗ hở | `SURFACE_ONLY`; lập bản đồ lỗ và mục đích bề mặt. Vá lỗ trên bản sao khi có căn cứ hình học; lưu vùng vá và so ảnh/mặt cắt trước-sau. |
+| Non-manifold, winding lỗi, mặt suy biến hoặc tự giao | `REPAIR_REQUIRED`; xác định lỗi và ảnh hưởng trước khi chọn thao tác. Sửa trên bản sao, giữ bản gốc/hash, ghi từng thay đổi và chạy lại toàn bộ kiểm tra liên quan. |
+| Trạng thái `UNIT_UNCONFIRMED` hoặc tỷ lệ `SCALE_UNCONFIRMED` | `blocked`; giữ nguyên scale, tập trung vào đo hình dạng tương đối và chờ căn cứ trước khi kết luận kích thước, thể tích hoặc lắp. |
+| Dữ liệu scan/organic hoặc mục tiêu là giữ bề mặt hữu cơ | `ORGANIC_SURFACE`; giữ mesh làm chuẩn hình dáng, lập vùng cần dựng tham số và đánh giá nhánh Fusion mesh phù hợp. |
 
-Nguồn thực hành: [Trimesh section example](https://trimesh.org/section.html), [extrusion của OpenSCAD](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/2D_to_3D_Extrusion) và [bài học nguồn Internet](internet-learning.md).
+Mesh repair có thể đổi topology hoặc hình dáng. Mỗi thao tác có giả thuyết, bản sao đầu vào, hash trước/sau, báo cáo thay đổi và phép xác minh lại. [Trimesh](sources.md#s03) mô tả các kiểm tra/sửa lưới và lưu ý về vá lỗ; [CGAL](sources.md#s04) phân biệt điều kiện manifold với tự giao hình học. Gắn kết quả đo với đúng bản mesh và trạng thái repair đã kiểm tra.
 
-## 5. SCAD biểu diễn hình học bằng tham số và module.
+## 3. Chốt hệ tọa độ và biến đổi
 
-Agent chia code theo chức năng: vỏ, lòng, đáy, tai, chốt, khóa, ren và layout. Tham số gốc diễn tả lựa chọn thiết kế; công thức derived giữ quan hệ như `inner_width = width - 2 * wall`, tâm cụm theo chiều dài và khoảng lùi, hoặc vị trí hai part dùng chung trục lắp.
+Lưu assembly transform ban đầu trước khi đưa part sang hệ đo cục bộ. Chọn trục theo datum quan sát được, như mặt lắp, trục lỗ, đường tâm hoặc hướng kéo; ghi origin, hướng trục, handedness và đơn vị.
 
-SCAD chính dựng hình bằng primitive và profile đã đo. Mesh tham chiếu phục vụ đo, ảnh chồng và audit. Module có tên diễn đạt ý nghĩa thiết kế; các tọa độ đo địa phương được gom thành bảng/profile có nguồn và đơn vị rõ ràng.
+Tách các phép biến đổi thành mục đích riêng:
 
-Agent dựng theo thứ tự vùng chính → lòng/đáy → đặc trưng chức năng → vùng chuyển tiếp → layout. Thứ tự union/difference được đối chiếu với mẫu tại các vùng giao. Epsilon phục vụ độ ổn định boolean; clearance là tham số lắp được chọn và thử riêng.
+- **Rigid transform**: quay và tịnh tiến để đặt part vào hệ đo; kích thước và hình dạng giữ nguyên.
+- **Unit conversion**: nhân tọa độ bằng hệ số chuyển đơn vị đã xác nhận; kích thước số đổi theo đơn vị đích.
+- **Scale hình học**: biến đổi kích thước theo một hay nhiều trục khi ý đồ thiết kế xác nhận phép scale. Ghi hệ số từng trục và sự thay đổi hình dạng.
+- **Assembly placement**: đặt part trở lại quan hệ lắp, tách khỏi việc chuẩn hóa hình dạng.
 
-`assert` diễn đạt miền hợp lệ của độ dày, bán kính, kích thước và vị trí. Selector `part` cho phép dựng từng chi tiết cùng layout. `$fa`, `$fs`, `$fn` và số section được chọn theo sai lệch hình học cùng tài nguyên đo được.
+Lưu ma trận thuận/nghịch hoặc phép biến đổi có thứ tự rõ ràng. So bounds, kích thước datum và vị trí assembly trước/sau. Khi ma trận chứa scale, tách scale khỏi rigid transform để báo cáo không diễn giải scale như căn chỉnh tọa độ.
 
-Nguồn: [OpenSCAD Documentation](https://openscad.org/documentation.html), [CSG Modelling](https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/CSG_Modelling) và [nguồn về boolean/độ mịn](internet-learning.md).
+## 4. Đo và suy luận hình học
 
-## 6. Đối chiếu dùng nhiều chỉ số cho cùng bộ dữ liệu.
+Đo các đặc trưng có liên hệ mục tiêu: mặt chuẩn, biên ngoài/trong, lỗ, trục, chiều dày, bán kính, mặt lắp, khe, vùng đàn hồi và chi tiết lặp. Mỗi số đo ghi hệ tọa độ, đơn vị, cách lấy, vùng dữ liệu, độ phân giải mẫu và khoảng không chắc chắn.
 
-Agent render từng part với phiên bản công cụ, selector, tham số và thư mục output xác định. Báo cáo lưu SHA256 source, STL tham chiếu và STL dựng. Mesh được kiểm tra độ kín, winding, số component và thể tích theo contract trước khi diễn giải boolean.
+Lấy mặt cắt tại các vị trí đặc trưng theo datum: đầu/giữa/cuối, vùng chuyển tiếp, tâm trục hoặc vùng chức năng. Lưu mặt phẳng (origin, normal), đường bao, phép chiếu 3D↔2D và ảnh có tỉ lệ. Dùng nhiều mặt cắt để phân biệt extrusion, hình tròn xoay, loft, gân, đối xứng và biến thiên theo chiều dài. Lấy thêm mặt cắt trung gian để kiểm tra giả thuyết nội suy. [Trimesh section](sources.md#s03) minh họa mặt cắt theo mặt phẳng và chuyển path về 2D.
 
-Bounds mô tả bao hình học; thể tích có dấu mô tả lượng vật liệu; boolean thừa/thiếu mô tả vùng vật liệu khác nhau. Với `A` là SCAD và `B` là STL tham chiếu, báo cáo dùng các đại lượng sau.
+Fit primitive/profile trên vùng dữ liệu đã xác định; báo số mẫu, phương pháp, residual RMS, percentile và cực đại quan sát. Kiểm tra mẫu độc lập ở mặt cắt/vùng khác trước khi suy rộng quy luật. Giữ bảng đo địa phương kèm tên, vị trí, đơn vị và nguồn quan sát.
 
-```text
-Thừa = volume(A \ B)
-Thiếu = volume(B \ A)
-Sai khác đối xứng (%) = 100 × (Thừa + Thiếu) / volume(B)
-Chênh thể tích có dấu (%) = 100 × (volume(A) − volume(B)) / volume(B)
-```
+Ghi riêng hai loại kết luận:
 
-Ảnh chồng và mặt cắt xác định vị trí sai khác. Phép đo khoảng cách bề mặt thực hiện hai chiều và ghi seed, số mẫu, đơn vị, độ mịn cùng thống kê. Cực đại lấy mẫu mang tên cực đại quan sát được; phép Hausdorff có cận sai số ghi thuật toán và `error_bound` tương ứng.
+- **Shape match**: mức gần bề mặt tham chiếu tại cấu hình đã đo, cùng vùng và phương pháp so sánh.
+- **Parametric intent**: kích thước điều khiển, phương trình derived, quan hệ đối xứng/lặp/lắp, ràng buộc và miền hợp lệ được suy ra từ bản vẽ, mẫu chức năng, tài liệu hoặc quyết định thiết kế.
 
-Hausdorff đối xứng lấy cực đại của hai khoảng cách có hướng A → B và B → A. CGAL cung cấp `bounded_error_symmetric_Hausdorff_distance` cho phép tính có cận sai số này; báo cáo ghi riêng từng hướng và giá trị tổng hợp đối xứng.
+Fit tốt hỗ trợ kết luận shape match. Đánh dấu công thức tham số đang chờ căn cứ là `INFERRED`; chuyển sang trạng thái đã xác nhận khi bản vẽ, mẫu chức năng, tài liệu hoặc biến thể cung cấp bằng chứng.
 
-Vùng lắp, thành mỏng và điểm đổi tiết diện có kiểm tra địa phương riêng. Kết quả tổng thể được đọc cùng số đo của các vùng này. Agent sửa đúng module hoặc công thức tạo vùng sai, rồi chạy lại phép đo liên quan cùng audit tổng thể của bản mới.
+## 5. Dựng SCAD có cấu trúc
 
-Nguồn và ví dụ: [audit SCAD](../../tools/audit-scad.py), [ảnh chồng mặt cắt](../../tools/compare-scad.py), [Trimesh proximity](https://trimesh.org/trimesh.proximity.html) và [CGAL distance](https://doc.cgal.org/latest/Polygon_mesh_processing/group__PMP__distance__grp.html).
+1. Tạo file SCAD độc lập với đường dẫn project cụ thể. Import STL chỉ làm lớp tham chiếu có thể bật/tắt; phần hình học cần chỉnh sửa được dựng từ primitive, profile và phép dựng có tên.
+2. Khai báo tham số gốc theo ý nghĩa thiết kế; tính các kích thước phụ thuộc bằng công thức. Dùng `assert` cho miền hợp lệ của độ dày, bán kính, khe và vị trí.
+3. Chia module theo part/chức năng và gom tọa độ đo được vào profile/table có chú thích nguồn. Dùng vòng lặp hoặc đối xứng khi dữ liệu xác nhận quy luật đó.
+4. Dựng từ khối chính sang lòng/khoang, đặc trưng chức năng và vùng chuyển tiếp. Dùng `union`, `difference` và `intersection` theo hình học giao thực tế. Tách epsilon cho ổn định tính toán khỏi clearance lắp và dung sai sản xuất.
+5. Thêm selector để render từng part và assembly; khai báo hướng trục, đơn vị, tham số và độ phân giải tessellation cho đầu ra.
 
-## 7. Biến thể xác nhận ý đồ tham số và chức năng.
+Boolean khối yêu cầu đầu vào có diễn giải thể tích nhất quán. Chạy phép đo thể tích hoặc boolean khi mesh tham chiếu và mesh SCAD đều là solid hợp lệ, với đơn vị, hướng mặt, độ kín và tự giao đã xác nhận. Ghi engine và tùy chọn boolean. Trước cổng solid, dùng bounds, mặt cắt và khoảng cách bề mặt; đánh dấu phép đo khối `blocked` tới khi có bề mặt thể tích đáng tin cậy. [S03 Trimesh](sources.md#s03) nêu điều kiện watertight cho volume; [S04 CGAL](sources.md#s04) cung cấp phép kiểm tra tự giao và mesh processing.
 
-[Quy trình test tham số từ cực tiểu đến biên 250 mm](parameter-change-validation.md) bổ sung ma trận từng trục, tổ hợp biên, topology, kiểm tra toàn cụm và envelope thực tế. Agent kiểm tra miền hoạt động của cơ cấu cùng miền render, ghi riêng trạng thái tiếp xúc, chuyển động và thử in cho từng cấu hình.
+## 6. Đối chiếu với tiêu chí đã chọn
 
-Bộ biến thể gồm mặc định, kích thước đại diện lớn hơn/nhỏ hơn và các ca sát miền hợp lệ. Agent kiểm tra số part, solid, độ dày, vị trí lỗ, tâm khớp và khoảng cách giữa các cụm. Các đặc trưng cơ khí giữ kích thước chung hoặc thay đổi theo công thức đã chốt.
+Render từng part và assembly bằng phiên bản OpenSCAD, backend, selector, tham số và độ phân giải đã ghi. Lưu log, ảnh các hướng, bounds, mesh xuất, số component, kiểm tra solid và hash của source/đầu vào/đầu ra.
 
-Đối chiếu với STL gốc xác nhận hình học ở cấu hình tham chiếu. Audit biến thể xác nhận hình học và quan hệ tham số của cấu hình đã thay đổi. Thử coupon cùng mẫu lắp cung cấp bằng chứng về khe hở, lực thao tác, hướng in và độ bền.
+Chọn phép đo theo loại câu hỏi:
 
-Baseline sẵn sàng cho Fusion gồm SCAD có module/parameter, bảng kích thước, vùng xấp xỉ, bộ biến thể và các báo cáo đo. [Quy trình SCAD → Fusion](scad-to-fusion-task.md) dùng các hồ sơ này để chọn sketch, feature native và expression tương ứng.
+| Câu hỏi | Bằng chứng |
+|---|---|
+| Bao tổng thể và định vị | Bounds, datum, ma trận và sai lệch theo trục. |
+| Thể tích/vật liệu thừa thiếu | Boolean hai chiều `A \ B` và `B \ A` sau khi cả hai mesh đạt điều kiện solid; báo thể tích tham chiếu và tỉ lệ theo cùng đơn vị. |
+| Khoảng cách bề mặt | Lấy mẫu có seed, mật độ/chiến lược, khoảng cách hai hướng, phân vị và cực đại mẫu. Gọi kết quả là **surface sampling** hoặc **cực đại quan sát**, ghi rõ nó phụ thuộc vào lấy mẫu. |
+| Cận Hausdorff | Chạy thuật toán có cận sai số đã khai báo, ghi error bound, đơn vị, hai hướng và giá trị đối xứng là max của hai hướng. Cận thuật toán và độ phân giải mẫu là hai thông số riêng. |
+| Đặc trưng chức năng | Mặt cắt, kích thước địa phương, vị trí lỗ/trục, thành mỏng, khe và quan hệ lắp. |
 
-## 8. Hồ sơ Snaplock minh họa một checkpoint đã đo.
+Hausdorff hai chiều biểu diễn cực đại khoảng cách có hướng trên toàn bề mặt; kiểm tra lấy mẫu hữu hạn báo cáo các điểm đã lấy. Gọi cực đại của mẫu rời rạc là `sampled maximum`; dành tên Hausdorff cho phép tính có định nghĩa và cận sai số tương ứng. [S04 CGAL](sources.md#s04) định nghĩa approximate và bounded-error Hausdorff; [S03 Trimesh](sources.md#s03) cung cấp truy vấn điểm gần mặt và sampling.
 
-Snaplock được tái dựng thành thân, nắp và hai khóa. Vỏ chính đo được 237,85 × 123,15 mm. [Audit mặc định đã lưu](../validation/scad-audit-default.json) ghi sai khác thể tích đối xứng 0,0927% cho thân, 0,0659% cho nắp và 0,0429% cho khóa. Sai lệch bounds lớn nhất trong bảng đo là khoảng 0,00966 mm.
+Đặt mỗi ngưỡng theo mục đích sử dụng và độ không chắc chắn của nguồn đo. Ghi đơn vị, phạm vi, cách so, mức tin cậy và lý do. Tolerance hình dáng, kích thước, giao lắp, vận hành và sản xuất có thể khác nhau. Dừng kết luận `PASS` khi phép đo không đủ độ phân giải để phân biệt ngưỡng.
 
-Các số trên thuộc source/hash và cấu hình của [hồ sơ kiểm chứng](../validation/README.md). Phép đo toàn bề mặt, hành trình cơ cấu và thử vật lý có checkpoint riêng. [Tài liệu hình học Snaplock](../geometry/scad-reference.md) ghi mặt cắt, phương trình, vùng xấp xỉ và cách xử lý các mảnh mesh xuất rất nhỏ của trường hợp cụ thể này.
+## 7. Thử biến thể và chốt baseline
 
-## 9. Mẫu giao việc STL → SCAD dùng lại cho model mới.
+Chạy cấu hình tham chiếu cùng các biến thể đại diện và trường hợp biên trong miền hợp lệ. Kiểm tra render, topology/solid, bounds, độ dày, vị trí đặc trưng, quan hệ part, khe và công thức derived. Đối chiếu STL dùng cấu hình tham chiếu; đánh giá biến thể bằng invariant và mục tiêu thiết kế.
 
-Đầu vào của nhiệm vụ là `[file STL]`; mục tiêu là `[mức bám mẫu, chức năng và part]`; bộ kiểm chứng là `[cấu hình, chỉ số và ngưỡng]`.
+Khi thay đổi tham số làm hỏng hình học hoặc quan hệ lắp, đánh dấu `FAIL` cho cấu hình đó, xác định công thức/module gây lỗi và cập nhật miền hợp lệ trước khi phát hành baseline. Phân loại kiểm chứng thành source/render, đo mesh, lắp ráp, coupon/in thực tế và thử lực/chuyển động; gắn mỗi kết luận với bằng chứng tương ứng.
 
-Agent đọc mẫu, lưu snapshot/hash và xác nhận đơn vị. Agent phân tích mesh, xác định part và lập bảng đặc trưng hình học cùng quan hệ lắp. Agent lưu phép đổi tọa độ, đo nhiều mặt cắt và suy ra primitive/profile theo quy luật.
+Baseline bàn giao gồm SCAD chỉnh sửa được, bảng tham số/đơn vị, manifest nguồn và hash, lựa chọn công cụ, preview, STL từng part nếu thuộc phạm vi, báo cáo mesh/đo, biến thể, vùng xấp xỉ và trạng thái từng cổng. Ghi các phần `INFERRED`, `blocked` và `blocked` để bước Fusion nhận đúng giới hạn.
 
-Agent dựng SCAD bằng tham số, công thức derived, module chức năng, vòng lặp và đối xứng. Số đo địa phương được gom trong profile có tên cùng nguồn đo. Miền hợp lệ được ghi bằng assert; selector part cung cấp từng chi tiết và layout.
+## 8. Chọn nhánh tiếp theo và ghi trạng thái
 
-Agent render cấu hình tham chiếu, kiểm tra solid và đối chiếu bounds, boolean thừa/thiếu, mặt cắt cùng khoảng cách bề mặt theo phạm vi đã chốt. Các vùng xấp xỉ có vị trí, kích thước và ảnh hưởng rõ ràng. Agent chạy biến thể để kiểm tra công thức cùng quan hệ cơ cấu.
+- Mesh cơ khí có mặt phẳng/trụ/lỗ nhận diện được: tiếp tục dựng SCAD tham số; khi chuyển Fusion, chọn workflow giữ feature native và ý đồ tham số.
+- Mesh kín dạng faceted: đánh giá Fusion Convert Mesh theo mục tiêu. Autodesk phân biệt `Faceted` với `Prismatic`; ghi Operation `Parametric` hoặc `Base Feature` theo nhu cầu timeline và kiểm tra kết quả trong Browser/Timeline.
+- Scan hoặc hình hữu cơ: giữ mesh làm chuẩn bề mặt; đánh giá Convert Mesh `Organic` trong Fusion khi extension cần thiết có sẵn. Ghi Resolution và lựa chọn `By Accuracy`/`By Face Number`; nếu mesh hở, phân loại surface và hoàn thiện solid theo một workflow bề mặt có kiểm chứng.
+- Mesh có lỗi topology hoặc trạng thái `UNIT_UNCONFIRMED`: giữ cổng khối ở `blocked` hoặc đầu vào ở `blocked`; tiếp tục phép đo bề mặt có căn cứ và ghi giới hạn.
 
-Bộ bàn giao gồm SCAD chỉnh sửa được, bảng tham số, preview, STL từng part, manifest/hash, báo cáo đo, vùng xấp xỉ và checkpoint. Kiểm chứng source, mesh, biến thể, assembly và vật lý được ghi theo bằng chứng tương ứng. Baseline được chốt làm đầu vào cho Fusion Python trong bước tiếp theo.
-
-## Phạm vi tài liệu gắn với nguồn và checkpoint.
-
-Quy trình tổng hợp phương pháp từ source/audit Snaplock và các tài liệu nguồn đã liên kết. Các bước dùng cho model mới là hướng dẫn thực hành; kết quả mỗi lần áp dụng được lưu theo source/hash và bộ tham số của lần chạy. Nội dung dùng câu khẳng định và chỉ dẫn tích cực.
+Mỗi lần chạy kết thúc bằng một bản ghi: `PASS` nêu tiêu chí và bằng chứng; `FAIL` nêu phép đo không đạt cùng vùng lỗi; `blocked` nêu điều kiện kỹ thuật còn thiếu; `blocked` nêu quyết định/căn cứ cần bổ sung. Gắn đường dẫn artifact và hash để lần sau lặp lại được.

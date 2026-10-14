@@ -1,5 +1,7 @@
 # Snaplock Storage Box
 
+[Bộ hướng dẫn chung STL, OpenSCAD và Fusion](docs/guides/README.md) có [điểm vào cho agent](docs/guides/START-HERE.md), thiết lập chuyển máy, template và registry nguồn. Thư mục guides dùng độc lập; [hồ sơ ví dụ của project](docs/examples/README.md) giữ dữ liệu Snaplock.
+
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. Chọn `part = body`, `lid`, `latch` hoặc `layout`; chỉnh kích thước trong Customizer rồi F6 để render. Thân và nắp dùng chung chiều dài, chiều rộng. Ba công tắc `wall_ribs`, `wall_floor_ribs`, `floor_ribs` điều khiển gân trong hộp.
 
 **Bản SCAD ngày 14/10/2026** cập nhật chiều dài latch theo chiều cao nắp, căn tâm tai lắp và bù mặt cầu đa giác của ổ bản lề. [Hồ sơ sửa và kiểm chứng](docs/geometry/latch-parametric-fix.md) ghi công thức, phạm vi và kết quả. Các STL mẫu đã được xuất lại từ source này; mỗi bộ dùng nắp và latch cùng preset.
@@ -40,6 +42,6 @@ python tools/audit-scad.py
 python tools/compare-scad.py
 ```
 
-Audit đối chiếu STL gốc dùng file local `reference/Snaplock_Storage_Boxes_240x120(2).stl`. [Báo cáo source hiện tại](docs/validation/scad-current-default.json) tách kiểm tra solid khỏi mục tiêu giống STL lịch sử; sai khác nắp 0,2481% được ghi cùng ngưỡng lịch sử 0,2%.
+Audit đối chiếu STL gốc dùng file local reference/Snaplock_Storage_Boxes_240x120(2).stl, được Git bỏ qua. Cung cấp đúng input có SHA256 73faaa2d438b02038b9f84002202435973a09f92ec2a48315577e0e00baea167 trước khi chạy audit-scad.py, compare-scad.py hoặc audit-fusion.py; clone public giữ các check cần file này ở blocked tới khi có input. Các script đó là adapter riêng của Snaplock. [Hồ sơ ví dụ](docs/examples/README.md) ghi môi trường và ranh giới tái lập; bộ hướng dẫn chung chạy độc lập với STL này. [Báo cáo source hiện tại](docs/validation/scad-current-default.json) tách kiểm tra solid khỏi mục tiêu giống STL lịch sử; sai khác nắp 0,2481% được ghi cùng ngưỡng lịch sử 0,2%.
 
 **Fusion Python 0.6.1 đã chạy native trong Fusion 2705.1.30:** 10 biến thể recompute đạt, bộ STL kín và kiểm tra BRep lắp đóng đạt ở baseline cùng bốn biến thể. [Hồ sơ đồng bộ Fusion](docs/geometry/fusion-parametric-sync.md) ghi kết quả, hiệu chỉnh ngàm 0,001 mm và khác biệt giữa BRep với mesh High. Bước kiểm chứng vật lý tiếp theo là in mẫu để đo độ khít, lực gài và tuổi thọ đàn hồi. [README checkpoint trước](docs/history/README-before-parametric-fix.md) giữ các quyết định và báo cáo lịch sử.

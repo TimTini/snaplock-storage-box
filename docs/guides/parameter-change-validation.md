@@ -1,101 +1,62 @@
-# Quy trình kiểm tra toàn bộ model khi thay đổi tham số
+# Kiểm chứng model khi thay đổi tham số
 
-[Fusion 0.6.1 đã kiểm chứng native](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint đồng bộ source. Ngày 14/10/2026, Fusion 2705.1.30 chạy build và 10 biến thể recompute; baseline cùng bốn cấu hình đạt 30 cặp kiểm tra BRep lắp đóng. Bộ offline gồm 59 test đạt. Khoảng phân cách số học 0,001 mm tại hốc côn xử lý seam STL; preset mesh High thay custom tessellation quá dày. Audit độc lập xác nhận bốn STL kín. Hồ sơ ghi riêng giao thể tích của mesh High và BRep chính xác; mẫu in là bước kiểm chứng vật lý tiếp theo. Các mốc 0.5.1/0.6.0 bên dưới giữ ngữ cảnh lịch sử.
+Đây là **engineering practice**, dùng cho model SCAD/Fusion theo [job specification](templates.md). Miền hợp lệ, part, cơ cấu và công nghệ chế tạo thuộc nhiệm vụ. Bộ kiểm tra chọn theo feature thực có; phần ngoài phạm vi mang trạng thái not_applicable và lý do.
 
-Quy trình áp dụng cho model SCAD và bản Fusion chuyển từ cùng baseline. Agent kiểm tra cả hình học từng part, quan hệ lắp, cơ cấu, chuyển động và khổ in. Hồ sơ thử được gắn với source/hash, phiên bản công cụ, tham số và đầu ra cụ thể. Nội dung này bổ sung bước kiểm chứng bắt buộc trước khi chốt một preset in thử hoặc chuyển baseline sang Fusion.
+## 1. Xác định miền và contract
 
-[Quy trình MCP Fusion](fusion-mcp-testing.md) và CLI `python tools/fusion-mcp-test.py --run` thực thi kiểm tra native bằng source chính. Agent kiểm tra ma trận recompute, các cặp BRep đã đặt vào tư thế lắp, khôi phục tham số rồi xuất mesh để audit riêng. Bộ tham số đại diện đi cùng biên nhỏ nhất/lớn nhất và trạng thái topology đang chạy.
+Lập danh sách tham số gốc, công thức phụ thuộc, đơn vị, giới hạn và quan hệ giữa tham số. Phân biệt:
 
-## 1. Agent chốt miền thiết kế và giới hạn sử dụng.
+- Miền source tính được hoặc render được.
+- Miền hình học hợp lệ: bề dày, bán kính, số part và tính liên thông theo yêu cầu.
+- Miền chức năng: tiếp xúc, khoảng hở, hành trình, tải hoặc lưu lượng liên quan.
+- Miền chế tạo: envelope, hướng, margin và giới hạn công nghệ thực tế.
 
-Agent lập bảng tham số đầu vào, công thức phụ thuộc, topology và các cặp part lắp với nhau. Miền source, miền cơ cấu hoạt động và miền vừa máy in được ghi riêng. Giới hạn 250 mm được áp dụng lên kích thước bao thực của từng part theo hướng in; kích thước vỏ là đầu vào thiết kế.
+Tham số thay dimension trong topology hiện có và tham số quyết định topology có contract riêng. Khi vượt ngưỡng sinh/xóa feature, xác định cần rebuild hay script đã hỗ trợ topology đó. Giá trị nằm ngoài miền phải được từ chối rõ, thay vì tạo hình sai mà vẫn báo đạt.
 
-Khổ kiểm tra mặc định của bài thử này là **250 × 250 × 250 mm** và phần chừa brim/support bằng **0 mm**. Hồ sơ máy/slicer xác định khổ hữu dụng cùng phần chừa thực tế cho lần in. Công thức kiểm tra mỗi trục là `kích_thước_bao_part + phần_chừa_hai_phía <= khổ_hữu_dụng`. Dung sai số học mesh được ghi riêng với khe lắp và khoảng chừa in.
+## 2. Tạo ma trận có mục tiêu
 
-Trong baseline Snaplock được lưu cùng ma trận 65 ca, bộ nhỏ sát miền source theo bước 0,1 mm có dài 107,9 mm, rộng 30,1 mm, thân cao 30,2 mm và nắp cao 11,7 mm. Bộ nhỏ đạt tiêu chí latch đã đo dùng **nắp 15 mm**. Hai bộ này minh họa sự khác biệt giữa miền render hợp lệ và miền cơ cấu đã kiểm tra. Cấu hình thân 25 mm giảm vát là một bộ tham số riêng.
+Mỗi ca ghi tên, input, mục tiêu, trạng thái dự kiến, phép đo và dung sai:
 
-## 2. Agent xây dựng ma trận từ cực tiểu đến biên 250 mm.
+1. Baseline đã chốt.
+2. Từng trục độc lập: nhỏ, lớn, sát giới hạn và giá trị ngoài miền dự kiến bị từ chối.
+3. Tổ hợp tương tác: bề dày với bán kính; pitch/count với chiều dài; khoảng hở với feature lắp.
+4. Ngưỡng topology: ngay trước/sau bước đổi count, bỏ feature hoặc đổi liên thông.
+5. Cấu hình sử dụng/chế tạo đại diện và các vùng quan trọng riêng.
 
-Mỗi trục được thử độc lập trong khi các tham số còn lại giữ baseline. Agent thử thêm các tổ hợp biên và các tương tác giữa tham số. Mỗi ca có tên, đầu vào, mục tiêu, trạng thái dự kiến và phép đo cần đạt.
+Ma trận hữu hạn xác nhận những ca đã chạy. Bao phủ toàn miền liên tục cần thêm chứng minh toán học, cận sai số hoặc phương pháp kiểm tra phù hợp. Ghi độ phân giải thử và vùng chưa khảo sát.
 
-| Nhóm | Bộ giá trị trong ma trận baseline 65 ca |
-|---|---|
-| Chiều dài | 107,9 / 120 / 150 / 180 / 210 / 240 / 250 mm |
-| Chiều rộng | 30,1 / 50 / 80 / 120 / 180 / 220 / 232,7 / 250 mm |
-| Chiều cao thân | 30,2 / 40 / 50 / 75 / 100 / 150 / 200 / 245,7 / 250 mm |
-| Chiều cao nắp | 11,7 / 12,5 / 14 / 15 / 16 / 20 mm và các biên mới của thiết kế |
-| Tổ hợp cực trị | Nhỏ–nhỏ–nhỏ, lớn–lớn–lớn và mọi tổ hợp nhỏ/lớn của ba trục |
-| Tổ hợp đại diện | Lưới nhỏ/vừa/lớn của ba trục, gồm ít nhất 27 tổ hợp |
-| Ca sát giới hạn | Biên hợp lệ, bước kế tiếp phía trong và bước kế tiếp phía ngoài miền |
-| Topology | Tám tổ hợp ba công tắc gân tại mẫu nhỏ, mẫu vừa và mẫu lớn |
-| Tương tác | Thành–đáy–vát; chiều cao nắp–pivot–catch; độ dày latch–khe đàn hồi; spacing–số trạm–góc tròn |
+## 3. Kiểm tra từng part
 
-Agent phân loại các ca vượt giới hạn thành `rejected_source_bounds` hoặc `exceeds_print_envelope`. Các ca này cung cấp bằng chứng biên của model. Sau mỗi thay đổi, agent chạy lại ca tái hiện lỗi, ca lân cận và toàn bộ ma trận chốt của phiên bản mới.
+Render/recompute theo input và ghi hash/version/backend. Kiểm tra số body/shell, solid hoặc surface theo contract, bounds, độ dày, lỗ, vị trí đặc trưng và volume khi volume có ý nghĩa.
 
-## 3. Agent render và kiểm tra từng part.
+So baseline/reference bằng phép căn tọa độ đã mô tả. Báo cáo tách shape fidelity ở cấu hình tham chiếu với tính đúng của biến thể. Đối chiếu phần local quan trọng riêng; phép đo tổng có thể che sai lệch vùng nhỏ.
 
-Agent dùng render solid cuối của SCAD với warning được xử lý theo hợp đồng dự án. Mỗi part được kiểm tra số component, độ kín, winding, thể tích dương, bounds và kích thước đặc trưng. Lỗ, lòng chứa, thành mỏng, đáy, bo/vát, tai, chốt và gân được đo theo chức năng.
+## 4. Kiểm tra assembly và chuyển động khi có
 
-Agent xuất từng part theo đơn vị mm và lưu hash. Làm sạch fragment mesh áp dụng ngưỡng diện tích/thể tích đã ghi, kèm số mặt được loại và kiểm tra solid sau xử lý. Độ mịn cùng dung sai số học được lưu với kết quả.
+Lập danh sách cặp cần tiếp xúc/có khoảng hở/được phép giao. Đặt part vào frame assembly, giữ phép biến đổi và datum. Mỗi cặp có ngưỡng giao, gap và mục tiêu chức năng riêng; intentional overlap hoặc tiếp xúc thiết kế được diễn giải theo contract.
 
-Agent kiểm tra envelope ở hướng in và kiểm tra riêng bố trí nhiều part trên plate. Các part được phân plate theo nhu cầu. Kích thước bao của assembly đóng được dùng cho bố trí sử dụng; kích thước bao của part in được dùng cho giới hạn máy.
+Đường lắp và hành trình cần tư thế đầu/cuối, pose trung gian và vùng gần tiếp xúc. Chia nhỏ vùng cần khảo sát, ghi step/cận sai số. Lấy mẫu hữu hạn mang nhãn sampled_motion; xác nhận toàn hành trình dùng kiểm tra liên tục hoặc cận đã chứng minh.
 
-## 4. Agent lắp toàn bộ cụm và kiểm tra tất cả cặp tiếp xúc.
+BRep native và mesh tessellation có số đo riêng. Ghi cả hai khi kết quả khác nhau cùng error budget; thử vật lý bổ sung fit, biến dạng và lực thực.
 
-Agent ghi phép biến đổi lắp bằng hệ trục, tâm khớp, chiều áp dụng và ma trận. Tâm bản lề, tâm bi/ổ, pitch, khoảng cách pivot–catch, độ sâu răng trong hốc và vị trí mép đóng được đo từ cả công thức và mesh.
+## 5. Kiểm tra công thức Fusion
 
-Agent đo riêng latch–Body, latch–Lid, latch–latch, Body–Lid, gân–Lid và các cặp chức năng khác. Mỗi phép đo lưu vùng giao, thể tích giao, khoảng cách hoặc độ xuyên cục bộ, ảnh mặt cắt và tiêu chí chức năng. Khe hở dương, tiếp xúc, cấn cứng và vùng ép đàn hồi theo thiết kế có nhãn riêng.
+Chạy source trên Fusion build đã ghi; đổi parameter expression theo từng ca và recompute. Kiểm tra health, profile/constraints theo loại sketch, số part, feature phụ thuộc và kích thước mục tiêu [S05–S07, S10](sources.md).
 
-Giao thể tích toàn cụm được đọc cùng độ xuyên và vị trí tiếp xúc. Vùng tiếp xúc tồn tại ở baseline được giữ thành một hạng mục đánh giá cơ cấu. Agent xác nhận lý do, mức chấp nhận và bằng chứng vật lý trước khi chốt chức năng của vùng đó. `latch_clear` xác nhận một tiêu chí latch; trạng thái lắp khít toàn bộ có bộ tiêu chí riêng.
+Phục hồi expression/cấu hình trong finally rồi recompute và kiểm tra baseline. Thử trên document test riêng; giữ thiết kế của người vận hành. Với ca topology cần Run lại, ghi rõ tạo document/model mới và đối chiếu part contract.
 
-Baseline cơ cấu trước bản cập nhật latch có khoảng 6,27 mm³ giao Body–Lid, chủ yếu ở bản lề, và độ lệch tâm bi–ổ 0,25 mm mỗi bên theo X. Các phép đo này thuộc baseline đó. Ngưỡng 0,01 mm³ của audit latch phân loại giao mesh tại tư thế đóng; khe lắp FDM được xác nhận bằng mẫu in.
+Đầu ra native thật được so với SCAD cùng input khi nhiệm vụ yêu cầu tương đương hai mô hình. Mock API bảo vệ cách gọi và logic; native log xác nhận solver/kernel thực.
 
-## 5. Agent kiểm tra đường lắp và miền chuyển động.
+## 6. Kiểm tra chế tạo khi thuộc mục tiêu
 
-Agent chia chu trình thành trạng thái gắn latch vào nắp, mở khóa, đóng nắp, cài khóa và mở nắp. Latch được giải phóng theo cơ cấu trước khi khảo sát nắp mở. Mỗi part chuyển động theo đúng trục/pivot và bậc tự do của trạng thái đó.
+Lấy kích thước hữu dụng, orientation, brim/support/tool allowance và giới hạn Z từ máy/slicer/công nghệ được chọn. Tính bounds sau orientation của từng part; so từng trục:
 
-Agent lấy mẫu góc/vị trí trên toàn hành trình, gồm hai đầu, các trạng thái trung gian và vùng gần tiếp xúc. Vùng gần tiếp xúc được chia nhỏ thích nghi; hồ sơ ghi bước lấy mẫu, giới hạn sai số và các khoảng đã khảo sát. Phép quét có cận sai số hoặc kiểm tra liên tục được dùng khi mục tiêu yêu cầu xác nhận toàn hành trình.
+    kích_thước_bao + phần_chừa_phía_âm + phần_chừa_phía_dương <= khổ_hữu_dụng
 
-Các tương tác chốt–ổ, răng–ngàm, gân–nắp và thành–latch được kiểm tra ở từng trạng thái. Lực cài, biến dạng đàn hồi, mỏi và độ kín có bài thử vật lý hoặc mô phỏng phù hợp đi kèm.
+Kích thước vỏ danh nghĩa có thể nhỏ hơn bounds gồm tai/chốt/gân. Margin bằng 0 chỉ hợp lệ khi hồ sơ task chọn rõ mục tiêu kiểm tra số học đó. Coupon và mẫu thật xác nhận shrink/fit/strength theo vật liệu và cấu hình.
 
-## 6. Agent kiểm tra cập nhật công thức trong Fusion.
+## 7. Chốt và bàn giao
 
-Agent chuyển baseline SCAD đã đạt tiêu chí sang Fusion. User Parameters, expression, sketch, plane, feature và số lượng Pattern được kiểm tra theo cùng ma trận. Các ca số lượng Pattern bằng một, đổi số lượng, chạm giới hạn clamp và thay topology có hồ sơ riêng.
+Dùng [evidence manifest](templates.md): source/hash, inputs, case matrix, commands, tool versions, outputs/hash, thresholds, actuals và trạng thái từng lớp. Ghi rejected_input riêng với failed_geometry; skipped/blocked/native_not_run có lý do.
 
-Agent chạy `computeAll`, health, ràng buộc sketch, số body, bounds và kích thước cơ cấu trong Fusion. Biểu thức ban đầu được phục hồi và kiểm tra sau mỗi biến thể. STL xuất thật được so với SCAD cùng tham số và công tắc, rồi được lắp lại để áp dụng các bước kiểm tra cụm.
-
-Bằng chứng công thức, mock API, CSG offline, Fusion native và mẫu in được ghi thành các mức xác nhận riêng. Mốc chốt dùng đúng hash source đã chạy và xuất.
-
-## 7. Agent chốt preset và cập nhật hồ sơ tự học.
-
-Agent chốt preset sau khi bộ tiêu chí hình học, cơ cấu, chuyển động và khổ in của nhiệm vụ đã có kết quả. Các hạng mục đang mở được ghi kèm phạm vi sử dụng của preset. Mẫu in thử dùng kích thước nhỏ giữ đúng hình học chức năng và miền cơ cấu của bản sản phẩm.
-
-Hồ sơ gồm manifest tham số, source/hash, part/hash, bảng kết quả từng ca, cấu hình máy/slicer, hình lắp, mặt cắt, trạng thái native và kết quả in. Sổ lỗi lưu ca regression; cẩm nang agent lưu nguyên nhân cùng quy tắc thiết kế có thể áp dụng lại. Lỗi cơ cấu do tham số được sửa ở công thức/module sở hữu quan hệ đó, rồi chạy lại đầy đủ ma trận trước khi chuyển tiếp.
-
-## 8. Bằng chứng hiện có và lệnh chạy.
-
-SCAD có hash `e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55`. Cơ cấu latch dùng `latch_span_delta = lid_height - 15` để liên kết chiều dài latch với chiều cao nắp, đồng thời giữ anchor body/lid trùng nhau. Bán kính cutter ổ bi dùng hệ số `1/cos(180/$fn)^2` để bù độ hụt mặt cầu đa giác; phép đặt assembly STL lượng tử hóa datum theo float32 trước khi biến đổi mesh.
-
-Ma trận SCAD hiện tại có 112 ca: 107 ca trong miền source cho kết quả `closed_clear`, 5 ca ngoài miền nhận `rejected_source_bounds`; trong 107 ca hợp lệ, 104 ca nằm trong bao in 250 mm và 3 ca vượt bao. 48 pose mở xác nhận latch đã được tháo khỏi cụm trước khi xoay nắp. Bộ regression có 54 unit test. Báo cáo gắn với source nằm ở [ma trận lắp SCAD](../validation/scad-parametric-assembly.json); audit preset nằm ở [SCAD mặc định hiện tại](../validation/scad-current-default.json). Cờ `geometry_checks_passed` có giá trị true; cờ `reference_targets_met` có giá trị false vì sai khác nắp 0,248098451% vượt mục tiêu hình học tham chiếu 0,2%. Ngưỡng lịch sử giữ nguyên.
-
-Các ca giới hạn giữ hai cửa sổ clearance phía trước riêng biệt; kênh sau 1 mm chạy theo catch. Ma trận xác nhận hình học và khoảng hở, còn lực tác động, biến dạng thực, tuổi thọ và lắp vừa sau in thuộc các phép thử vật lý kế tiếp. Fusion production 0.5.1 giữ baseline cơ khí trước sửa SCAD; native run cho cập nhật SCAD là checkpoint xác nhận tiếp theo.
-
-[Ma trận baseline 65 cấu hình](../geometry/latch-size-matrix.md) bao phủ 51 bộ kích thước thân, với chiều dài lớn nhất 240 mm. [Hai ca biên 250 mm](../validation/parameter-boundary250.json) là phép đo của source SCAD tại checkpoint lịch sử đó:
-
-| Đầu vào vỏ L × W × H, nắp 15 mm | Bao Body, mm | Bao Lid, mm | Kiểm tra khổ 250 mm từng trục |
-|---|---|---|---|
-| 250 × 250 × 250 | 250 × 266,997 × 254,249 | 250 × 267,240 × 19,496 | Vượt giới hạn rộng và cao |
-| 250 × 232,7 × 245,7 | 250 × 249,697 × 249,949 | 250 × 249,940 × 19,496 | Đạt phép đo envelope, phần chừa 0 mm |
-
-Cả hai ca biên lịch sử đạt tiêu chí latch ở tư thế đóng. Body–Lid có giao ở baseline cơ cấu tương ứng. Ca sát khổ 250 ghi envelope của checkpoint đó; khoảng chừa in và kết quả lắp vật lý được xác nhận theo cấu hình thực tế.
-
-Các lệnh audit hiện có chạy tại thư mục repo với môi trường đã cấu hình:
-
-```powershell
-python tools/audit-latch-fit.py
-python tools/audit-latch-matrix.py
-python tools/audit-fusion-ribs.py
-python tools/audit-fusion-ribs.py --native 'fusion/SnaplockStorageBox/exports/<timestamp>'
-```
-
-`tools/audit-latch-matrix.py` chạy ma trận 112 cấu hình hiện tại. `tests/test_scad_assembly.py` bổ sung regression cho chiều cao nắp, datum STL và góc quay bản lề ở nhiều độ mịn. Ma trận 65 ca được giữ trong báo cáo lịch sử. Mỗi đợt thay đổi tham số bổ sung ma trận biên mới, phép đo envelope và kiểm tra chuyển động theo các bước trên; báo cáo ghi rõ source/hash, kiểm tra đã chạy và bước xác nhận tiếp theo.
+Lỗi công thức được sửa tại module/builder sở hữu quan hệ; chạy lại ca lỗi và các ca tương tác liên quan trước khi xác nhận ma trận cuối. Sổ lỗi ghi regression, cẩm nang ghi quy tắc dùng lại có điều kiện. Kết quả physical được bổ sung sau thử thực tế.

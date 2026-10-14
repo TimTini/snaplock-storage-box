@@ -1,129 +1,64 @@
-﻿# Agent học từ quy trình OpenSCAD đến Fusion Python.
+# Cẩm nang chung cho công việc STL, OpenSCAD và Fusion
 
-[Fusion 0.6.1 đã kiểm chứng native](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint đồng bộ source. Ngày 14/10/2026, Fusion 2705.1.30 chạy build và 10 biến thể recompute; baseline cùng bốn cấu hình đạt 30 cặp kiểm tra BRep lắp đóng. Bộ offline gồm 59 test đạt. Khoảng phân cách số học 0,001 mm tại hốc côn xử lý seam STL; preset mesh High thay custom tessellation quá dày. Audit độc lập xác nhận bốn STL kín. Hồ sơ ghi riêng giao thể tích của mesh High và BRep chính xác; mẫu in là bước kiểm chứng vật lý tiếp theo. Các mốc 0.5.1/0.6.0 bên dưới giữ ngữ cảnh lịch sử.
+Đọc [START-HERE](START-HERE.md) khi bắt đầu. Quy trình này là **engineering practice**: tổ chức công việc và bằng chứng, được điều chỉnh theo đầu vào, mục tiêu và capability. Các sự kiện API có nguồn Sxx trong [sources](sources.md); kết quả của một model thuộc hồ sơ model đó.
 
-Bộ tài liệu dùng chung cho năm dự án, gồm [cẩm nang này](agent-learning.md), [sổ lỗi và cách sửa](error-cookbook.md), [mẫu giao việc](scad-to-fusion-task.md) và [tài liệu kỹ thuật chi tiết](fusion-python-tu-hoc.md). Nội dung dùng câu khẳng định và các chỉ dẫn tích cực. Mỗi kết luận kỹ thuật gắn với source, test hoặc báo cáo của phiên bản tương ứng.
+## Chọn route theo sản phẩm cần bàn giao
 
-Lộ trình [đọc nguồn internet và thực hành](internet-learning.md) bổ sung tài liệu OpenSCAD, Autodesk Fusion API, BOSL2, Trimesh, CloudCompare và CGAL, kèm bài thử cùng bằng chứng cần lưu.
+1. **Chỉ khảo sát STL:** bảo toàn input → xác nhận đơn vị → kiểm tra chất lượng → đo/section → báo cáo. Mục tiêu kết thúc ở thông tin, không phát sinh mô hình thay thế.
+2. **Tái dựng tham số:** input → suy quy luật có số đo → dựng SCAD → render/đối chiếu → kiểm tra biến thể → chốt baseline.
+3. **SCAD → Fusion native:** baseline đã chốt → map feature/parameter → dựng native → recompute/health → xuất và đối chiếu.
+4. **Chỉnh mesh trực tiếp:** khảo sát mesh → đánh giá Mesh tools/Convert Mesh → kiểm tra kết quả solid/surface và khả năng sửa. Faceted, Prismatic và Organic phục vụ loại hình khác nhau; Organic cần entitlement tương ứng [S08](sources.md).
+5. **Thiết kế mới:** bảng yêu cầu và số đo được duyệt → chọn SCAD/Fusion phù hợp đầu ra → biến thể/kiểm chứng. Yêu cầu thiết kế là căn cứ; STL tham khảo giữ đúng vai trò đã giao.
 
-[Quy trình STL → SCAD](stl-to-scad.md) hệ thống hóa việc đo mesh, suy ra quy luật hình học, dựng tham số và đối chiếu, kèm mẫu giao việc dùng lại. [Quy trình SCAD → Fusion](scad-to-fusion-task.md) tiếp nối từ baseline đã chốt.
+Route có thể kết hợp hoặc dừng ở một giai đoạn. Tính editability được đánh giá bằng tham số thực sự sửa được và khả năng recompute, riêng với hình dạng bám mẫu.
 
-## Agent tổ chức tri thức theo bằng chứng.
+## Bảo toàn và hiểu hình học
 
-Agent đọc README, source, manifest, dependency, test, Git status và checkpoint của dự án trước khi sửa. Agent lập bảng bộ phận, tham số gốc, công thức phụ thuộc, đặc trưng nhận diện và quan hệ lắp ghép. Agent lưu snapshot và SHA256 của đầu vào tham chiếu, cùng quy ước đơn vị và hệ trục.
+Lưu input/hash/giấy phép, đơn vị có căn cứ, hệ trục và phép biến đổi. Phân biệt connected component với part chức năng, layout in với vị trí assembly. Dùng bounds, section, mặt cong, lỗ, bề dày và quan hệ lắp để mô tả đặc trưng.
 
-Tri thức được ghi theo cấu trúc **hiện tượng → bằng chứng → nguyên nhân hoặc giả thuyết → thay đổi → kiểm chứng → phạm vi áp dụng**. Nhãn “nguyên nhân đã xác định” đi cùng bằng chứng trực tiếp. Nhãn “giả thuyết đang kiểm chứng” đi cùng kế hoạch chạy xác nhận. Kết quả mới bổ sung checkpoint cùng hash source và giữ mốc cũ làm lịch sử.
+Với mesh hở hoặc tự giao, phân loại mục tiêu surface/solid và lỗi dữ liệu trước khi dùng thể tích hay boolean. Sửa bản làm việc với tiêu chí và báo cáo trước/sau; snapshot gốc giữ nguyên. Mesh scan/freeform có thể cần fit mặt, approximation hoặc workflow mesh; ghi phần suy đoán và giới hạn đo.
 
-Tài liệu chia sẻ chứa kiến thức kỹ thuật, dữ liệu demo, công thức và nguồn công khai. Bản transcript, log nguyên bản, đường dẫn máy và đầu vào riêng được lưu trong vùng local của người vận hành. Các giấy phép và nguồn thiết kế được giữ cùng sản phẩm.
+## Dựng OpenSCAD bằng quan hệ
 
-## Quy trình SCAD trước rồi Fusion Python sau tạo hai vòng phản hồi rõ ràng.
+Chia module theo chức năng. Tham số gốc biểu diễn lựa chọn thiết kế; derived formula giữ quan hệ như bề dày, trục đối xứng, pitch và vị trí theo kích thước chung. Ghi miền hợp lệ bằng assert.
 
-Chuỗi làm việc là **đọc mẫu → dựng SCAD → render và đo → chốt hình học → dựng Python Fusion → chạy native và đổi tham số → so sánh đầu ra → thử lắp/in**.
+Chọn primitive, profile/extrusion, phép xoay, boolean, loop và mirror theo hình học [S01](sources.md). Thứ tự union/difference ảnh hưởng các vùng giao; kiểm tra bằng section. hull tạo bao lồi; việc ghép section bằng hull có cách nội suy riêng, cần đo mặt trung gian khi dùng thay cho một mặt CAD.
 
-SCAD cung cấp mô hình trung gian có thể render tự động, sửa công thức nhanh và audit bằng mesh. Fusion Python chuyển hình học đã hiểu sang sketch, feature và biểu thức native. Vòng SCAD tập trung vào hình dáng, số đo và cơ cấu; vòng Fusion tập trung thêm vào solver, ownership, timeline và recompute.
+Chọn độ phân mịn theo sai số hình học và thời gian render. Epsilon phục vụ ổn định tính toán, clearance phục vụ chức năng lắp, allowance phục vụ chế tạo; mỗi loại có căn cứ và phép thử riêng.
 
-Với đầu vào STL, STL giữ vai trò căn cứ hình học gốc; SCAD giữ vai trò mô hình tái dựng có tham số. Với yêu cầu thiết kế mới, bảng yêu cầu và các số đo được duyệt giữ vai trò căn cứ. Mức bám mẫu được xác định theo mục tiêu của từng task: tái dựng đo lường hoặc tương đương hình dáng, chức năng và lắp ghép.
+## Chọn feature Fusion theo ý đồ
 
-### Giai đoạn đọc mẫu tạo bản mô tả hình học có thể kiểm tra.
+Extrude cho profile dịch theo phương phù hợp, Revolve cho quy luật tròn xoay, Sweep cho profile theo path, Loft cho chuyển tiếp qua section. Fillet/Chamfer, Pattern/Mirror và surface tools được chọn theo quan hệ hình học [S11](sources.md).
 
-Agent xác định kích thước sử dụng, lòng chứa, bề dày, đáy, bo/vát, các lỗ, ren, khớp và hướng đưa từng part vào vị trí. Agent tách các chi tiết về hệ tọa độ quy ước và lưu phép biến đổi đã dùng. Mặt cắt tại nhiều cao độ làm rõ tai, ngàm, gân và tiết diện thay đổi.
+So sánh phương pháp trên cùng vùng và tolerance: độ bám hình, số đầu vào độc lập, độ ổn định tham số, ownership, số feature phụ và thời gian native. Số section ít hay nhiều là quyết định đo được; Loft nhiều section có thể là phương án phù hợp cho mặt biến đổi. Dung sai thuộc nhiệm vụ.
 
-Tên file đóng vai trò nhãn nhận diện. Số đo mesh và bảng tham số quyết định kích thước tái dựng. Snaplock dùng kích thước vỏ chính đo được 237,85 × 123,15 mm dù tên tham chiếu chứa nhãn 240×120.
+Native parameters và expressions giữ quan hệ trong tài liệu Fusion. Dimension/offset/count được liên kết theo contract; lựa chọn tạo topology lúc Run có hướng dẫn rebuild riêng. Đọc frame thực của sketch và assembly context của entity; API Design dùng cm/radian [S05, S06](sources.md).
 
-Đầu ra giai đoạn này gồm bảng part, đơn vị, hệ trục, kích thước, hash tham chiếu và các vùng xấp xỉ có mô tả cụ thể.
+## Kiểm chứng theo từng lớp
 
-### Giai đoạn SCAD tạo mô hình và báo cáo hình học.
+- **Source:** công thức, ownership, entrypoint, input contract và nhãn API.
+- **Offline:** logic/regression/mock; đo mesh hoặc CSG nếu công cụ và dữ liệu đủ.
+- **Native:** solver, feature health, BRep, constraints, recompute và API trên build được ghi.
+- **Export:** đơn vị, hash, tessellation, solid/surface, fidelity và assembly của file xuất.
+- **Slicer/chế tạo:** orientation, envelope hữu dụng, margin, vật liệu và điều kiện gia công/in.
+- **Physical:** kích thước thực, fit, tải, lực, độ bền theo yêu cầu.
 
-[Quy trình kiểm tra toàn bộ khi thay đổi tham số](parameter-change-validation.md) xác định miền source, miền cơ cấu và miền khổ in riêng; ma trận đi từ cực tiểu đến biên 250 mm. Agent kiểm tra từng part, toàn bộ cặp lắp, đường lắp, chuyển động, công thức native và mẫu in trước khi chốt preset. Bài học latch Snaplock cho thấy solid kín cùng bounds đúng vẫn cần kiểm tra khoảng cách pivot–catch và chiều cao nắp.
+Mỗi lớp có passed/failed/blocked/not_run/not_applicable cùng lý do. Số lượng test và trạng thái skip được báo rõ. Một lớp đạt xác nhận phạm vi của lớp đó.
 
-Agent dựng primitive, profile, module theo chức năng và quan hệ đối xứng. Tham số gốc biểu diễn lựa chọn thiết kế; tham số derived biểu diễn quan hệ phụ thuộc. `assert` diễn đạt miền hợp lệ của kích thước, bán kính, độ dày và khe hở.
+Độ bám mẫu cần nhiều phép đo bổ sung: bounds, chênh thể tích có dấu, boolean thừa/thiếu, section và khoảng cách hai chiều. Cực đại lấy mẫu là cực đại quan sát; Hausdorff có cận sai số cần thuật toán và error_bound [S03, S04](sources.md). Ngưỡng riêng được đặt cho vùng chức năng.
 
-Thứ tự boolean được giữ như một phần ý đồ hình học. Snaplock ghép tai vào vỏ rồi khoét lòng để giữ vùng giao của tai và khoang. Vòng lặp và mirror biểu diễn các phần lặp theo công thức chung.
+## Layout, chữ, màu và tài nguyên ngoài
 
-Agent render cấu hình mặc định và bộ biến thể đại diện. Audit khảo sát solid, tính kín, winding, bounds, thể tích, lỗ và các đặc trưng chức năng. Bản so sánh dùng cùng tỷ lệ, đơn vị và hệ tọa độ cho cả hai đối tượng.
+Layout theo dữ liệu có biến thể hàng/cột/số lượng và kiểm tra bounds, khoảng cách, trùng lặp. Font, glyph tiếng Việt, version và license thuộc manifest; font có sẵn trên máy trước là bằng chứng của máy đó.
 
-Bounds, thể tích thừa/thiếu, sai khác đối xứng, khoảng cách bề mặt và ảnh mặt cắt cung cấp các lớp thông tin bổ sung cho nhau. Chênh thể tích tổng đo lượng vật liệu có dấu; boolean thừa/thiếu đo vị trí vật liệu khác nhau.
+SketchText và glyph sau explode có contract khác; đổi text sau khi tạo curve cần workflow tái tạo hoặc script quản lý tương ứng [S07](sources.md). Với OpenSCAD, kiểm tra feature/cờ experimental bằng phiên bản thực, ví dụ textmetrics.
 
-Checkpoint SCAD ngày 14/10/2026 có hash `e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55` và ma trận 112 ca assembly. Quan hệ `latch_span_delta = lid_height - 15` nối chiều cao nắp với chiều dài latch trong khi giữ anchor thân/nắp trùng nhau. Hệ số `1/cos(180/$fn)^2` bù nội tiếp mặt cầu đa giác ở cutter ổ; audit STL lượng tử hóa datum theo float32 trước rigid transform. Ma trận cho 107 ca source-valid với `closed_clear`, 5 ca `rejected_source_bounds`, 104/107 ca trong khổ 250 mm và 48 pose mở sau khi tháo latch. Hai cửa sổ clearance trước và kênh sau 1 mm là các giới hạn thiết kế cần theo dõi; lực cài, biến dạng và độ bền cần xác nhận vật lý. Kết quả được lưu tại [ma trận assembly](../validation/scad-parametric-assembly.json) và [audit SCAD mặc định](../validation/scad-current-default.json).
+3MF/màu có ba bước xác nhận riêng: exporter tạo mesh/object/color data; ứng dụng nhận diễn giải dữ liệu; slicer gán vật liệu/filament. Ghi tool/version/cấu hình cho từng bước. Ảnh minh họa dùng CAD/preview làm căn cứ hình dạng và được gắn nhãn minh họa.
 
-Audit hình học và độ giống STL tham chiếu có cờ riêng. Mục tiêu lịch sử 0,2% cho nắp được giữ; checkpoint cập nhật đo 0,248098451%, với `geometry_checks_passed=true` và `reference_targets_met=false`. Fusion production 0.5.1 tiếp tục làm mốc cơ khí trước cập nhật SCAD; native run cho bản SCAD mới là bước xác nhận tiếp theo.
+## Tự học và tiếp tục công việc
 
-Mốc chốt SCAD gồm source/hash, bộ tham số, mesh/hash, số liệu audit và ảnh đối chiếu. Các vùng xấp xỉ đi cùng kích thước, vị trí và ảnh hưởng đến chức năng.
+Ghi tri thức theo **hiện tượng → bằng chứng → nguyên nhân xác định hoặc giả thuyết → thay đổi → kiểm chứng → điều kiện áp dụng**. Nguồn tài liệu, engineering practice, project observation và proposed exercise có nhãn riêng.
 
-### Giai đoạn chuyển đổi chọn feature theo ý đồ thiết kế.
+Một recipe chỉ được nâng thành quy trình đã kiểm chứng khi có phép thử đạt, source/hash và môi trường. Ghi hướng thất bại thực sự đã thử; phần chưa xác nhận giữ nhãn. Cập nhật mục liên quan thay vì nhân bản tri thức giữa runbook và guide.
 
-Agent chọn Extrude cho tiết diện đều, Revolve cho hình tròn xoay, Loft cho tiết diện thay đổi, Fillet/Chamfer cho bo/vát và Pattern/Mirror cho phần lặp. Các phép Join/Cut/Intersect có body đích và tool xác định rõ.
-
-Agent nhận diện cung tròn, elip và mặt có quy luật để đánh giá primitive, Extrude/Cut, Revolve hoặc Sweep. Profile dịch chuyển giữ nguyên hướng được đánh giá bằng Sweep Parallel; guide rail, guide surface và ghép mặt cung cấp lựa chọn cho từng vùng biến đổi. Agent chọn cách dựng theo tổng số bước cho cùng phần hình học, số đầu vào cần sửa độc lập, mức liên kết công thức, sai lệch và thời gian native. Phép dựng trực tiếp được ưu tiên khi biểu diễn hình dạng gọn và dễ chỉnh. Loft nhiều tiết diện có mức ưu tiên cuối cùng sau bước đánh giá các lựa chọn trực tiếp; Loft dùng các tiết diện liên kết chung vẫn là lựa chọn phù hợp khi tạo cùng kết quả với cây feature gọn hơn.
-
-Các tiết diện được điều khiển bằng một công thức cập nhật qua tham số chung. Agent phân biệt số sketch với số đầu vào người dùng phải sửa độc lập. [Checkpoint khe hybrid của Snaplock](../geometry/scad-slot-hybrid.md) giữ Loft tám tiết diện theo công thức chiều dày. [Bài thử Sweep Parallel](../../fusion/tests/SlotSweepTest/README.md) đã xác nhận native cho một mặt cung; đánh giá thay toàn khe tiếp nối việc hoàn thiện cùng phạm vi hình học và kiểm kê toàn bộ feature. [Bản thử răng khóa R5/elip](../geometry/latch-analytic-construction.md) ghi checkpoint riêng cho phần răng.
-
-Cây feature Fusion biểu diễn ý đồ thiết kế bằng công cụ native. Hình dáng nhận diện, kích thước sử dụng, lòng chứa, đáy, các part, quan hệ lắp và chức năng được giữ theo phạm vi đã chốt. Mọi đơn giản hóa có mô tả trước/sau và phép kiểm chứng phù hợp.
-
-Snaplock dùng khoét lòng riêng để giữ thành 3 mm, đáy thân 2 mm, đáy nắp 3 mm và tiết diện vát. Hộp bàn chải dùng surface helix + Sweep trong source hiện tại. Thời khóa biểu dùng cung tròn native cùng offset liên kết cho biên trang trí. Các lựa chọn này phản ánh hình học và phạm vi của từng mẫu.
-
-### Giai đoạn tham số hóa giữ công thức trong tài liệu Fusion.
-
-Agent tạo User Parameters cho kích thước gốc và biểu thức derived. Dimension, vị trí sketch, offset, chiều cao feature và số lượng pattern liên kết với tên tham số. Giá trị số ban đầu phục vụ khởi tạo; expression lưu quan hệ để recompute.
-
-Fusion Design API dùng cm cho chiều dài và radian cho góc trong giá trị nội bộ. Báo cáo theo mm dùng hệ số 10 cho chiều dài và 1000 cho thể tích cm³ sang mm³. Chuỗi như `3 mm` mang đơn vị rõ ràng. [Tài liệu đơn vị Autodesk](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/Units_UM.htm) mô tả quy ước này.
-
-Kích thước cập nhật qua Change Parameters trong topology hiện có. Các lựa chọn quyết định số đối tượng được tạo bằng vòng lặp Python được lưu trong cấu hình Run. Nội dung chữ sau `explode()`, số móc theo `HOOK_COUNT` và số cung theo bước sóng được tạo lại trong lần Run tương ứng.
-
-### Giai đoạn native xác nhận solver, kernel và recompute.
-
-Agent chạy script trong Fusion với log ghi hash source và tên stage. Kiểm tra cuối khảo sát `computeAll`, health của feature, profile, constraint, số solid, tên body, bounds và thể tích dương. Contract kiểm tra được chọn theo loại sketch và mục đích feature.
-
-Bộ biến thể thay đổi kích thước tổng, độ dày và khe hở theo miền hợp lệ. Script phục hồi expression gốc trong `finally`, rồi kiểm tra lại mô hình mặc định. Log native ghi giá trị trước/sau và kết quả của từng biến thể.
-
-Bộ test offline xác nhận logic, công thức và contract API được mô phỏng. Lần chạy native xác nhận hành vi solver và BRep của source trong log. Hai loại bằng chứng được ghi thành hai mốc riêng. Fusion production 0.5.1 giữ baseline cơ khí trước sửa SCAD; native run cho cập nhật SCAD là checkpoint xác nhận tiếp theo.
-
-### Giai đoạn xuất và thử lắp xác nhận đầu ra theo mục tiêu.
-
-Mỗi body được xuất riêng với đơn vị, hash, độ mịn và tên part trong manifest. Agent đối chiếu đầu ra Fusion với mẫu gốc và SCAD đã audit. Kiểm tra hình dạng dùng phép căn tọa độ được mô tả; kiểm tra assembly giữ vị trí tương đối của các part.
-
-Ren, khóa và chốt được kiểm tra ở vị trí cuối cùng và dọc đường lắp. Thử coupon cung cấp bằng chứng khe hở, lực thao tác và độ bền theo vật liệu, hướng in và máy in thực tế. Audit khổ in dùng thể tích in hữu dụng, chiều cao và khoảng dành cho brim/support của cấu hình slicer.
-
-## Layout, chữ và màu có bộ kiểm chứng riêng.
-
-Thời khóa biểu biểu diễn số ngày bằng tham số scalar và suy ra danh sách nhãn tương ứng. Số hàng sáng/chiều được tính độc lập; thay đổi layout được đối chiếu bằng render, hash và bounds của từng cấu hình. Biên trang trí được kiểm tra dọc cạnh và tại góc, cùng quan hệ giữa độ mềm, biên độ và profile thực.
-
-SCAD dùng `textmetrics()` để tính kích thước chữ và khoảng đệm cho bảng tên. Bản công cụ, feature experimental và cấu hình font được ghi trong checkpoint; CLI dùng `--enable=textmetrics` theo README thời khóa biểu. Font đi cùng đường dẫn tương đối và giấy phép của từng file. Kích thước glyph được kiểm tra trên bộ nội dung ngắn, dài và có dấu tiếng Việt.
-
-Bộ 3MF thời khóa biểu tách bảng, nhóm bảng tên và nhóm thẻ môn bằng `output_part`. Tùy chọn `export-3mf/material-type=color` lưu màu theo luồng xuất đã ghi trong README. Kiểm tra ZIP/XML xác nhận mesh, object và color group; nhập slicer xác nhận cách ứng dụng diễn giải object, màu và vật liệu. Màu preview, màu 3MF và filament đã gán trong slicer là ba lớp dữ liệu được đối chiếu riêng.
-
-Ảnh vật liệu dùng preview/CAD làm căn cứ về hình dạng, màu và số part. Agent kiểm tra các mặt lộ ra để giữ đúng chi tiết thiết kế. Ảnh minh họa AI mang nhãn minh họa; ảnh mẫu in đi cùng thông tin mẫu thử. [README thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/README.md) và [prompt hình ảnh](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/exports/photoreal/prompts.md) cung cấp căn cứ thực hành.
-
-## Agent tối ưu timeline theo vai trò và phụ thuộc.
-
-[Rà phương pháp toàn Snaplock](modeling-method-review.md) áp dụng việc dùng chung plane khi base và biểu thức offset trùng nhau, cùng dùng lại profile tròn có hai consumer. Agent giữ key theo biểu thức để quan hệ tham số tiếp tục cập nhật. Các ứng viên Revolve cho hốc/lip được đánh giá bằng hình học và tổng bước; chuỗi tám tiết diện đã đạt dung sai tiếp tục giữ theo phạm vi bằng chứng của nó.
-
-Chuỗi plane → sketch → feature lần lượt đặt tiết diện, định nghĩa profile và tạo hình khối. Một tiết diện Loft có cao độ riêng tạo ra nhu cầu plane/sketch tương ứng. Hai sketch dùng cùng base và expression offset có thể chia sẻ một plane sau khi kiểm chứng tham chiếu và recompute.
-
-Agent lập bảng producer → consumer cho sketch, tool body và feature. Body dụng cụ được theo dõi đến phép Combine hoặc feature tiêu thụ. Body cuối được đối chiếu với contract thiết kế. Số object và thời gian dựng được đo tại checkpoint có hash rõ ràng.
-
-Baseline Snaplock tại commit `1b88b6b` dùng 25 tiết diện cách 0,25 mm cho răng/khe khóa dày 6 mm. [Checkpoint SCAD tròn/elip](../geometry/scad-catch-csg.md) chuyển phần răng sang trụ R5 và hai vùng bao lồi ngắn. [Checkpoint khe hybrid](../geometry/scad-slot-hybrid.md) tách đuôi cố định sang Extrude và dùng tám tiết diện theo góc R5 cho phần trước, với ngưỡng lấy mẫu 0,03 mm ở ba chiều dày. Fusion 0.4.0 dùng cùng cấu trúc và có bước xác nhận native riêng. Rà source Fusion trước tối ưu đã nhận diện 28 cặp plane cùng base/offset là ứng viên dùng chung. Giảm plane và giảm số tiết diện là hai thay đổi có phép kiểm chứng riêng: một thay đổi tác động tham chiếu, một thay đổi tác động xấp xỉ hình học.
-
-Số lời gọi builder, số marker log, số sketch/plane suy ra từ source và số timeline item native được ghi thành các chỉ số riêng. Mốc native thành công được giữ làm baseline cho từng thay đổi tối ưu.
-
-## Năm dự án cung cấp các bài học có thể tái sử dụng.
-
-| Dự án | Bài học được áp dụng. |
-|---|---|
-| [Hộp bàn chải](https://github.com/TimTini/electric-toothbrush-case/blob/main/fusion/README.md) | Agent tái dựng chỉnh sửa F3D/STEP thành trục, pivot và góc đi theo helix; ren thân và ren nắp giữ ownership rõ ràng. |
-| [Khay bông tắm](https://github.com/TimTini/bath-sponge-tray/blob/main/fusion/README.md) | Agent căn tâm lưới lỗ theo dài/rộng và đặt tâm móc theo chiều cao tai; kích thước sử dụng và cấu hình số móc có phạm vi cập nhật riêng. |
-| [Thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/fusion/README.md) | Agent tách layout theo dữ liệu, tham số hình học và nội dung được tạo lúc Run; khung chữ và glyph có contract riêng. |
-| [Thùng rác V4](https://github.com/TimTini/thung-rac-4-goc/blob/main/README-v4.md) | Agent kiểm tra đường đưa chốt và thể tích quét; khe offset đi theo pháp tuyến và winding của profile. |
-| [Snaplock](../../README.md) | Agent đo mặt cắt, chốt SCAD bằng audit rồi dựng native; lỗi sketch, Mirror và mesh lớn được xử lý theo bằng chứng từng checkpoint. |
-
-## Hồ sơ bàn giao giúp agent tiếp tục đúng checkpoint.
-
-[Quy trình test MCP Fusion](fusion-mcp-testing.md) biến baseline SCAD thành bằng chứng chạy native. Agent giữ initialize và tools/call trên cùng HTTP connection, dùng wrapper gọi source chính và đọc traceback gốc. Agent xác minh solver, recompute, temporary BRep và STL bằng các phép kiểm tra riêng. Preset mesh native là điểm khởi đầu; custom tessellation được đánh giá bằng số triangle, dung lượng, độ kín và fidelity. Khoảng phân cách số học nhỏ được áp dụng sau khi đã định vị cặp mặt gần trùng gây seam và có kết quả trước/sau.
-
-[Gân trong SCAD → Fusion 0.5.0](fusion-reinforcement.md) áp dụng quy trình chốt SCAD rồi chuyển profile thẳng sang Join Extrude, Mirror và Pattern. Agent dùng một sketch mẫu mỗi nhóm và mỗi phương; số lượng và khoảng cách Pattern bám công thức theo kích thước hộp. Audit biểu thức CSG xác nhận hình học trước lần Run native, manifest lưu công tắc cùng tham số để dựng đúng bản SCAD đối chiếu. Biến thể nhỏ có một trạm kiểm tra biên số lượng Pattern; sketch solver, feature phụ thuộc và recompute thực tế được xác nhận qua log của lần Run Fusion tương ứng.
-
-Một hồ sơ bàn giao chứa mục tiêu, phạm vi, source/hash, tham số, quyết định hình học, diff, lệnh chạy, kết quả, trạng thái runtime và bước xác nhận kế tiếp. Sổ lỗi giữ regression cho ca đã sửa và nêu miền áp dụng của recipe.
-
-Agent tiếp nối đọc checkpoint trước, đối chiếu Git status và hash hiện tại, rồi thực hiện bước còn lại của mục tiêu. Kiến thức đã rút được lưu thành tài liệu dự án có version; dữ liệu lần chạy được lưu thành báo cáo riêng theo source/hash.
-
-[Hồ sơ Snaplock](../validation/README.md) minh họa cách phân biệt mốc SCAD, native thành công, chẩn đoán sketch và audit streaming. [Sổ lỗi](error-cookbook.md) ghi các ca sửa cụ thể. [Mẫu giao việc](scad-to-fusion-task.md) chuyển quy trình thành yêu cầu dùng lại cho một model mới.
+Handoff dùng [templates](templates.md), lỗi dùng [cookbook](error-cookbook.md), thay đổi kích thước dùng [parameter validation](parameter-change-validation.md). Agent sau đối chiếu checkpoint với source hiện tại rồi tiếp tục phần còn lại. Các hồ sơ dự án lưu riêng, ví dụ [Snaplock documentation](https://github.com/TimTini/snaplock-storage-box/tree/main/docs).

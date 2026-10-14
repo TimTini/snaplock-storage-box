@@ -57,7 +57,7 @@ Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc
 
 ## Chạy trong Fusion
 
-**Bản 0.5.1:** [Rà phương pháp toàn project](../../docs/guides/modeling-method-review.md) bổ sung dùng chung plane cùng base/công thức và sketch tròn hốc ngàm. [Gân trong SCAD → Fusion](../../docs/guides/fusion-reinforcement.md) dùng ba công tắc `BUILD_RIBS`, sáu tham số gân và Extrude/Mirror/Pattern. Cả ba công tắc mặc định `False`, cùng file SCAD chính; mẫu gân enhanced 240 × 220 × 100 mm dùng cả ba `True`. 50 test cùng 24 phép đối chiếu CSG offline đã đạt. Lần Run Fusion tiếp theo xác nhận feature và recompute native. `tools/audit-fusion-ribs.py --native <export-folder>` đối chiếu STL với SCAD theo chính tham số và công tắc trong manifest export.
+**Bản 0.5.1:** [Rà phương pháp toàn project](../../docs/examples/modeling-method-review.md) bổ sung dùng chung plane cùng base/công thức và sketch tròn hốc ngàm. [Gân trong SCAD → Fusion](../../docs/examples/fusion-reinforcement.md) dùng ba công tắc `BUILD_RIBS`, sáu tham số gân và Extrude/Mirror/Pattern. Cả ba công tắc mặc định `False`, cùng file SCAD chính; mẫu gân enhanced 240 × 220 × 100 mm dùng cả ba `True`. 50 test cùng 24 phép đối chiếu CSG offline đã đạt. Lần Run Fusion tiếp theo xác nhận feature và recompute native. `tools/audit-fusion-ribs.py --native <export-folder>` đối chiếu STL với SCAD theo chính tham số và công tắc trong manifest export.
 
 **Bản thử 0.4.0:** [răng khóa bằng cung R5 và elip](../../docs/geometry/latch-analytic-construction.md) dùng bốn tiết diện XZ, một Extrude và hai Loft ngắn. [Khe hybrid](../../docs/geometry/scad-slot-hybrid.md) dùng một Extrude đuôi cùng Loft tám tiết diện. 36 test offline xác nhận công thức, vị trí tiết diện và ownership tool mô phỏng. Lần Run tiếp theo cung cấp bằng chứng native cho solver, Loft, Join, Mirror và biến thể độ dày. Log ghi `BUILD_METRICS` cùng `SLOT_BUILD`; mỗi audit lưu source hash xác định checkpoint.
 
@@ -109,7 +109,7 @@ Giới hạn Personal Use là [10 tài liệu đang cho phép chỉnh sửa](htt
 
 ## Rà soát feature và timeline
 
-[Rà toàn project tại bản 0.5.1](../../docs/guides/modeling-method-review.md) ghi các vùng đã áp dụng phương pháp, phần dùng chung plane/sketch, ứng viên Revolve cần đối chiếu và bước xác nhận native. Các số liệu bản 0.2.0 bên dưới là checkpoint lịch sử trước tối ưu răng, khe và gân.
+[Rà toàn project tại bản 0.5.1](../../docs/examples/modeling-method-review.md) ghi các vùng đã áp dụng phương pháp, phần dùng chung plane/sketch, ứng viên Revolve cần đối chiếu và bước xác nhận native. Các số liệu bản 0.2.0 bên dưới là checkpoint lịch sử trước tối ưu răng, khe và gân.
 
 - Bỏ construction plane offset literal `0 mm`; sketch dùng trực tiếp mặt phẳng gốc. Những offset bằng biểu thức/tham số vẫn được giữ, kể cả khi giá trị hiện tại bằng 0, để chỉnh tham số còn cập nhật đúng.
 - Các Body Pattern đặt phương một bằng 2 và phương hai bằng 1. Bỏ `patternComputeOption` khỏi helper này vì cả ba caller đều pattern body; tùy chọn đó chỉ áp dụng khi pattern feature. Xem [quantityTwo](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_RectangularPatternFeatureInput_quantityTwo.htm).

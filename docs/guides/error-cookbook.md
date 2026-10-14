@@ -1,211 +1,125 @@
-﻿# Sổ lỗi OpenSCAD và Fusion ghi cách sửa cùng phạm vi kiểm chứng.
+# Recipe chẩn đoán OpenSCAD, Fusion và dữ liệu hình học
 
-[Fusion 0.6.1 đã kiểm chứng native](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint đồng bộ source. Ngày 14/10/2026, Fusion 2705.1.30 chạy build và 10 biến thể recompute; baseline cùng bốn cấu hình đạt 30 cặp kiểm tra BRep lắp đóng. Bộ offline gồm 59 test đạt. Khoảng phân cách số học 0,001 mm tại hốc côn xử lý seam STL; preset mesh High thay custom tessellation quá dày. Audit độc lập xác nhận bốn STL kín. Hồ sơ ghi riêng giao thể tích của mesh High và BRep chính xác; mẫu in là bước kiểm chứng vật lý tiếp theo. Các mốc 0.5.1/0.6.0 bên dưới giữ ngữ cảnh lịch sử.
+Tài liệu này gom quy trình xử lý lỗi có thể dùng lại giữa các dự án. Lưu ca cụ thể, log nguyên bản, hash, kích thước và kết quả native trong hồ sơ dự án; giữ recipe ở đây theo điều kiện áp dụng và loại bằng chứng. [Ví dụ ca theo dự án](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/project-error-cases.md) là nơi đặt dữ liệu riêng khi có.
 
-Sổ lỗi thuộc [bộ tài liệu agent](agent-learning.md). Mỗi ca ghi hiện tượng, bằng chứng, thay đổi và mức xác nhận. Các recipe sketch được áp dụng theo loại entity và cấu trúc cụ thể của từng dự án.
+## Cách dùng recipe
 
-## Ca 1 xác định expression bị Fusion từ chối.
+- Chọn recipe theo triệu chứng và giai đoạn xảy ra: đọc đầu vào, dựng biểu thức, tạo sketch, thêm feature, recompute, xuất mesh, truyền request hay lắp ráp.
+- Ghi lại phiên bản ứng dụng/API, hash source và đầu vào, đơn vị, hệ tọa độ, cấu hình tham số, bước lỗi và log gốc trước khi sửa.
+- Tách **nguyên nhân đã xác nhận** khỏi **giả thuyết**. Đánh dấu đã xác nhận khi bằng chứng phân biệt được nguyên nhân với các khả năng gần nhất và phép thử sau sửa tái hiện đúng hành vi mong đợi.
+- Chạy kiểm tra ở đúng lớp: source/static, test offline, ứng dụng native, đầu ra xuất, hoặc thử lắp/vật lý. Mỗi kết quả chỉ xác nhận phạm vi phép đo đó.
+- Ghi dependency hoặc dữ liệu đầu vào còn thiếu thành blocker cụ thể: tên gói/tệp/phiên bản cần có, bước bị chặn và bằng chứng cần thu tiếp.
 
-**Hiện tượng được tái hiện trong regression:** test thời khóa biểu mô phỏng Fusion từ chối `core_width` bằng `3 : Invalid expression` trong bước tạo User Parameters.
+## Recipe 1 — Kiểm tra mesh, tỉ lệ và đơn vị đầu vào
 
-**Bằng chứng:** source hiện tại lưu biểu thức derived theo cú pháp Fusion với `if(điều_kiện; giá_trị_đúng; giá_trị_sai)` và dấu `;` giữa đối số. `_add_user_parameters` bọc lỗi bằng tên tham số, expression và đơn vị. Test `test_parameter_failure_names_the_rejected_expression` mô phỏng việc parser từ chối `core_width` để xác nhận thông báo chẩn đoán.
+**Điều kiện áp dụng.** STL/OBJ/3MF mở sai kích thước, chi tiết đặt sai vị trí, mesh không kín, hoặc phép đo thay đổi theo cách nhập hay transform.
 
-**Cách xử lý:** agent đọc expression cụ thể trong log, đối chiếu tên tham số đã tạo, thứ tự phụ thuộc, đơn vị và cú pháp Fusion. Biểu thức Python dùng trong tính toán offline và biểu thức lưu trong Fusion được xử lý theo grammar tương ứng. Chẩn đoán giữ nguyên lỗi gốc cùng ngữ cảnh tham số.
+**Triệu chứng và bằng chứng.** Đọc đơn vị khai báo, nguồn tạo tệp, transform khi import, bounds, số thành phần, winding, thể tích và trạng thái watertight. So sánh một kích thước nhận diện với thông số nguồn; kiểm tra đơn vị ở cả exporter lẫn importer.
 
-**Mức xác nhận:** source và regression offline xác nhận cách phát hiện lỗi, thông báo và cấu trúc expression. Lần Run native của source tương ứng xác nhận parser Fusion chấp nhận bộ tham số.
+**Nguyên nhân / giả thuyết.** Ghi nguyên nhân đã xác nhận khi tỉ lệ/transform trong luồng nhập giải thích được sai số quan sát. Giữ nhãn “giả thuyết” khi chỉ có bounds lệch và bằng chứng còn thiếu bước đổi đơn vị hoặc datum.
 
-Nguồn: [source tham số](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/fusion/TimetableBoard/TimetableBoard.py) và [regression thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/tests/test_fusion_timetable.py).
+**Hành động.** Chốt đơn vị và hệ trục bằng dữ liệu nguồn; áp một phép scale/transform có ghi lại lên bản sao làm việc; giữ mesh gốc bất biến. Với dữ liệu hở, định vị cạnh/mặt lỗi và xác định mục tiêu là sửa mesh, dựng surface hay dựng lại solid.
 
-## Ca 2 xử lý datum và điểm còn bậc tự do.
+**Xác minh và phạm vi.** Đo lại bounds và kích thước nhận diện sau transform; so sánh hash, thành phần, thể tích và mặt cắt trước/sau. Watertight xác nhận tính kín của mesh theo phép kiểm đã chạy; kích thước thiết kế và khả năng lắp cần phép đo riêng. Dùng [S01](sources.md#s01), [S03](sources.md#s03), [S04](sources.md#s04), [S05](sources.md#s05), [S08](sources.md#s08).
 
-**Hiện tượng:** thùng rác phát sinh `VCS_SKETCH_OVER_CONSTRAINTS` tại `Corner floor`; lần sửa kế tiếp ghi profile còn tự do.
+## Recipe 2 — Sửa biểu thức và thứ tự phụ thuộc tham số
 
-**Bằng chứng:** chẩn đoán chỉ ra điểm, trục và expression đang gắn dimension. Một checkpoint xác định đầu mút datum còn có khả năng trượt dọc đường. Các ca regression kiểm tra thứ tự tạo datum và bốn đầu mút fixed.
+**Điều kiện áp dụng.** Fusion từ chối expression, tham số derived không cập nhật, hoặc kết quả số có đơn vị không tương thích.
 
-**Cách xử lý:** builder dùng `addOffsetDimension` từ hai trục construction làm chuẩn tọa độ. Hai đầu mút của mỗi datum được fixed rõ ràng. Điểm hình học của sản phẩm được điều khiển bằng expression tham số. Agent đọc tọa độ, `isFixed`, `isReference`, constraint và dimension của entity tại bước lỗi.
+**Triệu chứng và bằng chứng.** Ghi tên tham số, expression chính xác, đơn vị khai báo, API trả lỗi, thứ tự tạo tham số và các tham số được tham chiếu. Kiểm tra expression trong Fusion bằng [`UnitsManager.isValidExpression`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/core_UnitsManager_isValidExpression.htm) và đọc lỗi gốc tại đúng lệnh tạo/cập nhật tham số.
 
-**Mức xác nhận:** các bản sửa có regression offline và checkpoint source riêng. Lần chạy Fusion hiện tại xác nhận kết quả solver của refactor native tương ứng.
+**Nguyên nhân / giả thuyết.** Xác nhận lỗi grammar, tên tham số chưa tồn tại, kiểu đơn vị sai hoặc dependency cycle bằng thông báo/thử nhỏ cô lập được. Lỗi từ một parser offline chỉ xác nhận parser đó; biểu thức được chấp nhận trong native Fusion cần bằng chứng native.
 
-Nguồn: [lịch sử chẩn đoán thùng rác](https://github.com/TimTini/thung-rac-4-goc/blob/main/fusion/README.md) và [test sketch](https://github.com/TimTini/thung-rac-4-goc/blob/main/tests/test_fusion_bin.py).
+**Hành động.** Sắp thứ tự tạo theo quan hệ phụ thuộc; giữ biểu thức Fusion riêng với biểu thức Python dùng cho tính toán; ghi đơn vị tường minh khi đầu vào có thể phụ thuộc setting tài liệu. Autodesk mô tả chiều dài nội bộ bằng cm và góc bằng radian trong Design API [S05](sources.md#s05). Bọc lỗi với tên tham số và expression nhưng giữ traceback/API failure gốc.
 
-## Ca 3 khóa cung tròn và rectangle theo loại hình học.
+**Xác minh và phạm vi.** Kiểm tra giá trị/đơn vị sau khi thêm, chạy recompute, rồi đổi một tham số gốc để quan sát tham số derived. Test giả lập xác nhận chẩn đoán và luồng mã; chỉ native run xác nhận parser, đơn vị và recompute trong Fusion.
 
-**Hiện tượng:** sketch góc thùng rác và gân đáy có hình dạng nhìn đúng trong khi solver báo còn tự do.
+## Recipe 3 — Khóa sketch và đổi hệ tọa độ đúng frame
 
-**Bằng chứng:** cung tạo bằng `addByCenterStartEnd` được bổ sung radial dimension driving. Rectangle nhiều phần được kiểm tra theo bốn điểm và tám offset tọa độ. Mock trả `isFullyConstrained=True` vẫn cho phép test bắt việc thiếu lời gọi dimension.
+**Điều kiện áp dụng.** Sketch báo còn tự do hoặc over-constrained; profile nằm sai hướng trên mặt đã chọn; dimension có số lượng đúng nhưng hình học vẫn dịch/chảy.
 
-**Cách xử lý:** builder cung thêm expression bán kính cho radial dimension. Builder rectangle của nhóm gân điều khiển cả bốn góc theo datum trước khi nối cạnh. Builder rounded rectangle thời khóa biểu giữ kích thước parent và quan hệ collinear/radius sau trim/fillet theo contract riêng.
+**Triệu chứng và bằng chứng.** Ghi plane, `xDirection`/`yDirection`, normal, transform model↔sketch, entity type, tọa độ, constraint/dimension và trạng thái solver. Đánh giá mức khóa từ trạng thái solver và entity liên quan; số lượng dimension là dữ liệu chẩn đoán bổ sung.
 
-**Mức xác nhận:** regression bảo vệ số điểm, số dimension, biểu thức và cấu trúc gọi API. Trạng thái [`Sketch.isFullyConstrained`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_Sketch_isFullyConstrained.htm) trong ứng dụng là kết quả solver của sketch thực tế.
+**Nguyên nhân / giả thuyết.** Xác nhận khi xác định được bậc tự do còn lại, ràng buộc mâu thuẫn, mapping trục sai hoặc thứ tự dựng khiến solver cập nhật khác dự kiến. `Sketch.isFullyConstrained` là trạng thái boolean của solver theo [Autodesk API](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_Sketch_isFullyConstrained.htm); mock xác nhận contract của test, còn trạng thái sketch cần kiểm tra native.
 
-Nguồn: [test thùng rác](https://github.com/TimTini/thung-rac-4-goc/blob/main/tests/test_fusion_bin.py) và [test thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/tests/test_fusion_timetable.py).
+**Hành động.** Chuyển điểm, tâm cung, vector và hướng feature qua cùng frame đã đo. Đặt datum rõ, nối cạnh rồi ràng buộc theo loại hình học và bậc tự do cần triệt tiêu. Tách dimension driving khỏi dimension reference; dùng contract riêng cho text, construction geometry và profile thường.
 
-## Ca 4 chẩn đoán cạnh tự do của Latch plate.
+**Xác minh và phạm vi.** Kiểm tra tọa độ trước/sau, entity liên quan, profile kín và solver native. Test cấu trúc có thể xác nhận số điểm/cạnh/lời gọi API; chỉ Fusion xác nhận solver của sketch thực và phía vật liệu của feature.
 
-**Hiện tượng:** Snaplock dừng ở `Sketch is not fully constrained: Latch plate`.
+## Recipe 4 — Font, SketchText và profile chữ
 
-**Bằng chứng:** log ghi 2 constraint, 6 dimension và bốn SketchLine còn tự do; các điểm đã đủ ràng buộc. Bằng chứng này phân biệt trạng thái điểm với trạng thái curve.
+**Điều kiện áp dụng.** Tạo text thất bại theo font/nội dung; chữ thiếu glyph mong đợi; extrude chữ báo input không hợp lệ.
 
-**Cách xử lý:** source sửa thứ tự profile thành tạo điểm → tạo cạnh → áp dimension/constraint tọa độ → kiểm tra sketch. Diagnostic ghi entity, type, tọa độ và số constraint/dimension của cả điểm lẫn curve.
+**Triệu chứng và bằng chứng.** Ghi giá trị font API, hệ điều hành/Fusion version, nội dung gồm dấu, kích thước khung, trạng thái `SketchText`, các profile sau thao tác và đoạn traceback. Xác định lỗi xảy ra khi tạo text, lấy glyph hay tạo feature.
 
-**Mức xác nhận:** source `e09a8281…` có 28 test offline tại checkpoint đã lưu. Bản sửa thứ tự mang trạng thái “đã xác nhận offline”; lần Run native tương ứng là bước xác nhận tác dụng với solver Fusion. Mốc native thành công `4cad327e…` thuộc phiên bản trước thay đổi thứ tự này.
+**Nguyên nhân / giả thuyết.** Xác nhận thiếu family/glyph khi đối chiếu font được cài với font API chấp nhận; xác nhận nhầm kiểu đầu vào khi feature nhận `SketchText` ở nơi cần profile. Autodesk nêu [`SketchText.explode()`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_SketchText_explode.htm) tạo curves và xóa đối tượng SketchText gốc.
 
-Nguồn: [log chẩn đoán](../validation/fusion-free-lines-failure.log), [profile source](../../fusion/SnaplockStorageBox/SnaplockStorageBox.py) và [hồ sơ hash](../validation/README.md).
+**Hành động.** Chọn font đã kiểm tra trong môi trường chạy và bảo toàn văn bản gốc trong log. Nếu feature cần vùng kín, explode theo API rồi kiểm tra curve/profile kết quả trước khi tạo feature. Tạo lại glyph sau khi đổi nội dung hoặc cỡ chữ; áp ràng buộc phù hợp với text entity.
 
-## Ca 5 giữ bounds khóa khi Mirror khe đàn hồi.
+**Xác minh và phạm vi.** Chạy native với đúng nội dung/font, xác nhận dấu, profile kín, thể tích/body và hình hiển thị. Kiểm tra font cài đặt hoặc test mock xác nhận môi trường cài đặt hay luồng mã; Fusion native xác nhận font được nạp và glyph trên môi trường đã chạy.
 
-**Hiện tượng:** khóa Snaplock có bounds rộng 30 mm trong khi contract là 28 mm.
+## Recipe 5 — Ownership, Combine và Pattern
 
-**Bằng chứng:** profile tool của khe vươn đến X = −2 mm. Bản sửa thay Mirror feature Loft Cut bằng việc Mirror body dụng cụ, rồi cắt từ body đích.
+**Điều kiện áp dụng.** Join/Cut/Intersect đổi nhầm body, tool biến mất ngoài dự kiến, Mirror/Pattern tạo sai đối tượng hoặc số lượng.
 
-**Cách xử lý:** chuỗi dựng là **Loft NewBody → Mirror tool body → Combine Cut**. Danh sách tool và target được chỉ định rõ. Check cuối đo cả `Latch` và `Latch 2`.
+**Triệu chứng và bằng chứng.** Tại feature đầu tiên sai, ghi component sở hữu target/tool, kiểu entity đầu vào, danh sách input, operation, keep-tools, hướng, quantity/distance, feature result và body sau recompute. Autodesk định nghĩa riêng `targetBody`/`toolBodies` cho [`CombineFeatureInput`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_CombineFeatureInput.htm); pattern nhận loại entity có quy định trong [`createInput`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_RectangularPatternFeatures_createInput.htm).
 
-**Mức xác nhận:** [log native source `4cad327e…`](../validation/fusion-native-success.log) xác nhận cả hai khóa rộng 28 mm, bốn solid và hai biến thể recompute. Đây là ca có bằng chứng native cho thay đổi cụ thể.
+**Nguyên nhân / giả thuyết.** Xác nhận ownership sai khi danh sách đối tượng thực tế khác producer→consumer mong đợi; xác nhận hướng/số lượng sai khi input đo được mâu thuẫn với kết quả. Giữ giả thuyết nếu chỉ dựa vào tên hiển thị hoặc ảnh canvas.
 
-Nguồn: [source Mirror/Combine](../../fusion/SnaplockStorageBox/SnaplockStorageBox.py) và [README kỹ thuật](../../README.md).
+**Hành động.** Lấy body từ output feature đúng loại; gán target và tools tường minh; đặt operation và chính sách giữ tool theo ý đồ. Khai báo cả hai chiều pattern khi API có hai hướng; ghi nguồn direction và kiểu khoảng cách. Chọn body theo index/name sau khi đối chiếu owner và trạng thái còn hiệu lực.
 
-## Ca 6 đặt rõ hai chiều của Rectangular Pattern.
+**Xác minh và phạm vi.** Sau recompute, đối chiếu body/component, số solid, vị trí, bounds, volume và tool còn lại theo contract. Test mock xác nhận cách tạo input; native xác nhận feature giải quyết đúng topology và ownership trong tài liệu đang chạy.
 
-**Hiện tượng:** pattern một phương có nguy cơ tạo thêm hàng body khi số lượng chiều hai mang giá trị khác contract.
+## Recipe 6 — Topology, feature lỗi và recompute
 
-**Bằng chứng:** helper Snaplock đặt `quantityOne = 2` và `quantityTwo = 1`. Regression kiểm tra chiều hai ngay cả khi mock khởi tạo giá trị khác. Body sao chép được đọc từ kết quả Pattern.
+**Điều kiện áp dụng.** Feature được tạo nhưng profile/solid sai, feature báo unhealthy, tham chiếu downstream mất hiệu lực hoặc thay tham số không cập nhật đầy đủ.
 
-**Cách xử lý:** agent khai báo số lượng từng chiều, lấy body từ feature kết quả và kiểm tra vị trí, tên cùng số solid cuối. Pattern body và pattern feature được chọn theo loại input thực tế.
+**Triệu chứng và bằng chứng.** Ghi stage đầu tiên lỗi, timeline, input entity và validity, profile kín/hở, số solid, warning/error feature, kết quả compute/recompute và trạng thái tham số trước/sau. Tách lỗi tạo input khỏi lỗi kernel hoặc cập nhật downstream.
 
-**Mức xác nhận:** regression offline xác nhận input tường minh; log native Snaplock xác nhận bốn body và bố trí của phiên bản tương ứng.
+**Nguyên nhân / giả thuyết.** Xác nhận khi một input/topology cụ thể làm lỗi tái hiện trong bản sao cô lập và việc loại/thay input phù hợp khôi phục hành vi. “Feature success” hoặc process exit code xác nhận bước tạo feature; trạng thái downstream cần kiểm tra timeline và feature health.
 
-Nguồn: [test native feature](../../tests/test_native_features.py) và [source pattern](../../fusion/SnaplockStorageBox/SnaplockStorageBox.py).
+**Hành động.** Thu hẹp tới feature đầu tiên sai; kiểm tra profile, axis/plane, participant/target, validity và dependency trước khi đổi hình học. Recompute theo luồng API hiện có; giữ lỗi nguyên gốc cùng stage trong chẩn đoán và dừng luồng tại feature lỗi.
 
-## Ca 7 điều khiển body đích và body dụng cụ.
+**Xác minh và phạm vi.** Chạy lại cùng source/đầu vào, đổi một tham số đại diện và kiểm tra feature health, solid, bounds cùng volume ở cuối timeline. Offline tests xác nhận luồng kiểm tra; native run xác nhận kernel/timeline trong phiên bản Fusion đó.
 
-**Hiện tượng:** Join/Cut tác động sai chi tiết hoặc body cuối có thêm tool ngoài contract.
+## Recipe 7 — Tessellation, BRep và mesh là các phép đo khác nhau
 
-**Bằng chứng:** nhiều part được dựng trong cùng component nên các vùng tiếp xúc và tool được consume ảnh hưởng đến lựa chọn feature. Fusion Snaplock 0.5.1 dựng xong từng part rồi chuyển sang bố trí in, và mounting Combine lấy đúng các tai của part tại checkpoint đó. Thùng rác dựng đầu khóa/đầu chốt bằng NewBody rồi Combine vào target xác định.
+**Điều kiện áp dụng.** Xuất mesh quá lớn/chậm, boolean mesh và BRep bất đồng, file hở sau export, hoặc chuyển mesh sang solid thất bại.
 
-**Cách xử lý:** agent giữ tham chiếu producer → consumer, chỉ định target/tool và kiểm tra ownership sau Combine, Mirror, Pattern. Check cuối dùng số solid, tên body, thể tích và bounds theo contract.
+**Triệu chứng và bằng chứng.** Ghi source body, loại biểu diễn, export settings/preset, số mặt/triangle, kích thước file, hash, bounds, watertight, volume/intersection và đơn vị. Chạy phép so sánh trên cùng frame và cùng cấu hình.
 
-**Mức xác nhận:** log Snaplock cung cấp bằng chứng native cho bốn body. Các builder của dự án khác có mức xác nhận riêng trong README tương ứng.
+**Nguyên nhân / giả thuyết.** Xác nhận lỗi export/topology khi chỉ ra vùng cạnh/mặt cụ thể; xác nhận độ mịn ảnh hưởng khi thay tessellation làm thay đổi số mặt và sai số đo. Mesh biểu diễn xấp xỉ tessellation; BRep và mesh booleans cho kết quả theo representation và tolerance tương ứng.
 
-Nguồn: [Snaplock](../../README.md) và [Fusion thùng rác](https://github.com/TimTini/thung-rac-4-goc/blob/main/fusion/README.md).
+**Hành động.** Chọn preset/độ mịn theo kích thước, sai số cho phép và tài nguyên thực đo; thử trên một part trước. Giữ dữ liệu gốc, ghi rõ mọi simplification và sai lệch. Autodesk phân biệt chuyển mesh faceted/prismatic/organic và nêu điều kiện watertight ảnh hưởng đến solid hay surface [S08](sources.md#s08); xác định ngưỡng mặt theo máy và phiên bản đang chạy.
 
-## Ca 8 xử lý khung SketchText và profile glyph.
+**Xác minh và phạm vi.** Audit mesh xuất riêng về kín, bounds, volume và mặt cắt; audit BRep bằng body health, interference và phép đo native tương ứng. Đặt tên riêng cho giao thể tích mesh và BRep; mỗi representation cùng chất lượng in có checkpoint đo riêng.
 
-**Hiện tượng:** thời khóa biểu gặp over-constraint khi khóa khung chữ, lỗi font và lỗi `Some input argument is invalid` khi tạo khối chữ.
+## Recipe 8 — Transport/API và phạm vi phiên
 
-**Bằng chứng:** khung multiline SketchText có quan hệ solver riêng. Recipe hiện tại điều khiển `heightParameter`, điểm BL và hai tọa độ BR.x/TL.y; H/V được thử trong phạm vi quan hệ tùy chọn. Font được chọn từ danh sách hệ thống hỗ trợ tiếng Việt. Luồng extrude dùng các profile tạo sau explode.
+**Điều kiện áp dụng.** MCP/API trả initialize hoặc tool list thành công nhưng lệnh tiếp theo mất session, sai route, timeout hoặc response không khớp request.
 
-**Cách xử lý:** agent áp contract riêng cho sketch text, kiểm tra khung và expression cỡ chữ. Chuỗi hình học là **SketchText → explode → Profiles → Extrude NewBody → Combine Join**. [`explode()`](https://help.autodesk.com/cloudhelp/ENU/Fusion-360-API/files/fusion_SketchText_explode.htm) tạo curve glyph và xóa đối tượng SketchText gốc. Nội dung và cỡ glyph được tạo lại khi Run.
+**Triệu chứng và bằng chứng.** Ghi transport, endpoint/path, method, header định danh phiên, request ID, status, body đầy đủ, thứ tự message và phạm vi client/server đang giữ trạng thái. Che token và dữ liệu xác thực khỏi log chia sẻ.
 
-**Mức xác nhận:** test kiểm tra contract khung, nhánh H/V tùy chọn và pipeline profile. Lần Run native của source hiện tại xác nhận font, dấu tiếng Việt, solver và khối chữ.
+**Nguyên nhân / giả thuyết.** Xác nhận sai scope/session khi request không tuân thủ protocol version hoặc server contract đang chạy. Tách lỗi transport, validation API, quyền truy cập và lỗi ứng dụng phía server. MCP 2026-07-28 đã bỏ handshake/session cấp giao thức; revision đến 2025-11-25 dùng initialize và session theo contract legacy ([MCP release](https://blog.modelcontextprotocol.io/posts/2026-07-28/)).
 
-Nguồn: [README chữ và sketch](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/fusion/README.md) và [regression](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/tests/test_fusion_timetable.py).
+**Hành động.** Chốt protocol version và transport contract từ server trước khi áp lifecycle; truyền session/header/order đúng khi revision yêu cầu; parse response theo status và content type. Giữ logic retry/khởi tạo phiên theo quy tắc chính thức của endpoint. [S09](sources.md#s09) là nguồn giao thức trong [registry nguồn chung](sources.md).
 
-## Ca 9 tái dựng chỉnh sửa đầu ren bằng frame tham số.
+**Xác minh và phạm vi.** Chạy handshake/discovery/call theo protocol version đã chốt và ghi response cùng trạng thái cuối. Client mock xác nhận serialization/ordering; kết quả native xác nhận kết nối cụ thể. Giới hạn kết luận theo server, route và phiên bản đã chạy.
 
-**Hiện tượng:** chỉnh sửa đầu ren từ F3D/STEP có trục/pivot riêng và cần đi theo thay đổi pitch, radius, phase và góc.
+## Recipe 9 — Assembly, đường chuyển động và mức chứng cứ
 
-**Bằng chứng:** source hộp bàn chải tạo frame helix và Move Rotate theo tham số. Test toán học đối chiếu mặt phẳng STEP và các biến thể. Script hiện tại dùng surface helix + circular Sweep; bài probe Coil giữ vai trò khảo sát API.
+**Điều kiện áp dụng.** Các part vừa ở vị trí cuối nhưng vướng khi đưa vào, va chạm theo hành trình, hoặc báo cáo lắp đóng mâu thuẫn với mesh/export.
 
-**Cách xử lý:** agent suy ra trục, pivot và góc từ hình học nguồn, tạo axis sketch liên kết rồi đặt Move Rotate sau Sweep tương ứng. Bộ tham số chung điều khiển ren thân và ren nắp. Fade 45° của SCAD và tiết diện tròn của Sweep được ghi thành đặc điểm đối chiếu riêng.
+**Triệu chứng và bằng chứng.** Ghi transform/datum từng part, tọa độ và orientation, cặp kiểm tra, tolerance, trạng thái cơ cấu/chuyển động, pose lấy mẫu hoặc swept path, representation và đơn vị phép đo.
 
-**Mức xác nhận:** source và test xác nhận frame, công thức và mặt phẳng mục tiêu. BRep sau Move, recompute, giao thoa ren và lực vặn được xác nhận trong Fusion và bằng coupon tương ứng.
+**Nguyên nhân / giả thuyết.** Xác nhận va chạm tĩnh bằng interference/boolean tại pose cụ thể; xác nhận va chạm theo đường bằng kiểm tra quét liên tục hoặc bước lấy mẫu có mật độ/giới hạn sai số đã nêu. Pose cuối xác nhận trạng thái cuối; đường lắp cần phép kiểm tra hành trình.
 
-Nguồn: [Fusion hộp bàn chải](https://github.com/TimTini/electric-toothbrush-case/blob/main/fusion/README.md) và [test frame/ren](https://github.com/TimTini/electric-toothbrush-case/blob/main/tests/test_fusion_case.py).
+**Hành động.** Kiểm tra mating datums và quan hệ tham số trước khi chỉnh khe; đánh giá từng cặp có tương tác chức năng, vị trí lắp cuối và hành trình cần thiết. Chỉ thay offset/clearance theo sai số đo được của quy trình, kích thước, vật liệu hoặc tessellation cụ thể; ghi giá trị hiệu chỉnh và cơ sở.
 
-## Ca 10 kiểm tra toàn hành trình đưa chốt vào khớp.
+**Xác minh và phạm vi.** Chạy bộ pose/biến thể đại diện cùng trạng thái mở/đóng, đo interference/clearance theo representation đã chọn. Native BRep, mesh export và thử in/lắp là các checkpoint tách biệt; bằng chứng ở một lớp chỉ chứng minh lớp đó. Dùng [quy trình đổi tham số](parameter-change-validation.md) để xác định miền biến thể và [hướng dẫn Fusion](fusion-python-tu-hoc.md) cho phép đo.
 
-**Hiện tượng:** chốt V3 của thùng rác có vị trí cuối vừa khớp trong khi đường đưa vào gặp gân.
+## Ghi nhận ca mới
 
-**Bằng chứng:** audit phát hiện giao thể tích khoảng 88–106 mm³ tại các mốc lấy mẫu trên đường vào tiếp tuyến dài 51 mm. V4 đổi hướng đưa chốt từ ngoài vào theo pháp tuyến thành và dùng phần thân 14 mm cùng đầu 3 mm.
+Mỗi bản ghi lưu: điều kiện áp dụng; triệu chứng; bằng chứng quan sát; nguyên nhân đã xác nhận hoặc giả thuyết; thay đổi; lệnh/phép thử; kết quả; phiên bản/hash; phạm vi kiểm chứng tiếp theo. Lưu ca gắn với dự án trong [examples/project-error-cases.md](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/project-error-cases.md); recipe dùng lại được bổ sung ở phần phù hợp sau khi đã rút được điều kiện và phép xác minh tổng quát.
 
-**Cách xử lý:** agent đánh giá vị trí cuối, các vị trí trung gian và thể tích quét liên tục theo mức kiểm chứng đặt ra. Khóa, ray và chốt được kiểm tra thành bộ cùng phiên bản. Hướng in, khe hở và mẫu coupon đi cùng phép thử lắp.
-
-**Mức xác nhận:** audit hỗ trợ hình học đường lắp của checkpoint đã đo; thử mẫu cung cấp kết quả lực thao tác và khả năng sử dụng thực tế. Lấy mẫu một số vị trí và đo swept-volume liên tục có phạm vi bằng chứng riêng.
-
-Nguồn: [thiết kế và audit V4](https://github.com/TimTini/thung-rac-4-goc/blob/main/README-v4.md).
-
-## Ca 11 xử lý STL lớn theo tài nguyên và loại phép đo.
-
-**Hiện tượng:** bộ STL Fusion Snaplock có khoảng 43,7 triệu tam giác và 2,19 GB; phép boolean toàn mesh dừng ở giới hạn bộ nhớ.
-
-**Bằng chứng:** báo cáo streaming ghi hash, số tam giác, bounds và thể tích có dấu cho bốn file. Chênh thể tích có dấu của thân là +0,077286%, nắp +0,007296%, mỗi khóa −0,017146% tại checkpoint đã lưu.
-
-**Cách xử lý:** agent đọc streaming cho các chỉ số tổng, chọn độ mịn export theo mục tiêu và tài nguyên, rồi lên phép boolean/khoảng cách/mặt cắt tương ứng. Mọi mesh giảm độ mịn được đo sai lệch so với bản nguồn và mang nhãn xấp xỉ.
-
-**Mức xác nhận:** streaming xác nhận các chỉ số đã báo. Sai khác đối xứng và bản đồ khoảng cách toàn bề mặt của Fusion thuộc bước đo bổ sung. Chênh thể tích tổng và sai khác đối xứng có công thức cùng ý nghĩa riêng trong [tài liệu kỹ thuật](fusion-python-tu-hoc.md).
-
-Nguồn: [báo cáo streaming](../validation/fusion-native-export-metrics.json).
-
-## Ca 12 xác nhận tác dụng của thay đổi tham số và công cụ xuất.
-
-**Tình huống kiểm tra:** một lần render/audit dùng selector, bộ tham số, font và môi trường dependency cụ thể; hash cùng số đo giúp xác định tác dụng của cấu hình đã chạy.
-
-**Bằng chứng:** source hiện tại tách số hàng sáng/chiều, các script audit xuất từng part/variant, và dependency được khai báo trong bộ hướng dẫn tương ứng. Hash cùng ảnh, bounds và số part làm rõ cấu hình đã thực sự chạy.
-
-**Cách xử lý:** agent ghi selector `part`, tham số, phiên bản công cụ, dependency và thư mục output. Agent đối chiếu source/hash, thời điểm xuất, ảnh và số đo sau thay đổi. OpenSCAD CLI, cấu hình font và Python environment được chọn rõ trong lệnh của checkpoint.
-
-Thời khóa biểu dùng `textmetrics` đã bật cùng font được tham chiếu trong dự án. Agent kiểm tra giá trị `output_part` thực tế đến OpenSCAD sau bước truyền đối số của shell. Bản xuất 3MF được kiểm tra mesh/object/color group trong ZIP/XML, rồi đối chiếu lại trong slicer. Bộ cấu hình layout gồm số ngày cùng số hàng sáng/chiều độc lập.
-
-**Mức xác nhận:** render/audit của từng cấu hình xác nhận output tương ứng. Kiểm tra slicer tiếp tục xác nhận đơn vị, màu, object và thiết lập in của file đã nhập.
-
-Nguồn: [thời khóa biểu](https://github.com/TimTini/thoi-khoa-bieu-openscad/blob/main/README.md), [audit SCAD Snaplock](../../tools/audit-scad.py) và [dependency Snaplock](../../requirements.txt).
-
-## Ca 13 đổi tọa độ theo frame thực của sketch.
-
-**Hiện tượng:** khay và Snaplock cần profile nằm trên mặt XZ/YZ với hướng khoét vào đúng phía thành.
-
-**Bằng chứng:** khay dùng `modelToSketchSpace` cho vị trí theo model và xác định hướng extrusion theo frame. Snaplock đọc `xDirection`/`yDirection` để đổi biểu thức tọa độ; mặt YZ trong ca đo dùng ánh xạ `(Y, Z) → (−Z, Y)`.
-
-**Cách xử lý:** agent dùng cùng phép đổi cho điểm, tâm, cung và biểu thức dimension. Hướng extrusion được xác định theo normal của sketch và phía vật liệu mục tiêu. Test mô phỏng frame đảo hướng để kiểm tra mapping và chiều khoét.
-
-**Mức xác nhận:** test xác nhận phép đổi và input API; lần Run native xác nhận vị trí profile và phía vật liệu của mô hình thực tế.
-
-Nguồn: [test frame khay](https://github.com/TimTini/bath-sponge-tray/blob/main/tests/test_fusion_parameters.py), [source khay](https://github.com/TimTini/bath-sponge-tray/blob/main/fusion/BathSpongeTray/BathSpongeTray.py) và [source tọa độ Snaplock](../../fusion/SnaplockStorageBox/SnaplockStorageBox.py).
-
-## Ca 14 đặt tên đúng đối tượng và neo đúng endpoint helix.
-
-**Tình huống được bảo vệ bằng regression và source:** test khay mô phỏng lỗi khi gán tên root component; builder hộp bàn chải kiểm tra và điều khiển endpoint helix bằng liên kết sketch.
-
-**Bằng chứng:** khay hiện đặt tên tài liệu qua `doc.name`, có regression bảo vệ thao tác này. Hộp bàn chải tạo datum với cả hai đầu mút ràng buộc, chuyển điểm theo frame và project endpoint đường helix vào sketch tiết diện.
-
-**Cách xử lý:** agent chọn thuộc tính của đúng document/component theo ownership API. Sketch ren giữ liên kết với endpoint thực của đường dẫn, cùng biểu thức chiều cao, phase, radius và pivot. Diagnostic nêu rõ sketch cùng endpoint còn tự do để sửa tại quan hệ thiếu.
-
-**Mức xác nhận:** source và regression bảo vệ contract đặt tên, anchor và biểu thức. Lần Run native tương ứng xác nhận sketch ren cùng feature Sweep/Move sau recompute.
-
-Nguồn: [test đặt tên khay](https://github.com/TimTini/bath-sponge-tray/blob/main/tests/test_fusion_parameters.py) và [source helix](https://github.com/TimTini/electric-toothbrush-case/blob/main/fusion/ElectricToothbrushCase/ElectricToothbrushCase.py).
-
-## Ca 15 liên kết chiều dài latch với chiều cao nắp.
-
-**Tình huống:** các giá trị `lid_height` khác nhau cần giữ vị trí anchor thân/nắp đồng tâm và vùng lắp latch rõ ràng.
-
-**Bằng chứng:** SCAD hash `e1cbc7402b7a04ba5b5039f9260fea86289bbeafb99687790e8fd816ac3fdc55` dùng `latch_span_delta = lid_height - 15`, giữ anchor hai phía bằng nhau và dịch blank, ramp, tooth cùng channel theo biến thể. Pocket cầu dùng cutter bù facet `1/cos(180/$fn)^2`. Bộ assembly 112 ca cho 107 `closed_clear`, 5 `rejected_source_bounds`, 104 ca trong khổ 250 mm và 48 pose mở với latch đã tháo. Audit biến đổi STL lượng tử hóa datum theo float32.
-
-**Cách xử lý:** agent nối chiều dài chi tiết với tham số sở hữu quan hệ, giữ các datum lắp trong cùng frame rồi kiểm tra mesh sau transform. Ma trận hình học đi cùng kiểm tra cửa sổ clearance trước, kênh sau 1 mm và miền tham số. Lực cài, độ biến dạng và tuổi thọ được xác nhận bằng thử vật lý.
-
-**Mức xác nhận:** [Regression assembly](../../tests/test_scad_assembly.py) kiểm tra source, cặp lắp và các pose mở lấy mẫu. [Báo cáo assembly](../validation/scad-parametric-assembly.json) và [audit mặc định](../validation/scad-current-default.json) lưu kết quả cùng source hash. Fusion 0.5.1 là baseline lịch sử trước cập nhật; [Fusion 0.6.1](../geometry/fusion-parametric-sync.md) đã qua build/recompute native, kiểm tra BRep lắp đóng và audit STL.
-
-Nguồn: [SCAD](../../snaplock-storage-box.scad), [audit transform](../../tools/audit-latch-fit.py), [regression assembly](../../tests/test_scad_assembly.py).
-
-## Ca 16 giữ phiên MCP Fusion trên một kết nối HTTP.
-
-**Bằng chứng:** Fusion 2705.1.30 trả metadata initialize và tools/list; client tách request sang kết nối khác gặp mất trạng thái phiên. Client giữ initialize, notification và lượt tools/call trên cùng connection đã chạy script native thành công.
-
-**Cách xử lý:** agent dùng HTTP persistent, đọc response đầy đủ, truyền MCP-Session-Id và khởi tạo phiên mới cho lượt gọi mới. [CLI MCP](../../tools/fusion-mcp-test.py) cùng [regression transport](../../tests/test_fusion_mcp.py) thực thi thứ tự này.
-
-## Ca 17 tách lỗi BRep tolerant và seam STL tại ngàm.
-
-**Bằng chứng:** nắp là solid native trong khi mesh xuất có cạnh hở. Các cạnh được định vị tại mép ngàm gần trùng mặt côn với cung web. Hiệu chỉnh hai bán kính côn thêm 0,001 mm giữ độ dốc, và mesh xuất sau đó kín với 0 cạnh hở.
-
-**Cách xử lý:** agent đo vị trí và độ lớn lỗi, thử trên document test, kiểm tra source/BRep/mesh trước và sau rồi giữ khoảng phân cách nhỏ nhất đã có bằng chứng. Giá trị 0,001 mm thuộc ca Snaplock này. [Hồ sơ native](../geometry/fusion-parametric-sync.md) ghi phạm vi và hash.
-
-## Ca 18 đo tessellation và đối chiếu preset native.
-
-**Bằng chứng:** custom tessellation tạo nắp khoảng 806 MB; preset High sau hiệu chỉnh seam tạo nắp khoảng 0,55 MB và đạt audit độc lập. Hai lượt chạy dùng cùng hình học mục tiêu, còn thông số mesh được ghi riêng theo phiên bản.
-
-**Cách xử lý:** agent thử preset native trước, đo số triangle/dung lượng, xác nhận mesh kín và so với baseline. Các override mesh được quyết định theo sai lệch bề mặt đã đo và khả năng xử lý file.
-
-## Ca 19 ghi riêng giao BRep chính xác và giao mesh.
-
-**Bằng chứng:** baseline cùng bốn cấu hình bổ sung có 30 cặp BRep lắp đóng giao bằng 0. Mesh High baseline ghi giao thân–nắp khoảng 0,40478 mm³, vượt ngưỡng mesh 0,01 mm³, trong khi các cặp latch dưới ngưỡng.
-
-**Cách xử lý:** agent giữ trạng thái từng phép kiểm tra theo đúng biểu diễn và ngưỡng. Mẫu in tiếp tục xác nhận độ khít, lực gài và độ bền ở checkpoint vật lý.
+Nguồn kỹ thuật theo registry: [S01 OpenSCAD], [S03 Trimesh], [S04 CGAL], [S05 Fusion Units], [S06 Fusion proxies], [S07 Sketch/Text/Constraints], [S08 Mesh], [S09 MCP], [S10 Parameters], [S11 Feature selection]. API claim trên trang này trỏ trực tiếp tới tài liệu Autodesk chính thức.
