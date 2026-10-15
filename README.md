@@ -1,6 +1,8 @@
 # Snaplock Storage Box
 
-[Bộ hướng dẫn chung STL, OpenSCAD và Fusion](docs/guides/README.md) có [điểm vào cho agent](docs/guides/START-HERE.md), thiết lập chuyển máy, template và registry nguồn. Thư mục guides dùng độc lập; [hồ sơ ví dụ của project](docs/examples/README.md) giữ dữ liệu Snaplock.
+[Bộ hướng dẫn chung STL, OpenSCAD và Fusion](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md) có [điểm vào cho agent](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/START-HERE.md), thiết lập chuyển máy, template và registry nguồn. Thư mục guides dùng độc lập; [hồ sơ ví dụ của project](docs/examples/README.md) giữ dữ liệu Snaplock.
+
+Bản chính của hướng dẫn chung nằm tại `H:/OpenSCAD/docs/guides`, dùng cho mọi dự án STL, OpenSCAD và Fusion. [Bản lưu công khai 1.0.2](https://github.com/TimTini/snaplock-storage-box/tree/e9311687b4653a4055597ba93b595d739734020c/docs/guides) giữ nội dung theo commit trước khi chuyển thư mục.
 
 Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. Chọn `part = body`, `lid`, `latch` hoặc `layout`; chỉnh kích thước trong Customizer rồi F6 để render. Thân và nắp dùng chung chiều dài, chiều rộng. Ba công tắc `wall_ribs`, `wall_floor_ribs`, `floor_ribs` điều khiển gân trong hộp.
 

@@ -1,10 +1,10 @@
-> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md).
 
 # Sổ lỗi OpenSCAD và Fusion ghi cách sửa cùng phạm vi kiểm chứng.
 
 [Fusion 0.6.1 đã kiểm chứng native](../geometry/fusion-parametric-sync.md) tiếp nối checkpoint đồng bộ source. Ngày 14/10/2026, Fusion 2705.1.30 chạy build và 10 biến thể recompute; baseline cùng bốn cấu hình đạt 30 cặp kiểm tra BRep lắp đóng. Bộ offline gồm 59 test đạt. Khoảng phân cách số học 0,001 mm tại hốc côn xử lý seam STL; preset mesh High thay custom tessellation quá dày. Audit độc lập xác nhận bốn STL kín. Hồ sơ ghi riêng giao thể tích của mesh High và BRep chính xác; mẫu in là bước kiểm chứng vật lý tiếp theo. Các mốc 0.5.1/0.6.0 bên dưới giữ ngữ cảnh lịch sử.
 
-Sổ lỗi thuộc [bộ tài liệu agent](../guides/agent-learning.md). Mỗi ca ghi hiện tượng, bằng chứng, thay đổi và mức xác nhận. Các recipe sketch được áp dụng theo loại entity và cấu trúc cụ thể của từng dự án.
+Sổ lỗi thuộc [bộ tài liệu agent](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/agent-learning.md). Mỗi ca ghi hiện tượng, bằng chứng, thay đổi và mức xác nhận. Các recipe sketch được áp dụng theo loại entity và cấu trúc cụ thể của từng dự án.
 
 ## Ca 1 xác định expression bị Fusion từ chối.
 
@@ -134,7 +134,7 @@ Nguồn: [thiết kế và audit V4](https://github.com/TimTini/thung-rac-4-goc/
 
 **Cách xử lý:** agent đọc streaming cho các chỉ số tổng, chọn độ mịn export theo mục tiêu và tài nguyên, rồi lên phép boolean/khoảng cách/mặt cắt tương ứng. Mọi mesh giảm độ mịn được đo sai lệch so với bản nguồn và mang nhãn xấp xỉ.
 
-**Mức xác nhận:** streaming xác nhận các chỉ số đã báo. Sai khác đối xứng và bản đồ khoảng cách toàn bề mặt của Fusion thuộc bước đo bổ sung. Chênh thể tích tổng và sai khác đối xứng có công thức cùng ý nghĩa riêng trong [tài liệu kỹ thuật](../guides/fusion-python-tu-hoc.md).
+**Mức xác nhận:** streaming xác nhận các chỉ số đã báo. Sai khác đối xứng và bản đồ khoảng cách toàn bề mặt của Fusion thuộc bước đo bổ sung. Chênh thể tích tổng và sai khác đối xứng có công thức cùng ý nghĩa riêng trong [tài liệu kỹ thuật](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-python-tu-hoc.md).
 
 Nguồn: [báo cáo streaming](../validation/fusion-native-export-metrics.json).
 

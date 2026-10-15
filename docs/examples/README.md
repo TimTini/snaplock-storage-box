@@ -1,6 +1,6 @@
 # Ví dụ dự án và phạm vi tái lập
 
-[Bộ chung](../guides/README.md) chứa quy trình dùng cho model mới. Thư mục này giữ hồ sơ kỹ thuật của những checkpoint cụ thể; các giá trị, số part, khổ, dung sai và cách sửa ở đây thuộc case đã ghi.
+[Bộ chung](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md) chứa quy trình dùng cho model mới. Thư mục này giữ hồ sơ kỹ thuật của những checkpoint cụ thể; các giá trị, số part, khổ, dung sai và cách sửa ở đây thuộc case đã ghi.
 
 ## Hồ sơ Snaplock
 

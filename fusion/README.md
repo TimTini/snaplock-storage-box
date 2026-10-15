@@ -1,6 +1,6 @@
 # Fusion
 
-[Quy trình MCP chung](../docs/guides/fusion-mcp-testing.md), [adapter Snaplock](../docs/examples/fusion-mcp-testing.md) và [wrapper của model](tests/McpNativeTest/README.md) phân biệt contract chung với đường chạy native riêng. Lệnh python tools/fusion-mcp-test.py đọc trạng thái; python tools/fusion-mcp-test.py --run tạo document test, kiểm tra recompute/BRep và xuất bộ bằng chứng.
+[Quy trình MCP chung](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-mcp-testing.md), [adapter Snaplock](../docs/examples/fusion-mcp-testing.md) và [wrapper của model](tests/McpNativeTest/README.md) phân biệt contract chung với đường chạy native riêng. Lệnh python tools/fusion-mcp-test.py đọc trạng thái; python tools/fusion-mcp-test.py --run tạo document test, kiểm tra recompute/BRep và xuất bộ bằng chứng.
 
 - [`SnaplockStorageBox/`](SnaplockStorageBox/) chứa add-in chính, manifest và script `SnaplockStorageBox.py`. Script Python là entrypoint của add-in; trong Fusion, đăng ký thư mục này. Kết quả native của add-in được ghi cạnh source trong `SnaplockStorageBox/exports/`.
 - [`tests/`](tests/) chứa các add-in độc lập dùng để khảo sát Plane, Sketch, Loft và Sweep. Mỗi thư mục con có README và manifest riêng; đăng ký đúng thư mục con cần chạy.

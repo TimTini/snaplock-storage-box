@@ -1,10 +1,10 @@
 # Snaplock Storage Box — SCAD và Fusion Python
 
-[Bài thử Sweep Parallel cho cung khe đàn hồi](../../fusion/tests/SlotSweepTest/README.md) cung cấp add-in riêng, cập nhật chiều dày bằng tham số và log đo native. [Quy trình SCAD → Fusion](../../docs/guides/scad-to-fusion-task.md) ưu tiên các phép dựng trực tiếp và đặt Loft nhiều tiết diện ở bước lựa chọn cuối cùng.
+[Bài thử Sweep Parallel cho cung khe đàn hồi](../../fusion/tests/SlotSweepTest/README.md) cung cấp add-in riêng, cập nhật chiều dày bằng tham số và log đo native. [Quy trình SCAD → Fusion](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/scad-to-fusion-task.md) ưu tiên các phép dựng trực tiếp và đặt Loft nhiều tiết diện ở bước lựa chọn cuối cùng.
 
 ## Cấu trúc thư mục
 
-Source SCAD và dependency Python nằm ở thư mục gốc; các audit nằm trong `tools/` và ghi kết quả OpenSCAD vào `outputs/`. Bộ preset cùng STL mẫu nằm trong `samples/`. Tài liệu được nhóm tại [`docs/guides/`](../../docs/guides/), [`docs/geometry/`](../../docs/geometry/) và [`docs/validation/`](../../docs/validation/); xem [mục lục tài liệu](../../docs/README.md). Add-in chính và các add-in khảo sát có mục lục tại [fusion/README.md](../../fusion/README.md).
+Source SCAD và dependency Python nằm ở thư mục gốc; các audit nằm trong `tools/` và ghi kết quả OpenSCAD vào `outputs/`. Bộ preset cùng STL mẫu nằm trong `samples/`. Tài liệu được nhóm tại [`docs/guides/`](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/.), [`docs/geometry/`](../../docs/geometry/) và [`docs/validation/`](../../docs/validation/); xem [mục lục tài liệu](../../docs/README.md). Add-in chính và các add-in khảo sát có mục lục tại [fusion/README.md](../../fusion/README.md).
 
 ## Bản SCAD theo STL — 12/10/2026
 
@@ -51,7 +51,7 @@ Bản dựng lại có tham số từ STL `Snaplock_Storage_Boxes_240x120(2).stl
 
 **Bản Python 0.2.0 đã chạy thành công trong Fusion sau sửa của người dùng ở Mirror khe đàn hồi.** Source SHA256 `4cad327eab71f336bfe42e6dca9e688672e2635e3ba56e83fd2be63386d688f3` khớp log và manifest xuất STL. Kiểm tra bốn body, timeline/sketch và hai biến thể tham số đều hoàn tất. Cả hai khóa rộng đúng 28 mm. Script giữ một component gốc chứa `Body`, `Lid`, `Latch`, `Latch 2`, sketch có kích thước và timeline chỉnh sửa được.
 
-[Tài liệu tự học OpenSCAD và Fusion Python](../../docs/guides/fusion-python-tu-hoc.md) tổng hợp bài học từ năm dự án, hệ tọa độ sketch, Pattern 2 × 1, quản lý body, timeline và kiểm chứng.
+[Tài liệu tự học OpenSCAD và Fusion Python](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-python-tu-hoc.md) tổng hợp bài học từ năm dự án, hệ tọa độ sketch, Pattern 2 × 1, quản lý body, timeline và kiểm chứng.
 
 Phần cập nhật gồm tai loe và footprint vát, lip vòng côn 50°, hốc trụ có hai chamfer 1 mm, chốt cầu được giới hạn đúng vùng và mép trước khóa R5. Răng khóa dùng trụ R5, tiết diện elip và hai Loft chuyển tiếp ngắn; khe đàn hồi dùng đuôi Extrude và phần trước Loft tám tiết diện. Lòng hộp được khoét sau khi ghép tai theo thứ tự boolean của SCAD. Fusion Loft nội suy giữa các tiết diện, còn SCAD nối các tiết diện bằng mặt phẳng; sai khác của đầu ra native được đo từ STL xuất bởi Fusion.
 
@@ -176,8 +176,8 @@ STL nguồn giữ nguyên, SHA256: `73faaa2d438b02038b9f84002202435973a09f92ec2a
 
 ## Bộ tài liệu agent tự học.
 
-[Cẩm nang agent](../../docs/guides/agent-learning.md) trình bày quy trình SCAD trước rồi Fusion Python sau, quản lý tham số, timeline và bằng chứng. [Sổ lỗi](../../docs/guides/error-cookbook.md) tổng hợp các ca lỗi cùng cách sửa và mức xác nhận. [Mẫu giao việc](../../docs/guides/scad-to-fusion-task.md) áp dụng quy trình cho model mới.
+[Cẩm nang agent](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/agent-learning.md) trình bày quy trình SCAD trước rồi Fusion Python sau, quản lý tham số, timeline và bằng chứng. [Sổ lỗi](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/error-cookbook.md) tổng hợp các ca lỗi cùng cách sửa và mức xác nhận. [Mẫu giao việc](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/scad-to-fusion-task.md) áp dụng quy trình cho model mới.
 
-[Lộ trình đọc nguồn internet](../../docs/guides/internet-learning.md) bổ sung tài liệu chính thức, bài thử về Fusion API, boolean, độ mịn và phép đo sai lệch bề mặt, cùng tiêu chí kiểm chứng cho từng bài.
+[Lộ trình đọc nguồn internet](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/internet-learning.md) bổ sung tài liệu chính thức, bài thử về Fusion API, boolean, độ mịn và phép đo sai lệch bề mặt, cùng tiêu chí kiểm chứng cho từng bài.
 
-[Quy trình STL → SCAD](../../docs/guides/stl-to-scad.md) hướng dẫn tái dựng tham số từ mesh, đo mặt cắt, đối chiếu hình học và chốt baseline trước khi chuyển sang Fusion.
+[Quy trình STL → SCAD](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/stl-to-scad.md) hướng dẫn tái dựng tham số từ mesh, đo mặt cắt, đối chiếu hình học và chốt baseline trước khi chuyển sang Fusion.

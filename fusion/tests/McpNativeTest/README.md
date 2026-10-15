@@ -9,6 +9,6 @@ python tools/fusion-mcp-test.py --run
 
 Lệnh mặc định chỉ đọc trạng thái. Lệnh `--run` tạo document mới, gọi build/check/recompute của source chính, kiểm tra BRep lắp đóng baseline cùng bốn biến thể, khôi phục tham số và xuất STL/F3D/ảnh/báo cáo. Wrapper phục vụ tool MCP `featureType=script`; entrypoint CLI cung cấp `PROJECT_ROOT` theo checkout.
 
-[Hướng dẫn đầy đủ](../../../docs/guides/fusion-mcp-testing.md) ghi giao thức, port, log, audit STL và giới hạn kiểm chứng.
+[Hướng dẫn đầy đủ](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-mcp-testing.md) ghi giao thức, port, log, audit STL và giới hạn kiểm chứng.
 
 CLI truyền thêm `RUN_DIRECTORY` cho log riêng tại `work/fusion-mcp/<timestamp>/native-test.log`. [Báo cáo workflow](../../../docs/validation/fusion-mcp-workflow.json) xác nhận lượt chạy native và bảo toàn log production.

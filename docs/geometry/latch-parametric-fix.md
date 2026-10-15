@@ -33,7 +33,7 @@ Khổ in được đo riêng từng part. Vỏ danh nghĩa 250³ có tai/chốt 
 
 [Đối chiếu STL gốc hiện tại](../validation/scad-current-default.json) ghi sai khác thể tích đối xứng: thân 0,09299%, nắp 0,24810%, latch 0,04924%. Mục tiêu lịch sử của nắp giữ 0,2%; báo cáo ghi `geometry_checks_passed=true`, `reference_targets_met=false`. Hiệu chỉnh tâm tai và ổ bản lề được đánh giá thêm bằng assembly chức năng.
 
-Các báo cáo 65 cấu hình và minimum ngày 13/10 mô tả baseline trước sửa. Hash source trong mỗi báo cáo xác định đúng checkpoint. [Quy trình đổi tham số](../guides/parameter-change-validation.md) áp dụng kiểm tra từng part, bộ lắp, chuyển động, envelope và mẫu in.
+Các báo cáo 65 cấu hình và minimum ngày 13/10 mô tả baseline trước sửa. Hash source trong mỗi báo cáo xác định đúng checkpoint. [Quy trình đổi tham số](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/parameter-change-validation.md) áp dụng kiểm tra từng part, bộ lắp, chuyển động, envelope và mẫu in.
 
 ## Phạm vi xác nhận
 

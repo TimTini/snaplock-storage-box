@@ -1,4 +1,4 @@
-> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md).
 
 # Gân trong SCAD → Fusion Python 0.5.1
 

@@ -50,4 +50,4 @@ SCAD dùng đường tròn với `$fn=96`, trong khi STL có mức chia facet ri
 
 Xuất binary STL có thể làm các mặt rất mảnh tại giao trùng tọa độ co lại do float32. Pipeline chỉ bỏ **mảnh rời** có diện tích <10⁻⁵ mm² và |thể tích| <10⁻⁸ mm³, đồng thời yêu cầu mọi phần giữ lại là solid kín. Cấu hình mặc định bỏ 4 mặt ở thân; biến thể bỏ 10; nắp giữ toàn bộ mặt; khóa hybrid dày 6 mm bỏ 8 mặt. Báo cáo ghi số mặt xử lý và SHA của file xuất; hình học SCAD vẫn là nguồn dựng.
 
-Kiểm chứng vật lý gồm thử in, khe hở, lực đàn hồi, góc mở, tải và độ bền. Bản SCAD là mốc hình học tham chiếu của script Fusion 0.2.0. [Tài liệu tự học](../guides/fusion-python-tu-hoc.md) ghi kết quả đối chiếu, mốc native theo source và bước xác nhận tiếp theo.
+Kiểm chứng vật lý gồm thử in, khe hở, lực đàn hồi, góc mở, tải và độ bền. Bản SCAD là mốc hình học tham chiếu của script Fusion 0.2.0. [Tài liệu tự học](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-python-tu-hoc.md) ghi kết quả đối chiếu, mốc native theo source và bước xác nhận tiếp theo.

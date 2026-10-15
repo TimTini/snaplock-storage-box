@@ -1,4 +1,4 @@
-> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md).
 
 # Agent kiểm chứng Fusion native qua MCP local
 
@@ -8,7 +8,7 @@ Quy trình này nối baseline SCAD đã chốt với script Fusion, solver nati
 
 Agent đo mẫu, dựng SCAD bằng hình học có tham số rồi kiểm tra solid, hình bao và quan hệ lắp. Các phép dựng trực tiếp như Extrude, Revolve, Sweep, Mirror và Pattern được ưu tiên theo hình học của vùng cần dựng. Loft nhiều tiết diện là lựa chọn cuối sau khi các cách dựng trực tiếp đã được đánh giá.
 
-Agent chuyển các quan hệ kích thước sang User Parameters và expression của Fusion. Agent dùng chung datum cho các part lắp nhau; chiều dài nối, vị trí răng, khe đàn hồi và ramp cùng bám tham số sở hữu quan hệ. Các miền hợp lệ và công tắc topology được ghi rõ trong [quy trình đổi tham số](../guides/parameter-change-validation.md).
+Agent chuyển các quan hệ kích thước sang User Parameters và expression của Fusion. Agent dùng chung datum cho các part lắp nhau; chiều dài nối, vị trí răng, khe đàn hồi và ramp cùng bám tham số sở hữu quan hệ. Các miền hợp lệ và công tắc topology được ghi rõ trong [quy trình đổi tham số](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/parameter-change-validation.md).
 
 Agent chạy regression offline trước khi mở bài test native. Hồ sơ source, offline, native BRep, STL, slicer và in vật lý có trạng thái riêng.
 

@@ -1,8 +1,8 @@
-> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md).
 
 # Rà soát tài liệu OpenSCAD và Fusion Python
 
-Mốc rà soát là **13/10/2026**. [Tài liệu tự học](../guides/fusion-python-tu-hoc.md) tập hợp các bài học về dựng hình, tham số, API và kiểm chứng của năm dự án.
+Mốc rà soát là **13/10/2026**. [Tài liệu tự học](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/fusion-python-tu-hoc.md) tập hợp các bài học về dựng hình, tham số, API và kiểm chứng của năm dự án.
 
 ## Phạm vi kỹ thuật
 
@@ -40,4 +40,4 @@ Bộ test offline Snaplock đạt 28/28 ngày 13/10/2026. Lần chạy native c�
 
 ## Bộ tài liệu agent mở rộng tri thức thực hành.
 
-[Cẩm nang](../guides/agent-learning.md) tổ chức phương pháp từ hình học SCAD đến feature native Fusion. [Sổ lỗi](../guides/error-cookbook.md) ghi 14 nhóm ca lỗi, cách xử lý và ranh giới xác nhận. [Mẫu giao việc](../guides/scad-to-fusion-task.md) diễn đạt các bước bằng câu khẳng định và chỉ dẫn tích cực. Nguồn đối chiếu gồm README, source, regression, báo cáo đo và lịch sử làm việc liên quan đến năm dự án.
+[Cẩm nang](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/agent-learning.md) tổ chức phương pháp từ hình học SCAD đến feature native Fusion. [Sổ lỗi](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/error-cookbook.md) ghi 14 nhóm ca lỗi, cách xử lý và ranh giới xác nhận. [Mẫu giao việc](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/scad-to-fusion-task.md) diễn đạt các bước bằng câu khẳng định và chỉ dẫn tích cực. Nguồn đối chiếu gồm README, source, regression, báo cáo đo và lịch sử làm việc liên quan đến năm dự án.

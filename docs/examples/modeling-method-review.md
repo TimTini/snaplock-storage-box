@@ -1,4 +1,4 @@
-> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](../guides/README.md).
+> Hồ sơ ví dụ theo checkpoint đã ghi; các bước còn chờ trong hồ sơ thuộc thời điểm đó. Trạng thái hiện hành của Snaplock nằm ở [SCAD](../geometry/latch-parametric-fix.md) và [Fusion](../geometry/fusion-parametric-sync.md). Quy trình chung bắt đầu tại [bộ hướng dẫn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md).
 
 # Rà phương pháp dựng toàn project Snaplock
 
@@ -76,7 +76,7 @@ Lip thân có mặt ngoài côn 50° và bore trụ; lip nắp có mặt ngoài 
 
 ## Các cấu trúc được giữ theo bằng chứng
 
-Khe đàn hồi tám tiết diện là chuỗi còn hơn năm Plane → Sketch. [Bộ thử 5–9 tiết diện](../validation/scad-slot-section-probes.json) chọn tám là mức thấp nhất đạt ngưỡng lấy mẫu 0,03 mm qua ba chiều dày. [Bài thử Sweep Parallel](../../fusion/tests/SlotSweepTest/README.md) xác nhận một mặt cung native với phạm vi riêng. [Quy trình lựa chọn](../guides/scad-to-fusion-task.md) giữ Loft hybrid theo tổng bước và khả năng chỉnh sửa của toàn khe.
+Khe đàn hồi tám tiết diện là chuỗi còn hơn năm Plane → Sketch. [Bộ thử 5–9 tiết diện](../validation/scad-slot-section-probes.json) chọn tám là mức thấp nhất đạt ngưỡng lấy mẫu 0,03 mm qua ba chiều dày. [Bài thử Sweep Parallel](../../fusion/tests/SlotSweepTest/README.md) xác nhận một mặt cung native với phạm vi riêng. [Quy trình lựa chọn](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/scad-to-fusion-task.md) giữ Loft hybrid theo tổng bước và khả năng chỉnh sửa của toàn khe.
 
 Các Loft hai profile ở vỏ/vát lòng và các chuyển tiếp elip–tròn diễn đạt biến đổi tiết diện có chủ đích. Hốc và lip có quy luật tròn để khảo sát Revolve như trên. Gân tai có footprint khác nhau nên mỗi profile giữ chức năng riêng. Origin plane, datum line, sketch đầy đủ ràng buộc, tool có consumer, Mirror/Pattern và Move bố trí có biểu thức đều có vai trò trong luồng dựng.
 
