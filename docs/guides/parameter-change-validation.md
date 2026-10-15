@@ -57,6 +57,8 @@ Kích thước vỏ danh nghĩa có thể nhỏ hơn bounds gồm tai/chốt/gâ
 
 ## 7. Chốt và bàn giao
 
+Với đáy/bo/vành/gân, dùng thêm [ma trận gia cường](reinforcement-and-mesh.md#4-chạy-ma-trận-và-ca-từ-chối): baseline tắt option, từng option, tổ hợp, cấu hình đổi kích thước và ca ngoài miền. Đo hai phía tiếp tuyến, seam và overlap; chọn Euler theo topology. Ca từ chối dùng output thử riêng, stdout/stderr, return code và xác nhận output sau chạy. Đọc danh sách file verifier ghi và bảo toàn artifact đang có thay đổi người dùng bằng bản sao cô lập.
+
 Dùng [evidence manifest](templates.md): source/hash, inputs, case matrix, commands, tool versions, outputs/hash, thresholds, actuals và trạng thái từng lớp. Ghi rejected_input riêng với failed_geometry; skipped/blocked/native_not_run có lý do.
 
 Lỗi công thức được sửa tại module/builder sở hữu quan hệ; chạy lại ca lỗi và các ca tương tác liên quan trước khi xác nhận ma trận cuối. Sổ lỗi ghi regression, cẩm nang ghi quy tắc dùng lại có điều kiện. Kết quả physical được bổ sung sau thử thực tế.

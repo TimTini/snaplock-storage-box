@@ -33,9 +33,19 @@ Nguồn primary của claim được mở và đối chiếu trong lượt biên
 
 Sau khi commit, tại repo chứa docs/guides:
 
-    git archive --format=zip --output=stl-openscad-fusion-guide-v1.0.1.zip HEAD:docs/guides
+    git archive --format=zip --output=stl-openscad-fusion-guide-v1.0.2.zip HEAD:docs/guides
 
 ZIP chứa nội dung guides ở root, không cần repo chứa model. Giải nén vào thư mục mới và chạy lại validator/tests trước khi chuyển đi. Với bản copy không có Git, nén toàn bộ thư mục sau cùng acceptance; lưu SHA256 và phiên bản tài liệu cùng bản phân phối.
+
+## Hợp nhất bài học dustpan — 1.0.2
+
+Ngày15/10/2026, bổ sung [quy trình gia cường và mesh](reinforcement-and-mesh.md), liên kết từ START-HERE/cẩm nang/ma trận và thêm hai recipe trong sổ lỗi. Nội dung mới ưu tiên câu khẳng định. Case dustpan giữ source/hash và evidence date riêng; lệnh render thuộc checkpoint hình học trước, lượt tài liệu này đối chiếu source, verifier, report và artifact đã lưu. Slicer, bản in, thử tải và kiểm tra tự giao độc lập giữ trạng thái `not_run` của case.
+
+Recheck phát hiện một link case minimum đổi dấu datum trong fusion-mcp-testing trỏ ra ngoài bundle. Link hiện dùng URL công khai của hồ sơ project; bundle có thể sao chép độc lập.
+
+Kiểm chứng trên Windows/Python3.12.14: validator source và bản copy có đường dẫn tiếng Việt/khoảng trắng, chạy từ cwd ngoài bundle, đều trả `markdown_files=16`, `local_links=124`, `issues=[]`, exit0. Sáu unit test đạt trên từng bản, zero skipped. Mười tám file trong bản copy khớp SHA256 với source trước chạy. Validator/test source và CAD source giữ nguyên; kết quả này xác nhận cấu trúc tài liệu và regression của validator trên cùng máy.
+
+Đối chiếu local: năm hash source/verifier/STL/baseline/file người dùng khớp report hoặc snapshot tiếp nhận; 29 liên kết file trong tài liệu dustpan và mục lục workspace trỏ tới đích hiện có. Năm tài liệu dustpan/quy trình mới được quét từ phủ định và lỗi replacement character; kết quả0match. Các con số này mô tả lượt rà tài liệu; mức xác nhận runtime giữ ngày/build và scope trong case.
 
 ## Record tiếp nhận của agent mới — release 1.0
 

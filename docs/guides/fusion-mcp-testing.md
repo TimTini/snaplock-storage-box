@@ -45,4 +45,4 @@ Handoff gồm tool schema/capability, protocol/build, source/wrapper hash, param
 [Ví dụ workflow MCP Snaplock](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/fusion-mcp-testing.md) minh họa một adapter/build cụ thể. Ví dụ cần source/input của project đó; bộ chung hoạt động khi assets riêng vắng.
 
 
-Preset xuất để in được audit với SCAD cùng tham số và source hash. Agent đo tọa độ sketch thực tế khi biểu thức offset đi qua datum. [Ca minimum đổi dấu datum](../examples/project-error-cases.md#ca-20-giữ-sketch-cùng-phía-datum-khi-biểu-thức-đổi-dấu) ghi ví dụ đã kiểm chứng native.
+Preset xuất để in được audit với SCAD cùng tham số và source hash. Agent đo tọa độ sketch thực tế khi biểu thức offset đi qua datum. [Ca minimum đổi dấu datum](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/project-error-cases.md#ca-20-giữ-sketch-cùng-phía-datum-khi-biểu-thức-đổi-dấu) ghi ví dụ đã kiểm chứng native.

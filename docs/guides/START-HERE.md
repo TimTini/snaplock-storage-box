@@ -10,6 +10,7 @@ Agent tiếp nhận đọc checkpoint hiện có, Git status/diff và source/has
 
 - STL: đọc [phân tích STL và chọn route](stl-to-scad.md), gồm unit/mesh hỏng, chỉ đo, chuyển mesh trực tiếp hoặc tái dựng SCAD theo mục tiêu.
 - SCAD hoặc thiết kế mới: đọc phần dựng tham số trong [cẩm nang](agent-learning.md) và [kiểm tra tham số](parameter-change-validation.md).
+- Gia cường đáy, bo, vành hoặc gân: đọc [gia cường và mesh](reinforcement-and-mesh.md), chốt chức năng, ownership bề mặt và các lớp kiểm chứng.
 - Fusion native: đọc [Fusion Python](fusion-python-tu-hoc.md) và [mẫu nhiệm vụ](scad-to-fusion-task.md).
 - Fusion qua công cụ agent: đọc thêm [MCP](fusion-mcp-testing.md), kiểm tra capabilities trước khi chọn transport.
 - Lỗi hoặc dữ liệu lạ: đọc recipe tương ứng trong [sổ lỗi](error-cookbook.md); recipe có điều kiện riêng.

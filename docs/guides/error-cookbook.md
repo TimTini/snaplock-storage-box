@@ -120,6 +120,22 @@ Các recipe chung là engineering_practice để chẩn đoán; một recipe kh�
 
 **Xác minh và phạm vi.** Chạy bộ pose/biến thể đại diện cùng trạng thái mở/đóng, đo interference/clearance theo representation đã chọn. Native BRep, mesh export và thử in/lắp là các checkpoint tách biệt; bằng chứng ở một lớp chỉ chứng minh lớp đó. Dùng [quy trình đổi tham số](parameter-change-validation.md) để xác định miền biến thể và [hướng dẫn Fusion](fusion-python-tu-hoc.md) cho phép đo.
 
+## Recipe 10 — Sliver ở góc Boolean và winding loft
+
+**Điều kiện áp dụng.** Gia cường rời hợp lệ nhưng union với thành cong sinh mặt diện tích 0, cạnh lỗi hoặc thể tích có dấu âm.
+
+**Bằng chứng và hành động.** Cô lập feature và tổ hợp, nạp lại export theo đúng backend/format. Kiểm tra winding, tọa độ cung và tiếp tuyến; chọn một builder sở hữu mặt ngoài và giữ phần đắp bên trong vật liệu thân. Với chuyển tiếp đáy, nâng đáy và bo bằng cùng hàm. [Quy trình và case dustpan](reinforcement-and-mesh.md#2-dựng-chuyển-tiếp-và-giao-quyền-sở-hữu-bề-mặt) ghi các lần thử và phạm vi cụ thể.
+
+**Xác minh.** Kiểm tra mặt có diện tích dương, winding, thể tích, shell, Euler theo contract và probe tại góc/seam/overlap cho từng option, tổ hợp và biến thể. Ghi kiểm tra tự giao riêng theo acceptance.
+
+## Recipe 11 — Phép đo ray phát RuntimeWarning hoặc ca lỗi nhận output cũ
+
+**Điều kiện áp dụng.** Ray trên tam giác gần thẳng hàng làm phép đo bất ổn, hoặc ca input sai vẫn có artifact của lần chạy trước.
+
+**Bằng chứng và hành động.** Xác định tam giác/vùng gây warning; chọn mặt cắt và nội suy đoạn thẳng cho phép đo ngang phù hợp. Với ca từ chối, dùng output thử riêng, dọn output thử cũ và thu diagnostics từ cả stdout/stderr.
+
+**Xác minh.** Giữ RuntimeWarning thành lỗi, đo lại giao điểm/bề dày và các vùng lân cận. Xác nhận return code, thông báo đúng contract và trạng thái output. [Case dustpan](reinforcement-and-mesh.md#6-case-dustpan--bằng-chứng-ngày-15102026) có hash verifier và phạm vi bằng chứng; [quy trình chung](reinforcement-and-mesh.md) phân biệt screen FDM, slicer và tải thực.
+
 ## Ghi nhận ca mới
 
 Mỗi bản ghi lưu: điều kiện áp dụng; triệu chứng; bằng chứng quan sát; nguyên nhân đã xác nhận hoặc giả thuyết; thay đổi; lệnh/phép thử; kết quả; phiên bản/hash; phạm vi kiểm chứng tiếp theo. Lưu ca gắn với dự án trong [examples/project-error-cases.md](https://github.com/TimTini/snaplock-storage-box/blob/main/docs/examples/project-error-cases.md); recipe dùng lại được bổ sung ở phần phù hợp sau khi đã rút được điều kiện và phép xác minh tổng quát.

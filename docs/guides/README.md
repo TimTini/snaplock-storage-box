@@ -1,6 +1,6 @@
 # Bộ hướng dẫn chung STL, OpenSCAD và Fusion
 
-Phiên bản tài liệu: **1.0.1 — 14/10/2026**. Bắt đầu tại [START-HERE](START-HERE.md). Bộ này hướng dẫn phân tích STL, dựng OpenSCAD tham số và dựng/kiểm chứng Fusion native theo mục tiêu của từng nhiệm vụ.
+Phiên bản tài liệu: **1.0.2 — 15/10/2026**. Bắt đầu tại [START-HERE](START-HERE.md). Bộ này hướng dẫn phân tích STL, dựng OpenSCAD tham số và dựng/kiểm chứng Fusion native theo mục tiêu của từng nhiệm vụ.
 
 ## Phạm vi và cách chọn lộ trình
 
@@ -26,6 +26,7 @@ Các route và điểm dừng được chốt trước khi sửa. Model scan/fre
 10. [Nguồn và bài thực hành](internet-learning.md), [registry nguồn](sources.md).
 11. [Template đầu vào, bằng chứng và bàn giao](templates.md).
 12. [Tình huống kiểm tra độ bao phủ](examples/readiness-scenarios.md), [kiểm chứng bản phát hành](VALIDATION.md).
+13. [Gia cường và kiểm chứng mesh](reinforcement-and-mesh.md): chức năng, chuyển tiếp đáy–bo, ownership bề mặt Boolean, phép đo và ca từ chối; case dustpan kèm hash và phạm vi bằng chứng.
 
 ## Dùng độc lập và phân phối
 

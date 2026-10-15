@@ -26,6 +26,10 @@ Chọn primitive, profile/extrusion, phép xoay, boolean, loop và mirror theo h
 
 Chọn độ phân mịn theo sai số hình học và thời gian render. Epsilon phục vụ ổn định tính toán, clearance phục vụ chức năng lắp, allowance phục vụ chế tạo; mỗi loại có căn cứ và phép thử riêng.
 
+## Gia cường và giao quyền sở hữu bề mặt
+
+Chốt thao tác sử dụng, đường truyền lực và vùng chức năng cần giữ trước khi chọn gân/bo. Khi nâng đáy, dựng đáy và bo theo cùng chuyển tiếp; khi ghép vành vào góc cong, xác định builder sở hữu mặt ngoài và dùng chung tọa độ tiếp tuyến. Kiểm tra lại mesh export, mặt cắt, từng option và tổ hợp. [Quy trình gia cường và mesh](reinforcement-and-mesh.md) ghi cách xử lý sliver, winding, phép đo gặp tam giác gần thẳng hàng và case dustpan có hash. Tách kết quả thể tích hình học theo representation, screen FDM, slicing và thử tải thành bằng chứng riêng.
+
 ## Chọn feature Fusion theo ý đồ
 
 Extrude cho profile dịch theo phương phù hợp, Revolve cho quy luật tròn xoay, Sweep cho profile theo path, Loft cho chuyển tiếp qua section. Fillet/Chamfer, Pattern/Mirror và surface tools được chọn theo quan hệ hình học [S11](sources.md).
