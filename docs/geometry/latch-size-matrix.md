@@ -65,4 +65,4 @@ Ma trận xác nhận hình học tại tư thế đóng. Đường đưa latch 
 python tools/audit-latch-matrix.py
 ```
 
-Môi trường dùng các thư viện đã có `numpy`, `trimesh`, `manifold3d`, `matplotlib` và OpenSCAD qua biến `OPENSCAD`. Đầu ra `outputs/latch-fit-matrix` giữ Body/Lid cùng log cho mỗi cấu hình, latch chung, báo cáo và ảnh. File `assembly.scad` cho chọn `case_index` để xem 64 cấu hình render thành công; `show_latch_collision` hiện giao latch–thân và `show_shell_contact` hiện giao thân–nắp. Cấu hình mặc định của viewer là 240 × 120 × 50 mm, nắp 15 mm.
+Môi trường dùng các thư viện đã có `numpy`, `trimesh`, `manifold3d`, `matplotlib` và OpenSCAD qua biến `OPENSCAD`. Đầu ra `exports/latch-fit-matrix` giữ Body/Lid cùng log cho mỗi cấu hình, latch chung, báo cáo và ảnh. File `assembly.scad` cho chọn `case_index` để xem 64 cấu hình render thành công; `show_latch_collision` hiện giao latch–thân và `show_shell_contact` hiện giao thân–nắp. Cấu hình mặc định của viewer là 240 × 120 × 50 mm, nắp 15 mm.

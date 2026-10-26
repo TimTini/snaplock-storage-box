@@ -61,7 +61,7 @@ def main():
     scad_audit = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(scad_audit)
     refs = scad_audit.references()  # Validates original STL SHA256.
-    scad_report = json.loads((ROOT / 'outputs/default/audit.json').read_text(encoding='utf8'))
+    scad_report = json.loads((ROOT / 'exports/default/audit.json').read_text(encoding='utf8'))
     if scad_report['scad_sha256'] != sha(ROOT / 'snaplock-storage-box.scad'):
         raise ValueError('Re-run audit-scad.py: SCAD source changed')
     report = {'script_sha256': manifest['script_sha256'], 'source_sha256': scad_audit.HASH,
@@ -70,7 +70,7 @@ def main():
     passed = True
     for name, mesh in meshes.items():
         key = 'latch' if name.startswith('Latch') else name.lower()
-        scad_path = ROOT / 'outputs/default' / (key + '.stl')
+        scad_path = ROOT / 'exports/default' / (key + '.stl')
         if sha(scad_path) != scad_report['parts'][key]['export_sha256']:
             raise ValueError('SCAD STL hash changed: ' + key)
         row = {'original': compare(mesh, refs[key]),

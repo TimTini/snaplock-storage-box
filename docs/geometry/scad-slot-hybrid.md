@@ -82,9 +82,9 @@ Phương án thử tách thêm biên sát răng bằng khối giải tích và l
 Chạy tại repo với dependency trong `requirements.txt`, gồm `rtree` phục vụ tìm tam giác gần nhất, và OpenSCAD Manifold trong PATH hoặc biến môi trường `OPENSCAD`. `baseline_sha256` xác định byte của snapshot local dùng CRLF; `baseline_lf_sha256` xác định cùng nội dung sau chuẩn hóa xuống dòng LF và khớp file từ `git archive` tại commit `7711ae6`. Mỗi lần chạy lưu cả hai hash để đối chiếu nguồn trên các môi trường:
 
 ```powershell
-git archive --format=zip --output=outputs/slot-baseline.zip 7711ae6 snaplock-storage-box.scad
-Expand-Archive -LiteralPath outputs/slot-baseline.zip -DestinationPath outputs/slot-baseline -Force
-python tools/audit-slot-hybrid.py --baseline outputs/slot-baseline/snaplock-storage-box.scad
+git archive --format=zip --output=exports/slot-baseline.zip 7711ae6 snaplock-storage-box.scad
+Expand-Archive -LiteralPath exports/slot-baseline.zip -DestinationPath exports/slot-baseline -Force
+python tools/audit-slot-hybrid.py --baseline exports/slot-baseline/snaplock-storage-box.scad
 python tools/audit-scad.py
 python tools/audit-scad.py --variant
 python tools/compare-scad.py

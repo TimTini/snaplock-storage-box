@@ -29,7 +29,7 @@ def sampled_slot_distance(source, target):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline', type=Path, required=True)
-    parser.add_argument('--output', type=Path, default=Path('outputs/slot-hybrid'))
+    parser.add_argument('--output', type=Path, default=Path('exports/slot-hybrid'))
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     spec = importlib.util.spec_from_file_location('scad_audit', root / 'tools/audit-scad.py')

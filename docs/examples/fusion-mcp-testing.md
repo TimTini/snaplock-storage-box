@@ -93,7 +93,7 @@ Agent lấy đúng timestamp được trả về sau lượt chạy:
 python tools/audit-fusion.py fusion/SnaplockStorageBox/exports/<timestamp>
 ```
 
-Audit xác minh hash script/STL, số part, solid kín, tính liên thông, bounds và sai khác thể tích đối xứng với SCAD cùng STL gốc. Audit dùng baseline mặc định tại `outputs/default/` và STL tham chiếu local trong `reference/`. Bộ native xuất với tham số khác được đối chiếu với SCAD render bằng cùng tham số trước khi dùng kết quả so sánh.
+Audit xác minh hash script/STL, số part, solid kín, tính liên thông, bounds và sai khác thể tích đối xứng với SCAD cùng STL gốc. Audit dùng baseline mặc định tại `exports/default/` và STL tham chiếu local trong `reference/`. Bộ native xuất với tham số khác được đối chiếu với SCAD render bằng cùng tham số trước khi dùng kết quả so sánh.
 
 Native BRep và mesh có tiêu chí lắp riêng. Mesh xấp xỉ mặt cong có thể sinh lớp giao nhỏ tại mặt tiếp xúc. Agent ghi cả số đo BRep và mesh khi hai kết quả khác nhau, cùng ngưỡng và trạng thái của từng phép kiểm tra. Mẫu in xác nhận khe lắp, lực gài, retention và tuổi thọ thực tế ở checkpoint tiếp theo.
 

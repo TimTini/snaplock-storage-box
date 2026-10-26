@@ -40,7 +40,7 @@ Lệnh tái lập tại thư mục repo:
 python tools/audit-latch-fit.py
 ```
 
-Audit dùng Python có `numpy`, `trimesh`, `manifold3d`, `matplotlib`, OpenSCAD qua biến `OPENSCAD` và STL tham chiếu tại đường dẫn của `tools/audit-scad.py`. Đầu ra `outputs/latch-fit-minimum` gồm report, ảnh mặt cắt, nắp đối chứng và `assembly.scad`. Mở `assembly.scad` trong OpenSCAD, chọn `control_height15` để so hai nắp và `show_interference` để hiện phần cấn. Hai STL `*-assembly.stl` là cụm lắp dùng quan sát hình học.
+Audit dùng Python có `numpy`, `trimesh`, `manifold3d`, `matplotlib`, OpenSCAD qua biến `OPENSCAD` và STL tham chiếu tại đường dẫn của `tools/audit-scad.py`. Đầu ra `exports/latch-fit-minimum` gồm report, ảnh mặt cắt, nắp đối chứng và `assembly.scad`. Mở `assembly.scad` trong OpenSCAD, chọn `control_height15` để so hai nắp và `show_interference` để hiện phần cấn. Hai STL `*-assembly.stl` là cụm lắp dùng quan sát hình học.
 
 ## Bài học áp dụng
 

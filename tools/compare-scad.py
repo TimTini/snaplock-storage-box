@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 audit = SourceFileLoader('audit_scad', str(Path(__file__).with_name('audit-scad.py'))).load_module()
-out = audit.ROOT / 'outputs/default'
+out = audit.ROOT / 'exports/default'
 refs = audit.references()
 report = json.loads((out / 'audit.json').read_text(encoding='utf-8'))
 assert report['scad_sha256'] == hashlib.sha256(audit.SCAD.read_bytes()).hexdigest(), 'Run audit-scad.py to rebuild current SCAD'

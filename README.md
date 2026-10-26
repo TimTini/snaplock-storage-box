@@ -1,5 +1,7 @@
 # Snaplock Storage Box
 
+Cấu trúc thư mục và vai trò dữ liệu: [docs/STRUCTURE.md](docs/STRUCTURE.md).
+
 [Bộ hướng dẫn chung STL, OpenSCAD và Fusion](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/README.md) có [điểm vào cho agent](https://github.com/TimTini/snaplock-storage-box/blob/e9311687b4653a4055597ba93b595d739734020c/docs/guides/START-HERE.md), thiết lập chuyển máy, template và registry nguồn. Thư mục guides dùng độc lập; [hồ sơ ví dụ của project](docs/examples/README.md) giữ dữ liệu Snaplock.
 
 Bản chính của hướng dẫn chung nằm tại `H:/OpenSCAD/docs/guides`, dùng cho mọi dự án STL, OpenSCAD và Fusion. [Bản lưu công khai 1.0.2](https://github.com/TimTini/snaplock-storage-box/tree/e9311687b4653a4055597ba93b595d739734020c/docs/guides) giữ nội dung theo commit trước khi chuyển thư mục.
@@ -18,7 +20,7 @@ Mở [snaplock-storage-box.scad](snaplock-storage-box.scad) trong OpenSCAD. Ch�
 | `tests/` | Kiểm thử Python và assembly SCAD |
 | [docs/](docs/README.md) | Hướng dẫn, hình học và bằng chứng kiểm chứng |
 | [fusion/](fusion/README.md) | Script Fusion chính và các bài thử riêng trong `fusion/tests/` |
-| `outputs/` | Đầu ra audit; `outputs/default/` chứa bản xuất mặc định được lưu Git |
+| `exports/` | Đầu ra audit; `exports/default/` chứa bản xuất mặc định được lưu Git |
 | `reference/`, `work/` | STL tham chiếu và dữ liệu làm việc local |
 
 ## Mẫu in
@@ -38,7 +40,7 @@ Python dùng [requirements.txt](requirements.txt). OpenSCAD dùng backend Manifo
 
 ```powershell
 python -m unittest discover -s tests
-python tools/audit-latch-matrix.py --output outputs/parametric-assembly
+python tools/audit-latch-matrix.py --output exports/parametric-assembly
 python tools/audit-latch-fit.py
 python tools/audit-scad.py
 python tools/compare-scad.py

@@ -60,7 +60,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--variant', action='store_true')
     args = parser.parse_args()
-    out = ROOT / 'outputs' / ('variant' if args.variant else 'default')
+    out = ROOT / 'exports' / ('variant' if args.variant else 'default')
     out.mkdir(parents=True, exist_ok=True)
     refs = references()
     report = {'source_sha256': HASH, 'scad_sha256': hashlib.sha256(SCAD.read_bytes()).hexdigest(), 'parts': {}}

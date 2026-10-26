@@ -60,7 +60,7 @@ Audit đánh giá chính các biểu thức profile, khoảng cách, số lượ
 Manifest export 0.5.0 lưu `parameters_mm`, `reinforcement`, hash source và hash từng STL. Công cụ sau dựng lại SCAD từ chính tham số export để so bốn part:
 
 ```powershell
-python tools/audit-fusion-ribs.py --native 'fusion/SnaplockStorageBox/exports/<timestamp>' --output 'outputs/fusion-rib-native-check'
+python tools/audit-fusion-ribs.py --native 'fusion/SnaplockStorageBox/exports/<timestamp>' --output 'exports/fusion-rib-native-check'
 ```
 
 `<timestamp>` lấy từ `last-run.log`. Ngưỡng native là bounds <0,03 mm và sai khác thể tích đối xứng <0,3% cho từng part. Audit bù tịnh tiến về góc nhỏ nhất, giữ tỷ lệ và hướng. Kiểm chứng vị trí lắp, chuyển động, lực chịu tải và mẫu in là các bước riêng.

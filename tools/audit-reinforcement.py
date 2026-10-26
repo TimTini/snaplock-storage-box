@@ -1,6 +1,6 @@
 """Render SCAD reinforcement variants and validate added material and interfaces.
 
-Run with OPENSCAD set to the installed executable. Outputs stay in outputs/.
+Run with OPENSCAD set to the installed executable. Outputs stay in exports/.
 An optional --baseline-scad snapshot verifies the unchanged default geometry.
 """
 import argparse
@@ -25,7 +25,7 @@ def volume(mesh):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--baseline-scad',type=Path)
-    parser.add_argument('--output',type=Path,default=ROOT/'outputs/reinforcement')
+    parser.add_argument('--output',type=Path,default=ROOT/'exports/reinforcement')
     args = parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     report = {'scad_sha256':hashlib.sha256(builder.SCAD.read_bytes()).hexdigest(),

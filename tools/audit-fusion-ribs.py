@@ -116,7 +116,7 @@ def definitions(p,flags):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native',type=Path)
-    parser.add_argument('--output',type=Path,default=ROOT/'outputs/fusion-rib-offline')
+    parser.add_argument('--output',type=Path,default=ROOT/'exports/fusion-rib-offline')
     args=parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     report={'script_sha256':native.sha(native.SCRIPT),'scad_sha256':native.sha(scad.SCAD),

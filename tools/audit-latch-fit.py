@@ -57,7 +57,7 @@ def draw_section(ax,mesh,x,color,label):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',type=Path,default=ROOT/'outputs/latch-fit-minimum')
+    parser.add_argument('--output',type=Path,default=ROOT/'exports/latch-fit-minimum')
     args=parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     preset=ROOT/'samples/minimum'

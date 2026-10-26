@@ -65,9 +65,9 @@ Phạm vi rà là toàn bộ source SCAD của Snaplock. Mỗi vùng có phép d
 Chạy tại checkout `7711ae6` với dependency trong `requirements.txt`, OpenSCAD Manifold trong PATH hoặc biến môi trường `OPENSCAD`. Snapshot SCAD trước thay đổi được trích từ commit đã ghi:
 
 ```powershell
-git archive --format=zip --output=outputs/catch-baseline.zip 1b88b6b snaplock-storage-box.scad
-Expand-Archive -LiteralPath outputs/catch-baseline.zip -DestinationPath outputs/catch-baseline -Force
-python tools/audit-catch-csg.py --baseline outputs/catch-baseline/snaplock-storage-box.scad
+git archive --format=zip --output=exports/catch-baseline.zip 1b88b6b snaplock-storage-box.scad
+Expand-Archive -LiteralPath exports/catch-baseline.zip -DestinationPath exports/catch-baseline -Force
+python tools/audit-catch-csg.py --baseline exports/catch-baseline/snaplock-storage-box.scad
 python tools/audit-scad.py
 python tools/audit-scad.py --variant
 python tools/compare-scad.py

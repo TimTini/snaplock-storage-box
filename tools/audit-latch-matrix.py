@@ -118,7 +118,7 @@ if(show_shell_contact) color("magenta") intersection() {{ body(); lid(); }}
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',type=Path,default=ROOT/'outputs/latch-fit-matrix')
+    parser.add_argument('--output',type=Path,default=ROOT/'exports/latch-fit-matrix')
     args=parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     report={'scope':'closed rigid STL assembly; latch clearance separate from shell/hinge contact and physical fit',
