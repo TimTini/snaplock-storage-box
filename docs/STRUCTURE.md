@@ -6,14 +6,14 @@
 
 Source: `snaplock-storage-box.scad`.
 
-- [reference/](../reference/): đầu vào tham chiếu và nguồn hỗ trợ.
+- `reference/` (local): đầu vào tham chiếu và nguồn hỗ trợ.
 - [exports/](../exports/): đầu ra CAD, preview và report theo pipeline.
 - [docs/](../docs/): tài liệu project và ảnh minh họa.
 - [fusion/](../fusion/): script/manifest, hướng dẫn và test Fusion.
 - [samples/](../samples/): bộ mẫu đã bàn giao.
 - [tools/](../tools/): undefined.
 - [tests/](../tests/): kiểm thử project.
-- [work/](../work/): checkpoint và khảo sát local.
+- `work/` (local): checkpoint và khảo sát local.
 
 samples giữ bộ mẫu thử đã bàn giao; tools giữ script audit. exports/default là bộ xuất mặc định; các thư mục con khác giữ kết quả theo job.
 
